@@ -75,48 +75,43 @@
 <script src="assets/js/index.js"></script>
 
 <script>
-  const form = document.getElementById("guestbook-form");
-  const input = document.getElementById("guestbook-input");
-  const list = document.getElementById("guestbook-list");
+  const guestbookForm = document.getElementById("guestbook-form");
+  const guestbookInput = document.getElementById("guestbook-input");
+  const guestbookList = document.getElementById("guestbook-list");
 
-  form.addEventListener("submit", e => {
+  guestbookForm.addEventListener("submit", e => {
     e.preventDefault();
-    const text = input.value.trim();
+    const text = guestbookInput.value.trim();
     if (!text) return;
 
     const li = document.createElement("li");
     li.textContent = text;
-    list.prepend(li);
+    guestbookList.prepend(li);
 
-    input.value = "";
+    guestbookInput.value = "";
   });
 </script>
 
 <script>
   const recentList = document.getElementById("recent-guestbook");
 
-  if (recentList) {
-    const keys = Object.keys(localStorage)
-      .filter(k => k.startsWith("guestbook_"));
+  const keys = Object.keys(localStorage)
+    .filter(k => k.startsWith("guestbook_"));
 
-    let all = [];
+  let all = [];
 
-    keys.forEach(key => {
-      const data = JSON.parse(localStorage.getItem(key) || "[]");
-      all = all.concat(data);
+  keys.forEach(key => {
+    const data = JSON.parse(localStorage.getItem(key) || "[]");
+    all = all.concat(data);
+  });
+
+  all
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3)
+    .forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.date} · ${item.text}`;
+      recentList.appendChild(li);
     });
-
-    all
-      .sort((a, b) => b.date.localeCompare(a.date))
-      .slice(0, 3)
-      .forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = `${item.date} · ${item.text}`;
-        recentList.appendChild(li);
-      });
-  }
 </script>
-
-
-</body>
 </html>
