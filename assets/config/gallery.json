@@ -16,25 +16,9 @@
       "artistNote": "assets/notes/avatar_ii.txt",
 
       "images": [
-        "assets/images/avatar_ii/Avatar2_001.jpg",
-        "assets/images/avatar_ii/Avatar2_002.jpg",
-        "assets/images/avatar_ii/Avatar2_026.jpg",
-        "assets/images/avatar_ii/Avatar2_028.jpg",
-        "assets/images/avatar_ii/Avatar2_034.jpg",
-        "assets/images/avatar_ii/Avatar2_035.jpg",
-        "assets/images/avatar_ii/Avatar2_040.jpg",
-        "assets/images/avatar_ii/Avatar2_055.jpg",
-        "assets/images/avatar_ii/Avatar2_056.jpg",
-        "assets/images/avatar_ii/Avatar2_069.jpg",
-        "assets/images/avatar_ii/Avatar2_108.jpg",
-        "assets/images/avatar_ii/Avatar2_126.jpg",
-        "assets/images/avatar_ii/Avatar2_129.jpg",
-        "assets/images/avatar_ii/Avatar2_133.jpg",
-        "assets/images/avatar_ii/Avatar2_135.jpg",
-        "assets/images/avatar_ii/Avatar2_142.jpg",
-        "assets/images/avatar_ii/Avatar2_143.jpg",
-        "assets/images/avatar_ii/Avatar2_144.jpg",
-        "assets/images/avatar_ii/Avatar2_184.jpg"
+        "assets/images/avatar_ii/tree_001.jpg",
+        "assets/images/avatar_ii/tree_002.jpg",
+        "assets/images/avatar_ii/tree_003.jpg"
       ],
 
       "music": "assets/audio/avatar_ii.mp3",
