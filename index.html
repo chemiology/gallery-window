@@ -27,14 +27,65 @@
   </section>
 </main>
 
-<section class="guestbook">
-  <h3>Guestbook</h3>
-  <ul>
-    <li><strong>A.</strong> 조용히 잘 보고 갑니다.</li>
-    <li><strong>B.</strong> 사진이 숨을 쉬는 것 같아요.</li>
-  </ul>
+<section class="bottom-area">
+
+  <!-- 공지사항 -->
+  <div class="notice">
+    <h3>공지사항</h3>
+    <ul>
+      <li>
+        <span class="date">2026.01.01</span>
+        <span class="text">〈Avatar II〉, 〈Becoming Tree〉 온라인 전시 오픈</span>
+      </li>
+      <li>
+        <span class="date">2025.12.20</span>
+        <span class="text">Gallery Window 정식 공개</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 방명록 -->
+  <div class="guestbook">
+    <h3>방명록</h3>
+
+    <ul id="guestbook-list">
+      <li>조용히 잘 보고 갑니다.</li>
+      <li>사진이 숨을 쉬는 것 같아요.</li>
+    </ul>
+
+    <form id="guestbook-form">
+      <input
+        type="text"
+        id="guestbook-input"
+        placeholder="한 줄 감상을 남겨주세요"
+        maxlength="80"
+        required
+      >
+      <button type="submit">남기기</button>
+    </form>
+  </div>
+
 </section>
 
 <script src="assets/js/index.js"></script>
+
+<script>
+  const form = document.getElementById("guestbook-form");
+  const input = document.getElementById("guestbook-input");
+  const list = document.getElementById("guestbook-list");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+
+    const li = document.createElement("li");
+    li.textContent = text;
+    list.prepend(li);
+
+    input.value = "";
+  });
+</script>
+
 </body>
 </html>
