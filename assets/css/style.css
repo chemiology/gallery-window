@@ -10,7 +10,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
-  background-color: #0f0f10;
+  background-color: #15171a; /* 다크 그레이 + 옅은 블루 톤 */
   color: #eaeaea;
   line-height: 1.6;
 }
@@ -31,7 +31,9 @@ img {
 ========================= */
 
 .site-header {
-  padding: 48px 64px 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 56px 96px 40px;
 }
 
 .site-header h1 {
@@ -39,10 +41,12 @@ img {
   font-size: 30px;
   font-weight: 500;
   letter-spacing: 0.02em;
+  color: #d8dadd; /* 완전 흰색 ❌ */
 }
 
 .site-header h1 .ko {
-  margin-right: 14px;
+  margin-right: 18px;
+  color: #e3e4e6;
 }
 
 .site-header h1 .en {
@@ -51,9 +55,9 @@ img {
 }
 
 .site-header .subtitle {
-  margin-top: 10px;
+  margin-top: 12px;
   font-size: 14px;
-  opacity: 0.55;
+  color: #a2a7ad; /* 톤 다운된 회색 */
 }
 
 /* =========================
@@ -61,13 +65,13 @@ img {
 ========================= */
 
 .exhibitions {
-  max-width: 1200px;
-  margin: 80px auto 0;
-  padding: 0 64px;
+  max-width: 1440px;
+  margin: 100px auto 0;
+  padding: 0 96px;
 }
 
 .exhibition {
-  margin-bottom: 140px;
+  margin-bottom: 160px;
 }
 
 /* 1관 / 2관 */
@@ -76,100 +80,84 @@ img {
   font-weight: 300;
   letter-spacing: 0.15em;
   opacity: 0.6;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 /* 포스터 + 작가노트 + 여백 */
 .exhibition-body {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1.5fr 2fr 1fr; /* 포스터 1.5 / 노트 2 / 여백 1 */
+  gap: 80px;
   align-items: start;
 }
 
-/* 포스터 영역 */
+/* 포스터 */
 .exhibition-body img {
   cursor: pointer;
 }
 
 /* 포스터 메타 */
 .meta {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 
 .meta h3 {
   margin: 0;
   font-size: 16px;
   font-weight: 500;
+  color: #e0e1e3;
 }
 
 .meta p {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   font-size: 14px;
-  opacity: 0.6;
+  color: #9ea3a9;
 }
 
 /* 작가노트 */
 .artist-note {
-  font-size: 14px;
-  line-height: 1.8;
-  opacity: 0.8;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #cfd3d8; /* 기존보다 밝게 */
   white-space: pre-line;
 }
 
 /* =========================
    Bottom Area (공지 / 방명록)
+   ※ 아직 미완성 – 위치만 확보
 ========================= */
 
 .bottom-area {
-  max-width: 1000px;
-  margin: 180px auto 140px;
-  padding: 0 64px;
+  max-width: 1200px;
+  margin: 200px auto 160px;
+  padding: 0 96px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px;
-}
-
-/* 공지사항 */
-.notice h3,
-.guestbook h3 {
-  margin: 0 0 18px;
-  font-size: 16px;
-  font-weight: 500;
-  opacity: 0.75;
-}
-
-.notice p {
-  font-size: 14px;
-  opacity: 0.6;
-}
-
-/* 방명록 */
-.guestbook ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.guestbook li {
-  margin-bottom: 10px;
-  font-size: 14px;
-  opacity: 0.7;
+  gap: 120px;
 }
 
 /* =========================
-   Responsive (간단 대응)
+   Responsive
 ========================= */
+
+@media (max-width: 1200px) {
+  .site-header,
+  .exhibitions,
+  .bottom-area {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+}
 
 @media (max-width: 900px) {
   .exhibition-body {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
   }
 
   .bottom-area {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 72px;
   }
 
   .site-header,
