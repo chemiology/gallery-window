@@ -1,0 +1,155 @@
+/* =====================================================
+   Gallery Window – Exhibition Style (FINAL)
+===================================================== */
+
+/* ---------- Base ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #0f1114;   /* 전시장 다크톤 */
+  color: #e6e7e9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* ---------- Viewer ---------- */
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f1114;   /* 이미지 전환 중 흰색 방지 */
+}
+
+.viewer img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+
+  transform-origin: center center;
+  transition: opacity 0.8s ease;
+}
+
+/* ---------- Fade ---------- */
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+/* ---------- Control Panel ---------- */
+
+.control-panel {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1000;
+}
+
+/* ⚙ 버튼 */
+.control-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+
+  cursor: pointer;                 /* ← 손모양 */
+}
+
+/* 컨트롤 박스 */
+.control-box {
+  margin-top: 12px;
+  padding: 18px 20px;
+  width: 220px;
+
+  background: rgba(18, 20, 24, 0.95);
+  border-radius: 12px;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ---------- Control Elements ---------- */
+
+.control-box label {
+  display: block;
+  margin-bottom: 14px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.control-box input[type="radio"],
+.control-box input[type="range"] {
+  cursor: pointer;
+}
+
+.control-box button {
+  margin-top: 10px;
+  padding: 6px 10px;
+  width: 100%;
+
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+
+  color: #e6e7e9;
+  cursor: pointer;
+}
+
+.control-box button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ---------- Caption ---------- */
+
+.caption {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 13px;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .viewer img {
+    max-width: 94vw;
+    max-height: 86vh;
+  }
+
+  .control-panel {
+    top: 16px;
+    left: 16px;
+  }
+
+  .control-box {
+    width: 200px;
+    font-size: 12px;
+  }
+
+  .caption {
+    bottom: 16px;
+    font-size: 12px;
+  }
+}
