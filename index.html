@@ -67,24 +67,6 @@
 <script src="assets/js/index.js"></script>
 
 <script>
-  const guestbookForm = document.getElementById("guestbook-form");
-  const guestbookInput = document.getElementById("guestbook-input");
-  const guestbookList = document.getElementById("guestbook-list");
-
-  guestbookForm.addEventListener("submit", e => {
-    e.preventDefault();
-    const text = guestbookInput.value.trim();
-    if (!text) return;
-
-    const li = document.createElement("li");
-    li.textContent = text;
-    guestbookList.prepend(li);
-
-    guestbookInput.value = "";
-  });
-</script>
-
-<script>
   const recentList = document.getElementById("recent-guestbook");
 
   const keys = Object.keys(localStorage)
