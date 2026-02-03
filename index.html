@@ -67,6 +67,11 @@
 
 </section>
 
+<section class="guestbook">
+  <h3>최근 방명록</h3>
+  <ul id="recent-guestbook"></ul>
+</section>
+
 <script src="assets/js/index.js"></script>
 
 <script>
@@ -86,6 +91,32 @@
     input.value = "";
   });
 </script>
+
+<script>
+  const list = document.getElementById("recent-guestbook");
+  const keys = Object.keys(localStorage)
+    .filter(k => k.startsWith("guestbook_"));
+
+  let all = [];
+
+  keys.forEach(key => {
+    const data = JSON.parse(localStorage.getItem(key) || "[]");
+    all = all.concat(data.map(item => ({
+      ...item,
+      exhibition: key.replace("guestbook_", "")
+    })));
+  });
+
+  all
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3)
+    .forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = `${item.date} · ${item.text}`;
+      list.appendChild(li);
+    });
+</script>
+
 
 </body>
 </html>
