@@ -153,3 +153,63 @@ body {
     font-size: 12px;
   }
 }
+
+/* ==============================
+   Exhibition Guestbook
+============================== */
+
+.exhibition-guestbook {
+  max-width: 640px;
+  margin: 120px auto 80px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.exhibition-guestbook h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  color: #d6d8db;
+}
+
+.exhibition-guestbook ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.exhibition-guestbook li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #cfd3d8;
+  opacity: 0.9;
+}
+
+#guestbook-form {
+  display: flex;
+  gap: 10px;
+}
+
+#guestbook-input {
+  flex: 1;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: #e6e7e9;
+  font-size: 14px;
+}
+
+#guestbook-form button {
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  color: #e6e7e9;
+  cursor: pointer;
+}
+
+#guestbook-form button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
