@@ -182,3 +182,49 @@ function setupControls() {
     if (e.key === "ArrowLeft") prevImage();
   });
 }
+
+/* =========================
+   Guestbook (per exhibition)
+========================= */
+
+const exhibitionId =
+  new URLSearchParams(window.location.search).get("id");
+
+const storageKey = `guestbook_${exhibitionId}`;
+const listEl = document.getElementById("guestbook-list");
+const formEl = document.getElementById("guestbook-form");
+const inputEl = document.getElementById("guestbook-input");
+
+function loadGuestbook() {
+  const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
+  listEl.innerHTML = "";
+
+  data.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.date} · ${item.text}`;
+    listEl.appendChild(li);
+  });
+}
+
+function saveGuestbook(text) {
+  const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
+  const today = new Date().toISOString().slice(0, 10);
+
+  data.unshift({ text, date: today });
+  localStorage.setItem(storageKey, JSON.stringify(data));
+}
+
+if (formEl) {
+  loadGuestbook();
+
+  formEl.addEventListener("submit", e => {
+    e.preventDefault();
+    const text = inputEl.value.trim();
+    if (!text) return;
+
+    saveGuestbook(text);
+    inputEl.value = "";
+    loadGuestbook();
+  });
+}
+
