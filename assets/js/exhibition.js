@@ -184,7 +184,7 @@ function setupControls() {
 }
 
 /* =========================
-   Guestbook (per exhibition)
+   Exhibition Guestbook Logic
 ========================= */
 
 const exhibitionId =
@@ -208,13 +208,13 @@ function loadGuestbook() {
 
 function saveGuestbook(text) {
   const data = JSON.parse(localStorage.getItem(storageKey) || "[]");
-  const today = new Date().toISOString().slice(0, 10);
+  const date = new Date().toISOString().slice(0, 10);
 
-  data.unshift({ text, date: today });
+  data.unshift({ text, date });
   localStorage.setItem(storageKey, JSON.stringify(data));
 }
 
-if (formEl) {
+if (formEl && listEl) {
   loadGuestbook();
 
   formEl.addEventListener("submit", e => {
@@ -227,4 +227,3 @@ if (formEl) {
     loadGuestbook();
   });
 }
-
