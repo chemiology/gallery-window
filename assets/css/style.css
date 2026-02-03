@@ -13,15 +13,11 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
 
-  /* 배경 컬러 (세련된 다크 톤) */
   background-color: #15171a;
-
-
   background-image: url("../images/bg_main.jpg");
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: cover;
-
+  background-size: 1100px auto;
 
   color: #e6e7e9;
   line-height: 1.6;
@@ -137,17 +133,104 @@ img {
 }
 
 /* =====================================================
-   Bottom Area (Notice / Guestbook)
-   ※ 구조만 유지, 기능은 추후
+   Bottom Area – Notice & Guestbook
 ===================================================== */
 
 .bottom-area {
   max-width: 1200px;
   margin: 200px auto 160px;
   padding: 0 96px;
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 120px;
+}
+
+/* 공통 제목 */
+.bottom-area h3 {
+  margin: 0 0 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #d6d8db;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- Notice ---------- */
+
+.notice ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice li {
+  margin-bottom: 14px;
+  font-size: 14px;
+  color: #b8bcc2;
+}
+
+.notice .date {
+  margin-right: 12px;
+  color: #8f949b;
+  font-size: 13px;
+}
+
+/* ---------- Guestbook ---------- */
+
+.guestbook ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+
+.guestbook li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #cfd3d8;
+}
+
+/* 입력 폼 */
+#guestbook-form {
+  display: flex;
+  gap: 10px;
+}
+
+#guestbook-input {
+  flex: 1;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: #e6e7e9;
+  font-size: 14px;
+}
+
+#guestbook-input::placeholder {
+  color: #8c9096;
+}
+
+#guestbook-form button {
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  color: #e6e7e9;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#guestbook-form button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .bottom-area {
+    grid-template-columns: 1fr;
+    gap: 80px;
+    padding: 0 32px;
+  }
 }
 
 /* =====================================================
