@@ -14,7 +14,7 @@ body {
                Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
 
   /* 배경 컬러 (세련된 다크 톤) */
-  background-color: #15171a;
+  /background-color: #15171a;/
 
   * 배경 이미지를 쓸 경우 (선택)
   background-image: url("../images/bg_main.jpg");
