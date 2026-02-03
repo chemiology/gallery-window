@@ -1,6 +1,8 @@
-/* =========================
-   Global
-========================= */
+/* =====================================================
+   Gallery Window – Main Page Style (Final)
+===================================================== */
+
+/* ---------- Reset & Base ---------- */
 
 * {
   box-sizing: border-box;
@@ -10,8 +12,18 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
-  background-color: #15171a; /* 다크 그레이 + 옅은 블루 톤 */
-  color: #eaeaea;
+
+  /* 배경 컬러 (세련된 다크 톤) */
+  background-color: #15171a;
+
+  * 배경 이미지를 쓸 경우 (선택)
+  background-image: url("../images/bg_main.jpg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  *
+
+  color: #e6e7e9;
   line-height: 1.6;
 }
 
@@ -26,9 +38,9 @@ img {
   height: auto;
 }
 
-/* =========================
-   Header (상단 타이틀)
-========================= */
+/* =====================================================
+   Header
+===================================================== */
 
 .site-header {
   max-width: 1440px;
@@ -41,7 +53,7 @@ img {
   font-size: 30px;
   font-weight: 500;
   letter-spacing: 0.02em;
-  color: #d8dadd; /* 완전 흰색 ❌ */
+  color: #d8dadd;
 }
 
 .site-header h1 .ko {
@@ -57,12 +69,12 @@ img {
 .site-header .subtitle {
   margin-top: 12px;
   font-size: 14px;
-  color: #a2a7ad; /* 톤 다운된 회색 */
+  color: #a2a7ad;
 }
 
-/* =========================
-   Exhibition Section
-========================= */
+/* =====================================================
+   Exhibition List
+===================================================== */
 
 .exhibitions {
   max-width: 1440px;
@@ -83,10 +95,12 @@ img {
   margin-bottom: 40px;
 }
 
-/* 포스터 + 작가노트 + 여백 */
+/* ---------- Poster / Note Layout ---------- */
+/* 포스터 1.5 / 작가노트 3 / 여백 0.5 */
+
 .exhibition-body {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 1fr; /* 포스터 1.5 / 노트 2 / 여백 1 */
+  grid-template-columns: 1.5fr 3fr 0.5fr;
   gap: 80px;
   align-items: start;
 }
@@ -118,14 +132,14 @@ img {
 .artist-note {
   font-size: 15px;
   line-height: 1.9;
-  color: #cfd3d8; /* 기존보다 밝게 */
+  color: #d5d9de; /* 가독성 강화 */
   white-space: pre-line;
 }
 
-/* =========================
-   Bottom Area (공지 / 방명록)
-   ※ 아직 미완성 – 위치만 확보
-========================= */
+/* =====================================================
+   Bottom Area (Notice / Guestbook)
+   ※ 구조만 유지, 기능은 추후
+===================================================== */
 
 .bottom-area {
   max-width: 1200px;
@@ -136,9 +150,9 @@ img {
   gap: 120px;
 }
 
-/* =========================
+/* =====================================================
    Responsive
-========================= */
+===================================================== */
 
 @media (max-width: 1200px) {
   .site-header,
