@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallery Window – Exhibition</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Exhibition 전용 CSS -->
+  <link rel="stylesheet" href="assets/css/exhibition.css">
+</head>
+
+<body>
+
+  <!-- 이미지 뷰어 -->
+  <div class="viewer">
+    <img id="exhibition-image" src="" alt="">
+  </div>
+
+  <!-- 컨트롤 패널 -->
+  <div class="control-panel">
+    <div class="control-toggle">⚙</div>
+    <div class="control-box" style="display:none;">
+      <label>
+        Viewing Mode<br>
+        <input type="radio" name="mode" value="auto" checked> Auto
+        <input type="radio" name="mode" value="manual"> Manual
+      </label>
+
+      <label>
+        Slide Speed
+        <input type="range" id="speed" min="3" max="20" value="10">
+      </label>
+
+      <label>
+        Volume
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+      </label>
+
+      <button id="mute">Mute</button>
+    </div>
+  </div>
+
+  <!-- 캡션 -->
+  <div class="caption" id="caption"></div>
+
+  <!-- JS -->
+  <script src="assets/js/exhibition.js"></script>
+</body>
+</html>
