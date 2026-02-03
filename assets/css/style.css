@@ -1,0 +1,181 @@
+/* =========================
+   Global
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
+  background-color: #0f0f10;
+  color: #eaeaea;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   Header (상단 타이틀)
+========================= */
+
+.site-header {
+  padding: 48px 64px 32px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.site-header h1 .ko {
+  margin-right: 14px;
+}
+
+.site-header h1 .en {
+  font-weight: 400;
+  opacity: 0.65;
+}
+
+.site-header .subtitle {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.55;
+}
+
+/* =========================
+   Exhibition Section
+========================= */
+
+.exhibitions {
+  max-width: 1200px;
+  margin: 80px auto 0;
+  padding: 0 64px;
+}
+
+.exhibition {
+  margin-bottom: 140px;
+}
+
+/* 1관 / 2관 */
+.hall-label {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
+  margin-bottom: 36px;
+}
+
+/* 포스터 + 작가노트 + 여백 */
+.exhibition-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* 포스터 영역 */
+.exhibition-body img {
+  cursor: pointer;
+}
+
+/* 포스터 메타 */
+.meta {
+  margin-top: 14px;
+}
+
+.meta h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.meta p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* 작가노트 */
+.artist-note {
+  font-size: 14px;
+  line-height: 1.8;
+  opacity: 0.8;
+  white-space: pre-line;
+}
+
+/* =========================
+   Bottom Area (공지 / 방명록)
+========================= */
+
+.bottom-area {
+  max-width: 1000px;
+  margin: 180px auto 140px;
+  padding: 0 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+}
+
+/* 공지사항 */
+.notice h3,
+.guestbook h3 {
+  margin: 0 0 18px;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.notice p {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+/* 방명록 */
+.guestbook ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guestbook li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* =========================
+   Responsive (간단 대응)
+========================= */
+
+@media (max-width: 900px) {
+  .exhibition-body {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .bottom-area {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  .site-header,
+  .exhibitions,
+  .bottom-area {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
