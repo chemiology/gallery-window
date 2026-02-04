@@ -78,10 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
+  // ul 생성
   const ul = document.createElement("ul");
   ul.id = "recent-guestbook";
   area.appendChild(ul);
 
+  // 모든 전시의 방명록 수집
   const keys = Object.keys(localStorage)
     .filter(k => k.startsWith("guestbook_"));
 
@@ -93,11 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (all.length === 0) return;
 
+  // 최신순 정렬
   all.sort((a, b) => b.date.localeCompare(a.date));
-  const item = all[Math.floor(Math.random() * Math.min(all.length, 5))];
+
+  // 최근 5개 중 랜덤 1개
+  const pool = all.slice(0, 5);
+  const item = pool[Math.floor(Math.random() * pool.length)];
 
   const li = document.createElement("li");
-  li.textContent = item.text;   // 🔑 여기엔 텍스트만
-
+  li.textContent = item.text;
   ul.appendChild(li);
 });
