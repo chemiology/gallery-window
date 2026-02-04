@@ -76,13 +76,13 @@ img {
   margin-top: 18px;
   margin-bottom: 28px;
 
-  font-size: 15px;           /* 작가노트보다 1단계 큼 */
+  font-size: 16px;           /* 작가노트보다 1단계 큼 */
   line-height: 1.7;
 
   color: rgba(230, 231, 233, 0.78); /* 작가노트보다 살짝 어두움 */
-  text-align: center;
+  text-align: left;
 
-  max-width: 680px;
+  max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -349,4 +349,102 @@ body.archive {
   font-size: 14px;
   opacity: 0.8;
   margin-bottom: 8px;
+}
+
+/* =========================
+   Main Page Footer Notice
+   ========================= */
+
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+
+  border-top: 1px solid #e5e5e5;
+  z-index: 100;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 12px;
+  color: #666;
+}
+
+.footer-left span {
+  margin-right: 12px;
+}
+
+.footer-title {
+  font-weight: 500;
+  color: #444;
+}
+
+.footer-period {
+  color: #888;
+}
+
+.footer-credit {
+  color: #888;
+}
+
+/* =========================
+   Main Page Notice Board
+   ========================= */
+
+.notice-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  z-index: 200;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.notice-header {
+  padding: 8px 16px;
+  background: #f9f9f9;
+  color: #444;
+  font-weight: 500;
+}
+
+.notice-panel {
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.notice-list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 16px;
+}
+
+.notice-list li {
+  padding: 6px 0;
+  border-bottom: 1px dotted #eee;
+}
+
+.notice-list li:last-child {
+  border-bottom: none;
+}
+
+.notice-date {
+  color: #999;
+  margin-right: 8px;
+}
+
+.notice-text {
+  color: #333;
 }
