@@ -52,27 +52,5 @@
   </section>
 
 <script src="assets/js/index.js"></script>
-
-<script>
-  const recentList = document.getElementById("recent-guestbook");
-
-  const keys = Object.keys(localStorage)
-    .filter(k => k.startsWith("guestbook_"));
-
-  let all = [];
-
-  keys.forEach(key => {
-    const data = JSON.parse(localStorage.getItem(key) || "[]");
-    all = all.concat(data);
-  });
-
-  all
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 3)
-    .forEach(item => {
-      const li = document.createElement("li");
-      li.textContent = `${item.date} · ${item.text}`;
-      recentList.appendChild(li);
-    });
-</script>
+</body>
 </html>
