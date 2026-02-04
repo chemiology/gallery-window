@@ -155,7 +155,7 @@ body {
 }
 
 /* ==============================
-   Exhibition Guestbook – Inline Bar
+   Exhibition Guestbook – Fixed
 ============================== */
 
 .exhibition-guestbook {
@@ -163,10 +163,11 @@ body {
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
+
   width: 60%;
   max-width: 800px;
 
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.55);
   padding: 12px 16px;
   border-radius: 8px;
 
@@ -247,6 +248,12 @@ body {
   max-height: 200px;
 }
 
+.exhibition-guestbook:hover ul,
+.exhibition-guestbook:focus-within ul {
+  opacity: 1;
+  max-height: 200px;
+}
+
 /* ==============================
    Guestbook – 3 lines only
 ============================== */
@@ -275,4 +282,21 @@ body {
   position: relative;
   z-index: 10;
 }
+
+/* ==============================
+   Guestbook – Performative Fade
+============================== */
+
+/* 기본 상태: 흐리게 */
+.exhibition-guestbook {
+  opacity: 0.35;
+  transition: opacity 0.6s ease;
+}
+
+/* 마우스 올리거나 입력 중일 때 */
+.exhibition-guestbook:hover,
+.exhibition-guestbook:focus-within {
+  opacity: 1;
+}
+
 
