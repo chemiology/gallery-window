@@ -7,6 +7,8 @@ async function loadGallery() {
   try {
     const response = await fetch("assets/config/gallery.json");
     const data = await response.json();
+
+    renderHeadlineNotice(data.headlineNotice);
     renderExhibitions(data.currentExhibitions || []);
   } catch (error) {
     console.error("Gallery data load failed:", error);
@@ -116,3 +118,16 @@ document.addEventListener("DOMContentLoaded", () => {
   loadGallery();
   renderHomepageGuestbook();
 });
+
+function renderHeadlineNotice(notice) {
+  const container = document.getElementById("headline-notice");
+  if (!container) return;
+
+  if (!notice || !notice.text || notice.text.trim() === "") {
+    container.style.display = "none";
+    return;
+  }
+
+  container.textContent = notice.text;
+}
+
