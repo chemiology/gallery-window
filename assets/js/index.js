@@ -78,35 +78,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
-  // ul 생성
   const ul = document.createElement("ul");
   ul.id = "recent-guestbook";
   area.appendChild(ul);
 
-  // 모든 전시의 방명록 수집
-  const keys = Object.keys(localStorage)
-    .filter(k => k.startsWith("guestbook_"));
+  // 모든 방명록 수집
+  const keys = Object.keys(localStorage).filter(k =>
+    k.startsWith("guestbook_")
+  );
 
   let all = [];
   keys.forEach(key => {
-    const data = JSON.parse(localStorage.getItem(key) || "[]");
-    all = all.concat(data);
+    const arr = JSON.parse(localStorage.getItem(key) || "[]");
+    arr.forEach(item => all.push(item.text));
   });
 
   if (all.length === 0) return;
 
-  // 최신순 정렬
-  all.sort((a, b) => b.date.localeCompare(a.date));
-
-  // 🔑 순환 인덱스
-  let index = Number(sessionStorage.getItem("guestbookIndex") || 0);
-  if (index >= all.length) index = 0;
-
-  const item = all[index];
-
-  sessionStorage.setItem("guestbookIndex", index + 1);
+  // 🔑 무조건 바뀌는 인덱스 (시간 기반)
+  const index = Math.floor(Date.now() / 1000) % all.length;
 
   const li = document.createElement("li");
-  li.textContent = item.text;
+  li.textContent = all[index];
   ul.appendChild(li);
 });
