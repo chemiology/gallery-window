@@ -213,3 +213,16 @@ body {
   background: rgba(255,255,255,0.08);
 }
 
+/* ==============================
+   Allow scroll for guestbook
+============================== */
+
+body {
+  overflow-y: auto;
+}
+
+.exhibition-guestbook {
+  position: relative;
+  z-index: 10;
+}
+
