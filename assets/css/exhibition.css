@@ -160,7 +160,7 @@ body {
 
 .exhibition-guestbook {
   position: fixed;
-  bottom: 40px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
@@ -176,7 +176,7 @@ body {
 
 .exhibition-guestbook ul {
   max-height: 120px;
-  overflow-y: auto;
+  overflow: hidden;
   margin: 0 0 8px 0;
   padding: 0;
   list-style: none;
@@ -226,6 +226,41 @@ body {
 
 #guestbook-form button:hover {
   background: rgba(255,255,255,0.08);
+}
+
+/* ==============================
+   Guestbook – Performative Mode
+============================== */
+
+/* 기본 상태: 방명록 문구는 숨김 */
+.exhibition-guestbook ul {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  transition: opacity 0.6s ease, max-height 0.6s ease;
+}
+
+/* 입력 중일 때만 드러남 */
+.exhibition-guestbook.active ul {
+  opacity: 1;
+  max-height: 200px;
+}
+
+/* ==============================
+   Guestbook – 3 lines only
+============================== */
+
+.exhibition-guestbook ul li {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;       /* 최대 3줄 */
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  line-height: 1.6;
+  max-height: calc(1.6em * 3);
 }
 
 /* ==============================
