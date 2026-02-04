@@ -71,7 +71,12 @@ function renderExhibitions(exhibitions) {
   });
 }
 
+let homepageGuestbookRendered = false;
+
 function renderHomepageGuestbook() {
+  if (homepageGuestbookRendered) return; // 🔒 재실행 차단
+  homepageGuestbookRendered = true;
+
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
