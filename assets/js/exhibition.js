@@ -251,3 +251,18 @@ function moveGuestbookToArchive(exhibitionId, endDate) {
   }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+  const guestbook = document.querySelector(".exhibition-guestbook");
+  const input = document.getElementById("guestbook-input");
+
+  if (!guestbook || !input) return;
+
+  input.addEventListener("focus", () => {
+    guestbook.classList.add("active");
+  });
+
+  input.addEventListener("blur", () => {
+    guestbook.classList.remove("active");
+  });
+});
+
