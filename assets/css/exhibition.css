@@ -10,11 +10,11 @@
 
 body {
   margin: 0;
-  background-color: #0f1114;   /* 전시장 다크톤 */
+  background-color: #0f1114;
   color: #e6e7e9;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
-  overflow: hidden;
+  overflow: hidden; /* 전시 화면 스크롤 금지 */
 }
 
 /* ---------- Viewer ---------- */
@@ -25,7 +25,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0f1114;   /* 이미지 전환 중 흰색 방지 */
+  background-color: #0f1114;
 }
 
 .viewer img {
@@ -41,13 +41,8 @@ body {
 
 /* ---------- Fade ---------- */
 
-.fade-in {
-  opacity: 1;
-}
-
-.fade-out {
-  opacity: 0;
-}
+.fade-in { opacity: 1; }
+.fade-out { opacity: 0; }
 
 /* ---------- Control Panel ---------- */
 
@@ -58,7 +53,6 @@ body {
   z-index: 1000;
 }
 
-/* ⚙ 버튼 */
 .control-toggle {
   width: 36px;
   height: 36px;
@@ -68,24 +62,18 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 16px;
-
-  cursor: pointer;                 /* ← 손모양 */
+  cursor: pointer;
 }
 
-/* 컨트롤 박스 */
 .control-box {
   margin-top: 12px;
   padding: 18px 20px;
   width: 220px;
-
   background: rgba(18, 20, 24, 0.95);
   border-radius: 12px;
-
   font-size: 13px;
   line-height: 1.6;
 }
-
-/* ---------- Control Elements ---------- */
 
 .control-box label {
   display: block;
@@ -94,8 +82,8 @@ body {
   cursor: pointer;
 }
 
-.control-box input[type="radio"],
-.control-box input[type="range"] {
+.control-box input,
+.control-box button {
   cursor: pointer;
 }
 
@@ -103,13 +91,10 @@ body {
   margin-top: 10px;
   padding: 6px 10px;
   width: 100%;
-
   background: none;
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 6px;
-
   color: #e6e7e9;
-  cursor: pointer;
 }
 
 .control-box button:hover {
@@ -120,10 +105,9 @@ body {
 
 .caption {
   position: fixed;
-  bottom: 24px;
+  bottom: 64px; /* 방명록과 겹치지 않도록 */
   left: 50%;
   transform: translateX(-50%);
-
   font-size: 13px;
   opacity: 0.6;
   letter-spacing: 0.02em;
@@ -149,14 +133,14 @@ body {
   }
 
   .caption {
-    bottom: 16px;
+    bottom: 56px;
     font-size: 12px;
   }
 }
 
-/* ==============================
-   Exhibition Guestbook – Fixed
-============================== */
+/* =====================================================
+   Exhibition Guestbook – FINAL (B안 연출형)
+===================================================== */
 
 .exhibition-guestbook {
   position: fixed;
@@ -173,68 +157,23 @@ body {
 
   box-sizing: border-box;
   z-index: 1000;
+
+  opacity: 0.35;
+  transition: opacity 0.6s ease;
 }
 
+/* 마우스 접근 또는 입력 중일 때 */
+.exhibition-guestbook:hover,
+.exhibition-guestbook:focus-within {
+  opacity: 1;
+}
+
+/* 방명록 리스트 기본 상태: 숨김 */
 .exhibition-guestbook ul {
-  max-height: 120px;
-  overflow: hidden;
-  margin: 0 0 8px 0;
+  margin: 6px 0 8px 0;
   padding: 0;
   list-style: none;
-}
 
-/* '방명록' 라벨 */
-.guestbook-label {
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-  white-space: nowrap;
-}
-
-/* 입력 + 버튼 한 줄 */
-#guestbook-form {
-  flex: 1;
-  display: flex;
-  gap: 10px;
-}
-
-/* 입력창 */
-#guestbook-input {
-  flex: 1;
-  padding: 8px 12px;
-
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 8px;
-
-  color: #e6e7e9;
-  font-size: 14px;
-}
-
-/* 버튼 */
-#guestbook-form button {
-  padding: 8px 14px;
-
-  background: none;
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 8px;
-
-  color: #e6e7e9;
-  font-size: 13px;
-
-  cursor: pointer;
-}
-
-#guestbook-form button:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-/* ==============================
-   Guestbook – Performative Mode
-============================== */
-
-/* 기본 상태: 방명록 문구는 숨김 */
-.exhibition-guestbook ul {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
@@ -242,61 +181,59 @@ body {
   transition: opacity 0.6s ease, max-height 0.6s ease;
 }
 
-/* 입력 중일 때만 드러남 */
-.exhibition-guestbook.active ul {
-  opacity: 1;
-  max-height: 200px;
-}
-
+/* 열림 상태 */
 .exhibition-guestbook:hover ul,
 .exhibition-guestbook:focus-within ul {
   opacity: 1;
   max-height: 200px;
 }
 
-/* ==============================
-   Guestbook – 3 lines only
-============================== */
-
+/* 방명록 문장 – 정확히 3줄 */
 .exhibition-guestbook ul li {
   display: -webkit-box;
-  -webkit-line-clamp: 3;       /* 최대 3줄 */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
   overflow: hidden;
   text-overflow: ellipsis;
 
-  line-height: 1.6;
-  max-height: calc(1.6em * 3);
+  line-height: 22px;
+  max-height: 66px; /* 22px × 3 */
 }
 
-/* ==============================
-   Allow scroll for guestbook
-============================== */
-
-body {
-  overflow-y: auto;
+/* 라벨 */
+.guestbook-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  white-space: nowrap;
 }
 
-.exhibition-guestbook {
-  position: relative;
-  z-index: 10;
+/* 입력 영역 */
+#guestbook-form {
+  display: flex;
+  gap: 10px;
 }
 
-/* ==============================
-   Guestbook – Performative Fade
-============================== */
-
-/* 기본 상태: 흐리게 */
-.exhibition-guestbook {
-  opacity: 0.35;
-  transition: opacity 0.6s ease;
+#guestbook-input {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  color: #e6e7e9;
+  font-size: 14px;
 }
 
-/* 마우스 올리거나 입력 중일 때 */
-.exhibition-guestbook:hover,
-.exhibition-guestbook:focus-within {
-  opacity: 1;
+#guestbook-form button {
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  color: #e6e7e9;
+  font-size: 13px;
 }
 
-
+#guestbook-form button:hover {
+  background: rgba(255,255,255,0.08);
+}
