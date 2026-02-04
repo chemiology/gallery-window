@@ -155,22 +155,26 @@ body {
 }
 
 /* ==============================
-   Exhibition Guestbook
+   Exhibition Guestbook – Position Fix
 ============================== */
 
 .exhibition-guestbook {
   max-width: 640px;
-  margin: 120px auto 80px;
-  padding: 0 20px;
+  margin: 0 auto 120px;
+
+  /* 🔑 핵심: 뷰어 아래로 밀어내기 */
+  padding-top: 90vh;
+
+  padding-left: 20px;
+  padding-right: 20px;
+
   text-align: center;
 }
 
 .exhibition-guestbook h3 {
-  font-size: 15px;
-  font-weight: 500;
   margin-bottom: 24px;
-  color: #d6d8db;
 }
+
 
 .exhibition-guestbook ul {
   list-style: none;
