@@ -233,6 +233,19 @@ img {
   }
 }
 
+.guestbook.poetic {
+  margin-top: 140px;
+  text-align: center;
+}
+
+.guestbook.poetic li {
+  font-size: 15px;
+  color: #bfc3c8;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
+}
+
+
 /* =====================================================
    Responsive
 ===================================================== */
@@ -263,4 +276,57 @@ img {
     padding-left: 32px;
     padding-right: 32px;
   }
+}
+
+/* ==============================
+   Archive
+============================== */
+
+body.archive {
+  background: #0f1114;
+  color: #d4d6da;
+}
+
+.archive-list {
+  max-width: 900px;
+  margin: 120px auto;
+  padding: 0 20px;
+}
+
+.archive-item {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 120px;
+}
+
+.archive-poster img {
+  width: 220px;
+  opacity: 0.9;
+}
+
+.archive-info h2 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.archive-info .artist,
+.archive-info .period {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.archive-note {
+  margin-top: 24px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.archive-guestbook {
+  margin-top: 40px;
+}
+
+.archive-guestbook li {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 8px;
 }

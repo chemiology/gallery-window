@@ -73,3 +73,30 @@ function renderExhibitions(exhibitions) {
     container.appendChild(block);
   });
 }
+
+const container = document.getElementById("recent-guestbook");
+
+const keys = Object.keys(localStorage)
+  .filter(k => k.startsWith("guestbook_")); // 진행 중 전시만
+
+let all = [];
+
+keys.forEach(key => {
+  const data = JSON.parse(localStorage.getItem(key) || "[]");
+  all = all.concat(data);
+});
+
+// 최신순
+all.sort((a, b) => b.date.localeCompare(a.date));
+
+// 최대 5개만
+const selected = all.slice(0, 5);
+
+// 랜덤 하나만 보여주기
+if (selected.length > 0) {
+  const item = selected[Math.floor(Math.random() * selected.length)];
+  const li = document.createElement("li");
+  li.textContent = item.text;
+  container.appendChild(li);
+}
+

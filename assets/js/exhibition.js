@@ -227,3 +227,27 @@ if (formEl && listEl) {
     loadGuestbook();
   });
 }
+
+function isExhibitionEnded(endDate) {
+  const today = new Date().toISOString().slice(0, 10);
+  return today > endDate;
+}
+
+function moveGuestbookToArchive(exhibitionId, endDate) {
+  if (!isExhibitionEnded(endDate)) return;
+
+  const activeKey = `guestbook_${exhibitionId}`;
+  const archiveKey = `archiveGuestbook_${exhibitionId}`;
+
+  const activeData = JSON.parse(localStorage.getItem(activeKey) || "[]");
+  const archiveData = JSON.parse(localStorage.getItem(archiveKey) || "[]");
+
+  if (activeData.length > 0) {
+    localStorage.setItem(
+      archiveKey,
+      JSON.stringify(activeData.concat(archiveData))
+    );
+    localStorage.removeItem(activeKey);
+  }
+}
+
