@@ -1,5 +1,3 @@
-alert("index.js loaded");
-
 document.addEventListener("DOMContentLoaded", () => {
   loadGallery();
 });
@@ -77,12 +75,29 @@ function renderExhibitions(exhibitions) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const list = document.getElementById("recent-guestbook");
+  const area = document.getElementById("guestbook-area");
+  if (!area) return;
 
-  if (!list) {
-    alert("recent-guestbook not found");
-    return;
-  }
+  const ul = document.createElement("ul");
+  ul.id = "recent-guestbook";
+  area.appendChild(ul);
 
-  list.innerHTML = "<li>✅ 이 문장이 보이면 JS는 이 영역을 잡고 있습니다</li>";
+  const keys = Object.keys(localStorage)
+    .filter(k => k.startsWith("guestbook_"));
+
+  let all = [];
+  keys.forEach(key => {
+    const data = JSON.parse(localStorage.getItem(key) || "[]");
+    all = all.concat(data);
+  });
+
+  if (all.length === 0) return;
+
+  all.sort((a, b) => b.date.localeCompare(a.date));
+  const item = all[Math.floor(Math.random() * Math.min(all.length, 5))];
+
+  const li = document.createElement("li");
+  li.textContent = item.text;   // 🔑 여기엔 텍스트만
+
+  ul.appendChild(li);
 });
