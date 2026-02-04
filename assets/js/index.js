@@ -8,7 +8,7 @@ async function loadGallery() {
     const response = await fetch("assets/config/gallery.json");
     const data = await response.json();
 
-//    renderHeadlineNotice(data.headlineNotice);
+    renderHeadlineNotice(data.headlineNotice);
     renderExhibitions(data.currentExhibitions || []);
   } catch (error) {
     console.error("Gallery data load failed:", error);
