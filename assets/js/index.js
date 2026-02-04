@@ -98,9 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // 최신순 정렬
   all.sort((a, b) => b.date.localeCompare(a.date));
 
-  // 최근 5개 중 랜덤 1개
-  const pool = all.slice(0, 5);
-  const item = pool[Math.floor(Math.random() * pool.length)];
+  // 🔑 순환 인덱스
+  let index = Number(sessionStorage.getItem("guestbookIndex") || 0);
+  if (index >= all.length) index = 0;
+
+  const item = all[index];
+
+  sessionStorage.setItem("guestbookIndex", index + 1);
 
   const li = document.createElement("li");
   li.textContent = item.text;
