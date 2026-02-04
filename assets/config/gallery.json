@@ -2,25 +2,13 @@
   "site": {
     "name": "갤러리 창 Gallery Window",
     "subtitle": "A window for contemporary photography",
-    "language": "ko"
+    "language": "ko",
+    "theme": "dark",
+    "footer": "© Gallery Window"
   },
 
   "headlineNotice": {
     "text": "갤러리 창은 누구에게나 열려 있는, 함께 바라보고 머무를 수 있는 상상의 공간입니다. 각자의 시선이 모여 하나의 장소가 됩니다."
-  },
-
-  "currentExhibitions": [
-    ...
-  ]
-}
-
-{
-  "site": {
-    "name": "갤러리 창 Gallery Window",
-    "subtitle": "A window for contemporary photography",
-    "language": "ko",
-    "theme": "dark",
-    "footer": "© Gallery Window"
   },
 
   "currentExhibitions": [
