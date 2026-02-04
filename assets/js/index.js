@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
-  // 매번 초기화
   area.innerHTML = "";
 
   const ul = document.createElement("ul");
@@ -97,10 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (all.length === 0) return;
 
-  // 🔑 시간 기반 인덱스 (무조건 달라짐)
-  const index = Math.floor(Date.now() / 5000) % all.length;
+  // 🔑 대표화면 전용 순환 인덱스
+  let idx = Number(localStorage.getItem("homepageGuestbookIndex") || 0);
+  if (idx >= all.length) idx = 0;
 
   const li = document.createElement("li");
-  li.textContent = all[index];
+  li.textContent = all[idx];
   ul.appendChild(li);
+
+  // 다음 방문을 위해 증가
+  localStorage.setItem("homepageGuestbookIndex", idx + 1);
 });
