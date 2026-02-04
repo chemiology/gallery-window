@@ -1,3 +1,5 @@
+alert("index.js loaded");
+
 document.addEventListener("DOMContentLoaded", () => {
   loadGallery();
 });
