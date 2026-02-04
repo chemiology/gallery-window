@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadGallery();
+  renderHomepageGuestbook();
 });
 
 async function loadGallery() {
@@ -22,7 +23,6 @@ function renderExhibitions(exhibitions) {
     const block = document.createElement("div");
     block.className = "exhibition";
 
-    // 1관 / 2관 표시 (2개일 때만)
     if (exhibitions.length === 2) {
       const hall = document.createElement("div");
       hall.className = "hall-label";
@@ -33,9 +33,7 @@ function renderExhibitions(exhibitions) {
     const body = document.createElement("div");
     body.className = "exhibition-body";
 
-    /* 포스터 영역 */
     const posterWrap = document.createElement("div");
-
     const img = document.createElement("img");
     img.src = exhibition.poster;
     img.alt = exhibition.title;
@@ -51,7 +49,6 @@ function renderExhibitions(exhibitions) {
     posterWrap.appendChild(img);
     posterWrap.appendChild(meta);
 
-    /* 작가노트 영역 */
     const noteWrap = document.createElement("div");
     noteWrap.className = "artist-note";
     noteWrap.textContent = "Loading…";
@@ -74,16 +71,14 @@ function renderExhibitions(exhibitions) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function renderHomepageGuestbook() {
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
   area.innerHTML = "";
-
   const ul = document.createElement("ul");
   area.appendChild(ul);
 
-  // 모든 방명록 수집
   const keys = Object.keys(localStorage).filter(k =>
     k.startsWith("guestbook_")
   );
@@ -96,14 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (all.length === 0) return;
 
-  // 🔑 대표화면 전용 순환 인덱스
-  let idx = Number(localStorage.getItem("homepageGuestbookIndex") || 0);
+  let idx = Number(localStorage.getItem("homepageGuestbookIndex"));
+  if (Number.isNaN(idx)) idx = 0;
   if (idx >= all.length) idx = 0;
 
   const li = document.createElement("li");
   li.textContent = all[idx];
   ul.appendChild(li);
 
-  // 다음 방문을 위해 증가
   localStorage.setItem("homepageGuestbookIndex", idx + 1);
-});
+}
