@@ -71,12 +71,7 @@ function renderExhibitions(exhibitions) {
   });
 }
 
-let homepageGuestbookRendered = false;
-
 function renderHomepageGuestbook() {
-  if (homepageGuestbookRendered) return; // 🔒 재실행 차단
-  homepageGuestbookRendered = true;
-
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
@@ -84,6 +79,7 @@ function renderHomepageGuestbook() {
   const ul = document.createElement("ul");
   area.appendChild(ul);
 
+  // 모든 전시 방명록 수집 (자기 것만)
   const keys = Object.keys(localStorage).filter(k =>
     k.startsWith("guestbook_")
   );
@@ -91,18 +87,32 @@ function renderHomepageGuestbook() {
   let all = [];
   keys.forEach(key => {
     const arr = JSON.parse(localStorage.getItem(key) || "[]");
-    arr.forEach(item => all.push(item.text));
+    arr.forEach(item => {
+      all.push({
+        text: item.text,
+        date: item.date
+      });
+    });
   });
 
-  if (all.length === 0) return;
+  if (all.length === 0) {
+    const li = document.createElement("li");
+    li.textContent = "아직 남긴 방명록이 없습니다.";
+    ul.appendChild(li);
+    return;
+  }
 
-  let idx = Number(localStorage.getItem("homepageGuestbookIndex"));
-  if (Number.isNaN(idx)) idx = 0;
-  if (idx >= all.length) idx = 0;
+  // 오래된 순 → 최신 순
+  all.sort((a, b) => a.date.localeCompare(b.date));
 
-  const li = document.createElement("li");
-  li.textContent = all[idx];
-  ul.appendChild(li);
-
-  localStorage.setItem("homepageGuestbookIndex", idx + 1);
+  all.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item.text;
+    ul.appendChild(li);
+  });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadGallery();
+  renderHomepageGuestbook();
+});
