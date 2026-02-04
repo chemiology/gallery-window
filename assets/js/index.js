@@ -75,6 +75,7 @@ function renderExhibitions(exhibitions) {
 }
 
 const container = document.getElementById("recent-guestbook");
+container.innerHTML = "";
 
 const keys = Object.keys(localStorage)
   .filter(k => k.startsWith("guestbook_")); // 진행 중 전시만
