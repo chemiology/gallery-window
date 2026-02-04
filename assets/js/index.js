@@ -76,30 +76,13 @@ function renderExhibitions(exhibitions) {
   });
 }
 
-const container = document.getElementById("recent-guestbook");
-container.innerHTML = "";
+document.addEventListener("DOMContentLoaded", () => {
+  const list = document.getElementById("recent-guestbook");
 
-const keys = Object.keys(localStorage)
-  .filter(k => k.startsWith("guestbook_")); // 진행 중 전시만
+  if (!list) {
+    alert("recent-guestbook not found");
+    return;
+  }
 
-let all = [];
-
-keys.forEach(key => {
-  const data = JSON.parse(localStorage.getItem(key) || "[]");
-  all = all.concat(data);
+  list.innerHTML = "<li>✅ 이 문장이 보이면 JS는 이 영역을 잡고 있습니다</li>";
 });
-
-// 최신순
-all.sort((a, b) => b.date.localeCompare(a.date));
-
-// 최대 5개만
-const selected = all.slice(0, 5);
-
-// 랜덤 하나만 보여주기
-if (selected.length > 0) {
-  const item = selected[Math.floor(Math.random() * selected.length)];
-  const li = document.createElement("li");
-  li.textContent = item.text;
-  container.appendChild(li);
-}
-
