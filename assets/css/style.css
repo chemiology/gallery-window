@@ -636,9 +636,8 @@ body.home .bottom-area {
 
 /* ===== Home Notice (isolated) ===== */
 .home-notice {
-  max-width: 800px;
+  max-width: 900px;
   margin: 40px auto;
-  padding: 0 20px;
 }
 
 .home-notice .notice {
@@ -682,5 +681,39 @@ body.notice-embed a {
 
 body.notice-embed a:hover {
   text-decoration: underline;
+}
+
+.home-guestbook {
+  max-width: 900px;
+  margin: 60px auto;
+}
+
+/* ===== Notice iframe text & link reset ===== */
+body.notice-embed {
+  background: #f4f4f2;
+  color: #222;
+  font-size: 13px;
+}
+
+body.notice-embed a,
+body.notice-embed a:visited,
+body.notice-embed a:hover,
+body.notice-embed a:active {
+  color: #222;
+  text-decoration: none;
+}
+
+body.notice-embed a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Notice detail image FINAL ===== */
+.notice-detail img,
+.notice-detail img.notice-image {
+  width: auto !important;
+  max-width: 480px !important;
+  height: auto !important;
+  display: block;
+  margin: 20px auto 30px;
 }
 
