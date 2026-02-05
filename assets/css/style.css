@@ -400,3 +400,18 @@ body.archive {
 .footer-credit {
   color: #888;
 }
+
+.archive-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.archive-buttons a {
+  font-size: 13px;
+  color: #444;
+  text-decoration: none;
+  padding: 8px 14px;
+  border: 1px solid #ddd;
+}
