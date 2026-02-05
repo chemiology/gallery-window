@@ -474,3 +474,48 @@ body.archive {
   text-decoration: underline;
 }
 
+/* =========================
+   Notice Detail Page
+   ========================= */
+
+.notice-detail {
+  max-width: 720px;
+  margin: 60px auto;
+  padding: 0 20px;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+.notice-detail h1 {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.notice-detail .notice-date {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.notice-image {
+  width: 100%;
+  margin: 20px 0 30px;
+  display: block;
+}
+
+.notice-nav {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.notice-nav a {
+  color: #aaa;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.notice-nav a:hover {
+  text-decoration: underline;
+}
+
