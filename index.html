@@ -30,29 +30,49 @@
   </section>
 </main>
 
- <!-- ✅ 공지사항 (iframe) -->
-<section class="home-notice">
-  <iframe
-    src="notice-board.html"
-    class="notice-frame"
-    scrolling="no">
-  </iframe>
-</section>
+<section class="bottom-area">
 
-<!-- ✅ 방명록 -->
+  <!-- 공지사항 -->
+  <div class="notice">
+    <h3>공지사항</h3>
+    <ul>
+      <li>
+        <span class="date">2026.01.01</span>
+        <span class="text">〈Avatar II〉, 〈Becoming Tree〉 온라인 전시 오픈</span>
+      </li>
+      <li>
+        <span class="date">2025.12.20</span>
+        <span class="text">Gallery Window 정식 공개</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 최근 방명록 -->
   <section class="guestbook">
     <h3>최근 방명록</h3>
     <div id="guestbook-area"></div>
+  </section>
+
 </section>
 
-<footer class="site-footer">
+<script src="assets/js/index.js"></script>
+
+<footer class="main-footer">
   <div class="footer-inner">
-    <span class="footer-title">Gallery Window © 2026</span>
+
+    <div class="footer-left">
+      <span class="footer-title">Gallery Window © 2026</span>
+    </div>
+
+
+    <div class="footer-right">
+      <span class="footer-credit">
+        © Kim Kyoungsoo
+      </span>
+    </div>
+
   </div>
 </footer>
-
-<!-- JS는 항상 맨 마지막 -->
-<script src="assets/js/index.js"></script>
 
 </body>
 </html>
