@@ -405,7 +405,7 @@ body.archive {
   display: flex;
   justify-content: center;
   gap: 24px;
-  margin: 40px 0;
+  margin: 24px 0 20px;
 }
 
 .archive-buttons a {
@@ -415,3 +415,14 @@ body.archive {
   padding: 8px 14px;
   border: 1px solid #ddd;
 }
+
+.archive-buttons a {
+  color: #e6e6e6;           /* 밝은 회색 (어두운 배경용) */
+  border-color: #aaa;
+}
+
+.archive-buttons a:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
