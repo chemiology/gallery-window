@@ -71,7 +71,7 @@
   }
 
   .notice-header h1 {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .notice-image img {
@@ -79,3 +79,28 @@
   }
 
 }
+
+/* =========================
+   Notice Detail – Size Upgrade
+   ========================= */
+
+/* 전체 본문 폭을 이미지와 동일하게 */
+.notice-detail {
+  max-width: 720px;
+}
+
+/* 이미지 크기 확대 */
+.notice-image img {
+  max-width: 720px;   /* 기존보다 약 80% 확대 */
+}
+
+/* 본문 텍스트 크기 업 */
+.notice-body {
+  font-size: 15.5px;
+}
+
+/* 하단 네비게이션 강조 */
+.notice-nav a {
+  font-size: 14.5px;
+}
+
