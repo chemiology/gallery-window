@@ -50,6 +50,18 @@ body.archive-page {
   text-align: center;
 }
 
+/* =========================
+   Archive poster size FIX
+   ========================= */
+
+/* 지난 전시 / 예정 전시 목록용 */
+.poster-grid .poster-item img {
+  width: 100%;
+  max-width: 260px;   /* ← 핵심: 포스터 최대 폭 */
+  height: auto;
+  margin: 0 auto;     /* 가운데 정렬 */
+}
+
 /* 모바일 */
 @media (max-width: 900px) {
   .poster-grid {
@@ -103,3 +115,68 @@ body.exhibition-detail {
   color: #555;
   text-decoration: none;
 }
+
+/* =========================
+   Tablet (≤ 900px)
+   ========================= */
+@media (max-width: 900px) {
+
+  .poster-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+}
+
+/* =========================
+   Mobile (≤ 520px)
+   ========================= */
+@media (max-width: 520px) {
+
+  .poster-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .poster-item figcaption {
+    font-size: 13px;
+  }
+
+}
+
+<body class="exhibition-detail">
+  <article class="exhibition-content">
+    <figure class="exhibition-poster">…</figure>
+    <section class="exhibition-text">…</section>
+    <nav class="exhibition-nav">…</nav>
+  </article>
+</body>
+
+/* =========================
+   Exhibition Detail – Gallery
+   ========================= */
+
+.exhibition-gallery {
+  margin: 40px auto 60px;
+  max-width: 720px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.exhibition-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 600px) {
+
+  .exhibition-gallery {
+    gap: 24px;
+    margin: 32px auto 48px;
+  }
+
+}
+
+
