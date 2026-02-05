@@ -2,29 +2,43 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Archive | Gallery Window</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="assets/css/style.css">
+  <title>지난 전시 | Gallery Window</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="archive">
+<body>
 
-<header class="site-header">
-  <h1>
-    <span class="ko">갤러리 창</span>
-    <span class="en">Gallery Window</span>
-  </h1>
-  <p class="subtitle">Archive — exhibitions remembered</p>
-</header>
+<main class="archive">
 
-<main class="main">
-  <section id="archive-list" class="archive-list">
-    <!-- JS가 종료된 전시를 채웁니다 -->
+  <h1 class="archive-title">지난 전시</h1>
+
+  <section class="archive-grid">
+
+    <!-- 전시 1 -->
+    <article class="archive-item">
+      <a href="archive-detail/exhibit-2024-01.html">
+        <img src="assets/images/poster-01.jpg" alt="전시 포스터">
+      </a>
+      <div class="archive-caption">
+        김경수, 〈Avatar II〉<br>
+        2024
+      </div>
+    </article>
+
+    <!-- 전시 2 (복제해서 사용) -->
+    <article class="archive-item">
+      <a href="archive-detail/exhibit-2023-02.html">
+        <img src="assets/images/poster-02.jpg" alt="전시 포스터">
+      </a>
+      <div class="archive-caption">
+        이은정, 〈빛의 호흡〉<br>
+        2023
+      </div>
+    </article>
+
   </section>
-</main>
 
-<script src="assets/js/archive.js"></script>
+</main>
 
 <footer class="site-footer">
   <div class="footer-inner">
