@@ -355,10 +355,6 @@ body.archive {
    Main Page Footer Notice
    ========================= */
 
-.main-footer {
-  display: none;
-}
-
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
