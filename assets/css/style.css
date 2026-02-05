@@ -601,4 +601,9 @@ body.archive {
   max-width: 480px !important;
 }
 
+/* ===== Notice background force ===== */
+.notice {
+  background: #f4f4f2 !important;
+}
+
 
