@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 대표화면(home)에서만 실행
+  if (!document.body.classList.contains("home")) return;
+
   loadGallery();
   renderHomepageGuestbook();
 });
+
 
 async function loadGallery() {
   try {
@@ -113,11 +117,6 @@ function renderHomepageGuestbook() {
     ul.appendChild(li);
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  loadGallery();
-  renderHomepageGuestbook();
-});
 
 function renderHeadlineNotice(notice) {
   const container = document.getElementById("headline-notice");
