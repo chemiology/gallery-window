@@ -412,6 +412,7 @@ body.archive {
   background: #f4f4f2;      /* 품위 있는 연회색 */
   border-radius: 4px;
 }
+
 .notice-title {
   font-size: 14px;
   font-weight: 500;
@@ -594,6 +595,10 @@ body.archive {
   font-size: 13px;
   color: #444;
   line-height: 1.4;
+}
+
+.notice img.notice-image {
+  max-width: 480px !important;
 }
 
 
