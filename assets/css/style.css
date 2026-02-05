@@ -399,6 +399,51 @@ body.archive {
 }
 
 /* =========================
+   Notice Board
+   ========================= */
+
+.notice {
+  margin: 40px auto 24px;
+  max-width: 800px;
+  font-size: 13px;
+  color: #333;
+}
+
+.notice-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.notice-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.notice-list li {
+  padding: 6px 0;
+  border-bottom: 1px dotted #ccc;
+}
+
+.notice-list li:last-child {
+  border-bottom: none;
+}
+
+.notice-date {
+  color: #999;
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+.notice-text {
+  color: #333;
+}
+
+/* =========================
    Footer – Global Signature
    ========================= */
 
