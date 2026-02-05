@@ -645,3 +645,17 @@ body.home .bottom-area {
   background: #f4f4f2;
 }
 
+/* ===== Notice standalone : 홈 카드 시스템 완전 차단 ===== */
+.notice-standalone {
+  background: #f4f4f2 !important;
+  overflow: visible !important;
+}
+
+.notice-standalone img {
+  width: auto !important;
+  max-width: 480px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 20px auto !important;
+}
+
