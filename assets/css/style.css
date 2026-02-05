@@ -356,16 +356,7 @@ body.archive {
    ========================= */
 
 .main-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(4px);
-
-  border-top: 1px solid #e5e5e5;
-  z-index: 100;
+  display: none;
 }
 
 .footer-inner {
@@ -604,6 +595,14 @@ body.archive {
 /* ===== Notice background force ===== */
 .notice {
   background: #f4f4f2 !important;
+}
+
+/* ===== Notice detail image FINAL FIX ===== */
+.notice-detail img.notice-image {
+  width: auto;
+  max-width: 480px;
+  height: auto;
+  margin: 20px auto 30px;
 }
 
 
