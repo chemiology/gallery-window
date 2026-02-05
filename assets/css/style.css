@@ -536,3 +536,64 @@ body.archive {
   color: #aaa;
 }
 
+/* =========================
+   Archive – Past Exhibitions
+   ========================= */
+
+.archive {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.archive-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* 포스터 그리드 */
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .archive-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .archive-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.archive-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* 클릭 가능 인지 */
+.archive-item a:hover img {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.archive-caption {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.4;
+}
+
+
