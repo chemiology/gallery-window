@@ -614,3 +614,23 @@ body:not(.home) .notice-detail img.notice-image {
   display: block;
 }
 
+/* ===== FORCE FIX : home notice background ===== */
+body.home .notice {
+  background: #f4f4f2 !important;
+}
+
+/* ===== FORCE FIX : home notice image size ===== */
+body.home .notice img {
+  width: auto !important;
+  max-width: 480px !important;
+  height: auto !important;
+  display: block;
+  margin: 20px auto !important;
+}
+
+/* ===== FORCE FIX : home bottom area clipping ===== */
+body.home .bottom-area {
+  height: auto !important;
+  overflow: visible !important;
+}
+
