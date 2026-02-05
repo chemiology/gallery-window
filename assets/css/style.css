@@ -405,10 +405,13 @@ body.archive {
 .notice {
   margin: 40px auto 24px;
   max-width: 800px;
+  padding: 20px 24px;
   font-size: 13px;
   color: #333;
-}
 
+  background: #f4f4f2;      /* 품위 있는 연회색 */
+  border-radius: 4px;
+}
 .notice-title {
   font-size: 14px;
   font-weight: 500;
@@ -500,7 +503,9 @@ body.archive {
 
 .notice-image {
   width: 100%;
-  margin: 20px 0 30px;
+  max-width: 480px;
+  height: auto;
+  margin: 20px auto 30px;
   display: block;
 }
 
@@ -517,5 +522,17 @@ body.archive {
 
 .notice-nav a:hover {
   text-decoration: underline;
+}
+
+/* =========================
+   Notice Read State
+   ========================= */
+
+.notice-read .notice-text {
+  color: #999;
+}
+
+.notice-read .notice-date {
+  color: #aaa;
 }
 
