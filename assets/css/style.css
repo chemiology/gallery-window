@@ -490,7 +490,7 @@ body.archive {
 }
 
 .notice-image {
-  width: 100%;
+  width: auto;
   max-width: 480px;
   height: auto;
   margin: 20px auto 30px;
@@ -601,4 +601,7 @@ body.archive {
   margin: 20px auto 30px;
 }
 
+.notice-detail img.notice-image {
+  width: auto;
+}
 
