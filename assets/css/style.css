@@ -440,7 +440,7 @@ body.archive {
 }
 
 .notice-text {
-  color: #333;
+  color: #ddd !important;
 }
 
 /* =========================
@@ -463,5 +463,14 @@ body.archive {
   letter-spacing: 0.04em;
   color: #888;
   font-weight: 400;
+}
+
+.notice-text {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.notice-text:hover {
+  text-decoration: underline;
 }
 
