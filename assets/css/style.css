@@ -605,3 +605,12 @@ body.archive {
   width: auto;
 }
 
+/* ===== Notice detail FINAL isolation ===== */
+body:not(.home) .notice-detail img.notice-image {
+  width: auto;
+  max-width: 480px;
+  height: auto;
+  margin: 20px auto 30px;
+  display: block;
+}
+
