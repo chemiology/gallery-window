@@ -634,3 +634,14 @@ body.home .bottom-area {
   overflow: visible !important;
 }
 
+/* ===== Home Notice (isolated) ===== */
+.home-notice {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.home-notice .notice {
+  background: #f4f4f2;
+}
+
