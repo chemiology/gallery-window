@@ -397,3 +397,26 @@ body.archive {
 .footer-credit {
   color: #888;
 }
+
+/* =========================
+   Footer – Global Signature
+   ========================= */
+
+.site-footer {
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding: 14px 0 20px;
+}
+
+.site-footer .footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-title {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: #888;
+  font-weight: 400;
+}
+
