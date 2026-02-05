@@ -659,3 +659,16 @@ body.home .bottom-area {
   margin: 20px auto !important;
 }
 
+/* ===== Notice iframe ===== */
+.notice-frame {
+  width: 100%;
+  max-width: 900px;
+  border: none;
+  display: block;
+  margin: 40px auto;
+}
+
+/* iframe 내부 */
+body.notice-embed {
+  background: transparent;
+}
