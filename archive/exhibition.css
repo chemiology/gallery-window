@@ -1,4 +1,19 @@
 /* =========================
+   Archive Page Background
+   ========================= */
+
+body.archive-page {
+  background-color: #eef4f8;   /* 연한 하늘색 */
+  color: #333;
+
+  /* 배경 이미지 옵션 */
+  background-image: url("images/bg-archive.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* =========================
    Archive – Grid
    ========================= */
 
@@ -20,16 +35,18 @@
   gap: 24px;
 }
 
+.poster-item {
+  text-align: center;
+}
+
 .poster-item img {
-  width: 100%;
-  height: auto;
   display: block;
+  margin: 0 auto;        /* 이미지 중앙 정렬 */
 }
 
 .poster-item figcaption {
-  margin-top: 8px;
-  font-size: 12px;
-  color: #666;
+  max-width: 100%;
+  margin: 8px auto 0;    /* 텍스트도 중앙 기준 */
   text-align: center;
 }
 
@@ -73,12 +90,15 @@ body.exhibition-detail {
   line-height: 1.9;
 }
 
+.archive-nav,
 .exhibition-nav {
-  margin-top: 60px;
-  text-align: center;
+  margin-top: 80px;        /* 포스터와 거리 */
+  text-align: center;      /* 중앙 정렬 */
 }
 
+.archive-nav a,
 .exhibition-nav a {
+  display: inline-block;
   font-size: 14px;
   color: #555;
   text-decoration: none;
