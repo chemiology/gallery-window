@@ -195,6 +195,22 @@ img {
   font-size: 13px;
 }
 
+/* 공지 제목 링크 */
+.notice-text {
+  color: #222;
+}
+
+.notice-text:visited {
+  color: #777;
+}
+
+/* 공지 목록 스크롤 처리 */
+.notice-list {
+  max-height: 160px;      /* 약 3~4개 */
+  overflow-y: auto;
+}
+
+
 /* ---------- Guestbook ---------- */
 
 .guestbook ul {
