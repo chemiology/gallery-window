@@ -25,16 +25,26 @@ function renderExhibitions(exhibitions) {
 
   container.innerHTML = "";
 
-  exhibitions.forEach((exhibition, index) => {
-    const block = document.createElement("div");
-    block.className = "exhibition";
+ const MAX_VISIBLE_HALLS = 1;
 
-    if (exhibitions.length === 2) {
-      const hall = document.createElement("div");
-      hall.className = "hall-label";
-      hall.textContent = index === 0 ? "1관" : "2관";
-      block.appendChild(hall);
-    }
+exhibitions.forEach((exhibition, index) => {
+  if (index >= MAX_VISIBLE_HALLS) return;
+
+  const block = document.createElement("div");
+  block.className = "exhibition";
+
+  const hall = document.createElement("div");
+  hall.className = "hall-label";
+  hall.textContent = `${index + 1}관`;
+  block.appendChild(hall);
+
+  // 이하 기존 코드
+});
+
+
+  // ↓↓↓ 이하 기존 코드 그대로
+});
+
 
     const body = document.createElement("div");
     body.className = "exhibition-body";
