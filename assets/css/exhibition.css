@@ -301,3 +301,10 @@ body {
   }
 }
 
+.audio-hint {
+  top: 64px !important;
+  left: 20px !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+
