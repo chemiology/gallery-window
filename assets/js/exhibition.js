@@ -113,11 +113,25 @@ function stopAuto() {
 function setupAudio(src) {
   audio = new Audio(src);
   audio.loop = true;
-  audio.volume = 0.5;
 
-  // 브라우저 정책 대응: 첫 클릭 후 재생
+  /* 1️⃣ 처음엔 아주 작고, muted 상태 */
+  audio.volume = 0.05;
+  audio.muted = true;
+
+  /* 2️⃣ 페이지 로드 시 자동 재생 시도 */
+  window.addEventListener("load", () => {
+    audio.play().then(() => {
+      /* 자동 재생 허용된 경우 */
+      audio.muted = false;
+    }).catch(() => {
+      /* 차단된 경우 → 클릭 대기 */
+    });
+  });
+
+  /* 3️⃣ 기존 클릭 재생 로직은 유지 */
   document.body.addEventListener("click", () => {
     if (audio && audio.paused) {
+      audio.muted = false;
       audio.play().catch(() => {});
     }
   }, { once: true });
