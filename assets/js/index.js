@@ -22,6 +22,9 @@ async function loadGallery() {
    전시관 렌더링 (정상 복구)
    ========================= */
 function renderExhibitions(exhibitions) {
+
+  const MAX_VISIBLE_HALLS = 1;
+
   const container = document.querySelector(".exhibitions");
   if (!container) return;
 
