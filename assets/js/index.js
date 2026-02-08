@@ -23,69 +23,37 @@ async function loadGallery() {
    ========================= */
 function renderExhibitions(exhibitions) {
 
-  const MAX_VISIBLE_HALLS = 1;
+  const MAX_VISIBLE_HALLS = 1; 
 
   const container = document.querySelector(".exhibitions");
   if (!container) return;
 
   container.innerHTML = "";
 
-  exhibitions.forEach((exhibition, index) => {
-    const block = document.createElement("div");
-    block.className = "exhibition";
+  exhibitions
+    .slice(0, MAX_VISIBLE_HALLS)
+    .forEach((exhibition, index) => {
 
-    // 관 번호
-    const hall = document.createElement("div");
-    hall.className = "hall-label";
-    hall.textContent = `${index + 1}관`;
-    block.appendChild(hall);
+      const block = document.createElement("div");
+      block.className = "exhibition";
 
-    // 전시 본문
-    const body = document.createElement("div");
-    body.className = "exhibition-body";
+      const hall = document.createElement("div");
+      hall.className = "hall-label";
+      hall.textContent = `${index + 1}관`;
+      block.appendChild(hall);
 
-    const posterWrap = document.createElement("div");
+      const img = document.createElement("img");
+      img.src = exhibition.poster;
+      img.alt = exhibition.title;
+      img.onclick = () => {
+        location.href = `exhibition.html?id=${exhibition.id}`;
+      };
 
-    const img = document.createElement("img");
-    img.src = exhibition.poster;
-    img.alt = exhibition.title;
-    img.style.cursor = "pointer";
-    img.onclick = () => {
-      location.href = `exhibition.html?id=${exhibition.id}`;
-    };
-
-    const meta = document.createElement("div");
-    meta.className = "meta";
-    meta.innerHTML = `<h3>${exhibition.title}</h3><p>${exhibition.artist}</p>`;
-
-    posterWrap.appendChild(img);
-    posterWrap.appendChild(meta);
-
-    // 작가 노트
-    const noteWrap = document.createElement("div");
-    noteWrap.className = "artist-note";
-    noteWrap.textContent = "Loading…";
-
-    if (exhibition.artistNote) {
-      fetch(exhibition.artistNote)
-        .then(res => res.text())
-        .then(text => {
-          noteWrap.textContent = text;
-        })
-        .catch(() => {
-          noteWrap.textContent = "";
-        });
-    } else {
-      noteWrap.textContent = "";
-    }
-
-    body.appendChild(posterWrap);
-    body.appendChild(noteWrap);
-
-    block.appendChild(body);
-    container.appendChild(block);
-  });
+      block.appendChild(img);
+      container.appendChild(block);
+    });
 }
+
 
 /* =========================
    대표 공지
