@@ -14,57 +14,22 @@ function renderExhibitions(exhibitions) {
     const block = document.createElement("div");
     block.className = "exhibition";
 
-    // 관 번호
     const hall = document.createElement("div");
     hall.className = "hall-label";
     hall.textContent = `${index + 1}관`;
     block.appendChild(hall);
 
-    // ===== 기존에 있던 코드 =====
-    const body = document.createElement("div");
-    body.className = "exhibition-body";
-
-    const posterWrap = document.createElement("div");
-
     const img = document.createElement("img");
     img.src = exhibition.poster;
     img.alt = exhibition.title;
-    img.style.cursor = "pointer";
     img.onclick = () => {
       location.href = `exhibition.html?id=${exhibition.id}`;
     };
 
-    const meta = document.createElement("div");
-    meta.className = "meta";
-    meta.innerHTML = `<h3>${exhibition.title}</h3><p>${exhibition.artist}</p>`;
-
-    posterWrap.appendChild(img);
-    posterWrap.appendChild(meta);
-
-    const noteWrap = document.createElement("div");
-    noteWrap.className = "artist-note";
-    noteWrap.textContent = "Loading…";
-
-    if (exhibition.artistNote) {
-      fetch(exhibition.artistNote)
-        .then(res => res.text())
-        .then(text => {
-          noteWrap.textContent = text;
-        })
-        .catch(() => {
-          noteWrap.textContent = "";
-        });
-    }
-
-    body.appendChild(posterWrap);
-    body.appendChild(noteWrap);
-
-    block.appendChild(body);
+    block.appendChild(img);
     container.appendChild(block);
-    // ===== 여기까지 =====
   });
 }
-
 
   renderHomepageGuestbook();
 });
