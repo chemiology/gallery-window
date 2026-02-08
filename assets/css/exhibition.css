@@ -237,3 +237,41 @@ body {
 #guestbook-form button:hover {
   background: rgba(255,255,255,0.08);
 }
+
+/* =========================
+   Back to Home – Exhibition
+   ========================= */
+
+.back-home-exhibition {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 13px;
+  color: #eee;
+  text-decoration: none;
+
+  padding: 6px 10px;
+  border-left: 2px solid rgba(255,255,255,0.6);
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+
+  z-index: 9999; /* 슬라이드 위 */
+}
+
+.back-home-exhibition:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* =========================
+   Mobile 대응 (권장)
+   ========================= */
+@media (max-width: 768px) {
+  .back-home-exhibition {
+    display: none;
+  }
+}
+
