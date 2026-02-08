@@ -3,6 +3,69 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!document.body.classList.contains("home")) return;
 
   loadGallery();
+
+function renderExhibitions(exhibitions) {
+  const container = document.querySelector(".exhibitions");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  exhibitions.forEach((exhibition, index) => {
+    const block = document.createElement("div");
+    block.className = "exhibition";
+
+    // 관 번호
+    const hall = document.createElement("div");
+    hall.className = "hall-label";
+    hall.textContent = `${index + 1}관`;
+    block.appendChild(hall);
+
+    // ===== 기존에 있던 코드 =====
+    const body = document.createElement("div");
+    body.className = "exhibition-body";
+
+    const posterWrap = document.createElement("div");
+
+    const img = document.createElement("img");
+    img.src = exhibition.poster;
+    img.alt = exhibition.title;
+    img.style.cursor = "pointer";
+    img.onclick = () => {
+      location.href = `exhibition.html?id=${exhibition.id}`;
+    };
+
+    const meta = document.createElement("div");
+    meta.className = "meta";
+    meta.innerHTML = `<h3>${exhibition.title}</h3><p>${exhibition.artist}</p>`;
+
+    posterWrap.appendChild(img);
+    posterWrap.appendChild(meta);
+
+    const noteWrap = document.createElement("div");
+    noteWrap.className = "artist-note";
+    noteWrap.textContent = "Loading…";
+
+    if (exhibition.artistNote) {
+      fetch(exhibition.artistNote)
+        .then(res => res.text())
+        .then(text => {
+          noteWrap.textContent = text;
+        })
+        .catch(() => {
+          noteWrap.textContent = "";
+        });
+    }
+
+    body.appendChild(posterWrap);
+    body.appendChild(noteWrap);
+
+    block.appendChild(body);
+    container.appendChild(block);
+    // ===== 여기까지 =====
+  });
+}
+
+
   renderHomepageGuestbook();
 });
 
@@ -114,32 +177,3 @@ function renderHeadlineNotice(notice) {
 
   container.textContent = notice.text;
 }
-
-function renderExhibitions(exhibitions) {
-
-  const MAX_VISIBLE_HALLS = 1; // ← 여기 숫자만 바꾸면 됨
-
-  const container = document.querySelector(".exhibitions");
-  if (!container) return;
-
-  container.innerHTML = "";
-
-  exhibitions.slice(0, MAX_VISIBLE_HALLS).forEach((exhibition, index) => {
-
-    const block = document.createElement("div");
-    block.className = "exhibition";
-
-    const hall = document.createElement("div");
-    hall.className = "hall-label";
-    hall.textContent = `${index + 1}관`;
-    block.appendChild(hall);
-
-    // ⚠️ 기존 전시 카드 생성 코드가 있다면 여기 아래에 붙이세요
-    // 예: 이미지, 클릭 이벤트 등
-
-    container.appendChild(block);
-  });
-}
-
-// 🔴 반드시 필요
-renderExhibitions(exhibitions);
