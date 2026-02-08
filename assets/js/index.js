@@ -49,6 +49,40 @@ function renderExhibitions(exhibitions) {
         location.href = `exhibition.html?id=${exhibition.id}`;
       };
 
+
+// 포스터 이미지
+const img = document.createElement("img");
+img.src = exhibition.poster;
+img.alt = exhibition.title;
+img.style.cursor = "pointer";
+img.onclick = () => {
+  location.href = `exhibition.html?id=${exhibition.id}`;
+};
+
+// 포스터 + 메타 래퍼
+const posterWrap = document.createElement("div");
+posterWrap.className = "poster-wrap";
+posterWrap.appendChild(img);
+
+// 작가/제목 메타
+const meta = document.createElement("div");
+meta.className = "meta";
+meta.innerHTML = `
+  <h3>${exhibition.title}</h3>
+  <p>${exhibition.artist || ""}</p>
+`;
+posterWrap.appendChild(meta);
+
+// 작가노트 (미리보기)
+const noteWrap = document.createElement("div");
+noteWrap.className = "artist-note";
+noteWrap.textContent = exhibition.artistNotePreview || "";
+
+// body에 추가
+body.appendChild(posterWrap);
+body.appendChild(noteWrap);
+
+
       block.appendChild(img);
       container.appendChild(block);
     });
