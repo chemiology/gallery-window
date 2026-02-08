@@ -28,18 +28,24 @@ function renderExhibitions(exhibitions) {
  const MAX_VISIBLE_HALLS = 1;
 
 exhibitions.forEach((exhibition, index) => {
-  if (index >= MAX_VISIBLE_HALLS) return;
 
-  const block = document.createElement("div");
-  block.className = "exhibition";
+  if (index < MAX_VISIBLE_HALLS) {
 
-  const hall = document.createElement("div");
-  hall.className = "hall-label";
-  hall.textContent = `${index + 1}관`;
-  block.appendChild(hall);
+    const block = document.createElement("div");
+    block.className = "exhibition";
 
-  // 이하 기존 코드
+    const hall = document.createElement("div");
+    hall.className = "hall-label";
+    hall.textContent = `${index + 1}관`;
+    block.appendChild(hall);
+
+    // ↓ 기존 코드 그대로
+    // block에 이미지, 링크 추가
+    // appendChild 실행
+  }
+
 });
+
 
 
   // ↓↓↓ 이하 기존 코드 그대로
