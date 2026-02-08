@@ -38,13 +38,14 @@ function renderExhibitions(exhibitions) {
     hall.textContent = `${index + 1}관`;
     block.appendChild(hall);
 
-    // 기존 전시 이미지 / 링크 생성 코드 그대로 유지
+    // ⚠️ 여기 아래에 원래 있던 전시 이미지/링크 코드 붙이세요
+    // 예: block.appendChild(img), block.addEventListener(...)
 
     container.appendChild(block);
   });
 }
 
-// 🔴 이 줄이 반드시 있어야 합니다
+// 🔴 이 줄이 없으면 아무 일도 안 일어납니다
 renderExhibitions(exhibitions);
 
 
