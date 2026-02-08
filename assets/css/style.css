@@ -198,12 +198,19 @@ img {
 
 /* 공지 제목 링크 */
 .notice-text {
-  color: #222;
+  color: #222;            /* 처음부터 잘 보이도록 */
+  text-decoration: none;
 }
 
 .notice-text:visited {
-  color: #777;
+  color: #777;            /* 읽은 공지 */
 }
+
+.notice-text:hover {
+  color: #000;            /* 살짝 강조 */
+  text-decoration: underline;
+}
+
 
 /* 공지 목록 스크롤 처리 */
 .notice-list {
