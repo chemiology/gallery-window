@@ -19,35 +19,6 @@ async function loadGallery() {
   }
 }
 
-function renderExhibitions(exhibitions) {
-
-  const MAX_VISIBLE_HALLS = 1;
-  const visibleExhibitions = exhibitions.slice(0, MAX_VISIBLE_HALLS);
-
-  const container = document.querySelector(".exhibitions");
-  if (!container) return;
-
-  container.innerHTML = "";
-
-  visibleExhibitions.forEach((exhibition, index) => {
-    const block = document.createElement("div");
-    block.className = "exhibition";
-
-    const hall = document.createElement("div");
-    hall.className = "hall-label";
-    hall.textContent = `${index + 1}관`;
-    block.appendChild(hall);
-
-    // ⚠️ 여기 아래에 원래 있던 전시 이미지/링크 코드 붙이세요
-    // 예: block.appendChild(img), block.addEventListener(...)
-
-    container.appendChild(block);
-  });
-}
-
-// 🔴 이 줄이 없으면 아무 일도 안 일어납니다
-renderExhibitions(exhibitions);
-
 
 
     const body = document.createElement("div");
@@ -144,3 +115,31 @@ function renderHeadlineNotice(notice) {
   container.textContent = notice.text;
 }
 
+function renderExhibitions(exhibitions) {
+
+  const MAX_VISIBLE_HALLS = 1; // ← 여기 숫자만 바꾸면 됨
+
+  const container = document.querySelector(".exhibitions");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  exhibitions.slice(0, MAX_VISIBLE_HALLS).forEach((exhibition, index) => {
+
+    const block = document.createElement("div");
+    block.className = "exhibition";
+
+    const hall = document.createElement("div");
+    hall.className = "hall-label";
+    hall.textContent = `${index + 1}관`;
+    block.appendChild(hall);
+
+    // ⚠️ 기존 전시 카드 생성 코드가 있다면 여기 아래에 붙이세요
+    // 예: 이미지, 클릭 이벤트 등
+
+    container.appendChild(block);
+  });
+}
+
+// 🔴 반드시 필요
+renderExhibitions(exhibitions);
