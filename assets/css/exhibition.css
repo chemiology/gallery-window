@@ -275,3 +275,29 @@ body {
   }
 }
 
+/* =========================
+   Audio Hint
+   ========================= */
+
+.audio-hint {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+
+  background: rgba(0,0,0,0.35);
+  padding: 6px 10px;
+  border-radius: 4px;
+
+  z-index: 9999;
+}
+
+/* 모바일에서는 숨김 */
+@media (max-width: 768px) {
+  .audio-hint {
+    display: none;
+  }
+}
+
