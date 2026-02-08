@@ -369,38 +369,63 @@ body.archive {
 }
 
 /* =========================
-   Main Page Footer Notice
+   Main Page Footer
    ========================= */
+
+.main-footer {
+  position: relative;     /* 다른 레이어와 분리 */
+  z-index: 2;
+  pointer-events: auto;
+}
 
 .footer-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 16px;
+  padding: 12px 16px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   font-size: 12px;
-  color: #666;
 }
 
 .footer-left span {
   margin-right: 12px;
 }
 
-.footer-title {
-  font-weight: 500;
-  color: #444;
-}
-
-.footer-period {
-  color: #888;
-}
-
+/* footer 텍스트 톤 통일 */
+.footer-title,
 .footer-credit {
-  color: #888;
+  font-weight: 500;
+  color: #cfcfcf;        /* 이전보다 밝고, 품위 있는 밝기 */
+  letter-spacing: 0.04em;
 }
+
+/* 사용하지 않는 항목이면 제거 가능 */
+.footer-period {
+  color: #aaa;
+}
+
+.main-footer {
+  margin-top: 40px;
+  padding: 16px 0;
+  font-size: 12px;
+}
+
+.footer-title,
+.footer-credit {
+  color: #cfcfcf;      /* 눈에 잘 보이되 튀지 않는 밝기 */
+  letter-spacing: 0.04em;
+}
+
+.main-footer span {
+  cursor: default;
+}
+
+/* =========================
+   Archive Buttons (Home)
+   ========================= */
 
 .archive-buttons {
   display: flex;
@@ -411,15 +436,10 @@ body.archive {
 
 .archive-buttons a {
   font-size: 13px;
-  color: #444;
+  color: #e6e6e6;          /* 밝은 회색 */
   text-decoration: none;
   padding: 8px 14px;
-  border: 1px solid #ddd;
-}
-
-.archive-buttons a {
-  color: #e6e6e6;           /* 밝은 회색 (어두운 배경용) */
-  border-color: #aaa;
+  border: 1px solid #aaa;
 }
 
 .archive-buttons a:hover {
