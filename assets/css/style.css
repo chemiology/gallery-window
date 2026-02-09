@@ -464,23 +464,3 @@ body.archive {
   color: #ffffff;
   border-color: #ffffff;
 }
-
-/* =========================
-   Archive Poster Alignment
-   ========================= */
-
-.poster-item {
-  text-align: center;
-}
-
-.poster-item img {
-  display: block;
-  margin: 0 auto;        /* 이미지 중앙 정렬 */
-}
-
-.poster-item figcaption {
-  max-width: 100%;
-  margin: 8px auto 0;    /* 텍스트도 중앙 기준 */
-  text-align: center;
-}
-
