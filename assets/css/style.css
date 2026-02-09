@@ -151,6 +151,17 @@ img {
   line-height: 1.9;
   color: #d5d9de; /* 가독성 강화 */
   white-space: pre-line;
+  /* 추가 */
+  text-align: justify;
+  word-break: keep-all;
+
+  max-width: 675px;   /* 핵심 */
+}
+
+@media (max-width: 768px) {
+  .artist-note {
+    text-align: left;
+  }
 }
 
 /* =====================================================
