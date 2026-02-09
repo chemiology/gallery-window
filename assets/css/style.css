@@ -472,3 +472,29 @@ body.archive {
   margin-bottom: 1px;
 }
 
+/* =========================================
+   Page-specific overrides
+   ========================================= */
+
+/* 대표화면 (index) */
+body.home {
+  font-size: 14px;
+}
+
+/* 대표화면 포스터 크기 */
+body.home .poster {
+  max-width: 420px; /* 상황에 맞게 400~460px */
+}
+
+/* 대표화면 포스터–작가노트 간격 */
+body.home .exhibition-body {
+  gap: 40px; /* 기존 80px → 절반 */
+}
+
+/* 상세페이지 */
+body.exhibition-detail {
+  /* 상세페이지 기본은 exhibition-detail.css에서 처리 */
+}
+
+/* (여기에는 정말 필요한 것만, 대부분은 exhibition-detail.css로) */
+
