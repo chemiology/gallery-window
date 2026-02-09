@@ -148,14 +148,14 @@ img {
 /* 작가노트 */
 .artist-note {
   font-size: 14px;
-  line-height: 1.9;
+  line-height: 1.6;
   color: #d5d9de; /* 가독성 강화 */
   white-space: pre-line;
   /* 추가 */
   text-align: justify;
   word-break: keep-all;
 
-  max-width: 490px;   /* 핵심 */
+  max-width: 470px;   /* 핵심 */
 }
 
 @media (max-width: 768px) {
