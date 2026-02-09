@@ -155,7 +155,7 @@ img {
   text-align: justify;
   word-break: keep-all;
 
-  max-width: 600px;   /* 핵심 */
+  max-width: 525px;   /* 핵심 */
 }
 
 @media (max-width: 768px) {
