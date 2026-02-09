@@ -164,6 +164,14 @@ img {
   }
 }
 
+body.home .artist-note p {
+  margin-bottom: 0.8em;
+}
+
+body.home .artist-note {
+  margin-top: 8px;
+}
+
 /* =====================================================
    Bottom Area – Notice & Guestbook
 ===================================================== */
@@ -498,3 +506,72 @@ body.exhibition-detail {
 
 /* (여기에는 정말 필요한 것만, 대부분은 exhibition-detail.css로) */
 
+/* Archive (예정/지난 전시) 포스터 정렬 보정 */
+
+.poster-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poster-item img {
+  display: block;
+  margin: 0 auto;
+}
+
+.poster-item figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+/* =========================
+   Detail Page Image & Footer Fix (SAFE OVERRIDE)
+   ========================= */
+
+.detail-page img,
+.notice-detail img {
+  width: 66%;
+  max-width: 720px;
+  display: block;
+  margin: 0 auto 40px;
+}
+
+.detail-nav,
+.archive-nav {
+  margin-top: 80px;
+  margin-bottom: 120px;
+  text-align: center;
+}
+
+/* =========================
+   Mobile Optimization (Detail Pages)
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* 상세페이지 이미지 */
+  .detail-page img,
+  .notice-detail img {
+    width: 92%;
+    max-width: none;
+    margin-bottom: 32px;
+  }
+
+  /* 상세페이지 텍스트 영역 */
+  .detail-page .detail-text,
+  .notice-detail {
+    width: 100%;
+    padding: 0 18px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* 하단 네비게이션 여백 */
+  .detail-nav,
+  .archive-nav {
+    margin-top: 60px;
+    margin-bottom: 100px;
+  }
+}
