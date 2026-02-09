@@ -155,7 +155,7 @@ img {
   text-align: justify;
   word-break: keep-all;
 
-  max-width: 675px;   /* 핵심 */
+  max-width: 600px;   /* 핵심 */
 }
 
 @media (max-width: 768px) {
@@ -463,5 +463,12 @@ body.archive {
 .archive-buttons a:hover {
   color: #ffffff;
   border-color: #ffffff;
+}
+
+/* 상세페이지 공통 정렬 */
+.exhibition-detail {
+  max-width: 800px;     /* 이미지 + 텍스트 기준 폭 */
+  margin: 0 auto;       /* 화면 가운데 정렬 */
+  padding: 0 20px;      /* 양쪽 숨 쉴 공간 */
 }
 
