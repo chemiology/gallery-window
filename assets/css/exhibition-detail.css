@@ -25,11 +25,26 @@ body.exhibition-detail .exhibition-text p {
   line-height: 1.4;
 }
 
+/* 상세페이지 텍스트 기본 크기 조정 */
+body.exhibition-detail .exhibition-text {
+  font-size: 14.5px;     /* 과하면 14px, 여유 있으면 15px */
+  line-height: 1.6;
+}
+
+body.exhibition-detail .exhibition-text {
+  color: #333;
+}
+
 /* 4. 촘촘한 정보형 텍스트 (span 사용 시) */
 body.exhibition-detail .exhibition-text span {
   display: block;
   line-height: 1.25;
   margin-bottom: 1px;
+}
+
+body.exhibition-detail .exhibition-text span {
+  font-size: 14px;
+  line-height: 1.4;
 }
 
 /* 5. 제목/섹션 구분용 문단은 약간 여백 */
@@ -54,16 +69,25 @@ body.exhibition-detail .exhibition-text p + p {
    ========================================= */
 
 body.exhibition-detail .exhibition-content {
-  max-width: 1100px;      /* 전시 상세 기준 폭 */
+  max-width: 900px;      /* 전시 상세 기준 폭 */
   margin: 0 auto;         /* 화면 가운데 정렬 */
-  padding: 0 40px;        /* 좌우 숨쉴 공간 */
+  padding: 0 32px;        /* 좌우 숨쉴 공간 */
 }
 
 body.exhibition-detail .exhibition-poster {
   text-align: center;
 }
 
+/* 포스터 이미지 크기 축소 */
 body.exhibition-detail .exhibition-poster img {
-  max-width: 100%;
+  max-width: 67%;        /* 약 33% 축소 */
   height: auto;
+  display: block;
+  margin: 0 auto;        /* 가운데 유지 */
+}
+
+/* 상세페이지 전용 배경과 기본 텍스트 색 */
+body.exhibition-detail {
+  background: #eef4f8;   /* 고급스러운 연한 하늘색 */
+  color: #222;           /* 진한 회색 (완전 검정보다 부드러움) */
 }
