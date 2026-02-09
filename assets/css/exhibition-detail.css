@@ -1,0 +1,50 @@
+/* =========================================
+   Exhibition Detail Page Only
+   상세페이지 전용 CSS
+   ========================================= */
+
+/* 1. 상세페이지 스크롤 복구 */
+body.exhibition-detail {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* 2. 상세페이지 포스터 이미지 안정화
+   viewer 이미지 규칙 완전 차단 */
+body.exhibition-detail figure.exhibition-poster img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* 3. 상세페이지 텍스트 기본 간격 정리 */
+body.exhibition-detail .exhibition-text p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 4. 촘촘한 정보형 텍스트 (span 사용 시) */
+body.exhibition-detail .exhibition-text span {
+  display: block;
+  line-height: 1.25;
+  margin-bottom: 1px;
+}
+
+/* 5. 제목/섹션 구분용 문단은 약간 여백 */
+body.exhibition-detail .exhibition-text p + p {
+  margin-top: 6px;
+}
+
+/* 6. 모바일 대응 */
+@media (max-width: 768px) {
+
+  body.exhibition-detail figure.exhibition-poster img {
+    max-width: 100%;
+  }
+
+  body.exhibition-detail .exhibition-text span {
+    line-height: 1.3;
+  }
+}
