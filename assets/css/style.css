@@ -147,7 +147,7 @@ img {
 
 /* 작가노트 */
 .artist-note {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.9;
   color: #d5d9de; /* 가독성 강화 */
   white-space: pre-line;
@@ -155,7 +155,7 @@ img {
   text-align: justify;
   word-break: keep-all;
 
-  max-width: 525px;   /* 핵심 */
+  max-width: 490px;   /* 핵심 */
 }
 
 @media (max-width: 768px) {
