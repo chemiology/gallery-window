@@ -27,8 +27,8 @@ body.exhibition-detail .exhibition-text p {
 
 /* 상세페이지 텍스트 기본 크기 조정 */
 body.exhibition-detail .exhibition-text {
-  font-size: 14.5px;     /* 과하면 14px, 여유 있으면 15px */
-  line-height: 1.6;
+  font-size: 13.5px;     /* 과하면 14px, 여유 있으면 15px */
+  line-height: 1.55;
 }
 
 body.exhibition-detail .exhibition-text {
@@ -43,13 +43,18 @@ body.exhibition-detail .exhibition-text span {
 }
 
 body.exhibition-detail .exhibition-text span {
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 13px;
+  line-height: 1.35;
 }
 
 /* 5. 제목/섹션 구분용 문단은 약간 여백 */
 body.exhibition-detail .exhibition-text p + p {
   margin-top: 6px;
+}
+
+/* 이미지 아래 간격 */
+body.exhibition-detail .exhibition-poster {
+  margin-bottom: 40px;   /* 이미지와 텍스트 사이 */
 }
 
 /* 6. 모바일 대응 */
@@ -69,9 +74,9 @@ body.exhibition-detail .exhibition-text p + p {
    ========================================= */
 
 body.exhibition-detail .exhibition-content {
-  max-width: 900px;      /* 전시 상세 기준 폭 */
+  max-width: 810px;      /* 전시 상세 기준 폭 */
   margin: 0 auto;         /* 화면 가운데 정렬 */
-  padding: 0 32px;        /* 좌우 숨쉴 공간 */
+  padding: 0 28px;        /* 좌우 숨쉴 공간 */
 }
 
 body.exhibition-detail .exhibition-poster {
@@ -80,7 +85,7 @@ body.exhibition-detail .exhibition-poster {
 
 /* 포스터 이미지 크기 축소 */
 body.exhibition-detail .exhibition-poster img {
-  max-width: 67%;        /* 약 33% 축소 */
+  max-width: 60%;        /* 약 33% 축소 */
   height: auto;
   display: block;
   margin: 0 auto;        /* 가운데 유지 */
@@ -91,3 +96,9 @@ body.exhibition-detail {
   background: #eef4f8;   /* 고급스러운 연한 하늘색 */
   color: #222;           /* 진한 회색 (완전 검정보다 부드러움) */
 }
+
+/* 범용 간격 유틸 */
+.gap-sm { margin-top: 12px; }
+.gap-md { margin-top: 20px; }
+.gap-lg { margin-top: 28px; }
+
