@@ -465,9 +465,9 @@ body.archive {
   border-color: #ffffff;
 }
 
-/* 전시 상세 – 촘촘한 텍스트 라인용 */
+/* 전시 상세: span 줄바꿈 강제 */
 .exhibition-text.info span {
-  display: blockʊ block;
+  display: block !important;
   line-height: 1.25;
   margin-bottom: 1px;
 }
