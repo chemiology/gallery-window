@@ -321,3 +321,15 @@ figure.exhibition-poster {
   width: 100%;
   margin: 0;
 }
+
+figure.exhibition-poster {
+  margin: 0;
+  margin-inline: 0;
+}
+
+figure.exhibition-poster {
+  margin: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
