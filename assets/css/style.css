@@ -464,3 +464,11 @@ body.archive {
   color: #ffffff;
   border-color: #ffffff;
 }
+
+/* 전시 상세 – 촘촘한 텍스트 라인용 */
+.exhibition-text.info span {
+  display: blockʊ block;
+  line-height: 1.25;
+  margin-bottom: 1px;
+}
+
