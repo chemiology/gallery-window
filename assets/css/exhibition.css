@@ -308,3 +308,24 @@ body {
   right: auto !important;
 }
 
+/* 상세페이지 콘텐츠 중앙 정렬 기준 */
+.exhibition-content {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.exhibition-poster img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exhibition-text {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
