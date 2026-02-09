@@ -337,4 +337,9 @@ body.exhibition-detail {
   margin: 0 auto;
 }
 
+/* 상세페이지 포스터 figure 기본 margin 제거 */
+figure.exhibition-poster {
+  margin: 0;
+}
+
 
