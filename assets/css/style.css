@@ -472,3 +472,7 @@ body.archive {
   margin-bottom: 1px;
 }
 
+.exhibition-text.info {
+  outline: 3px solid red !important;
+}
+
