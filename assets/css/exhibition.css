@@ -327,5 +327,14 @@ body {
   margin-right: auto;
 }
 
+/* 상세페이지 body 레이아웃 리셋 */
+body.exhibition-detail {
+  display: block;
+}
+
+.exhibition-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 
