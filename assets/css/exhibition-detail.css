@@ -1,3 +1,7 @@
+body {
+  background: red !important;
+}
+
 /* =========================================
    Exhibition Detail Page Only
    상세페이지 전용 CSS
