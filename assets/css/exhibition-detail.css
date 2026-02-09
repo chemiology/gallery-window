@@ -25,10 +25,17 @@ body.exhibition-detail .exhibition-text p {
   line-height: 1.4;
 }
 
+/* 범용 간격 유틸 – 상세페이지 전용 */
+/* 상세페이지 간격 유틸 클래스 */
+body.exhibition-detail .gap-sm { margin-top: 12px; }
+body.exhibition-detail .gap-md { margin-top: 20px; }
+body.exhibition-detail .gap-lg { margin-top: 28px; }
+}
+
 /* 상세페이지 텍스트 기본 크기 조정 */
 body.exhibition-detail .exhibition-text {
-  font-size: 13.5px;     /* 과하면 14px, 여유 있으면 15px */
-  line-height: 1.55;
+  font-size: 14.5px;     /* 과하면 14px, 여유 있으면 15px */
+  line-height: 1.7;
 }
 
 body.exhibition-detail .exhibition-text {
@@ -101,4 +108,23 @@ body.exhibition-detail {
 .gap-sm { margin-top: 12px; }
 .gap-md { margin-top: 20px; }
 .gap-lg { margin-top: 28px; }
+
+/* 상세페이지 하단 – 목록으로 돌아가기 */
+body.exhibition-detail .back-to-list {
+  margin-top: 64px;      /* 텍스트와 충분한 간격 */
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.08); /* 은은한 구분선 */
+  text-align: center;
+}
+
+body.exhibition-detail .back-to-list a {
+  font-size: 13px;
+  color: #444;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+body.exhibition-detail .back-to-list a:hover {
+  text-decoration: underline;
+}
 
