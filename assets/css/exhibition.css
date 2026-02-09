@@ -333,3 +333,10 @@ figure.exhibition-poster {
   margin-inline-end: 0;
 }
 
+/* 상세페이지에서는 스크롤 허용 */
+body.exhibition-detail {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+
