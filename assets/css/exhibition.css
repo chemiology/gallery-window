@@ -338,4 +338,24 @@ body.exhibition-detail {
   overflow-x: hidden;
 }
 
+/* ================================
+   상세페이지 전용 강제 규칙
+   (viewer 영향 완전 차단)
+================================ */
+
+/* 포스터 이미지 크기 정상화 */
+body.exhibition-detail figure.exhibition-poster img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* 정보 텍스트 span 줄 단위 강제 */
+body.exhibition-detail .exhibition-text span {
+  display: block !important;
+  line-height: 1.25 !important;
+  margin-bottom: 1px !important;
+}
 
