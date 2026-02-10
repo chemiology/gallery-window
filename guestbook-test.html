@@ -13,18 +13,22 @@
 <script>
 document.getElementById('send').onclick = function () {
   fetch(window.GUESTBOOK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      exhibition_id: 'test',
-      hall_id: 'test',
-      message: document.getElementById('msg').value,
-      page: 'test'
-    })
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: new URLSearchParams({
+    exhibition_id: 'avatar2_2026',
+    hall_id: 'hall1',
+    message: message,
+    page: PAGE_ID
   })
-  .then(r => r.text())
-  .then(t => alert(t));
-};
+})
+.then(res => res.text())
+.then(txt => {
+  console.log(txt);
+});
+
 </script>
 
 </body>

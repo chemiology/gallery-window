@@ -90,27 +90,21 @@ form.addEventListener('submit', function (e) {
   const message = input.value.trim();
   if (!message) return;
 
-  fetch(window.GUESTBOOK_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      exhibition_id: EXHIBITION_ID,
-      hall_id: HALL_ID,
-      message: message,
-      page: PAGE_ID
-    })
+fetch(window.GUESTBOOK_URL, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: new URLSearchParams({
+    exhibition_id: 'avatar2_2026',
+    hall_id: 'hall1',
+    message: message,
+    page: PAGE_ID
   })
-  .then(res => res.text())
-  .then(txt => {
-    if (txt === 'OK') {
-      input.value = '';
-      const li = document.createElement('li');
-      li.textContent = message;
-      document.getElementById('guestbook-list').prepend(li);
-    }
-  });
+})
+.then(res => res.text())
+.then(txt => {
+  console.log(txt);
 });
 </script>
 
