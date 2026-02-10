@@ -161,5 +161,42 @@ function sendGuestbook() {
   <p id="guestbook-status" aria-live="polite"></p>
 </div>
 
+<script>
+const form = document.getElementById('guestbook-form');
+const input = document.getElementById('guestbook-input');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); // ★ 기본 form submit 차단 (핵심)
+
+  const message = input.value.trim();
+  if (!message) return;
+
+  fetch(window.GUESTBOOK_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      exhibition_id: 'avatar2_2026',
+      hall_id: 'hall1',
+      message: message,
+      page: 'detail'
+    })
+  })
+  .then(res => res.text())
+  .then(txt => {
+    if (txt === 'OK') {
+      input.value = '';
+    } else {
+      alert('저장 실패');
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert('전송 오류');
+  });
+});
+</script>
+
 </body>
 </html>
