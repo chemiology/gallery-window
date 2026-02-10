@@ -1,2 +1,2 @@
 // Guestbook API endpoint (Google Apps Script Web App)
-window.GUESTBOOK_URL = 'https://script.google.com/macros/s/AKfycby9ol9ap4jVDphWgA75vsIZezgo2aAgvku4VYzaxNi4J82ef8ldM6mTr4TaLidmEYxooA/exec';
+window.GUESTBOOK_URL = 'https://script.google.com/macros/s/AKfycbzzD5oo3Z9D6jEIRpO4EFSBA9KyetgIZl1oDp2ziDR_3gJfJymhWsF5i_CAHt3GNjWdAg/exec';
