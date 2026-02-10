@@ -90,15 +90,18 @@ form.addEventListener('submit', function (e) {
   const message = input.value.trim();
   if (!message) return;
 
-  fetch(GUESTBOOK_URL, {
-    method: 'POST',
-    body: JSON.stringify({
-      exhibition_id: EXHIBITION_ID,
-      hall_id: HALL_ID,
-      message: message,
-      page: PAGE_ID
-    })
+fetch(GUESTBOOK_URL, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    exhibition_id: EXHIBITION_ID,
+    hall_id: HALL_ID,
+    message: message,
+    page: PAGE_ID
   })
+})
   .then(res => res.text())
   .then(txt => {
     if (txt === 'OK') {
