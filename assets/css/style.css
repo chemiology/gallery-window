@@ -663,3 +663,14 @@ body.home .guestbook li {
   color: #666;
 }
 
+/* 상세페이지 방명록 폭 정리 */
+.exhibition-detail .exhibition-guestbook {
+  max-width: 640px;      /* 전시 텍스트와 비슷한 폭 */
+  margin: 40px auto 0;   /* 위 여백 + 가운데 정렬 */
+}
+
+.exhibition-detail #guestbook-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
