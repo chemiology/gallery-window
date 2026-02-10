@@ -636,3 +636,30 @@ body.home .guestbook li {
   color: #cfd6dd;
 }
 
+/* Guestbook form */
+.guestbook-form {
+  margin-top: 32px;
+}
+
+.guestbook-form textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px 12px;
+  resize: vertical;
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.guestbook-form button {
+  margin-top: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#guestbook-status {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+}
+
