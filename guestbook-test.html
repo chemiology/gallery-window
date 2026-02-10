@@ -6,43 +6,34 @@
 </head>
 <body>
 
-<input id="msg" placeholder="테스트 메시지">
-<button id="send" type="button">전송</button>  <!-- ★ 여기 -->
+<form
+  action="https://script.google.com/macros/s/AKfycbz8n8GAoKPfG3T1WULZr7hXxLZv5JYpg8uwZkntynRe1rtnpNLou5fDzKBTcjBD0dtZ/exec"
+  method="POST"
+  target="hidden_iframe"
+>
+  <input type="hidden" name="exhibition_id" value="test">
+  <input type="hidden" name="hall_id" value="test">
+  <input type="hidden" name="page" value="test">
 
-<script src="assets/js/guestbook-config.js"></script>
+  <input
+    name="message"
+    placeholder="테스트 메시지"
+    required
+  >
+
+  <button type="submit">전송</button>
+</form>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<p id="status"></p>
 
 <script>
-const input = document.getElementById('msg');
-const button = document.getElementById('send');
+const form = document.querySelector('form');
+const status = document.getElementById('status');
 
-button.addEventListener('click', function () {
-
-  alert('FETCH CLICKED');
-
-  const message = input.value.trim();
-  if (!message) return;
-
-  fetch(window.GUESTBOOK_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-      exhibition_id: 'test',
-      hall_id: 'test',
-      message: message,
-      page: 'test'
-    })
-  })
-  .then(res => res.text())
-  .then(txt => {
-    alert('SERVER RESPONSE: ' + txt);
-  })
-  .catch(err => {
-    alert('FETCH ERROR');
-    console.error(err);
-  });
-
+form.addEventListener('submit', () => {
+  status.textContent = '전송되었습니다.';
 });
 </script>
 
