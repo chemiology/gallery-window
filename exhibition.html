@@ -75,10 +75,8 @@
 <script src="assets/js/exhibition.js"></script>
 
 <script>
-  const GUESTBOOK_URL = window.GUESTBOOK_URL;
-
 const EXHIBITION_ID = 'avatar2_2026';
-const HALL_ID = 'hall1';     // 2관이면 'hall2'
+const HALL_ID = 'hall1';
 const PAGE_ID = 'viewer';
 
 const form = document.getElementById('guestbook-form');
@@ -90,69 +88,26 @@ form.addEventListener('submit', function (e) {
   const message = input.value.trim();
   if (!message) return;
 
-fetch(GUESTBOOK_URL, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    exhibition_id: EXHIBITION_ID,
-    hall_id: HALL_ID,
-    message: message,
-    page: PAGE_ID
-  })
-})
-  .then(res => res.text())
-  .then(txt => {
-    if (txt === 'OK') {
-      input.value = '';
-      // 화면에 바로 반영 (선택)
-      const li = document.createElement('li');
-      li.textContent = message;
-      document.getElementById('guestbook-list').prepend(li);
-    } else {
-      alert('방명록 저장 중 오류가 발생했습니다.');
-    }
-  })
-  .catch(() => {
-    alert('네트워크 오류가 발생했습니다.');
-  });
-});
-</script>
-
-<script>
-const form = document.getElementById('guestbook-form');
-const input = document.getElementById('guestbook-input');
-
-form.addEventListener('submit', function (e) {
-  e.preventDefault(); // ★ 기본 form submit 차단 (핵심)
-
-  const message = input.value.trim();
-  if (!message) return;
-
   fetch(window.GUESTBOOK_URL, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      exhibition_id: 'avatar2_2026',
-      hall_id: 'hall1',
+      exhibition_id: EXHIBITION_ID,
+      hall_id: HALL_ID,
       message: message,
-      page: 'viewer'
+      page: PAGE_ID
     })
   })
   .then(res => res.text())
   .then(txt => {
     if (txt === 'OK') {
       input.value = '';
-    } else {
-      alert('저장 실패');
+      const li = document.createElement('li');
+      li.textContent = message;
+      document.getElementById('guestbook-list').prepend(li);
     }
-  })
-  .catch(err => {
-    console.error(err);
-    alert('전송 오류');
   });
 });
 </script>
