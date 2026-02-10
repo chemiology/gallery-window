@@ -16,6 +16,7 @@
   <input type="hidden" name="page" value="test">
 
   <input
+    type="text"
     name="message"
     placeholder="테스트 메시지"
     required
@@ -26,16 +27,7 @@
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
 
-<p id="status"></p>
-
-<script>
-const form = document.querySelector('form');
-const status = document.getElementById('status');
-
-form.addEventListener('submit', () => {
-  status.textContent = '전송되었습니다.';
-});
-</script>
+<p>전송 버튼을 누르면 Sheet에 저장됩니다.</p>
 
 </body>
 </html>
