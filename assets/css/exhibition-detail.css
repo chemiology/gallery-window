@@ -86,13 +86,19 @@ body.exhibition-detail .exhibition-content {
   padding: 0 28px;        /* 좌우 숨쉴 공간 */
 }
 
+/* 포스터 프레임을 2/3로 축소 */
+body.exhibition-detail .exhibition-poster {
+  max-width: 66%;
+  margin: 0 auto 36px;   /* 가운데 정렬 + 텍스트와 간격 */
+}
+
 body.exhibition-detail .exhibition-poster {
   text-align: center;
 }
 
 /* 포스터 이미지 크기 축소 */
 body.exhibition-detail .exhibition-poster img {
-  max-width: 60%;        /* 약 33% 축소 */
+  max-width: 100%;        
   height: auto;
   display: block;
   margin: 0 auto;        /* 가운데 유지 */

@@ -575,3 +575,31 @@ body.exhibition-detail {
     margin-bottom: 100px;
   }
 }
+
+/* 하단 공지사항 / 방명록 공통 스타일 */
+.notice-section,
+.guestbook-section {
+  color: #cfd6dd; /* 기본 내용 색 (통일) */
+}
+
+/* 섹션 타이틀 */
+.notice-section h2,
+.guestbook-section h2 {
+  color: #eef3f7;     /* 가장 밝게 */
+  font-weight: 500;
+}
+
+/* 공지사항 제목 */
+.notice-section .notice-title {
+  color: #dbe2e8;     /* 타이틀보다 살짝 어둡게 */
+}
+
+/* 공지사항 날짜 */
+.notice-section .notice-date {
+  color: #9aa4ad;     /* 정보성 텍스트는 한 톤 낮춤 */
+}
+
+/* 방명록 내용 */
+.guestbook-section .guestbook-item {
+  color: #c6ccd3;     /* 공지사항 내용과 동일 */
+}
