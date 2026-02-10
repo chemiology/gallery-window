@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>Guestbook Test (GET)</title>
+  <title>Guestbook Test v3</title>
 </head>
 <body>
 
@@ -10,10 +10,12 @@
   action="https://script.google.com/macros/s/AKfycbz8n8GAoKPfG3T1WULZr7hXxLZv5JYpg8uwZkntynRe1rtnpNLou5fDzKBTcjBD0dtZ/exec"
   method="GET"
 >
+  <!-- ★ hidden input들도 반드시 name 필요 -->
   <input type="hidden" name="exhibition_id" value="test">
   <input type="hidden" name="hall_id" value="test">
   <input type="hidden" name="page" value="test">
 
+  <!-- ★ 가장 중요 -->
   <input
     type="text"
     name="message"
@@ -23,8 +25,6 @@
 
   <button type="submit">전송</button>
 </form>
-
-<p>전송하면 URL에 ?message=... 가 보이면 정상입니다.</p>
 
 </body>
 </html>
