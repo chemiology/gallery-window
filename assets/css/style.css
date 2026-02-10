@@ -603,3 +603,36 @@ body.exhibition-detail {
 .guestbook-section .guestbook-item {
   color: #c6ccd3;     /* 공지사항 내용과 동일 */
 }
+
+/* =========================================
+   Home bottom-area tone adjustment
+   ========================================= */
+
+/* 하단 영역 기본 텍스트 톤 */
+body.home .bottom-area {
+  color: #cfd6dd;
+}
+
+/* 섹션 타이틀 (공지사항 / 최근 방명록) */
+body.home .bottom-area h3 {
+  color: #eef3f7;
+  font-weight: 500;
+}
+
+/* 공지사항 날짜 */
+body.home .notice .date {
+  color: #9aa4ad;
+  font-size: 12px;
+}
+
+/* 공지사항 제목 */
+body.home .notice .notice-text {
+  color: #dbe2e8;
+  text-decoration: none;
+}
+
+/* 방명록 내용 */
+body.home .guestbook li {
+  color: #cfd6dd;
+}
+
