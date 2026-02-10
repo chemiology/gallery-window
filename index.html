@@ -89,4 +89,25 @@
 </footer>
 
 </body>
+
+<script>
+function sendGuestbookTest() {
+  fetch('여기에_배포_URL_붙여넣기', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      exhibition_id: 'avatar2_2026',
+      hall_id: 'hall1',
+      message: '방명록 테스트입니다',
+      page: 'detail'
+    })
+  })
+  .then(res => res.text())
+  .then(txt => alert('전송 결과: ' + txt))
+  .catch(err => alert('에러: ' + err));
+}
+</script>
+
+<button onclick="sendGuestbookTest()">방명록 테스트 전송</button>
+
 </html>
