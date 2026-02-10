@@ -101,72 +101,30 @@
 </article>
 
 <!-- 지난 전시에서는 아래 부분 </body> 위까지 삭제 -------------------------------------------------------------------------------------------------------------------------- -->
+<section class="exhibition-guestbook">
+  <form id="guestbook-form">
+    <input
+      type="text"
+      id="guestbook-input"
+      placeholder="방명록을 남겨주세요"
+      maxlength="200"
+      required
+    >
+    <button type="submit">등록</button>
+  </form>
+</section>
+
 <script src="../assets/js/guestbook-config.js"></script>
-
 <script>
-const GUESTBOOK_URL = const GUESTBOOK_URL = window.GUESTBOOK_URL;
-
-// 페이지별 상수 (1관/2관 페이지에서 각각 값만 바꾸세요)
 const EXHIBITION_ID = 'avatar2_2026';
-const HALL_ID = 'hall1'; // hall2 페이지에서는 'hall2'
+const HALL_ID = 'hall1';
 const PAGE_ID = 'detail';
 
-document.getElementById('guestbook-submit').addEventListener('click', sendGuestbook);
-
-function sendGuestbook() {
-  const msgEl = document.getElementById('guestbook-message');
-  const statusEl = document.getElementById('guestbook-status');
-  const message = msgEl.value.trim();
-
-  if (!message) {
-    statusEl.textContent = '내용을 입력해 주세요.';
-    return;
-  }
-
-  statusEl.textContent = '전송 중…';
-
- fetch(GUESTBOOK_URL, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    exhibition_id: EXHIBITION_ID,
-    hall_id: HALL_ID,
-    message: message,
-    page: PAGE_ID
-  })
-})
-  .then(res => res.text())
-  .then(txt => {
-    if (txt === 'OK') {
-      msgEl.value = '';
-      statusEl.textContent = '등록되었습니다. 감사합니다.';
-    } else {
-      statusEl.textContent = '오류가 발생했습니다. 잠시 후 다시 시도해 주세요.';
-    }
-  })
-  .catch(() => {
-    statusEl.textContent = '네트워크 오류가 발생했습니다.';
-  });
-}
-</script>
-
-<div class="guestbook-form">
-  <textarea id="guestbook-message"
-    placeholder="방명록을 남겨주세요 (최대 200자)"
-    maxlength="200"></textarea>
-
-  <button id="guestbook-submit">등록</button>
-  <p id="guestbook-status" aria-live="polite"></p>
-</div>
-
-<script>
 const form = document.getElementById('guestbook-form');
 const input = document.getElementById('guestbook-input');
 
 form.addEventListener('submit', function (e) {
-  e.preventDefault(); // ★ 기본 form submit 차단 (핵심)
+  e.preventDefault();
 
   const message = input.value.trim();
   if (!message) return;
@@ -177,23 +135,17 @@ form.addEventListener('submit', function (e) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      exhibition_id: 'avatar2_2026',
-      hall_id: 'hall1',
+      exhibition_id: EXHIBITION_ID,
+      hall_id: HALL_ID,
       message: message,
-      page: 'detail'
+      page: PAGE_ID
     })
   })
   .then(res => res.text())
   .then(txt => {
     if (txt === 'OK') {
       input.value = '';
-    } else {
-      alert('저장 실패');
     }
-  })
-  .catch(err => {
-    console.error(err);
-    alert('전송 오류');
   });
 });
 </script>
