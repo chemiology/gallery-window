@@ -87,17 +87,21 @@ async function renderHomepageGuestbook() {
   area.appendChild(ul);
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbxosBRSAcNGTRHQXIm6EIVQKEnFhFlK4jMGpIDFnccUfwXcLdRZO2vKn3GsmQvMjo8raQ/exec?mode=list");
+
+    const res = await fetch(
+      window.GUESTBOOK_URL + "?mode=list"
+    );
+
     const data = await res.json();
 
-    if (!data.length) {
+    if (!data || data.length === 0) {
       const li = document.createElement("li");
       li.textContent = "아직 방명록이 없습니다.";
       ul.appendChild(li);
       return;
     }
 
-    data.slice(0, 10).forEach(item => {
+    data.forEach(item => {
       const li = document.createElement("li");
       li.textContent = item.message;
       ul.appendChild(li);
