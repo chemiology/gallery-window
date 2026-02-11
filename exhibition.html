@@ -48,54 +48,21 @@
 <!-- ===== 1관 방명록 ===== -->
 <section class="exhibition-guestbook">
   <h3 class="guestbook-title">방명록</h3>
+    
+<form 
+  action="https://script.google.com/macros/s/AKfycbxDTvq6LIvbTK-agLEqdcNQhQvKG1PEdRHJqS2HaR_yVPURQdvUS3CjtEyoGH2Zqud82g/exec"
+  method="GET"
+  target="hidden_iframe"
+>
+  <input type="hidden" name="exhibition_id" id="exhibition_id_field">
+  <input type="hidden" name="page" value="viewer">
 
-  <form 
-    action="https://script.google.com/macros/s/AKfycbxDTvq6LIvbTK-agLEqdcNQhQvKG1PEdRHJqS2HaR_yVPURQdvUS3CjtEyoGH2Zqud82g/exec"
-    method="GET"
-    target="hidden_iframe_1"
-  >
-    <input type="hidden" name="exhibition_id" value="avatar2_2026">
-    <input type="hidden" name="hall_id" value="hall1">
-    <input type="hidden" name="page" value="viewer">
-    <input type="hidden" name="debug" value="hall1">
+  <input type="text" name="message" maxlength="80" required>
+  <button type="submit">남기기</button>
+</form>
 
-    <input
-      type="text"
-      name="message"
-      placeholder="1관 테스트"
-      maxlength="80"
-      required
-    >
-    <button type="submit">남기기</button>
-  </form>
-  <iframe name="hidden_iframe_1" style="display:none;"></iframe>
-</section>
+<iframe name="hidden_iframe" style="display:none;"></iframe>
 
-<!-- ===== 2관 방명록 ===== -->
-<section class="exhibition-guestbook">
-  <h3 class="guestbook-title">방명록</h3>
-
-  <form 
-    action="https://example.com"
-    method="GET"
-    target="hidden_iframe_2"
-  >
-    <input type="hidden" name="exhibition_id" value="avatar2_2026">
-    <input type="hidden" name="hall_id" value="hall2">
-    <input type="hidden" name="page" value="viewer">
-    <input type="hidden" name="debug" value="hall2">
-
-    <input
-      type="text"
-      name="message"
-      placeholder="2관 테스트"
-      maxlength="80"
-      required
-    >
-    <button type="submit">남기기</button>
-  </form>
-  <iframe name="hidden_iframe_2" style="display:none;"></iframe>
-</section>
 
   <!-- 캡션 -->
   <div class="caption" id="caption"></div>
@@ -107,6 +74,11 @@
 
   <!-- JS -->
   <script src="assets/js/exhibition.js"></script>
+
+const exhibitionId =
+  new URLSearchParams(window.location.search).get("id");
+
+document.getElementById("exhibition_id_field").value = exhibitionId;
 
 </body>
 </html>
