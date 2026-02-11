@@ -172,10 +172,6 @@ body.home .artist-note {
   margin-top: 8px;
 }
 
-.gallery-section {
-  margin-bottom: 150px;
-}
-
 /* =====================================================
    Bottom Area – Notice & Guestbook
 ===================================================== */
@@ -243,11 +239,6 @@ body.home .artist-note {
 
 
 /* ---------- Guestbook ---------- */
-
-.guestbook {
-  clear: both;
-}
-
 .guestbook {
   margin-top: 120px;      /* 이미지와 확실히 분리 */
   position: relative;
@@ -659,5 +650,11 @@ body.home .guestbook li {
     position: relative;
     z-index: 5;
     margin-top: 100px;
+}
+
+/* ===== Guestbook separation ===== */
+
+.guestbook {
+  margin-top: 200px;  /* 전시와 충분히 분리 */
 }
 
