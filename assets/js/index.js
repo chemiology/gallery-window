@@ -25,22 +25,16 @@ function renderExhibitions(exhibitions) {
 
   container.innerHTML = "";
 
-exhibitions.forEach((exhibition, index) => {
+  exhibitions.forEach((exhibition, index) => {
+    const block = document.createElement("div");
+    block.className = "exhibition";
 
-  // 🔴 2관 생성 차단
-  if (index === 1) return;
-
-  const block = document.createElement("div");
-  block.className = "exhibition";
-
-  if (exhibitions.length === 2) {
-    const hall = document.createElement("div");
-    hall.className = "hall-label";
-    hall.textContent = "1관";
-    block.appendChild(hall);
-  }
-
-  // ↓↓↓ 이하 기존 코드 그대로
+    if (exhibitions.length === 2) {
+      const hall = document.createElement("div");
+      hall.className = "hall-label";
+      hall.textContent = index === 0 ? "1관" : "2관";
+      block.appendChild(hall);
+    }
 
     const body = document.createElement("div");
     body.className = "exhibition-body";
