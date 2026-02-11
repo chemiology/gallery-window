@@ -30,7 +30,6 @@ body.exhibition-detail .exhibition-text p {
 body.exhibition-detail .gap-sm { margin-top: 12px; }
 body.exhibition-detail .gap-md { margin-top: 20px; }
 body.exhibition-detail .gap-lg { margin-top: 28px; }
-}
 
 /* 상세페이지 텍스트 기본 크기 조정 */
 body.exhibition-detail .exhibition-text {
@@ -133,4 +132,13 @@ body.exhibition-detail .back-to-list a {
 body.exhibition-detail .back-to-list a:hover {
   text-decoration: underline;
 }
+
+/* ===== 상세페이지 방명록 정리 ===== */
+
+body.exhibition-detail .guestbook {
+  max-width: 810px;     /* 본문과 동일 폭 */
+  margin: 48px auto 0;  /* 위 여백 + 가운데 정렬 */
+  padding: 0 28px;
+}
+
 

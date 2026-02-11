@@ -240,9 +240,7 @@ body.home .artist-note {
 
 /* ---------- Guestbook ---------- */
 .guestbook {
-  margin-top: 120px;      /* 이미지와 확실히 분리 */
-  position: relative;
-  z-index: 10;
+  margin-top: 40px;
 }
 
 .guestbook ul {
@@ -650,11 +648,5 @@ body.home .guestbook li {
     position: relative;
     z-index: 5;
     margin-top: 100px;
-}
-
-/* ===== Guestbook separation ===== */
-
-.guestbook {
-  margin-top: 200px;  /* 전시와 충분히 분리 */
 }
 
