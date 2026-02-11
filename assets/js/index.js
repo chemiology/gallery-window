@@ -108,15 +108,17 @@ function renderHomepageGuestbook() {
     return;
   }
 
-  // 오래된 순 → 최신 순
-  all.sort((a, b) => a.date.localeCompare(b.date));
+// 최신 순으로 정렬
+all.sort((a, b) => b.date.localeCompare(a.date));
 
-  all.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item.text;
-    ul.appendChild(li);
-  });
-}
+// 최근 5개만 추출
+const latestFive = all.slice(0, 5);
+
+latestFive.forEach(item => {
+  const li = document.createElement("li");
+  li.textContent = item.text;
+  ul.appendChild(li);
+});
 
 function renderHeadlineNotice(notice) {
   const container = document.getElementById("headline-notice");
