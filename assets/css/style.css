@@ -663,14 +663,35 @@ body.home .guestbook li {
   color: #666;
 }
 
-/* 상세페이지 방명록 폭 정리 */
-.exhibition-detail .exhibition-guestbook {
-  max-width: 640px;      /* 전시 텍스트와 비슷한 폭 */
-  margin: 40px auto 0;   /* 위 여백 + 가운데 정렬 */
+/* 상세페이지 방명록 폭 제한 (강제) */
+.exhibition-guestbook {
+  max-width: 640px;
+  margin: 40px auto 0;
 }
 
-.exhibition-detail #guestbook-input {
+.exhibition-guestbook form,
+.exhibition-guestbook input {
   width: 100%;
   box-sizing: border-box;
+}
+
+.exhibition-guestbook {
+  margin-top: 60px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.exhibition-guestbook input[type="text"] {
+  width: 100%;
+  max-width: 520px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.exhibition-guestbook button {
+  margin-top: 10px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
 }
 
