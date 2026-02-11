@@ -87,7 +87,7 @@ async function renderHomepageGuestbook() {
   area.appendChild(ul);
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbwNPuDJT5WA3OfvFTIln_-EsEZSl25r1AJ3xuI4eIwjphtq1Vzy0NrtCP3n8c9wDm3ptA/exec?mode=list");
+    const res = await fetch("https://script.google.com/macros/s/AKfycbxosBRSAcNGTRHQXIm6EIVQKEnFhFlK4jMGpIDFnccUfwXcLdRZO2vKn3GsmQvMjo8raQ/exec?mode=list");
     const data = await res.json();
 
     if (!data.length) {
