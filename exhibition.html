@@ -48,37 +48,72 @@
 <!-- ===== 1관 방명록 ===== -->
 <section class="exhibition-guestbook">
   <h3 class="guestbook-title">방명록</h3>
-    
-<form 
-  action="https://script.google.com/macros/s/AKfycbxDTvq6LIvbTK-agLEqdcNQhQvKG1PEdRHJqS2HaR_yVPURQdvUS3CjtEyoGH2Zqud82g/exec"
-  method="GET"
-  target="hidden_iframe"
->
-  <input type="hidden" name="exhibition_id" id="exhibition_id_field">
-  <input type="hidden" name="page" value="viewer">
 
-  <input type="text" name="message" maxlength="80" required>
-  <button type="submit">남기기</button>
-</form>
+  <ul id="guestbook-list"></ul>
 
-<iframe name="hidden_iframe" style="display:none;"></iframe>
+  <form id="guestbook-form">
 
+    <input type="hidden" id="exhibition_id_field" name="exhibition_id">
+    <input type="hidden" id="hall_id_field" name="hall_id">
 
-  <!-- 캡션 -->
-  <div class="caption" id="caption"></div>
+    <input
+      type="text"
+      id="guestbook-input"
+      placeholder="이 전시에 대한 한 줄 감상"
+      maxlength="80"
+      required
+    >
 
-<!-- Back to Home (Exhibition Hall) -->
-<a href="index.html" class="back-home-exhibition">
-  ← Home
-</a>
+    <button type="submit">남기기</button>
+  </form>
+</section>
 
-  <!-- JS -->
-  <script src="assets/js/exhibition.js"></script>
+<script src="assets/js/exhibition.js"></script>
+<script src="assets/js/guestbook-config.js"></script>
 
-const exhibitionId =
-  new URLSearchParams(window.location.search).get("id");
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-document.getElementById("exhibition_id_field").value = exhibitionId;
+  const exhibitionId =
+    new URLSearchParams(window.location.search).get("id");
+
+  const form = document.getElementById("guestbook-form");
+  const input = document.getElementById("guestbook-input");
+  const exhibitionField = document.getElementById("exhibition_id_field");
+  const hallField = document.getElementById("hall_id_field");
+
+  // 🔴 hall 자동 판별 (1관 / 2관)
+  const hallId = document.body.dataset.hall || "hall1";
+
+  if (exhibitionField) exhibitionField.value = exhibitionId;
+  if (hallField) hallField.value = hallId;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const message = input.value.trim();
+    if (!message) return;
+
+    fetch(window.GUESTBOOK_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        exhibition_id: exhibitionId,
+        hall_id: hallId,
+        message: message,
+        page: "viewer"
+      })
+    })
+    .then(res => res.text())
+    .then(() => {
+      input.value = "";
+    });
+  });
+
+});
+</script>
 
 </body>
 </html>
