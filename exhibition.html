@@ -94,18 +94,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const message = input.value.trim();
     if (!message) return;
 
-    fetch(window.GUESTBOOK_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        exhibition_id: exhibitionId,
-        hall_id: hallId,
-        message: message,
-        page: "viewer"
-      })
-    })
+    fetch(window.GUESTBOOK_URL + "?" + new URLSearchParams({
+      exhibition_id: exhibitionId,
+      hall_id: hallId,
+      message: message,
+      page: "viewer"
+    }))
+    .then(res => res.text())
+    .then(() => {
+      input.value = "";
+    });
+
     .then(res => res.text())
     .then(() => {
       input.value = "";
