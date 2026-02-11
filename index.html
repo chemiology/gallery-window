@@ -88,31 +88,5 @@
   </div>
 </footer>
 
-
-
-<ul id="recent-guestbook"></ul>
-
-<script src="assets/js/guestbook-config.js"></script>
-
-<script>
-const GUESTBOOK_URL = window.GUESTBOOK_URL;
-
-fetch(GUESTBOOK_URL)
-  .then(res => res.json())
-  .then(items => {
-    const ul = document.getElementById('recent-guestbook');
-    ul.innerHTML = '';
-
-    items.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item.message;
-      ul.appendChild(li);
-    });
-  })
-  .catch(err => {
-    console.error('방명록 불러오기 실패', err);
-  });
-</script>
-
 </body>
 </html>
