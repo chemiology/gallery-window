@@ -25,16 +25,22 @@ function renderExhibitions(exhibitions) {
 
   container.innerHTML = "";
 
-  exhibitions.forEach((exhibition, index) => {
-    const block = document.createElement("div");
-    block.className = "exhibition";
+exhibitions.forEach((exhibition, index) => {
 
-    if (exhibitions.length === 2) {
-      const hall = document.createElement("div");
-      hall.className = "hall-label";
-      hall.textContent = index === 0 ? "1관" : "2관";
-      block.appendChild(hall);
-    }
+  // 🔴 2관 생성 차단
+  if (index === 1) return;
+
+  const block = document.createElement("div");
+  block.className = "exhibition";
+
+  if (exhibitions.length === 2) {
+    const hall = document.createElement("div");
+    hall.className = "hall-label";
+    hall.textContent = "1관";
+    block.appendChild(hall);
+  }
+
+  // ↓↓↓ 이하 기존 코드 그대로
 
     const body = document.createElement("div");
     body.className = "exhibition-body";
@@ -108,17 +114,15 @@ function renderHomepageGuestbook() {
     return;
   }
 
-// 최신 순으로 정렬
-all.sort((a, b) => b.date.localeCompare(a.date));
+  // 오래된 순 → 최신 순
+  all.sort((a, b) => a.date.localeCompare(b.date));
 
-// 최근 5개만 추출
-const latestFive = all.slice(0, 5);
-
-latestFive.forEach(item => {
-  const li = document.createElement("li");
-  li.textContent = item.text;
-  ul.appendChild(li);
-});
+  all.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item.text;
+    ul.appendChild(li);
+  });
+}
 
 function renderHeadlineNotice(notice) {
   const container = document.getElementById("headline-notice");
