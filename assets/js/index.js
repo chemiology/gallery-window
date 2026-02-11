@@ -77,7 +77,8 @@ function renderExhibitions(exhibitions) {
   });
 }
 
-function renderHomepageGuestbook() {
+async function renderHomepageGuestbook() {
+
   const area = document.getElementById("guestbook-area");
   if (!area) return;
 
@@ -85,38 +86,30 @@ function renderHomepageGuestbook() {
   const ul = document.createElement("ul");
   area.appendChild(ul);
 
-  // 모든 전시 방명록 수집 (자기 것만)
-  const keys = Object.keys(localStorage).filter(k =>
-    k.startsWith("guestbook_")
-  );
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbwNPuDJT5WA3OfvFTIln_-EsEZSl25r1AJ3xuI4eIwjphtq1Vzy0NrtCP3n8c9wDm3ptA/exec?mode=list");
+    const data = await res.json();
 
-  let all = [];
-  keys.forEach(key => {
-    const arr = JSON.parse(localStorage.getItem(key) || "[]");
-    arr.forEach(item => {
-      all.push({
-        text: item.text,
-        date: item.date
-      });
+    if (!data.length) {
+      const li = document.createElement("li");
+      li.textContent = "아직 방명록이 없습니다.";
+      ul.appendChild(li);
+      return;
+    }
+
+    data.slice(0, 10).forEach(item => {
+      const li = document.createElement("li");
+      li.textContent = item.message;
+      ul.appendChild(li);
     });
-  });
 
-  if (all.length === 0) {
+  } catch (err) {
     const li = document.createElement("li");
-    li.textContent = "아직 남긴 방명록이 없습니다.";
+    li.textContent = "방명록을 불러올 수 없습니다.";
     ul.appendChild(li);
-    return;
   }
-
-  // 오래된 순 → 최신 순
-  all.sort((a, b) => a.date.localeCompare(b.date));
-
-  all.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item.text;
-    ul.appendChild(li);
-  });
 }
+
 
 function renderHeadlineNotice(notice) {
   const container = document.getElementById("headline-notice");
