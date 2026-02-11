@@ -240,6 +240,12 @@ body.home .artist-note {
 
 /* ---------- Guestbook ---------- */
 
+.guestbook {
+  margin-top: 120px;      /* 이미지와 확실히 분리 */
+  position: relative;
+  z-index: 10;
+}
+
 .guestbook ul {
   list-style: none;
   padding: 0;
@@ -254,18 +260,22 @@ body.home .artist-note {
 
 /* 입력 폼 */
 #guestbook-form {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 #guestbook-input {
-  flex: 1;
-  padding: 8px 10px;
+  flex: 1;               /* 버튼 제외 전체 차지 */
+  padding: 14px 16px;
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.15);
   border-radius: 6px;
   color: #e6e7e9;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 #guestbook-input::placeholder {
@@ -273,13 +283,14 @@ body.home .artist-note {
 }
 
 #guestbook-form button {
-  padding: 8px 14px;
+  padding: 10px 18px;
   background: none;
   border: 1px solid rgba(255,255,255,0.25);
   border-radius: 6px;
   color: #e6e7e9;
   font-size: 14px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 #guestbook-form button:hover {
@@ -636,22 +647,9 @@ body.home .guestbook li {
   color: #cfd6dd;
 }
 
-.back-home-exhibition {
-  position: fixed;
-  left: 24px;
-  bottom: 24px;
-  z-index: 1000;
-  display: block;
-}
-
-.exhibition-guestbook {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.exhibition-guestbook h3 {
-  margin: 0;
-  white-space: nowrap;
+.guestbook-section {
+    position: relative;
+    z-index: 5;
+    margin-top: 100px;
 }
 
