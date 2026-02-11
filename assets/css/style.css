@@ -636,3 +636,22 @@ body.home .guestbook li {
   color: #cfd6dd;
 }
 
+.back-home-exhibition {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: block;
+}
+
+.exhibition-guestbook {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.exhibition-guestbook h3 {
+  margin: 0;
+  white-space: nowrap;
+}
+
