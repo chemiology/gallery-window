@@ -30,7 +30,6 @@ body.exhibition-detail .exhibition-text p {
 body.exhibition-detail .gap-sm { margin-top: 12px; }
 body.exhibition-detail .gap-md { margin-top: 20px; }
 body.exhibition-detail .gap-lg { margin-top: 28px; }
-}
 
 /* 상세페이지 텍스트 기본 크기 조정 */
 body.exhibition-detail .exhibition-text {
@@ -86,13 +85,19 @@ body.exhibition-detail .exhibition-content {
   padding: 0 28px;        /* 좌우 숨쉴 공간 */
 }
 
+/* 포스터 프레임을 2/3로 축소 */
+body.exhibition-detail .exhibition-poster {
+  max-width: 66%;
+  margin: 0 auto 36px;   /* 가운데 정렬 + 텍스트와 간격 */
+}
+
 body.exhibition-detail .exhibition-poster {
   text-align: center;
 }
 
 /* 포스터 이미지 크기 축소 */
 body.exhibition-detail .exhibition-poster img {
-  max-width: 60%;        /* 약 33% 축소 */
+  max-width: 100%;        
   height: auto;
   display: block;
   margin: 0 auto;        /* 가운데 유지 */
@@ -108,4 +113,35 @@ body.exhibition-detail {
 .gap-sm { margin-top: 12px; }
 .gap-md { margin-top: 20px; }
 .gap-lg { margin-top: 28px; }
+
+/* 상세페이지 하단 – 목록으로 돌아가기 */
+body.exhibition-detail .back-to-list {
+  margin-top: 64px;      /* 텍스트와 충분한 간격 */
+  padding-top: 24px;
+  border-top: 1px solid rgba(0,0,0,0.08); /* 은은한 구분선 */
+  text-align: center;
+}
+
+body.exhibition-detail .back-to-list a {
+  font-size: 13px;
+  color: #444;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+body.exhibition-detail .back-to-list a:hover {
+  text-decoration: underline;
+}
+
+body.exhibition-detail .exhibition-guestbook {
+  max-width: 810px;
+  margin: 80px auto 0;
+  padding: 0 28px;
+  clear: both;
+}
+
+body.exhibition-detail .exhibition-guestbook form {
+  display: flex;
+  gap: 12px;
+}
 

@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;   /* ← 추가 */
 
   color: #e6e7e9;
   line-height: 1.6;
@@ -147,21 +148,29 @@ img {
 
 /* 작가노트 */
 .artist-note {
-  font-size: 15px;
-  line-height: 1.9;
+  font-size: 14px;
+  line-height: 1.6;
   color: #d5d9de; /* 가독성 강화 */
   white-space: pre-line;
   /* 추가 */
   text-align: justify;
   word-break: keep-all;
 
-  max-width: 525px;   /* 핵심 */
+  max-width: 470px;   /* 핵심 */
 }
 
 @media (max-width: 768px) {
   .artist-note {
     text-align: left;
   }
+}
+
+body.home .artist-note p {
+  margin-bottom: 0.8em;
+}
+
+body.home .artist-note {
+  margin-top: 8px;
 }
 
 /* =====================================================
@@ -470,5 +479,161 @@ body.archive {
   display: block !important;
   line-height: 1.25;
   margin-bottom: 1px;
+}
+
+/* =========================================
+   Page-specific overrides
+   ========================================= */
+
+/* 대표화면 (index) */
+body.home {
+  font-size: 14px;
+}
+
+/* 대표화면 포스터 크기 */
+body.home .poster {
+  max-width: 420px; /* 상황에 맞게 400~460px */
+}
+
+/* 대표화면 포스터–작가노트 간격 */
+body.home .exhibition-body {
+  gap: 40px; /* 기존 80px → 절반 */
+}
+
+/* 상세페이지 */
+body.exhibition-detail {
+  /* 상세페이지 기본은 exhibition-detail.css에서 처리 */
+}
+
+/* (여기에는 정말 필요한 것만, 대부분은 exhibition-detail.css로) */
+
+/* Archive (예정/지난 전시) 포스터 정렬 보정 */
+
+.poster-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.poster-item img {
+  display: block;
+  margin: 0 auto;
+}
+
+.poster-item figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+}
+
+/* =========================
+   Detail Page Image & Footer Fix (SAFE OVERRIDE)
+   ========================= */
+
+.detail-page img,
+.notice-detail img {
+  width: 66%;
+  max-width: 720px;
+  display: block;
+  margin: 0 auto 40px;
+}
+
+.detail-nav,
+.archive-nav {
+  margin-top: 80px;
+  margin-bottom: 120px;
+  text-align: center;
+}
+
+/* =========================
+   Mobile Optimization (Detail Pages)
+   ========================= */
+
+@media (max-width: 768px) {
+
+  /* 상세페이지 이미지 */
+  .detail-page img,
+  .notice-detail img {
+    width: 92%;
+    max-width: none;
+    margin-bottom: 32px;
+  }
+
+  /* 상세페이지 텍스트 영역 */
+  .detail-page .detail-text,
+  .notice-detail {
+    width: 100%;
+    padding: 0 18px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* 하단 네비게이션 여백 */
+  .detail-nav,
+  .archive-nav {
+    margin-top: 60px;
+    margin-bottom: 100px;
+  }
+}
+
+/* 하단 공지사항 / 방명록 공통 스타일 */
+.notice-section,
+.guestbook-section {
+  color: #cfd6dd; /* 기본 내용 색 (통일) */
+}
+
+/* 섹션 타이틀 */
+.notice-section h2,
+.guestbook-section h2 {
+  color: #eef3f7;     /* 가장 밝게 */
+  font-weight: 500;
+}
+
+/* 공지사항 제목 */
+.notice-section .notice-title {
+  color: #dbe2e8;     /* 타이틀보다 살짝 어둡게 */
+}
+
+/* 공지사항 날짜 */
+.notice-section .notice-date {
+  color: #9aa4ad;     /* 정보성 텍스트는 한 톤 낮춤 */
+}
+
+/* 방명록 내용 */
+.guestbook-section .guestbook-item {
+  color: #c6ccd3;     /* 공지사항 내용과 동일 */
+}
+
+/* =========================================
+   Home bottom-area tone adjustment
+   ========================================= */
+
+/* 하단 영역 기본 텍스트 톤 */
+body.home .bottom-area {
+  color: #cfd6dd;
+}
+
+/* 섹션 타이틀 (공지사항 / 최근 방명록) */
+body.home .bottom-area h3 {
+  color: #eef3f7;
+  font-weight: 500;
+}
+
+/* 공지사항 날짜 */
+body.home .notice .date {
+  color: #9aa4ad;
+  font-size: 12px;
+}
+
+/* 공지사항 제목 */
+body.home .notice .notice-text {
+  color: #dbe2e8;
+  text-decoration: none;
+}
+
+/* 방명록 내용 */
+body.home .guestbook li {
+  color: #cfd6dd;
 }
 
