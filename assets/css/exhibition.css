@@ -48,12 +48,16 @@ body {
   position: absolute;
   max-width: 90vw;
   max-height: 90vh;
-  width: auto;
-  height: auto;
   object-fit: contain;
+}
 
-  transform-origin: center center;
+.fade-img {
+  opacity: 0;
   transition: opacity 1.6s ease-in-out;
+}
+
+.fade-img.visible {
+  opacity: 1;
 }
 
 .viewer {
@@ -66,6 +70,7 @@ body {
   overflow: hidden;
 }
 
+/* 
 .fade-out {
   opacity: 0;
 }
@@ -73,6 +78,7 @@ body {
 .fade-in {
   opacity: 1;
 }
+*/
 
 /* ---------- Fade ---------- */
 
