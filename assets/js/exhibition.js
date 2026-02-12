@@ -102,12 +102,32 @@ async function loadExhibition(id) {
 ----------------------------------------------------- */
 
 function showImage(index) {
-  const img = document.getElementById("exhibition-image");
-  if (!img || images.length === 0) return;
+  const container = document.querySelector(".viewer");
+  if (!container || images.length === 0) return;
+
+  const newImg = document.createElement("img");
+  newImg.src = images[(index + images.length) % images.length];
+  newImg.style.opacity = 0;
+
+  container.appendChild(newImg);
+
+  // 다음 프레임에서 페이드 인
+  requestAnimationFrame(() => {
+    newImg.style.opacity = 1;
+  });
+
+  // 기존 이미지 제거
+  const oldImages = container.querySelectorAll("img");
+  if (oldImages.length > 1) {
+    oldImages[0].style.opacity = 0;
+    setTimeout(() => {
+      if (oldImages[0]) oldImages[0].remove();
+    }, 800);
+  }
 
   currentIndex = (index + images.length) % images.length;
-  img.src = images[currentIndex];
 }
+
 
 function nextImage() {
   showImage(currentIndex + 1);
