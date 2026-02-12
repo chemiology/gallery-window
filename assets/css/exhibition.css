@@ -45,6 +45,7 @@ body {
 }
 
 .viewer img {
+  position: absolute;
   max-width: 90vw;
   max-height: 90vh;
   width: auto;
@@ -55,10 +56,31 @@ body {
   transition: opacity 0.8s ease;
 }
 
+.viewer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f1114;
+  overflow: hidden;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
 /* ---------- Fade ---------- */
 
+/* 
 .fade-in { opacity: 1; }
 .fade-out { opacity: 0; }
+*/
+
 
 /* ---------- Control Panel ---------- */
 
