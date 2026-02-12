@@ -62,6 +62,13 @@ async function loadExhibition(id) {
     const exhibition = data.currentExhibitions.find(e => e.id === id);
     if (!exhibition) return;
 
+    if (exhibition.themeColor) {
+      document.body.style.setProperty(
+        "--theme-color",
+        exhibition.themeColor
+       );
+     }
+
     images = exhibition.images || [];
     slideSeconds = exhibition.slideSeconds || 10;
 
@@ -234,6 +241,8 @@ function loadGuestbook() {
     const li = document.createElement("li");
     li.textContent = `${item.date} · ${item.text}`;
     listEl.appendChild(li);
+    li.classList.add("highlight-new");
+
   });
 }
 
@@ -256,6 +265,13 @@ if (formEl && listEl) {
     saveGuestbook(text);
     inputEl.value = "";
     loadGuestbook();
+
+    listEl.classList.add("guestbook-shake");
+
+    setTimeout(() => {
+      listEl.classList.remove("guestbook-shake");
+    }, 250);
+
   });
 }
 
