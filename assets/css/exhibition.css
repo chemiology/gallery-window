@@ -45,19 +45,12 @@ body {
 }
 
 .viewer img {
-  position: absolute;
   max-width: 90vw;
   max-height: 90vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
-}
-
-.fade-img {
-  opacity: 0;
   transition: opacity 1s ease-in-out;
-}
-
-.fade-img.visible {
-  opacity: 1;
 }
 
 .viewer {
