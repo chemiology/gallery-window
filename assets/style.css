@@ -17,7 +17,7 @@ body {
   background-color: #15171a;
   background-image: url("../images/bg_main.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center top;
   background-size: cover;
   background-attachment: fixed;   /* ← 추가 */
 
@@ -635,5 +635,26 @@ body.home .notice .notice-text {
 /* 방명록 내용 */
 body.home .guestbook li {
   color: #cfd6dd;
+}
+
+/* =========================
+   Common Text Utilities
+========================= */
+
+.text-big {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text-accent {
+  color: var(--theme-color, #c6d4e1);
+}
+
+.text-italic {
+  font-style: italic;
+}
+
+.text-muted {
+  opacity: 0.7;
 }
 
