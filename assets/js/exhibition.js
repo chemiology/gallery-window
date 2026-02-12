@@ -18,13 +18,33 @@ function qs(name) {
   return new URLSearchParams(window.location.search).get(name);
 }
 
+
+// URL에서 전시 ID 가져오기
+const params = new URLSearchParams(window.location.search);
+const exhibitionId = params.get("id");
+
+// 기본값 설정
+const finalId = exhibitionId || "avatar_ii";
+
+const input = document.querySelector('input[name="exhibition_id"]');
+if (input) {
+  input.value = finalId;
+}
+
 /* -----------------------------------------------------
    Init
 ----------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const exhibitionId = qs("id");
   if (!exhibitionId) return;
+
+// hidden input에 자동 삽입
+if (exhibitionId) {
+  const input = document.querySelector('input[name="exhibition_id"]');
+  if (input) {
+    input.value = exhibitionId;
+  }
+}
 
   loadExhibition(exhibitionId);
   setupControls();
@@ -36,11 +56,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadExhibition(id) {
   try {
+
     const res = await fetch("assets/config/gallery.json");
     const data = await res.json();
 
     const exhibition = data.currentExhibitions.find(e => e.id === id);
     if (!exhibition) return;
+
+    // 테마 색 적용
+    if (exhibition.themeColor) {
+      document.body.style.setProperty(
+        "--theme-color",
+        exhibition.themeColor
+      );
+    }
 
     images = exhibition.images || [];
     slideSeconds = exhibition.slideSeconds || 10;
@@ -48,6 +77,15 @@ async function loadExhibition(id) {
     if (images.length > 0) {
       showImage(0);
       startAuto();
+
+      // 전시 시작 테마 페이드
+      const intro = document.createElement("div");
+      intro.classList.add("theme-intro");
+      document.body.appendChild(intro);
+
+      setTimeout(() => {
+        intro.remove();
+      }, 600);
     }
 
     if (exhibition.music) {
@@ -60,25 +98,8 @@ async function loadExhibition(id) {
 }
 
 /* -----------------------------------------------------
-   Image Display
+   Image Navigation
 ----------------------------------------------------- */
-
-function showImage(index) {
-  const img = document.getElementById("exhibition-image");
-  if (!img || images.length === 0) return;
-
-  img.classList.remove("fade-in");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    currentIndex = (index + images.length) % images.length;
-    img.src = images[currentIndex];
-    img.onload = () => {
-      img.classList.remove("fade-out");
-      img.classList.add("fade-in");
-    };
-  }, 400);
-}
 
 function nextImage() {
   showImage(currentIndex + 1);
@@ -89,13 +110,47 @@ function prevImage() {
 }
 
 /* -----------------------------------------------------
-   Auto / Manual
+   Auto Slide
 ----------------------------------------------------- */
 
 function startAuto() {
   stopAuto();
   autoMode = true;
   timer = setInterval(nextImage, slideSeconds * 1000);
+}
+
+function stopAuto() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+  autoMode = false;
+}
+
+/* -----------------------------------------------------
+   Image Display
+----------------------------------------------------- */
+
+let activeImg = "imgA";
+
+function showImage(index) {
+  if (images.length === 0) return;
+
+  const nextIndex = (index + images.length) % images.length;
+
+  const img1 = document.getElementById("imgA");
+  const img2 = document.getElementById("imgB");
+
+  const current = activeImg === "imgA" ? img1 : img2;
+  const next = activeImg === "imgA" ? img2 : img1;
+
+  next.src = images[nextIndex];
+
+  next.classList.add("active");
+  current.classList.remove("active");
+
+  activeImg = activeImg === "imgA" ? "imgB" : "imgA";
+  currentIndex = nextIndex;
 }
 
 function stopAuto() {
@@ -114,11 +169,11 @@ function setupAudio(src) {
   audio = new Audio(src);
   audio.loop = true;
 
-  /* 1️⃣ 처음엔 아주 작고, muted 상태 */
+  /* 1 처음엔 아주 작고, muted 상태 */
   audio.volume = 0.05;
   audio.muted = true;
 
-  /* 2️⃣ 페이지 로드 시 자동 재생 시도 */
+  /* 2 페이지 로드 시 자동 재생 시도 */
   window.addEventListener("load", () => {
     audio.play().then(() => {
       /* 자동 재생 허용된 경우 */
@@ -128,7 +183,7 @@ function setupAudio(src) {
     });
   });
 
-  /* 3️⃣ 기존 클릭 재생 로직은 유지 */
+  /* 3 기존 클릭 재생 로직은 유지 */
 document.addEventListener("touchstart", () => {
   if (audio && audio.paused) {
     audio.muted = false;
@@ -136,7 +191,6 @@ document.addEventListener("touchstart", () => {
   }
 }, { once: true });
 
-}
 
 /* -----------------------------------------------------
    Controls
@@ -202,9 +256,6 @@ function setupControls() {
    Exhibition Guestbook Logic
 ========================= */
 
-const exhibitionId =
-  new URLSearchParams(window.location.search).get("id");
-
 const storageKey = `guestbook_${exhibitionId}`;
 const listEl = document.getElementById("guestbook-list");
 const formEl = document.getElementById("guestbook-form");
@@ -218,6 +269,8 @@ function loadGuestbook() {
     const li = document.createElement("li");
     li.textContent = `${item.date} · ${item.text}`;
     listEl.appendChild(li);
+    li.classList.add("highlight-new");
+
   });
 }
 
@@ -240,6 +293,13 @@ if (formEl && listEl) {
     saveGuestbook(text);
     inputEl.value = "";
     loadGuestbook();
+
+    listEl.classList.add("guestbook-shake");
+
+    setTimeout(() => {
+      listEl.classList.remove("guestbook-shake");
+    }, 250);
+
   });
 }
 
