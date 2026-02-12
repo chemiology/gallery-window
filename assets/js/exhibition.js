@@ -63,6 +63,7 @@ async function loadExhibition(id) {
     const exhibition = data.currentExhibitions.find(e => e.id === id);
     if (!exhibition) return;
 
+    // 테마 색 적용
     if (exhibition.themeColor) {
       document.body.style.setProperty(
         "--theme-color",
@@ -77,7 +78,7 @@ async function loadExhibition(id) {
       showImage(0);
       startAuto();
 
-      // 🎬 전시 시작 테마 페이드 효과
+      // 전시 시작 테마 페이드
       const intro = document.createElement("div");
       intro.classList.add("theme-intro");
       document.body.appendChild(intro);
@@ -122,11 +123,11 @@ function setupAudio(src) {
   audio = new Audio(src);
   audio.loop = true;
 
-  /* 1️⃣ 처음엔 아주 작고, muted 상태 */
+  /* 1 처음엔 아주 작고, muted 상태 */
   audio.volume = 0.05;
   audio.muted = true;
 
-  /* 2️⃣ 페이지 로드 시 자동 재생 시도 */
+  /* 2 페이지 로드 시 자동 재생 시도 */
   window.addEventListener("load", () => {
     audio.play().then(() => {
       /* 자동 재생 허용된 경우 */
@@ -136,7 +137,7 @@ function setupAudio(src) {
     });
   });
 
-  /* 3️⃣ 기존 클릭 재생 로직은 유지 */
+  /* 3 기존 클릭 재생 로직은 유지 */
   document.body.addEventListener("click", () => {
     if (audio && audio.paused) {
       audio.muted = false;
