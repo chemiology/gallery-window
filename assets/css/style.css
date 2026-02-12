@@ -658,3 +658,18 @@ body.home .guestbook li {
   opacity: 0.7;
 }
 
+/* =========================
+   Exhibition Text Style
+========================= */
+
+.exhibition-text {
+  text-align: justify;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  word-break: keep-all;
+}
+
+.exhibition-text p {
+  margin-bottom: 0.2em;
+}
+
