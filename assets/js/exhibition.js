@@ -23,12 +23,12 @@ function qs(name) {
 const params = new URLSearchParams(window.location.search);
 const exhibitionId = params.get("id");
 
-// hidden input에 자동 삽입
-if (exhibitionId) {
-  const input = document.querySelector('input[name="exhibition_id"]');
-  if (input) {
-    input.value = exhibitionId;
-  }
+// 기본값 설정
+const finalId = exhibitionId || "avatar_ii";
+
+const input = document.querySelector('input[name="exhibition_id"]');
+if (input) {
+  input.value = finalId;
 }
 
 /* -----------------------------------------------------
@@ -36,8 +36,15 @@ if (exhibitionId) {
 ----------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const exhibitionId = qs("id");
   if (!exhibitionId) return;
+
+// hidden input에 자동 삽입
+if (exhibitionId) {
+  const input = document.querySelector('input[name="exhibition_id"]');
+  if (input) {
+    input.value = exhibitionId;
+  }
+}
 
   loadExhibition(exhibitionId);
   setupControls();
@@ -213,9 +220,6 @@ function setupControls() {
 /* =========================
    Exhibition Guestbook Logic
 ========================= */
-
-const exhibitionId =
-  new URLSearchParams(window.location.search).get("id");
 
 const storageKey = `guestbook_${exhibitionId}`;
 const listEl = document.getElementById("guestbook-list");
