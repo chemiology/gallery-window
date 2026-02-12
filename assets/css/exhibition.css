@@ -415,11 +415,23 @@ body.exhibition-detail .exhibition-text span {
 .exhibition-guestbook input[type="text"]:focus {
   outline: none;
   border: 1px solid var(--theme-color);
-  box-shadow: 0 0 6px rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 2px var(--theme-color);
 }
 
 .exhibition-guestbook button {
-  transition: transform 0.1s ease;
+  padding: 5px 9px;
+  font-size: 12px;
+
+  background: transparent;
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
+
+  transition: all 0.2s ease;
+}
+
+.exhibition-guestbook button:hover {
+  background: var(--theme-color);
+  color: #0f1114;   /* 어두운 배경 기준 */
 }
 
 .exhibition-guestbook button:active {
