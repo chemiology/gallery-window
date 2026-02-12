@@ -105,44 +105,36 @@ function showImage(index) {
   const container = document.querySelector(".viewer");
   if (!container || images.length === 0) return;
 
+  const nextIndex = (index + images.length) % images.length;
+
+  // 🔥 마지막 → 첫 이미지인지 확인
+  const isLoopTransition =
+    currentIndex === images.length - 1 && nextIndex === 0;
+
   const newImg = document.createElement("img");
-  newImg.src = images[(index + images.length) % images.length];
+  newImg.src = images[nextIndex];
   newImg.classList.add("fade-img");
+
+  // 특별 전환일 경우 클래스 추가
+  if (isLoopTransition) {
+    newImg.classList.add("loop-transition");
+  }
+
   container.appendChild(newImg);
 
-  // 강제 리플로우 (transition 적용 보장)
   void newImg.offsetWidth;
-
   newImg.classList.add("visible");
 
   const oldImg = container.querySelector("img:not(.fade-img)");
   if (oldImg) {
     oldImg.classList.remove("visible");
+
     setTimeout(() => {
       oldImg.remove();
-    }, 1600);
+    }, isLoopTransition ? 2200 : 1600);
   }
 
-  currentIndex = (index + images.length) % images.length;
-}
-
-
-function nextImage() {
-  showImage(currentIndex + 1);
-}
-
-function prevImage() {
-  showImage(currentIndex - 1);
-}
-
-/* -----------------------------------------------------
-   Auto / Manual
------------------------------------------------------ */
-
-function startAuto() {
-  stopAuto();
-  autoMode = true;
-  timer = setInterval(nextImage, slideSeconds * 1000);
+  currentIndex = nextIndex;
 }
 
 function stopAuto() {
