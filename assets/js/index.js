@@ -26,6 +26,10 @@ function renderExhibitions(exhibitions) {
   container.innerHTML = "";
 
   exhibitions.forEach((exhibition, index) => {
+
+  // 🔴 2관 생성 차단
+  if (index === 1) return;
+
     const block = document.createElement("div");
     block.className = "exhibition";
 
@@ -35,6 +39,8 @@ function renderExhibitions(exhibitions) {
       hall.textContent = index === 0 ? "1관" : "2관";
       block.appendChild(hall);
     }
+
+  // ↓↓↓ 이하 기존 코드 그대로
 
     const body = document.createElement("div");
     body.className = "exhibition-body";
