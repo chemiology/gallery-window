@@ -40,7 +40,7 @@
         "assets/images/avatar_ii/Avatar2_144.jpg",
         "assets/images/avatar_ii/Avatar2_184.jpg"
       ],
-      "themeColor": "0f1114"
+      "themeColor": "#0f1114",
       "music": "assets/audio/avatar_ii.mp3",
       "slideSeconds": 10,
       "startDate": "2026-01-01",
@@ -59,7 +59,7 @@
         "assets/images/becoming_tree/tree_002.jpg",
         "assets/images/becoming_tree/tree_003.jpg"
       ],
-      "themeColor": "#e1c6cf"
+      "themeColor": "#e1c6cf",
       "music": "assets/audio/becoming_tree.mp3",
       "slideSeconds": 10,
       "startDate": "2026-01-01",
