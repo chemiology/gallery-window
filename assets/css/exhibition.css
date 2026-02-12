@@ -53,7 +53,7 @@ body {
 
 .fade-img {
   opacity: 0;
-  transition: opacity 1.6s ease-in-out;
+  transition: opacity 1s ease-in-out;
 }
 
 .fade-img.visible {
@@ -520,5 +520,19 @@ body.exhibition-detail .exhibition-text span {
 @keyframes themeFadeInOut {
   0%   { opacity: 0.18; }
   100% { opacity: 0; }
+}
+
+.fade-img {
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+.fade-img.visible {
+  opacity: 1;
+}
+
+/* 🔥 마지막 → 첫 이미지 전용 */
+.loop-transition {
+  transition: opacity 2.2s ease-in-out;
 }
 
