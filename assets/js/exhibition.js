@@ -122,7 +122,7 @@ function showImage(index) {
     oldImages[0].style.opacity = 0;
     setTimeout(() => {
       if (oldImages[0]) oldImages[0].remove();
-    }, 800);
+    }, 1600);
   }
 
   currentIndex = (index + images.length) % images.length;
