@@ -20,8 +20,8 @@ body {
 /* ---------- Viewer ---------- */
 
 .viewer {
-  position: relative;     /* fixed 제거 */
-  min-height: 100vh;      /* 화면 높이 유지 */
+  position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -365,19 +365,30 @@ body.exhibition-detail .exhibition-text span {
   padding: 0 24px;
 }
 
+ /* 입력창 넓히기 */
 .exhibition-guestbook form {
   display: flex;
-  gap: 14px;
+  gap: 12px;
 }
 
 .exhibition-guestbook input[type="text"] {
   flex: 1;
-  min-width: 500px;   /* 크게 */
+  min-width: 500px;
   padding: 14px 16px;
   font-size: 15px;
 }
 
 .exhibition-guestbook button {
   padding: 12px 18px;
+}
+
+.exhibition-guestbook {
+  position: relative;
+  z-index: 5;
+  margin-top: 100vh;   /* 화면 높이만큼 밀기 */
+  max-width: 900px;
+  padding: 40px 24px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
