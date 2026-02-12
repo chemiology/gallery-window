@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --theme-color: #e6e7e9; /* 기본 색 */
+}
+
 body {
   margin: 0;
   background-color: #0f1114;
@@ -382,11 +386,68 @@ body.exhibition-detail .exhibition-text span {
 
 /* 타이틀 항상 앞으로 */
 .exhibition-guestbook h3 {
+  color: var(--theme-color);
   position: relative;
   z-index: 10;
   font-size: 13px;
   margin-bottom: 6px;
   letter-spacing: 0.03em;
   opacity: 0.85;
+}
+
+.exhibition-guestbook ul li {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: guestFadeIn 0.4s ease forwards;
+}
+
+@keyframes guestFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exhibition-guestbook input[type="text"] {
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exhibition-guestbook input[type="text"]:focus {
+  outline: none;
+  border: 1px solid var(--theme-color);
+  box-shadow: 0 0 6px rgba(255,255,255,0.08);
+}
+
+.exhibition-guestbook button {
+  transition: transform 0.1s ease;
+}
+
+.exhibition-guestbook button:active {
+  transform: scale(0.96);
+}
+
+/* 새 글 강조 */
+.highlight-new {
+  animation: highlightFade 1s ease forwards;
+}
+
+@keyframes highlightFade {
+  0% {
+    color: var(--theme-color);
+  }
+  100% {
+    color: #e6e7e9;
+  }
+}
+
+/* 전체 살짝 흔들림 */
+.guestbook-shake {
+  animation: subtleShake 0.25s ease;
+}
+
+@keyframes subtleShake {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
 }
 
