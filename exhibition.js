@@ -36,7 +36,6 @@ if (input) {
 ----------------------------------------------------- */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const exhibitionId = qs("id");
   if (!exhibitionId) return;
 
 // hidden input에 자동 삽입
