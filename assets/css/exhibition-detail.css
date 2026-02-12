@@ -133,12 +133,3 @@ body.exhibition-detail .back-to-list a:hover {
   text-decoration: underline;
 }
 
-/* ===== 상세페이지 방명록 정리 ===== */
-
-body.exhibition-detail .guestbook {
-  max-width: 810px;     /* 본문과 동일 폭 */
-  margin: 48px auto 0;  /* 위 여백 + 가운데 정렬 */
-  padding: 0 28px;
-}
-
-
