@@ -132,6 +132,6 @@ function renderHeadlineNotice(notice) {
     return;
   }
 
-  container.textContent = notice.text;
+  container.innerHTML = notice.text;
 }
 
