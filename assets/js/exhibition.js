@@ -107,31 +107,24 @@ function showImage(index) {
 
   const nextIndex = (index + images.length) % images.length;
 
-  // 🔥 마지막 → 첫 이미지인지 확인
-  const isLoopTransition =
-    currentIndex === images.length - 1 && nextIndex === 0;
+  const oldImg = container.querySelector("img");
 
   const newImg = document.createElement("img");
   newImg.src = images[nextIndex];
   newImg.classList.add("fade-img");
-
-  // 특별 전환일 경우 클래스 추가
-  if (isLoopTransition) {
-    newImg.classList.add("loop-transition");
-  }
+  newImg.style.opacity = 0;
 
   container.appendChild(newImg);
 
-  void newImg.offsetWidth;
-  newImg.classList.add("visible");
+  requestAnimationFrame(() => {
+    newImg.style.opacity = 1;
+  });
 
-  const oldImg = container.querySelector("img:not(.fade-img)");
   if (oldImg) {
-    oldImg.classList.remove("visible");
-
+    oldImg.style.opacity = 0;
     setTimeout(() => {
       oldImg.remove();
-    }, isLoopTransition ? 2200 : 1600);
+    }, 1000); // 🔥 여기 전환 시간과 동일하게
   }
 
   currentIndex = nextIndex;
