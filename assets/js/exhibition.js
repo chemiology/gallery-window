@@ -170,7 +170,7 @@ function setupAudio(src) {
   audio.loop = true;
   audio.volume = 0.5;
 
-  // 1️⃣muted 상태로 자동 재생 시도
+  // muted 상태로 자동 재생 시도
   audio.muted = true;
 
   audio.play().then(() => {
@@ -179,7 +179,7 @@ function setupAudio(src) {
     // 모바일에서 차단될 수 있음
   });
 
-  // 2️⃣첫 터치/클릭 시 소리 활성화
+  // 첫 터치/클릭 시 소리 활성화
   const enableAudio = () => {
     if (!audio) return;
     audio.muted = false;
