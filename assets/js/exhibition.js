@@ -18,6 +18,19 @@ function qs(name) {
   return new URLSearchParams(window.location.search).get(name);
 }
 
+
+// URL에서 전시 ID 가져오기
+const params = new URLSearchParams(window.location.search);
+const exhibitionId = params.get("id");
+
+// hidden input에 자동 삽입
+if (exhibitionId) {
+  const input = document.querySelector('input[name="exhibition_id"]');
+  if (input) {
+    input.value = exhibitionId;
+  }
+}
+
 /* -----------------------------------------------------
    Init
 ----------------------------------------------------- */
