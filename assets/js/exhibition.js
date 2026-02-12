@@ -98,6 +98,26 @@ async function loadExhibition(id) {
 }
 
 /* -----------------------------------------------------
+   Image Display
+----------------------------------------------------- */
+
+function showImage(index) {
+  const img = document.getElementById("exhibition-image");
+  if (!img || images.length === 0) return;
+
+  currentIndex = (index + images.length) % images.length;
+  img.src = images[currentIndex];
+}
+
+function nextImage() {
+  showImage(currentIndex + 1);
+}
+
+function prevImage() {
+  showImage(currentIndex - 1);
+}
+
+/* -----------------------------------------------------
    Auto / Manual
 ----------------------------------------------------- */
 
