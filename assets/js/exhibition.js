@@ -102,30 +102,17 @@ async function loadExhibition(id) {
 ----------------------------------------------------- */
 
 function showImage(index) {
-  const container = document.querySelector(".viewer");
-  if (!container || images.length === 0) return;
+  const img = document.getElementById("exhibition-image");
+  if (!img || images.length === 0) return;
 
   const nextIndex = (index + images.length) % images.length;
 
-  const oldImg = container.querySelector("img");
+  img.style.opacity = 0;
 
-  const newImg = document.createElement("img");
-  newImg.src = images[nextIndex];
-  newImg.classList.add("fade-img");
-  newImg.style.opacity = 0;
-
-  container.appendChild(newImg);
-
-  requestAnimationFrame(() => {
-    newImg.style.opacity = 1;
-  });
-
-  if (oldImg) {
-    oldImg.style.opacity = 0;
-    setTimeout(() => {
-      oldImg.remove();
-    }, 1000); // 🔥 여기 전환 시간과 동일하게
-  }
+  setTimeout(() => {
+    img.src = images[nextIndex];
+    img.style.opacity = 1;
+  }, 500);
 
   currentIndex = nextIndex;
 }
