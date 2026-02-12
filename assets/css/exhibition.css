@@ -360,20 +360,31 @@ body.exhibition-detail .exhibition-text span {
 
 /* 입력창을 이미지 밖으로 이동 */
 .exhibition-guestbook form {
+  position: relative;   /* stacking 안정 */
+  z-index: 1;
+
   display: flex;
-  gap: 10px;
+  align-items: center;  /* 세로 정렬 안정 */
+  gap: 8px;             /* 살짝 줄임 */
 }
 
 .exhibition-guestbook input[type="text"] {
   flex: 1;
   max-width: 70%;
-  padding: 8px 10px;
+  padding: 6px 8px;
   font-size: 14px;
 }
 
 .exhibition-guestbook button {
-  padding: 8px 14px;
+  padding: 6px 10px;
   font-size: 13px;
 }
 
+/* 타이틀 항상 앞으로 */
+.exhibition-guestbook h3 {
+  position: relative;
+  z-index: 10;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
 
