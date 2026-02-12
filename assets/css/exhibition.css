@@ -29,38 +29,24 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background:
-    radial-gradient(
-      circle at 50% 30%,
-      rgba(255,255,255,0.02),
-      transparent 60%
-    ),
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.85),
-      rgba(0,0,0,0.95)
-    ),
-    var(--theme-bg, #0f1114);
+  background-color: #0f1114;
+  overflow: hidden;
 }
 
 .viewer img {
+  position: absolute;
   max-width: 90vw;
   max-height: 90vh;
-  width: auto;
-  height: auto;
   object-fit: contain;
+}
+
+.fade-img {
+  opacity: 0;
   transition: opacity 1s ease-in-out;
 }
 
-.viewer {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #0f1114;
-  overflow: hidden;
+.fade-img.active {
+  opacity: 1;
 }
 
 /* 
