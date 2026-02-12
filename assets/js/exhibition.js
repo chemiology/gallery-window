@@ -98,6 +98,36 @@ async function loadExhibition(id) {
 }
 
 /* -----------------------------------------------------
+   Image Navigation
+----------------------------------------------------- */
+
+function nextImage() {
+  showImage(currentIndex + 1);
+}
+
+function prevImage() {
+  showImage(currentIndex - 1);
+}
+
+/* -----------------------------------------------------
+   Auto Slide
+----------------------------------------------------- */
+
+function startAuto() {
+  stopAuto();
+  autoMode = true;
+  timer = setInterval(nextImage, slideSeconds * 1000);
+}
+
+function stopAuto() {
+  if (timer) {
+    clearInterval(timer);
+    timer = null;
+  }
+  autoMode = false;
+}
+
+/* -----------------------------------------------------
    Image Display
 ----------------------------------------------------- */
 
