@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --theme-color: #e6e7e9; /* 기본 색 */
+}
+
 body {
   margin: 0;
   background-color: #0f1114;
@@ -25,24 +29,64 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0f1114;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255,255,255,0.02),
+      transparent 60%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.95)
+    ),
+    var(--theme-bg, #0f1114);
 }
 
 .viewer img {
+  position: absolute;
   max-width: 90vw;
   max-height: 90vh;
-  width: auto;
-  height: auto;
   object-fit: contain;
-
-  transform-origin: center center;
-  transition: opacity 0.8s ease;
 }
+
+.fade-img {
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+.fade-img.visible {
+  opacity: 1;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f1114;
+  overflow: hidden;
+}
+
+/* 
+.fade-out {
+  opacity: 0;
+}
+
+.fade-in {
+  opacity: 1;
+}
+*/
 
 /* ---------- Fade ---------- */
 
+/* 
 .fade-in { opacity: 1; }
 .fade-out { opacity: 0; }
+*/
+
 
 /* ---------- Control Panel ---------- */
 
@@ -144,10 +188,9 @@ body {
 
 .exhibition-guestbook {
   position: fixed;
-  bottom: 12px;
+  bottom: -12px;   /* 기존 12px → 위로 올림 */
   left: 50%;
   transform: translateX(-50%);
-
   width: 60%;
   max-width: 800px;
 
@@ -359,39 +402,137 @@ body.exhibition-detail .exhibition-text span {
   margin-bottom: 1px !important;
 }
 
-.exhibition-guestbook {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 0 24px;
-}
-
- /* 입력창 넓히기 */
+/* 입력창을 이미지 밖으로 이동 */
 .exhibition-guestbook form {
+  position: relative;   /* stacking 안정 */
+  z-index: 1;
+
   display: flex;
-  gap: 12px;
+  align-items: center;  /* 세로 정렬 안정 */
+  gap: 8px;             /* 살짝 줄임 */
 }
 
 .exhibition-guestbook input[type="text"] {
   flex: 1;
-  min-width: 500px;
-  padding: 14px 16px;
-  font-size: 15px;
+  max-width: 70%;
+  padding: 5px 8px;
+  font-size: 13px;
 }
 
 .exhibition-guestbook button {
-  padding: 12px 18px;
+  padding: 5px 9px;
+  font-size: 12px;
 }
 
-/* =========================
-   Exhibition Guestbook Logic
-========================= 
-.exhibition-guestbook {
+/* 타이틀 항상 앞으로 */
+.exhibition-guestbook h3 {
+  color: var(--theme-color);
   position: relative;
-  z-index: 5;
-  margin-top: 100vh;   /* 화면 높이만큼 밀기 */
-  max-width: 900px;
-  padding: 40px 24px;
-  margin-left: auto;
-  margin-right: auto;
-} */
+  z-index: 10;
+  font-size: 13px;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+.exhibition-guestbook ul li {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: guestFadeIn 0.4s ease forwards;
+}
+
+@keyframes guestFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exhibition-guestbook input[type="text"] {
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exhibition-guestbook input[type="text"]:focus {
+  outline: none;
+  border: 1px solid var(--theme-color);
+  box-shadow: 0 0 0 2px var(--theme-color);
+}
+
+.exhibition-guestbook button {
+  padding: 5px 9px;
+  font-size: 12px;
+
+  background: transparent;
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
+
+  transition: all 0.2s ease;
+}
+
+.exhibition-guestbook button:hover {
+  background: var(--theme-color);
+  color: #0f1114;   /* 어두운 배경 기준 */
+  box-shadow: 0 0 12px var(--theme-color);
+}
+
+.exhibition-guestbook button:active {
+  transform: scale(0.96);
+}
+
+/* 새 글 강조 */
+.highlight-new {
+  animation: highlightFade 1s ease forwards;
+}
+
+@keyframes highlightFade {
+  0% {
+    color: var(--theme-color);
+    text-shadow: 0 0 8px var(--theme-color);
+  }
+  100% {
+    color: #e6e7e9;
+    text-shadow: none;
+  }
+}
+
+/* 전체 살짝 흔들림 */
+.guestbook-shake {
+  animation: subtleShake 0.25s ease;
+}
+
+@keyframes subtleShake {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
+}
+
+/* 전시 시작 테마 페이드 */
+.theme-intro {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: var(--theme-color);
+  opacity: 0;
+  z-index: 2;
+  animation: themeFadeInOut 0.5s ease forwards;
+}
+
+@keyframes themeFadeInOut {
+  0%   { opacity: 0.18; }
+  100% { opacity: 0; }
+}
+
+.fade-img {
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+.fade-img.visible {
+  opacity: 1;
+}
+
+/* 🔥 마지막 → 첫 이미지 전용 */
+.loop-transition {
+  transition: opacity 2.2s ease-in-out;
+}
 
