@@ -371,20 +371,22 @@ body.exhibition-detail .exhibition-text span {
 .exhibition-guestbook input[type="text"] {
   flex: 1;
   max-width: 70%;
-  padding: 6px 8px;
-  font-size: 14px;
+  padding: 5px 8px;
+  font-size: 13px;
 }
 
 .exhibition-guestbook button {
-  padding: 6px 10px;
-  font-size: 13px;
+  padding: 5px 9px;
+  font-size: 12px;
 }
 
 /* 타이틀 항상 앞으로 */
 .exhibition-guestbook h3 {
   position: relative;
   z-index: 10;
-  font-size: 15px;
+  font-size: 13px;
   margin-bottom: 6px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
 }
 
