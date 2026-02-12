@@ -133,3 +133,15 @@ body.exhibition-detail .back-to-list a:hover {
   text-decoration: underline;
 }
 
+body.exhibition-detail .exhibition-guestbook {
+  max-width: 810px;
+  margin: 80px auto 0;
+  padding: 0 28px;
+  clear: both;
+}
+
+body.exhibition-detail .exhibition-guestbook form {
+  display: flex;
+  gap: 12px;
+}
+

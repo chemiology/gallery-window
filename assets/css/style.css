@@ -19,6 +19,7 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;   /* ← 추가 */
 
   color: #e6e7e9;
   line-height: 1.6;
@@ -31,8 +32,8 @@ a {
 
 img {
   display: block;
-  max-width: 90%;
-
+  max-width: 100%;
+  height: auto;
 }
 
 /* =====================================================
