@@ -29,7 +29,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0f1114;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255,255,255,0.02),
+      transparent 60%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.85),
+      rgba(0,0,0,0.95)
+    ),
+    var(--theme-bg, #0f1114);
 }
 
 .viewer img {
@@ -432,6 +444,7 @@ body.exhibition-detail .exhibition-text span {
 .exhibition-guestbook button:hover {
   background: var(--theme-color);
   color: #0f1114;   /* 어두운 배경 기준 */
+  box-shadow: 0 0 12px var(--theme-color);
 }
 
 .exhibition-guestbook button:active {
@@ -446,9 +459,11 @@ body.exhibition-detail .exhibition-text span {
 @keyframes highlightFade {
   0% {
     color: var(--theme-color);
+    text-shadow: 0 0 8px var(--theme-color);
   }
   100% {
     color: #e6e7e9;
+    text-shadow: none;
   }
 }
 
@@ -461,5 +476,21 @@ body.exhibition-detail .exhibition-text span {
   0%   { transform: translateY(0); }
   50%  { transform: translateY(-1px); }
   100% { transform: translateY(0); }
+}
+
+/* 전시 시작 테마 페이드 */
+.theme-intro {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: var(--theme-color);
+  opacity: 0;
+  z-index: 2;
+  animation: themeFadeInOut 0.5s ease forwards;
+}
+
+@keyframes themeFadeInOut {
+  0%   { opacity: 0.18; }
+  100% { opacity: 0; }
 }
 
