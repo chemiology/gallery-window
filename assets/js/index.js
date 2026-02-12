@@ -63,7 +63,9 @@ function renderExhibitions(exhibitions) {
       fetch(exhibition.artistNote)
         .then(res => res.text())
         .then(text => {
-          noteWrap.textContent = text;
+          noteWrap.classList.add("exhibition-text");
+          noteWrap.innerHTML = text;
+
         })
         .catch(() => {
           noteWrap.textContent = "";
