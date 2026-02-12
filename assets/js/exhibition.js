@@ -56,6 +56,7 @@ if (exhibitionId) {
 
 async function loadExhibition(id) {
   try {
+
     const res = await fetch("assets/config/gallery.json");
     const data = await res.json();
 
@@ -63,19 +64,11 @@ async function loadExhibition(id) {
     if (!exhibition) return;
 
     if (exhibition.themeColor) {
-
       document.body.style.setProperty(
         "--theme-color",
         exhibition.themeColor
-    );
-
-  // 배경용 아주 어두운 버전 자동 생성
-  const bgTone = exhibition.themeColor + "15"; 
-  document.body.style.setProperty(
-    "--theme-bg",
-    bgTone
-  );
-}
+      );
+    }
 
     images = exhibition.images || [];
     slideSeconds = exhibition.slideSeconds || 10;
@@ -83,17 +76,16 @@ async function loadExhibition(id) {
     if (images.length > 0) {
       showImage(0);
       startAuto();
+
+      // 🎬 전시 시작 테마 페이드 효과
+      const intro = document.createElement("div");
+      intro.classList.add("theme-intro");
+      document.body.appendChild(intro);
+
+      setTimeout(() => {
+        intro.remove();
+      }, 600);
     }
-
-  // 🎬 전시 시작 테마 페이드 효과
-  const intro = document.createElement("div");
-  intro.classList.add("theme-intro");
-  document.body.appendChild(intro);
-
-  setTimeout(() => {
-    intro.remove();
-  }, 600);
-}
 
     if (exhibition.music) {
       setupAudio(exhibition.music);
@@ -102,35 +94,6 @@ async function loadExhibition(id) {
   } catch (err) {
     console.error("Exhibition load failed:", err);
   }
-}
-
-/* -----------------------------------------------------
-   Image Display
------------------------------------------------------ */
-
-function showImage(index) {
-  const img = document.getElementById("exhibition-image");
-  if (!img || images.length === 0) return;
-
-  img.classList.remove("fade-in");
-  img.classList.add("fade-out");
-
-  setTimeout(() => {
-    currentIndex = (index + images.length) % images.length;
-    img.src = images[currentIndex];
-    img.onload = () => {
-      img.classList.remove("fade-out");
-      img.classList.add("fade-in");
-    };
-  }, 400);
-}
-
-function nextImage() {
-  showImage(currentIndex + 1);
-}
-
-function prevImage() {
-  showImage(currentIndex - 1);
 }
 
 /* -----------------------------------------------------
