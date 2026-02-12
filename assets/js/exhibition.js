@@ -168,29 +168,27 @@ function stopAuto() {
 function setupAudio(src) {
   audio = new Audio(src);
   audio.loop = true;
+  audio.volume = 0.5;
 
-  /* 1 처음엔 아주 작고, muted 상태 */
-  audio.volume = 0.05;
+  // 1️⃣muted 상태로 자동 재생 시도
   audio.muted = true;
 
-  /* 2 페이지 로드 시 자동 재생 시도 */
-  window.addEventListener("load", () => {
-    audio.play().then(() => {
-      /* 자동 재생 허용된 경우 */
-      audio.muted = false;
-    }).catch(() => {
-      /* 차단된 경우 → 클릭 대기 */
-    });
+  audio.play().then(() => {
+    // 자동 재생 성공 시 muted 유지
+  }).catch(() => {
+    // 모바일에서 차단될 수 있음
   });
 
-  /* 3 기존 클릭 재생 로직은 유지 */
-document.addEventListener("touchstart", () => {
-  if (audio && audio.paused) {
+  // 2️⃣첫 터치/클릭 시 소리 활성화
+  const enableAudio = () => {
+    if (!audio) return;
     audio.muted = false;
     audio.play().catch(() => {});
-  }
-}, { once: true });
+  };
 
+  document.addEventListener("click", enableAudio, { once: true });
+  document.addEventListener("touchstart", enableAudio, { once: true });
+}
 
 /* -----------------------------------------------------
    Controls
