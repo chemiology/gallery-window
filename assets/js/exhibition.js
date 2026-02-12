@@ -107,21 +107,19 @@ function showImage(index) {
 
   const newImg = document.createElement("img");
   newImg.src = images[(index + images.length) % images.length];
-  newImg.style.opacity = 0;
-
+  newImg.classList.add("fade-img");
   container.appendChild(newImg);
 
-  // 다음 프레임에서 페이드 인
-  requestAnimationFrame(() => {
-    newImg.style.opacity = 1;
-  });
+  // 강제 리플로우 (transition 적용 보장)
+  void newImg.offsetWidth;
 
-  // 기존 이미지 제거
-  const oldImages = container.querySelectorAll("img");
-  if (oldImages.length > 1) {
-    oldImages[0].style.opacity = 0;
+  newImg.classList.add("visible");
+
+  const oldImg = container.querySelector("img:not(.fade-img)");
+  if (oldImg) {
+    oldImg.classList.remove("visible");
     setTimeout(() => {
-      if (oldImages[0]) oldImages[0].remove();
+      oldImg.remove();
     }, 1600);
   }
 
