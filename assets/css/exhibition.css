@@ -144,7 +144,7 @@ body {
 
 .exhibition-guestbook {
   position: fixed;
-  bottom: 10px;   /* 기존 12px → 위로 올림 */
+  bottom: -12px;   /* 기존 12px → 위로 올림 */
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
