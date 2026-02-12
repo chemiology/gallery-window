@@ -131,19 +131,25 @@ function stopAuto() {
    Image Display
 ----------------------------------------------------- */
 
+let activeImg = "imgA";
+
 function showImage(index) {
-  const img = document.getElementById("exhibition-image");
-  if (!img || images.length === 0) return;
+  if (images.length === 0) return;
 
   const nextIndex = (index + images.length) % images.length;
 
-  img.style.opacity = 0;
+  const img1 = document.getElementById("imgA");
+  const img2 = document.getElementById("imgB");
 
-  setTimeout(() => {
-    img.src = images[nextIndex];
-    img.style.opacity = 1;
-  }, 500);
+  const current = activeImg === "imgA" ? img1 : img2;
+  const next = activeImg === "imgA" ? img2 : img1;
 
+  next.src = images[nextIndex];
+
+  next.classList.add("active");
+  current.classList.remove("active");
+
+  activeImg = activeImg === "imgA" ? "imgB" : "imgA";
   currentIndex = nextIndex;
 }
 
