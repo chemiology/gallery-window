@@ -9,7 +9,7 @@
 }
 
 :root {
-  --theme-color: #e6e7e9; /* 기본 색 */
+  --theme-color: #c6d4e1;
 }
 
 body {
@@ -22,6 +22,20 @@ body {
 }
 
 /* ---------- Viewer ---------- */
+
+/* 이미지 주변 미묘한 테마 빛 */
+.viewer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    var(--theme-color) 140%
+  );
+  opacity: 0.08;
+  pointer-events: none;
+}
 
 .viewer {
   position: fixed;
