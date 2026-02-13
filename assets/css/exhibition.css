@@ -38,9 +38,13 @@ body {
   width: auto;
   height: auto;
   object-fit: contain;
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
+
+  opacity: 0;
+  filter: brightness(0.9);
+
+  transition: opacity 1.8s ease, filter 1.2s ease;
 }
+
 
 /* ---------- Fade ---------- */
 
@@ -500,6 +504,6 @@ body.exhibition-detail .exhibition-text span {
 
 .viewer img.visible {
   opacity: 1;
+  filter: brightness(1);
 }
-
 
