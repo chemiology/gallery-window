@@ -118,6 +118,13 @@ function showImage(index) {
   img.src = images[currentIndex];
 }
 
+function nextImage() {
+  showImage(currentIndex + 1);
+}
+
+function prevImage() {
+  showImage(currentIndex - 1);
+}
 
 /* -----------------------------------------------------
    Audio
