@@ -112,18 +112,22 @@ function stopAuto() {
 
 function showImage(index) {
   const img = document.getElementById("exhibition-image");
+  const viewer = document.querySelector(".viewer");
   if (!img || images.length === 0) return;
 
   currentIndex = (index + images.length) % images.length;
 
-  img.classList.remove("loaded");
-  img.src = images[currentIndex];
+  // 살짝 암전
+  viewer.classList.add("dark-transition");
 
-  img.onload = () => {
+  setTimeout(() => {
+    img.src = images[currentIndex];
+
     setTimeout(() => {
-      img.classList.add("loaded");
-    }, 100);
-  };
+      viewer.classList.remove("dark-transition");
+    }, 150);
+
+  }, 200);
 }
 
 function nextImage() {
