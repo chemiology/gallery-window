@@ -114,7 +114,17 @@ function showImage(index) {
   const img = document.getElementById("exhibition-image");
   if (!img || images.length === 0) return;
 
+  const isLoopReset =
+  (currentIndex === images.length - 1 && index === 0);
+
   currentIndex = (index + images.length) % images.length;
+
+  if (isLoopReset) {
+    document.querySelector(".viewer").classList.add("loop-dark");
+    setTimeout(() => {
+      document.querySelector(".viewer").classList.remove("loop-dark");
+    }, 900);
+  }
 
   img.classList.remove("visible");
   img.src = images[currentIndex];
@@ -271,11 +281,15 @@ if (formEl && listEl) {
     inputEl.value = "";
     loadGuestbook();
 
-    guestbook.classList.add("flash");
+    const guestbookBox =
+      document.querySelector(".exhibition-guestbook");
 
-    setTimeout(() => {
-      guestbook.classList.remove("flash");
-    }, 400);
+    guestbookBox.classList.add("flash");
+
+    setTimeout(()=>{
+      guestbookBox.classList.remove("flash");
+}, 420);
+
 
   });
 }
