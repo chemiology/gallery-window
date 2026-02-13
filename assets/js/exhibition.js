@@ -115,7 +115,15 @@ function showImage(index) {
   if (!img || images.length === 0) return;
 
   currentIndex = (index + images.length) % images.length;
+
+  img.classList.remove("visible");
   img.src = images[currentIndex];
+
+  img.onload = () => {
+    setTimeout(() => {
+      img.classList.add("visible");
+    }, 150);
+  };
 }
 
 function nextImage() {
