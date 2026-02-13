@@ -121,20 +121,14 @@ function stopAuto() {
    Image Display
 ----------------------------------------------------- */
 
-let activeImg = "imgA";
-
 function showImage(index) {
   const img = document.getElementById("exhibition-image");
   if (!img || images.length === 0) return;
 
-  img.style.opacity = 0;
-
-  setTimeout(() => {
-    currentIndex = (index + images.length) % images.length;
-    img.src = images[currentIndex];
-    img.style.opacity = 1;
-  }, 300);
+  currentIndex = (index + images.length) % images.length;
+  img.src = images[currentIndex];
 }
+
 
 /* -----------------------------------------------------
    Audio
