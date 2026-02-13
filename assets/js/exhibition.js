@@ -77,6 +77,7 @@ async function loadExhibition(id) {
     if (images.length > 0) {
       showImage(0);
       startAuto();
+    }
 
     if (exhibition.music) {
       setupAudio(exhibition.music);
@@ -85,18 +86,6 @@ async function loadExhibition(id) {
   } catch (err) {
     console.error("Exhibition load failed:", err);
   }
-}
-
-/* -----------------------------------------------------
-   Image Navigation
------------------------------------------------------ */
-
-function nextImage() {
-  showImage(currentIndex + 1);
-}
-
-function prevImage() {
-  showImage(currentIndex - 1);
 }
 
 /* -----------------------------------------------------
