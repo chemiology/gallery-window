@@ -271,11 +271,11 @@ if (formEl && listEl) {
     inputEl.value = "";
     loadGuestbook();
 
-    listEl.classList.add("guestbook-shake");
+    guestbook.classList.add("flash");
 
     setTimeout(() => {
-      listEl.classList.remove("guestbook-shake");
-    }, 250);
+      guestbook.classList.remove("flash");
+    }, 400);
 
   });
 }
