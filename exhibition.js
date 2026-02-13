@@ -114,8 +114,26 @@ function showImage(index) {
   const img = document.getElementById("exhibition-image");
   if (!img || images.length === 0) return;
 
+  const isLoopReset =
+  (currentIndex === images.length - 1 && index === 0);
+
   currentIndex = (index + images.length) % images.length;
+
+  if (isLoopReset) {
+    document.querySelector(".viewer").classList.add("loop-dark");
+    setTimeout(() => {
+      document.querySelector(".viewer").classList.remove("loop-dark");
+    }, 900);
+  }
+
+  img.classList.remove("visible");
   img.src = images[currentIndex];
+
+  img.onload = () => {
+    setTimeout(() => {
+      img.classList.add("visible");
+    }, 150);
+  };
 }
 
 function nextImage() {
@@ -136,24 +154,21 @@ function setupAudio(src) {
   audio.volume = 0.5;
   audio.preload = "auto";
 
-  // 처음에는 재생 시도하지 않음
-  // 사용자 상호작용이 있어야 재생
+  // 시작은 muted
+  audio.muted = true;
 
-  const startAudio = () => {
+  // 자동 재생 시도 (실패해도 괜찮음)
+  audio.play().catch(() => {});
+
+  // 어떤 클릭이든 강제로 활성화
+  const enableAudio = () => {
     if (!audio) return;
 
-    audio.play()
-      .then(() => {
-        audio.muted = false;
-      })
-      .catch(() => {
-        // 재생 실패 시 무시
-      });
+    audio.muted = false;
+    audio.play().catch(() => {});
   };
 
-  // 첫 클릭 또는 터치에서 시작
-  document.addEventListener("click", startAudio, { once: true });
-  document.addEventListener("touchstart", startAudio, { once: true });
+  window.addEventListener("pointerdown", enableAudio, { once: true });
 }
 
 /* -----------------------------------------------------
@@ -266,11 +281,15 @@ if (formEl && listEl) {
     inputEl.value = "";
     loadGuestbook();
 
-    listEl.classList.add("guestbook-shake");
+    const guestbookBox =
+      document.querySelector(".exhibition-guestbook");
 
-    setTimeout(() => {
-      listEl.classList.remove("guestbook-shake");
-    }, 250);
+    guestbookBox.classList.add("flash");
+
+    setTimeout(()=>{
+      guestbookBox.classList.remove("flash");
+}, 420);
+
 
   });
 }
