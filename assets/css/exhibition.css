@@ -75,10 +75,13 @@ body {
   margin-top: 12px;
   padding: 18px 20px;
   width: 220px;
-  background: rgba(18, 20, 24, 0.95);
   border-radius: 12px;
   font-size: 13px;
   line-height: 1.6;
+  background: rgba(10,12,15,0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
 }
 
 .control-box label {
@@ -150,13 +153,19 @@ body {
 
 .exhibition-guestbook {
   position: fixed;
-  bottom: -12px;   /* 기존 12px → 위로 올림 */
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
   max-width: 800px;
 
-  background: rgba(0, 0, 0, 0.55);
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.35)
+  );
+  backdrop-filter: blur(6px);
+
   padding: 12px 16px;
   border-radius: 8px;
 
@@ -520,6 +529,55 @@ body.exhibition-detail .exhibition-text span {
 
 .viewer img.loaded {
   transform: scale(1.03);
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    #111 0%,
+    #0a0c0f 60%,
+    #000 100%
+  );
+}
+
+.viewer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0) 55%,
+    rgba(0,0,0,0.55) 100%
+  );
+  pointer-events: none;
+}
+
+.viewer img {
+  opacity: 0;
+  transition: opacity 2.2s ease, transform 12s linear;
+  transform: scale(1);
+  filter: brightness(0.95) contrast(1.02);
+}
+
+.viewer img.loaded {
+  opacity: 1;
+  transform: scale(1.035);
+}
+
+.viewer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: black;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.viewer.dark-transition::after {
+  opacity: 0.45;
 }
 
 
