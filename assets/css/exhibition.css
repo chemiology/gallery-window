@@ -54,14 +54,16 @@ body {
   object-fit: contain;
 
   opacity: 0;
-  filter: brightness(0.9);
+  filter: brightness(0.75) blur(2px);
 
-  transition: opacity 1.8s ease, filter 1.2s ease;
+  transition:
+    opacity 2.4s ease,
+    filter 2.0s ease;
 }
 
 .viewer img.visible {
   opacity: 1;
-  filter: brightness(1);
+  filter: brightness(1) blur(0);
 }
 
 /* ---------- Fade ---------- */
@@ -513,4 +515,21 @@ body.exhibition-detail .exhibition-text span {
   box-shadow: 0 0 20px rgba(255,255,255,0.2);
   transition: box-shadow 0.4s ease;
 }
+
+.viewer.loop-dark {
+  background:#000;
+  transition: background 0.9s ease;
+}
+
+.exhibition-guestbook.flash {
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.25),
+    0 0 60px rgba(255,255,255,0.15);
+  transform: translateX(-50%) scale(1.02);
+}
+
+.audio-hint {
+  pointer-events: none;   /* 클릭 통과 */
+}
+
 
