@@ -134,6 +134,21 @@ function stopAuto() {
 let activeImg = "imgA";
 
 function showImage(index) {
+  const img = document.getElementById("exhibition-image");
+  if (!img || images.length === 0) return;
+
+  img.style.opacity = 0;
+
+  setTimeout(() => {
+    currentIndex = (index + images.length) % images.length;
+    img.src = images[currentIndex];
+    img.style.opacity = 1;
+  }, 300);
+}
+
+
+/*수정*/
+/*function showImage(index) {
   if (images.length === 0) return;
 
   const nextIndex = (index + images.length) % images.length;
@@ -159,7 +174,7 @@ function stopAuto() {
     timer = null;
   }
   autoMode = false;
-}
+}*/
 
 /* -----------------------------------------------------
    Audio
@@ -341,3 +356,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+}
