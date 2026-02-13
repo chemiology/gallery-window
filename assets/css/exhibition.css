@@ -39,8 +39,8 @@ body {
   height: auto;
   object-fit: contain;
   opacity: 1;
+  transition: opacity 1s ease-in-out;
 }
-
 
 /* ---------- Fade ---------- */
 
@@ -75,13 +75,10 @@ body {
   margin-top: 12px;
   padding: 18px 20px;
   width: 220px;
+  background: rgba(18, 20, 24, 0.95);
   border-radius: 12px;
   font-size: 13px;
   line-height: 1.6;
-  background: rgba(10,12,15,0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 0 30px rgba(0,0,0,0.6);
 }
 
 .control-box label {
@@ -153,19 +150,13 @@ body {
 
 .exhibition-guestbook {
   position: fixed;
-  bottom: -12px;
+  bottom: -12px;   /* 기존 12px → 위로 올림 */
   left: 50%;
   transform: translateX(-50%);
   width: 60%;
   max-width: 800px;
 
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.75),
-    rgba(0,0,0,0.35)
-  );
-  backdrop-filter: blur(6px);
-
+  background: rgba(0, 0, 0, 0.55);
   padding: 12px 16px;
   border-radius: 8px;
 
@@ -495,51 +486,4 @@ body.exhibition-detail .exhibition-text span {
 .loop-transition {
   transition: opacity 2.2s ease-in-out;
 }
-
-.viewer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255,255,255,0.02),
-    var(--theme-color, #0f1114)
-  );
-  opacity: 0.25;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
-
-.control-box {
-  border: 1px solid var(--theme-color, #999);
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-.guestbook-title {
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  color: var(--theme-color, #ddd);
-  text-shadow: 0 0 6px rgba(255,255,255,0.1);
-}
-
-.viewer img.loaded {
-  transform: scale(1.03);
-}
-
-.viewer {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    #111 0%,
-    #0a0c0f 60%,
-    #000 100%
-  );
-}
-
-.viewer img.loaded {
-  opacity: 1;
-  transform: scale(1.035);
-}
-
 
