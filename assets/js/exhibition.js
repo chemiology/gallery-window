@@ -308,5 +308,3 @@ document.addEventListener("DOMContentLoaded", () => {
     guestbook.classList.remove("active");
   });
 });
-
-<script src="assets/js/exhibition.js?v=10"></script>
