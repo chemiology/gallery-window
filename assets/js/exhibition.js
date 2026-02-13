@@ -146,36 +146,6 @@ function showImage(index) {
   }, 300);
 }
 
-
-/*수정*/
-/*function showImage(index) {
-  if (images.length === 0) return;
-
-  const nextIndex = (index + images.length) % images.length;
-
-  const img1 = document.getElementById("imgA");
-  const img2 = document.getElementById("imgB");
-
-  const current = activeImg === "imgA" ? img1 : img2;
-  const next = activeImg === "imgA" ? img2 : img1;
-
-  next.src = images[nextIndex];
-
-  next.classList.add("active");
-  current.classList.remove("active");
-
-  activeImg = activeImg === "imgA" ? "imgB" : "imgA";
-  currentIndex = nextIndex;
-}
-
-function stopAuto() {
-  if (timer) {
-    clearInterval(timer);
-    timer = null;
-  }
-  autoMode = false;
-}*/
-
 /* -----------------------------------------------------
    Audio
 ----------------------------------------------------- */
@@ -183,28 +153,11 @@ function stopAuto() {
 function setupAudio(src) {
   audio = new Audio(src);
   audio.loop = true;
+  audio.volume = 0.5;
 
-  /* 1 처음엔 아주 작고, muted 상태 */
-  audio.volume = 0.05;
-  audio.muted = true;
-
-  /* 2 페이지 로드 시 자동 재생 시도 */
   window.addEventListener("load", () => {
-    audio.play().then(() => {
-      /* 자동 재생 허용된 경우 */
-      audio.muted = false;
-    }).catch(() => {
-      /* 차단된 경우 → 클릭 대기 */
-    });
+    audio.play().catch(() => {});
   });
-
-  /* 3 기존 클릭 재생 로직은 유지 */
-  document.body.addEventListener("click", () => {
-    if (audio && audio.paused) {
-      audio.muted = false;
-      audio.play().catch(() => {});
-    }
-  }, { once: true });
 }
 
 /* -----------------------------------------------------
@@ -356,4 +309,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-}
+<script src="assets/js/exhibition.js?v=10"></script>
