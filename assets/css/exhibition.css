@@ -30,42 +30,17 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #0f1114;
-  overflow: hidden;
 }
 
 .viewer img {
   max-width: 90vw;
   max-height: 90vh;
+  width: auto;
+  height: auto;
   object-fit: contain;
-  transition: opacity 0.8s ease;
-}
-
-/*.viewer img {
-  position: absolute;
-  max-width: 90vw;
-  max-height: 90vh;
-  object-fit: contain;
-}
-*/
-
-.fade-img {
-  opacity: 0;
+  opacity: 1;
   transition: opacity 1s ease-in-out;
 }
-
-.fade-img.active {
-  opacity: 1;
-}
-
-/* 
-.fade-out {
-  opacity: 0;
-}
-
-.fade-in {
-  opacity: 1;
-}
-*/
 
 /* ---------- Fade ---------- */
 
