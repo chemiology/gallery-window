@@ -134,10 +134,23 @@ function setupAudio(src) {
   audio = new Audio(src);
   audio.loop = true;
   audio.volume = 0.5;
+  audio.preload = "auto";
 
-  window.addEventListener("load", () => {
+  // 시작은 muted
+  audio.muted = true;
+
+  // 자동 재생 시도 (실패해도 괜찮음)
+  audio.play().catch(() => {});
+
+  // 어떤 클릭이든 강제로 활성화
+  const enableAudio = () => {
+    if (!audio) return;
+
+    audio.muted = false;
     audio.play().catch(() => {});
-  });
+  };
+
+  window.addEventListener("pointerdown", enableAudio, { once: true });
 }
 
 /* -----------------------------------------------------
@@ -187,10 +200,18 @@ function setupControls() {
   if (mute) {
     mute.addEventListener("click", () => {
       if (!audio) return;
+
+      if (audio.paused) {
+        audio.play().catch(() => {});
+        audio.muted = false;
+        mute.textContent = "Mute";
+        return;
+      }
+
       audio.muted = !audio.muted;
       mute.textContent = audio.muted ? "Unmute" : "Mute";
     });
-  }
+}
 
   // Keyboard (Manual)
   window.addEventListener("keydown", e => {
