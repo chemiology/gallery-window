@@ -43,7 +43,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0f1114;
+  background: #000;
 }
 
 .viewer img {
@@ -59,6 +59,10 @@ body {
   transition: opacity 1.8s ease, filter 1.2s ease;
 }
 
+.viewer img.visible {
+  opacity: 1;
+  filter: brightness(1);
+}
 
 /* ---------- Fade ---------- */
 
@@ -503,22 +507,6 @@ body.exhibition-detail .exhibition-text span {
 /* 🔥 마지막 → 첫 이미지 전용 */
 .loop-transition {
   transition: opacity 2.2s ease-in-out;
-}
-
-/* --- Intro Darkness --- */
-
-.viewer {
-  background: #000;
-}
-
-.viewer img {
-  opacity: 0;
-  transition: opacity 1.8s ease;
-}
-
-.viewer img.visible {
-  opacity: 1;
-  filter: brightness(1);
 }
 
 .exhibition-guestbook.flash {
