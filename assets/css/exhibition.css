@@ -310,17 +310,21 @@ body {
 
 .audio-hint {
   position: fixed;
-  top: 64px;          /* 설정 버튼 바로 아래 */
+  top: 72px;        /* ← 위치 여기서만 조절 */
   left: 20px;
 
   font-size: 12px;
+  line-height: 1.5;
   color: rgba(255,255,255,0.75);
 
   background: rgba(0,0,0,0.4);
   padding: 6px 10px;
   border-radius: 4px;
 
-  z-index: 9999;
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+
+  pointer-events: none;   /* 클릭 방해 방지 */
+  z-index: 900;           /* control-box보다 아래 */
 }
 
 /* 모바일에서는 숨김 */
@@ -328,13 +332,6 @@ body {
   .audio-hint {
     display: none;
   }
-}
-
-.audio-hint {
-  top: 64px !important;
-  left: 20px !important;
-  bottom: auto !important;
-  right: auto !important;
 }
 
 figure.exhibition-poster {
@@ -527,9 +524,4 @@ body.exhibition-detail .exhibition-text span {
     0 0 60px rgba(255,255,255,0.15);
   transform: translateX(-50%) scale(1.02);
 }
-
-.audio-hint {
-  pointer-events: none;   /* 클릭 통과 */
-}
-
 
