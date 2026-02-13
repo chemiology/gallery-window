@@ -34,11 +34,19 @@ body {
 }
 
 .viewer img {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+  transition: opacity 0.8s ease;
+}
+
+/*.viewer img {
   position: absolute;
   max-width: 90vw;
   max-height: 90vh;
   object-fit: contain;
 }
+*/
 
 .fade-img {
   opacity: 0;
