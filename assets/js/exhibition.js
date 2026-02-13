@@ -78,16 +78,6 @@ async function loadExhibition(id) {
       showImage(0);
       startAuto();
 
-      // 전시 시작 테마 페이드
-      const intro = document.createElement("div");
-      intro.classList.add("theme-intro");
-      document.body.appendChild(intro);
-
-      setTimeout(() => {
-        intro.remove();
-      }, 600);
-    }
-
     if (exhibition.music) {
       setupAudio(exhibition.music);
     }
