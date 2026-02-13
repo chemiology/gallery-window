@@ -39,8 +39,8 @@ body {
   height: auto;
   object-fit: contain;
   opacity: 1;
-  transition: opacity 1s ease-in-out;
 }
+
 
 /* ---------- Fade ---------- */
 
@@ -522,11 +522,6 @@ body.exhibition-detail .exhibition-text span {
   text-shadow: 0 0 6px rgba(255,255,255,0.1);
 }
 
-.viewer img {
-  transform: scale(1);
-  transition: transform 12s linear;
-}
-
 .viewer img.loaded {
   transform: scale(1.03);
 }
@@ -540,13 +535,6 @@ body.exhibition-detail .exhibition-text span {
     #0a0c0f 60%,
     #000 100%
   );
-}
-
-.viewer img {
-  opacity: 0;
-  transition: opacity 2.2s ease, transform 12s linear;
-  transform: scale(1);
-  filter: brightness(0.95) contrast(1.02);
 }
 
 .viewer img.loaded {
