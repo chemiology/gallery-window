@@ -542,18 +542,6 @@ body.exhibition-detail .exhibition-text span {
   );
 }
 
-.viewer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(0,0,0,0) 55%,
-    rgba(0,0,0,0.55) 100%
-  );
-  pointer-events: none;
-}
-
 .viewer img {
   opacity: 0;
   transition: opacity 2.2s ease, transform 12s linear;
@@ -564,20 +552,6 @@ body.exhibition-detail .exhibition-text span {
 .viewer img.loaded {
   opacity: 1;
   transform: scale(1.035);
-}
-
-.viewer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: black;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-}
-
-.viewer.dark-transition::after {
-  opacity: 0.45;
 }
 
 
