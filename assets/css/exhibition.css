@@ -493,17 +493,6 @@ body.exhibition-detail .exhibition-text span {
   100% { transform: translateY(0); }
 }
 
-/* 전시 시작 테마 페이드 */
-.theme-intro {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: var(--theme-color);
-  opacity: 0;
-  z-index: 2;
-  animation: themeFadeInOut 0.5s ease forwards;
-}
-
 @keyframes themeFadeInOut {
   0%   { opacity: 0.18; }
   100% { opacity: 0; }
