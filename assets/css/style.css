@@ -673,3 +673,26 @@ body.home .guestbook li {
   margin-bottom: 0.2em;
 }
 
+.hall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 60px auto;
+}
+
+.hall-card {
+  text-align: center;
+  transition: transform 0.4s ease;
+}
+
+.hall-card img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.hall-card:hover {
+  transform: translateY(-8px);
+}
+
