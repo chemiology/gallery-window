@@ -694,12 +694,12 @@ body.home .guestbook li {
 }
 
 .hall-card img {
+  height: 70vh;
+  max-height: 720px;
   width: auto;
-  height: 70vh;          /* 화면 기준 높이 */
-  max-height: 720px;     /* 너무 커지는 것 방지 */
   display: block;
-  margin: 0 auto;        /* 중앙 정렬 */
-  object-fit: contain;   /* 전체 보이기 */
+  margin: 0 auto;
+  object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
@@ -737,5 +737,16 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.65);
+}
+
+body {
+  background: transparent;
+}
+
+main,
+.hall-grid,
+.container,
+.wrapper {
+  background: transparent !important;
 }
 
