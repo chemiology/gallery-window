@@ -5,11 +5,12 @@
       "title": "Main Hall",
       "exhibitions": ["test-exhibition"]
     },
-    {
-      "id": "hall02",
-      "title": "Guest Hall",
-      "exhibitions": []
-    },
+{
+  "id": "hall02",
+  "title": "Second Hall",
+  "exhibitions": ["test-exhibition2"]
+}
+
     {
       "id": "hall03",
       "title": "Special Hall",
