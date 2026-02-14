@@ -750,3 +750,14 @@ main,
   background: transparent !important;
 }
 
+/* Hall poster override */
+
+.hall-card img {
+  max-width: none !important;
+  width: auto !important;
+  height: 70vh !important;
+  max-height: 720px;
+display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
