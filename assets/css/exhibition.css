@@ -55,15 +55,18 @@ body {
 
   opacity: 0;
   filter: brightness(0.75) blur(2px);
+  transform: scale(1.03);
 
   transition:
     opacity 1.2s ease,
-    filter 2.0s ease;
+    filter 2.0s ease,
+    transform 6s ease-out;
 }
 
 .viewer img.visible {
   opacity: 1;
   filter: brightness(1) blur(0);
+  transform: scale(1);
 }
 
 /* ---------- Fade ---------- */
