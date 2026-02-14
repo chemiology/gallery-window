@@ -2,23 +2,23 @@
   "halls": [
     {
       "id": "hall01",
-      "title": "Main Hall",
-      "exhibitions": ["test-exhibition"]
+      "title": "1관",
+      "exhibitions": ["avatar_ii"]
     },
 {
   "id": "hall02",
-  "title": "Second Hall",
-  "exhibitions": ["test-exhibition2"]
+  "title": "2관",
+  "exhibitions": ["becoming_tree"]
 }
 
     {
       "id": "hall03",
-      "title": "Special Hall",
+      "title": "3관",
       "exhibitions": []
     },
     {
       "id": "hall04",
-      "title": "Archive",
+      "title": "4관",
       "exhibitions": []
     }
   ]
