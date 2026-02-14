@@ -18,17 +18,19 @@ async function loadHall() {
 
     hall.exhibitions.forEach(ex => {
 
-      const link = document.createElement("a");
-      link.textContent = ex;
-      link.href = `exhibition.html?id=${ex}&hall=${hallId}`;
+const card = document.createElement("div");
+card.className = "hall-card";
 
-      link.style.display = "block";
-      link.style.margin = "20px";
-      link.style.fontSize = "20px";
-      link.style.textDecoration = "none";
-      link.style.cursor = "pointer";
+card.innerHTML = `
+  <a href="exhibition.html?id=${ex}&hall=${hall.id}">
+    <img src="assets/posters/${ex}.jpg" alt="${ex}">
+    <div style="margin-top:12px; font-size:18px;">
+      ${ex}
+    </div>
+  </a>
+`;
 
-      list.appendChild(link);
+list.appendChild(card);
 
     });
 
