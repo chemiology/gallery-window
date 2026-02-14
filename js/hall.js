@@ -20,7 +20,7 @@ async function loadHall() {
 
       const link = document.createElement("a");
       link.textContent = ex;
-      link.href = `exhibition.html?ex=${ex}`;
+      link.href = `exhibition.html?id=${ex}&hall=${hallId}`;
 
       link.style.display = "block";
       link.style.margin = "20px";
