@@ -21,6 +21,19 @@
   <div id="headline-notice"></div>
 </header>
 
+<!-- 상단 : 현재 전시 강조 -->
+<div id="exhibitionPreview" style="
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap:40px;
+  max-width:1200px;
+  margin:auto;
+">
+  <div id="currentExhibition"></div>
+  <div id="secondHallPreview"></div>
+</div>
+
+<!-- 하단 : 기존 시스템 유지 -->
 <main class="main">
   <section class="exhibitions">
     <!--
@@ -93,3 +106,5 @@
 
 </body>
 </html>
+
+<script src="js/current-exhibition.js"></script>
