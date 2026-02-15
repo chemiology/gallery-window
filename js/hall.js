@@ -120,9 +120,3 @@ document.addEventListener("click", function(e) {
     window.location.href = link.href;
   }, 500);
 });
-
-if (!hall) {
-  console.error("Hall not found:", hallId);
-  return;
-}
-
