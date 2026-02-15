@@ -89,13 +89,13 @@ if (enterBtn) {
     `assets/posters/${exhibition.id}.jpg`;
 
   // 작가노트
-  const note = await fetch(`assets/notes/${exhibition.id}.txt`);
+  const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
   document.getElementById("artistNote").innerText =
     await note.text();
 
   // 작가 프로필 (선택)
   try {
-    const profile = await fetch(`assets/profiles/${exhibition.id}.txt`);
+    const profile = await fetch(`./assets/profiles/${exhibition.id}.txt`);
     document.getElementById("artistProfile").innerText =
       await profile.text();
   } catch(e) {}
