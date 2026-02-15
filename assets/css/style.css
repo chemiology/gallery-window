@@ -1103,3 +1103,69 @@ body.home .exhibition img {
   transform: scale(1.02);
 }
 
+.hall-entry {
+  position: relative;
+  z-index: 2;
+}
+
+.site-background {
+  z-index: -1;
+}
+
+#hallPoster {
+  pointer-events: auto;
+}
+
+/* 대표화면 포스터 인터랙션 */
+
+body.home .exhibition img {
+  transition: transform .35s ease;
+}
+
+body.home .exhibition img:hover {
+  transform: scale(1.03);
+}
+
+.hall-entry .artist-note {
+  font-size: 0.9rem;     /* ⭐ 2단계 축소 느낌 */
+  line-height: 1.8;
+  margin-top: 0;
+}
+
+.hall-entry {
+  align-items: start;   /* center → start */
+}
+
+/* ===== Hall background slow zoom ===== */
+
+.site-background.hall {
+  animation: hallZoom 18s ease-out forwards;
+}
+
+@keyframes hallZoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.site-background.hall {
+  will-change: transform;
+}
+
+/* ===== Hall artist note reading focus ===== */
+
+.hall-entry .artist-note p {
+  opacity: 0.72;
+  transition: opacity .6s ease;
+}
+
+/* 첫 문단 강조 */
+.hall-entry .artist-note p:first-of-type {
+  opacity: 1;
+  font-size: 1.05em;
+  letter-spacing: 0.01em;
+}
+
