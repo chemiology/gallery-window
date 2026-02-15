@@ -726,10 +726,11 @@ body {
   inset: 0;
   background-color: #000;
   background-image: url("../images/bg_main.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  
+  background-size: 100% auto;   /* ✅ 핵심 */
   background-position: top center;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+
   z-index: -2;
 }
 
@@ -777,5 +778,157 @@ display: block;
 
 .page-fade.active {
   opacity: 1;
+}
+
+/* ===== Hall poster reveal ===== */
+
+.hall-card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.hall-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Poster overlay caption ===== */
+
+.poster-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.poster-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+}
+
+.poster-wrap:hover .poster-caption {
+  opacity: 1;
+}
+
+/* =====================================
+   Background system (Main / Hall split)
+===================================== */
+
+/* 공통 */
+.site-background {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -2;
+  background-size: 100% auto;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+/* 대표화면 (스크롤 함께 이동) */
+.site-background.main {
+  position: absolute;
+  min-height: 100%;
+  background-image: url("../images/bg_main.jpg");
+}
+
+/* 전시관 (공간 고정) */
+.site-background.hall {
+  position: fixed;
+  inset: 0;
+  background-image: url("../images/bg_hall.jpg");
+}
+
+/* =====================================
+   Main poster sizing (Lobby only)
+===================================== */
+
+.main-poster img {
+  height: 38vh;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+/* =========================
+   Hall Entry Layout
+========================= */
+
+.hall-entry {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 120px auto;
+  padding: 0 40px;
+}
+
+.hall-poster {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 40px;
+}
+
+.artist-profile {
+  color: #ddd;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.artist-note {
+  color: #eee;
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+/* ===== Hall entry reveal ===== */
+
+.hall-entry {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.hall-entry.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Enter exhibition button ===== */
+
+.enter-exhibition-wrap {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.enter-exhibition {
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  padding: 14px 28px;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: all 0.35s ease;
+}
+
+.enter-exhibition:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
 }
 
