@@ -487,6 +487,7 @@ body.archive {
 
 /* 대표화면 (index) */
 body.home {
+  background-color: #000;
   font-size: 14px;
 }
 
@@ -728,7 +729,8 @@ body {
 }
 
 .site-background.main {
-  position: absolute;   /* ⭐ fixed → absolute */
+  position: fixed;   /* ⭐ fixed → absolute */
+  inset: 0;
   top: 0;
   left: 0;
   width: 100%;
@@ -950,3 +952,14 @@ display: block;
   margin: 120px auto;
   justify-items: center;
 }
+
+/* ===== Lobby hall posters ===== */
+
+.exhibition img {
+  width: auto;
+  height: 42vh;        /* ⭐ 핵심 */
+  max-height: 520px;
+  display: block;
+  margin: 0 auto;
+}
+
