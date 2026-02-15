@@ -47,9 +47,6 @@ function renderExhibitions(exhibitions) {
     img.src = exhibition.poster;
     img.alt = exhibition.title;
     img.style.cursor = "pointer";
-    img.onclick = () => {
-      location.href = `exhibition.html?id=${exhibition.id}`;
-    };
 
     const meta = document.createElement("div");
     meta.className = "meta";
@@ -58,25 +55,11 @@ function renderExhibitions(exhibitions) {
     posterWrap.appendChild(img);
     posterWrap.appendChild(meta);
 
-    const noteWrap = document.createElement("div");
-    noteWrap.className = "artist-note";
-    noteWrap.textContent = "Loading…";
-
-    if (exhibition.artistNote) {
-      fetch(exhibition.artistNote)
-        .then(res => res.text())
-        .then(text => {
-          noteWrap.classList.add("exhibition-text");
-          noteWrap.innerHTML = text;
-
-        })
-        .catch(() => {
-          noteWrap.textContent = "";
-        });
-    }
+    img.onclick = () => {
+      location.href = `hall.html?hall=hall01`;
+    };
 
     body.appendChild(posterWrap);
-    body.appendChild(noteWrap);
     block.appendChild(body);
     container.appendChild(block);
   });
