@@ -56,8 +56,9 @@ function renderExhibitions(exhibitions) {
     posterWrap.appendChild(meta);
 
     img.onclick = () => {
-      location.href = `hall.html?hall=hall01`;
+      location.href = `hall.html?hall=${exhibition.hall}`;
     };
+
 
     body.appendChild(posterWrap);
     block.appendChild(body);
