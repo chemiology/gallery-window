@@ -89,23 +89,36 @@ if (enterBtn) {
   });
 
 // ===== Hall ambient sound fade-in =====
-/*
+
 const audio = document.getElementById("hallAudio");
+
+const goNext = () => {
+  const fade = document.getElementById("pageFade");
+
+  if (fade) {
+    fade.classList.add("active");
+    setTimeout(() => {
+      window.location.href = link.href;
+    }, 350);
+  } else {
+    window.location.href = link.href;
+  }
+};
 
 if (audio) {
   let v = audio.volume;
   const fadeOut = setInterval(() => {
     v -= 0.03;
     audio.volume = Math.max(v, 0);
+
     if (v <= 0) {
       clearInterval(fadeOut);
-      window.location.href = link.href;
+      goNext();
     }
   }, 60);
 } else {
-  window.location.href = link.href;
+  goNext();
 }
-*/
 
   // 포스터
   document.getElementById("hallPoster").src =
