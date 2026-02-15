@@ -121,7 +121,7 @@ document.getElementById("hallPoster").onclick = () => {
   // 작가 프로필 (선택)
   try {
     const profile = await fetch(`./assets/profiles/${exhibition.id}.txt`);
-    document.getElementById("artistProfile").innerText =
+    document.getElementById("artistProfile").innerHTML =
       await profile.text();
   } catch(e) {}
 }
@@ -148,4 +148,40 @@ document.addEventListener("click", function(e) {
   setTimeout(() => {
     window.location.href = link.href;
   }, 500);
+});
+
+// ===== hall ambient sound (user interaction start) =====
+document.addEventListener("click", function startHallAudio() {
+
+  const audio = document.getElementById("hallAudio");
+  if (!audio) return;
+
+  audio.volume = 0;
+  audio.play().catch(()=>{});
+
+  let v = 0;
+  const fade = setInterval(() => {
+    v += 0.02;
+    audio.volume = Math.min(v, 0.25);
+    if (v >= 0.25) clearInterval(fade);
+  }, 200);
+
+  // 한번만 실행
+  document.removeEventListener("click", startHallAudio);
+
+});
+
+// ===== artist note progressive reveal =====
+window.addEventListener("scroll", () => {
+
+  document.querySelectorAll(".artist-note p")
+    .forEach(p => {
+
+      const rect = p.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight * 0.85) {
+        p.style.opacity = "0.9";
+      }
+    });
+
 });
