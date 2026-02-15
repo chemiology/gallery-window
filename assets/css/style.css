@@ -972,3 +972,9 @@ display: block;
   object-fit: contain;
 }
 
+body.home .exhibition img {
+  height: 46vh !important;
+  width: auto !important;
+  max-height: 640px;
+}
+
