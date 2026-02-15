@@ -14,6 +14,7 @@ async function loadHall() {
   const list = document.getElementById("exhibitionList");
   list.innerHTML = "";
 
+/*
   if (hall && hall.exhibitions.length > 0) {
 
     hall.exhibitions.forEach((ex, i) => {
@@ -38,7 +39,7 @@ list.appendChild(card);
     });
 
   }
-
+*/
 
 
     // ✅ 전시 입구 내용 로드 (여기에 추가)
@@ -81,12 +82,34 @@ if (enterBtn) {
       window.location.href = enterBtn.href;
     }, 500);
   });
+
+// ===== Hall ambient sound fade-in =====
+const audio = document.getElementById("hallAudio");
+
+if (audio) {
+  let v = audio.volume;
+  const fadeOut = setInterval(() => {
+    v -= 0.03;
+    audio.volume = Math.max(v, 0);
+    if (v <= 0) {
+      clearInterval(fadeOut);
+      window.location.href = link.href;
+    }
+  }, 60);
+} else {
+  window.location.href = link.href;
 }
 
 
   // 포스터
   document.getElementById("hallPoster").src =
     `assets/posters/${exhibition.id}.jpg`;
+
+document.getElementById("hallPoster").onclick = () => {
+  window.location.href =
+    `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+};
+
 
   // 작가노트
   const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
@@ -105,7 +128,7 @@ if (enterBtn) {
 setTimeout(() => {
   document.querySelector(".hall-entry")
     ?.classList.add("show");
-}, 400);
+}, 300);
 
 
 loadHall();
