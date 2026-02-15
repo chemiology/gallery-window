@@ -978,3 +978,35 @@ body.home .exhibition img {
   max-height: 640px;
 }
 
+/* ===== 대표화면 포스터 강제 크기 ===== */
+
+body.home .exhibition {
+  text-align: center;
+}
+
+body.home .exhibition img {
+  height: 55vh !important;
+  width: auto !important;
+  max-height: 720px;
+  max-width: none !important;
+}
+
+.hall-entry {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 80px;
+  align-items: start;
+
+  max-width: 1200px;
+  margin: 120px auto;
+}
+
+.hall-left img {
+  width: 100%;
+  height: auto;
+}
+
+.entry-buttons {
+  margin-top: 40px;
+}
+
