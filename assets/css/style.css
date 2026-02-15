@@ -963,3 +963,12 @@ display: block;
   margin: 0 auto;
 }
 
+/* ===== Lobby poster fix ===== */
+
+.exhibition img {
+  width: auto !important;
+  height: 46vh;
+  max-height: 560px;
+  object-fit: contain;
+}
+
