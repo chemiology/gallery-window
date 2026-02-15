@@ -724,14 +724,21 @@ body {
 .site-background {
   position: fixed;
   inset: 0;
-  background-color: #000;
+  z-index: -2;
+}
+
+.site-background.main {
   background-image: url("../images/bg_main.jpg");
-  
-  background-size: 100% auto;   /* ✅ 핵심 */
+  background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
+}
 
-  z-index: -2;
+.site-background.hall {
+  background-image: url("../images/bg_hall.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 
 /* hall만 어둡게 */
@@ -740,14 +747,6 @@ body {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.65);
-}
-
-/* 대표화면은 거의 원본 밝기 */
-.site-background.main::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.25);
 }
 
 body {
@@ -830,35 +829,6 @@ display: block;
 
 .poster-wrap:hover .poster-caption {
   opacity: 1;
-}
-
-/* =====================================
-   Background system (Main / Hall split)
-===================================== */
-
-/* 공통 */
-.site-background {
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: -2;
-  background-size: 100% auto;
-  background-position: top center;
-  background-repeat: no-repeat;
-}
-
-/* 대표화면 (스크롤 함께 이동) */
-.site-background.main {
-  position: absolute;
-  min-height: 100%;
-  background-image: url("../images/bg_main.jpg");
-}
-
-/* 전시관 (공간 고정) */
-.site-background.hall {
-  position: fixed;
-  inset: 0;
-  background-image: url("../images/bg_hall.jpg");
 }
 
 /* =====================================
