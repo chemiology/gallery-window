@@ -54,6 +54,10 @@ async function loadHallEntry(exhibitionId) {
   const res = await fetch("./assets/config/gallery.json");
   const data = await res.json();
 
+  // ⭐ 이 줄 추가 (핵심)
+  const exhibitionList =
+    data.currentExhibitions || data.exhibitions || [];
+
   const exhibition = exhibitionList.find(
     ex => ex.id === exhibitionId
   );
