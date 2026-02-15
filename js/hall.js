@@ -54,10 +54,15 @@ async function loadHallEntry(exhibitionId) {
   const res = await fetch("./assets/config/gallery.json");
   const data = await res.json();
 
-  const exhibition = (data.exhibitions || data.currentExhibitions || [])
-    .find(ex => ex.id === exhibitionId);
+  const exhibition = exhibitionList.find(
+    ex => ex.id === exhibitionId
+  );
+
   if (!exhibition) {
-    console.error("Exhibition not found:", exhibitionId, data);
+    console.warn(
+      "Hall references missing exhibition:",
+      exhibitionId
+    );
     return;
   }
 
