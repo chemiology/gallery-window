@@ -171,17 +171,3 @@ document.addEventListener("click", function startHallAudio() {
 
 });
 
-// ===== artist note progressive reveal =====
-window.addEventListener("scroll", () => {
-
-  document.querySelectorAll(".artist-note p")
-    .forEach(p => {
-
-      const rect = p.getBoundingClientRect();
-
-      if (rect.top < window.innerHeight * 0.85) {
-        p.style.opacity = "0.9";
-      }
-    });
-
-});
