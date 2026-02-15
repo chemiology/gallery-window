@@ -84,6 +84,7 @@ if (enterBtn) {
   });
 
 // ===== Hall ambient sound fade-in =====
+/*
 const audio = document.getElementById("hallAudio");
 
 if (audio) {
@@ -99,15 +100,16 @@ if (audio) {
 } else {
   window.location.href = link.href;
 }
-
+*/
 
   // 포스터
   document.getElementById("hallPoster").src =
     `assets/posters/${exhibition.id}.jpg`;
-
+/*
 document.getElementById("hallPoster").onclick = () => {
   window.location.href =
     `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+*/
 };
 
 
