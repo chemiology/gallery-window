@@ -40,7 +40,6 @@ list.appendChild(card);
   }
 }
 
-    });
 
     // ✅ 전시 입구 내용 로드 (여기에 추가)
     loadHallEntry(hall.exhibitions[0]);
