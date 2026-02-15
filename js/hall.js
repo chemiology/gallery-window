@@ -96,20 +96,20 @@ if (enterBtn) {
 
 const audio = document.getElementById("hallAudio");
 
-const goNext = () => {
+const goNext = (url) => {
   const fade = document.getElementById("pageFade");
 
   if (fade) {
     fade.classList.add("active");
     setTimeout(() => {
-      window.location.href = link.href;
+      window.location.href = url;
     }, 350);
   } else {
-    window.location.href = link.href;
+    window.location.href = url;
   }
 };
 
-if (audio) {
+if (audioReady) {
   let v = audio.volume;
   const fadeOut = setInterval(() => {
     v -= 0.03;
@@ -117,11 +117,11 @@ if (audio) {
 
     if (v <= 0) {
       clearInterval(fadeOut);
-      goNext();
+      goNext(link.href);
     }
   }, 60);
 } else {
-  goNext();
+  goNext(link.href);   // ⭐ 여기 수정
 }
 
   // 포스터
@@ -172,10 +172,14 @@ document.addEventListener("click", function(e) {
   }, 500);
 });
 
+
 // ===== hall ambient sound (user interaction start) =====
 document.addEventListener("click", function startHallAudio() {
 
   const audio = document.getElementById("hallAudio");
+  const audioReady =
+    audio && audio.readyState >= 2;
+
   if (!audio) return;
 
   audio.volume = 0;
