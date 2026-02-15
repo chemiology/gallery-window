@@ -1,24 +1,24 @@
 {
   "halls": [
     {
-      "id": "hall01",
+      "id": "avatar_ii",
       "title": "1관",
       "exhibitions": ["avatar_ii"]
     },
     {
-      "id": "hall02",
+      "id": "becoming_tree",
       "title": "2관",
       "exhibitions": ["becoming_tree"]
     },
     {
-      "id": "hall03",
+      "id": "avatars_dream",
       "title": "3관",
-      "exhibitions": []
+      "exhibitions": ["avatars_dream"]
     },
     {
-      "id": "hall04",
+      "id": "Marionette",
       "title": "4관",
-      "exhibitions": []
+      "exhibitions": ["Marionette"]
     }
   ]
 }
