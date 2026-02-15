@@ -121,3 +121,8 @@ document.addEventListener("click", function(e) {
   }, 500);
 });
 
+if (!hall) {
+  console.error("Hall not found:", hallId);
+  return;
+}
+
