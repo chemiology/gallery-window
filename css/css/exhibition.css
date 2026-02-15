@@ -1,0 +1,534 @@
+/* =====================================================
+   Gallery Window – Exhibition Style (FINAL)
+===================================================== */
+
+/* ---------- Base ---------- */
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --theme-color: #c6d4e1;
+}
+
+body {
+  margin: 0;
+  background-color: #0f1114;
+  color: #e6e7e9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
+  overflow-y: auto;
+}
+
+/* ---------- Viewer ---------- */
+
+/* 이미지 주변 미묘한 테마 빛 */
+.viewer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    var(--theme-color) 140%
+  );
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.viewer img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+
+  opacity: 0;
+  filter: brightness(0.75) blur(2px);
+
+  transition:
+    opacity 1.2s ease,
+    filter 2.0s ease,
+    transform 6s ease-out;
+}
+
+.viewer img.visible {
+  opacity: 1;
+  filter: brightness(1) blur(0);
+}
+
+/* ---------- Fade ---------- */
+
+/* 
+.fade-in { opacity: 1; }
+.fade-out { opacity: 0; }
+*/
+
+
+/* ---------- Control Panel ---------- */
+
+.control-panel {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 1000;
+}
+
+.control-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.control-box {
+  margin-top: 12px;
+  padding: 18px 20px;
+  width: 220px;
+  background: rgba(18, 20, 24, 0.95);
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.control-box label {
+  display: block;
+  margin-bottom: 14px;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.control-box input,
+.control-box button {
+  cursor: pointer;
+}
+
+.control-box button {
+  margin-top: 10px;
+  padding: 6px 10px;
+  width: 100%;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  color: #e6e7e9;
+}
+
+.control-box button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ---------- Caption ---------- */
+
+.caption {
+  position: fixed;
+  bottom: 64px; /* 방명록과 겹치지 않도록 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 13px;
+  opacity: 0.6;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+  .viewer img {
+    max-width: 94vw;
+    max-height: 86vh;
+  }
+
+  .control-panel {
+    top: 16px;
+    left: 16px;
+  }
+
+  .control-box {
+    width: 200px;
+    font-size: 12px;
+  }
+
+  .caption {
+    bottom: 56px;
+    font-size: 12px;
+  }
+}
+
+/* =====================================================
+   Exhibition Guestbook – FINAL (B안 연출형)
+===================================================== */
+
+.exhibition-guestbook {
+  position: fixed;
+  bottom: -12px;   /* 기존 12px → 위로 올림 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  max-width: 800px;
+
+  background: rgba(0, 0, 0, 0.55);
+  padding: 12px 16px;
+  border-radius: 8px;
+
+  box-sizing: border-box;
+  z-index: 1000;
+
+  opacity: 0.35;
+  transition: opacity 0.6s ease;
+}
+
+/* 마우스 접근 또는 입력 중일 때 */
+.exhibition-guestbook:hover,
+.exhibition-guestbook:focus-within {
+  opacity: 1;
+}
+
+/* 방명록 리스트 기본 상태: 숨김 */
+.exhibition-guestbook ul {
+  margin: 6px 0 8px 0;
+  padding: 0;
+  list-style: none;
+
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  transition: opacity 0.6s ease, max-height 0.6s ease;
+}
+
+/* 열림 상태 */
+.exhibition-guestbook:hover ul,
+.exhibition-guestbook:focus-within ul {
+  opacity: 1;
+  max-height: 200px;
+}
+
+/* 방명록 문장 – 정확히 3줄 */
+.exhibition-guestbook ul li {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  line-height: 22px;
+  max-height: 66px; /* 22px × 3 */
+}
+
+/* 라벨 */
+.guestbook-label {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  white-space: nowrap;
+}
+
+/* 입력 영역 */
+#guestbook-form {
+  display: flex;
+  gap: 10px;
+}
+
+#guestbook-input {
+  flex: 1;
+  padding: 8px 12px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 8px;
+  color: #e6e7e9;
+  font-size: 14px;
+}
+
+#guestbook-form button {
+  padding: 8px 14px;
+  background: none;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  color: #e6e7e9;
+  font-size: 13px;
+}
+
+#guestbook-form button:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* =========================
+   Back to Home – Exhibition
+   ========================= */
+
+.back-home-exhibition {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 13px;
+  color: #eee;
+  text-decoration: none;
+
+  padding: 6px 10px;
+  border-left: 2px solid rgba(255,255,255,0.6);
+
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+
+  z-index: 9999; /* 슬라이드 위 */
+}
+
+.back-home-exhibition:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* =========================
+   Mobile 대응 (권장)
+   ========================= */
+@media (max-width: 768px) {
+  .back-home-exhibition {
+    display: none;
+  }
+}
+
+/* =========================
+   Audio Hint (Near Settings)
+   ========================= */
+
+.audio-hint {
+  position: fixed;
+  top: 72px;        /* ← 위치 여기서만 조절 */
+  left: 20px;
+
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.75);
+
+  background: rgba(0,0,0,0.4);
+  padding: 6px 10px;
+  border-radius: 4px;
+
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+
+  pointer-events: none;   /* 클릭 방해 방지 */
+  z-index: 900;           /* control-box보다 아래 */
+}
+
+/* 모바일에서는 숨김 */
+@media (max-width: 768px) {
+  .audio-hint {
+    display: none;
+  }
+}
+
+figure.exhibition-poster {
+  margin: 0;
+}
+
+figure.exhibition-poster {
+  width: 100%;
+}
+
+figure.exhibition-poster {
+  width: 100%;
+  margin: 0;
+}
+
+figure.exhibition-poster {
+  margin: 0;
+  margin-inline: 0;
+}
+
+figure.exhibition-poster {
+  margin: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+/* 상세페이지에서는 스크롤 허용 */
+body.exhibition-detail {
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+
+/* ================================
+   상세페이지 전용 강제 규칙
+   (viewer 영향 완전 차단)
+================================ */
+
+/* 포스터 이미지 크기 정상화 */
+body.exhibition-detail figure.exhibition-poster img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto !important;
+  object-fit: contain;
+  display: block;
+}
+
+/* 정보 텍스트 span 줄 단위 강제 */
+body.exhibition-detail .exhibition-text span {
+  display: block !important;
+  line-height: 1.25 !important;
+  margin-bottom: 1px !important;
+}
+
+/* 입력창을 이미지 밖으로 이동 */
+.exhibition-guestbook form {
+  position: relative;   /* stacking 안정 */
+  z-index: 1;
+
+  display: flex;
+  align-items: center;  /* 세로 정렬 안정 */
+  gap: 8px;             /* 살짝 줄임 */
+}
+
+.exhibition-guestbook input[type="text"] {
+  flex: 1;
+  max-width: 70%;
+  padding: 5px 8px;
+  font-size: 13px;
+}
+
+.exhibition-guestbook button {
+  padding: 5px 9px;
+  font-size: 12px;
+}
+
+/* 타이틀 항상 앞으로 */
+.exhibition-guestbook h3 {
+  color: var(--theme-color);
+  position: relative;
+  z-index: 10;
+  font-size: 13px;
+  margin-bottom: 6px;
+  letter-spacing: 0.03em;
+  opacity: 0.85;
+}
+
+.exhibition-guestbook ul li {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: guestFadeIn 0.4s ease forwards;
+}
+
+@keyframes guestFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.exhibition-guestbook input[type="text"] {
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exhibition-guestbook input[type="text"]:focus {
+  outline: none;
+  border: 1px solid var(--theme-color);
+  box-shadow: 0 0 0 2px var(--theme-color);
+}
+
+.exhibition-guestbook button {
+  padding: 5px 9px;
+  font-size: 12px;
+
+  background: transparent;
+  border: 1px solid var(--theme-color);
+  color: var(--theme-color);
+
+  transition: all 0.2s ease;
+}
+
+.exhibition-guestbook button:hover {
+  background: var(--theme-color);
+  color: #0f1114;   /* 어두운 배경 기준 */
+  box-shadow: 0 0 12px var(--theme-color);
+}
+
+.exhibition-guestbook button:active {
+  transform: scale(0.96);
+}
+
+/* 새 글 강조 */
+.highlight-new {
+  animation: highlightFade 1s ease forwards;
+}
+
+@keyframes highlightFade {
+  0% {
+    color: var(--theme-color);
+    text-shadow: 0 0 8px var(--theme-color);
+  }
+  100% {
+    color: #e6e7e9;
+    text-shadow: none;
+  }
+}
+
+/* 전체 살짝 흔들림 */
+.guestbook-shake {
+  animation: subtleShake 0.25s ease;
+}
+
+@keyframes subtleShake {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-1px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes themeFadeInOut {
+  0%   { opacity: 0.18; }
+  100% { opacity: 0; }
+}
+
+.fade-img {
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+}
+
+.fade-img.visible {
+  opacity: 1;
+}
+
+/* 🔥 마지막 → 첫 이미지 전용 */
+.loop-transition {
+  transition: opacity 2.2s ease-in-out;
+}
+
+.exhibition-guestbook.flash {
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  transition: box-shadow 0.4s ease;
+}
+
+.viewer.loop-dark {
+  background:#000;
+  transition: background 0.9s ease;
+}
+
+.exhibition-guestbook.flash {
+  box-shadow:
+    0 0 25px rgba(255,255,255,0.25),
+    0 0 60px rgba(255,255,255,0.15);
+  transform: translateX(-50%) scale(1.02);
+}
+
+/* 처음에는 이미지 보이지 않음 */
+.viewer img {
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
