@@ -1,210 +1,62 @@
 async function loadHall() {
 
   const params = new URLSearchParams(location.search);
-  const hallId = params.get("hall");
-
-  const res = await fetch("./data/hall.json");
-  const data = await res.json();
-
-  const hall = data.halls.find(h => h.id === hallId);
-
-  document.getElementById("hallTitle").textContent =
-    hall ? hall.title : "Hall";
-
-  const list = document.getElementById("exhibitionList");
-  list.innerHTML = "";
-
-/*
-  if (hall && hall.exhibitions.length > 0) {
-
-    hall.exhibitions.forEach((ex, i) => {
-
-const card = document.createElement("div");
-card.className = "hall-card";
-
-card.innerHTML = `
-  <a href="exhibition.html?id=${ex}&hall=${hall.id}" class="hall-link">
-    <div class="poster-wrap">
-      <img src="assets/posters/${ex}.jpg" alt="${ex}">
-      <div class="poster-caption">${ex}</div>
-    </div>
-  </a>
-`;
-
-list.appendChild(card);
-  setTimeout(() => {
-    card.classList.add("show");
-  }, i * 180);
-
-    });
-
-  }
-*/
-
-
-    // ✅ 전시 입구 내용 로드 (여기에 추가)
-    loadHallEntry(hall.exhibitions[0]);
-}
-
-async function loadHallEntry(exhibitionId) {
-
-  const params = new URLSearchParams(location.search);
   const hallId = params.get("hall") || "hall01";
 
-  const res = await fetch("./assets/config/gallery.json");
-  const data = await res.json();
+  // hall 정보 로드
+  const hallRes = await fetch("data/hall.json");
+  const hallData = await hallRes.json();
 
-  // ⭐ 이 줄 추가 (핵심)
-  const exhibitionList =
-    data.currentExhibitions || data.exhibitions || [];
-
-  const exhibition = exhibitionList.find(
-    ex => ex.id === exhibitionId
-  );
-
-  if (!exhibition) {
-    console.warn(
-      "Hall references missing exhibition:",
-      exhibitionId
-    );
+  const hall = hallData.halls.find(h => h.id === hallId);
+  if (!hall) {
+    console.error("Hall not found:", hallId);
     return;
   }
 
+  document.getElementById("hallTitle").textContent = hall.title;
 
-  if (!exhibition) return;
+  // 전시 정보 로드
+  const res = await fetch("./assets/config/gallery.json");
+  const data = await res.json();
 
-// 전시장 입장 버튼 연결
-const enterBtn = document.getElementById("enterExhibition");
+  const exhibition = data.exhibitions.find(
+    ex => ex.id === hall.exhibitions[0]
+  );
 
-if (enterBtn) {
-
-  enterBtn.href =
-    `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
-
-  enterBtn.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    const fade = document.getElementById("pageFade");
-    fade.classList.add("active");
-
-    setTimeout(() => {
-      window.location.href = enterBtn.href;
-    }, 500);
-  });
-
-// ===== Hall ambient sound fade-in =====
-
-const audio = document.getElementById("hallAudio");
-
-const goNext = (url) => {
-  const fade = document.getElementById("pageFade");
-
-  if (fade) {
-    fade.classList.add("active");
-    setTimeout(() => {
-      window.location.href = url;
-    }, 350);
-  } else {
-    window.location.href = url;
+  if (!exhibition) {
+    console.error("Exhibition not found:", hall.exhibitions[0]);
+    return;
   }
-};
-
-const targetUrl =
-  `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
-
-if (audio && audio.readyState >= 2) {
-  let v = audio.volume;
-  const fadeOut = setInterval(() => {
-    v -= 0.03;
-    audio.volume = Math.max(v, 0);
-
-    if (v <= 0) {
-      clearInterval(fadeOut);
-      goNext(targetUrl);
-    }
-  }, 60);
-} else {
-  goNext(targetUrl);
-}
 
   // 포스터
-  document.getElementById("hallPoster").src =
-    `assets/posters/${exhibition.id}.jpg`;
+  const poster = document.getElementById("hallPoster");
+  poster.src = `assets/posters/${exhibition.id}.jpg`;
 
-  document.getElementById("hallPoster").onclick = () => {
+  poster.onclick = () => {
     window.location.href =
       `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
   };
 
-};
-
   // 작가노트
-  const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
+  const note = await fetch(exhibition.artistNote);
   document.getElementById("artistNote").innerText =
     await note.text();
 
-  // 작가 프로필 (선택)
+  // 프로필 (있으면)
   try {
-    const profile = await fetch(`./assets/profiles/${exhibition.id}.txt`);
-    document.getElementById("artistProfile").innerHTML =
+    const profile = await fetch(
+      `assets/profiles/${exhibition.id}.txt`
+    );
+    document.getElementById("artistProfile").innerText =
       await profile.text();
   } catch(e) {}
+
+  // 작품보기 버튼
+  const enterBtn = document.getElementById("enterExhibition");
+  if (enterBtn) {
+    enterBtn.href =
+      `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+  }
 }
 
-// 입구 영역 부드럽게 등장
-setTimeout(() => {
-  document.querySelector(".hall-entry")
-    ?.classList.add("show");
-}, 300);
-
-
 loadHall();
-
-document.addEventListener("click", function(e) {
-
-  // ⭐ hall 페이지에서만 실행
-  if (!document.body.classList.contains("hall")) return;
-
-  // ⭐ 실제 사용자 클릭만 허용 (자동 이동 차단)
-  if (!e.isTrusted) return;
-
-const link = e.target.closest(".hall-link");
-
-/* ⭐ hall-grid 안에서만 동작하도록 제한 */
-if (!link || !link.closest("#exhibitionList")) return;
-
-  e.preventDefault();
-
-  const fade = document.getElementById("pageFade");
-  fade.classList.add("active");
-
-  setTimeout(() => {
-    window.location.href = link.href;
-  }, 500);
-});
-
-
-// ===== hall ambient sound (user interaction start) =====
-document.addEventListener("click", function startHallAudio() {
-
-  const audio = document.getElementById("hallAudio");
-  const audioReady =
-    audio && audio.readyState >= 2;
-
-  if (!audio) return;
-
-  audio.volume = 0;
-  audio.play().catch(()=>{});
-
-  let v = 0;
-  const fade = setInterval(() => {
-    v += 0.02;
-    audio.volume = Math.min(v, 0.25);
-    if (v >= 0.25) clearInterval(fade);
-  }, 200);
-
-  // 한번만 실행
-  document.removeEventListener("click", startHallAudio);
-
-});
-
