@@ -873,7 +873,8 @@ display: block;
 }
 
 .hall-poster:hover {
-  transform: scale(1.03);
+  transform: scale(1.025);
+  filter: contrast(1.1) brightness(1.04);
 }
 
 .artist-profile {
@@ -965,6 +966,7 @@ display: block;
   max-height: 560px;
 
   object-fit: contain;
+  filter: contrast(1.05) brightness(1.02);
 }
 
 /* ===== Lobby poster fix ===== */
@@ -1012,6 +1014,7 @@ body.home .exhibition img {
   width: 500px;
   flex-shrink: 0;
   text-align: center;
+  filter: drop-shadow(0 30px 40px rgba(0,0,0,0.35));
 }
 
 .hall-left img {
@@ -1242,6 +1245,7 @@ body.home .exhibition img:hover {
   box-shadow:
     0 20px 40px rgba(0,0,0,0.45),
     0 6px 12px rgba(0,0,0,0.35);
+  filter: contrast(1.06) brightness(1.02);
 }
 
 .artist-note-area {
@@ -1251,5 +1255,16 @@ body.home .exhibition img:hover {
 .hall-entry.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+.section-title + .exhibition-text {
+  margin-bottom: 24px;
+}
+
+@media (max-width: 900px) {
+  .hall-entry {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 }
 
