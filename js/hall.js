@@ -109,7 +109,7 @@ const goNext = (url) => {
   }
 };
 
-if (audioReady) {
+if (audio && audio.readyState >= 2) {
   let v = audio.volume;
   const fadeOut = setInterval(() => {
     v -= 0.03;
