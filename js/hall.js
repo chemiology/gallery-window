@@ -93,11 +93,14 @@ const poster = document.getElementById("hallPoster");
 
 if (poster) {
   poster.addEventListener("click", () => {
+
+    const params = new URLSearchParams(window.location.search);
+    const hallId = params.get("hall");
+
     window.location.href =
-      `exhibition.html?id=${exhibition.id}&hall=${hall.id}`;
+      `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
   });
 }
-
 
   // 작가노트
   const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
