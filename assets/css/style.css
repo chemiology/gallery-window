@@ -944,14 +944,6 @@ display: block;
   border-bottom: 1px solid rgba(255,255,255,0.3);
 }
 
-/*
-.hall-left {
-  position: sticky;
-  top: 80px;
-  align-self: start;
-}
-*/
-
 .exhibitions {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1046,9 +1038,15 @@ body.home .exhibition img {
   object-fit: contain;
 }
 
+/*
 .hall-left {
   display: flex;
   flex-direction: column;
+}
+*/
+
+.hall-left {
+    display: none;
 }
 
 .hall-left img {
@@ -1294,6 +1292,16 @@ body.home .exhibition img:hover {
 #exhibitionList {
     max-width: 1400px;
     margin: 40px auto 80px auto;
+}
+
+.entry-buttons {
+    position: fixed;
+    left: 30px;
+    top: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 50;
 }
 
 
