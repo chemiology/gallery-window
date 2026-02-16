@@ -1284,24 +1284,27 @@ body.home .exhibition img:hover {
 
 .hall-entry {
   display: flex;
-  justify-content: center;
   align-items: flex-start;
-  gap: 100px;
+  justify-content: center;
+  gap: 120px;
 
   max-width: 1200px;
-  margin: 80px auto;
-  padding: 40px;
+  margin: 120px auto;
 }
 
 
 .entry-buttons {
-    position: fixed;
-    left: 40px;
-    top: 180px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+  position: fixed;
+  left: 20px;   /* 더 바깥 */
+  top: 220px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  z-index: 999;
 }
+
 
 #exhibitionList {
     max-width: 1400px;
