@@ -165,6 +165,9 @@ document.addEventListener("click", function(e) {
   // ⭐ hall 페이지에서만 실행
   if (!document.body.classList.contains("hall")) return;
 
+  // ⭐ 실제 사용자 클릭만 허용 (자동 이동 차단)
+  if (!e.isTrusted) return;
+
   const link = e.target.closest(".hall-link");
   if (!link) return;
 
