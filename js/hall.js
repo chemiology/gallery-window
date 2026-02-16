@@ -87,6 +87,9 @@ if (enterBtn) {
   // 포스터
   document.getElementById("hallPoster").src =
     `assets/posters/${exhibition.id}.jpg`;
+  const hero = document.getElementById("hallPoster");
+  if(hero) hero.style.display = "none";
+
 
   // 작가노트
   const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
