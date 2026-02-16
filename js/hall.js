@@ -88,7 +88,15 @@ if (enterBtn) {
   document.getElementById("hallPoster").src =
     `assets/posters/${exhibition.id}.jpg`;
   const hero = document.getElementById("hallPoster");
-  if(hero) hero.style.display = "none";
+
+const poster = document.getElementById("hallPoster");
+
+if (poster) {
+  poster.addEventListener("click", () => {
+    window.location.href =
+      `exhibition.html?id=${exhibition.id}&hall=${hall.id}`;
+  });
+}
 
 
   // 작가노트
