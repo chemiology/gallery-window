@@ -42,6 +42,9 @@ if (exhibitionId) {
 
   loadExhibition(exhibitionId);
   setupControls();
+  document.title =
+    `Gallery Window — ${exhibition.title}`;
+
 });
 
 /* -----------------------------------------------------
