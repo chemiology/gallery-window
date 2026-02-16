@@ -874,12 +874,24 @@ display: block;
   height: auto;
   display: block;
   margin-bottom: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.hall-poster:hover {
+  transform: scale(1.03);
 }
 
 .artist-profile {
   color: #ddd;
   line-height: 1.7;
   font-size: 15px;
+}
+
+.artist-note-area {
+  flex: 1;
+  max-width: 620px;
 }
 
 .artist-note {
@@ -1043,6 +1055,9 @@ body.home .exhibition img {
 .hall-left {
   display: flex;
   flex-direction: column;
+  width: 420px;
+  flex-shrink: 0;
+  text-align: center;
 }
 
 .hall-left img {
@@ -1156,7 +1171,7 @@ body.home .exhibition img:hover {
   flex-direction: column;
   gap: 14px;
 
-  z-index: 20;
+  z-index: 100;
 }
 
 .entry-buttons a {
@@ -1268,12 +1283,16 @@ body.home .exhibition img:hover {
 }
 
 .hall-entry {
-    display: flex;
-    gap: 80px;
-    align-items: flex-start;
-    max-width: 1400px;
-    margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 40px;
 }
+
 
 .entry-buttons {
     position: fixed;
