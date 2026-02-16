@@ -879,7 +879,7 @@ display: block;
 .artist-profile {
   color: #ddd;
   line-height: 1.7;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .artist-note-area {
@@ -905,7 +905,6 @@ display: block;
     opacity 1.2s ease,
     transform 1.2s ease;
 }
-
 
 
 .hall-entry.show {
@@ -1234,3 +1233,23 @@ body.home .exhibition img:hover {
     max-width: 1400px;
     margin: 40px auto 80px auto;
 }
+
+.hall-left {
+  transform: translateY(-20px);
+}
+
+.hall-poster {
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.45),
+    0 6px 12px rgba(0,0,0,0.35);
+}
+
+.artist-note-area {
+  padding-top: 18px;
+}
+
+.hall-entry.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
