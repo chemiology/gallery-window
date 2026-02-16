@@ -15,7 +15,7 @@ async function loadHall() {
   list.innerHTML = "";
 
   if (hall && hall.exhibitions.length > 0) {
-
+/*
     hall.exhibitions.forEach((ex, i) => {
 
 const card = document.createElement("div");
@@ -36,7 +36,7 @@ list.appendChild(card);
   }, i * 180);
 
     });
-
+*/
   }
 
 
