@@ -686,6 +686,8 @@ body.home .guestbook li {
   margin: 60px auto;
   padding: 0 20px;   /* 좌우 안전 여백 */
   background: #111;
+  position: relative;
+  z-index: 2;
 }
 
 .hall-card {
@@ -855,16 +857,15 @@ display: block;
 ========================= */
 
 .hall-entry {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 70px;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
 
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 40px auto 0 auto;
   padding: 80px 40px 120px;
 
-  min-height: 100vh;          /* ⭐ 핵심 */
-  align-content: start;       /* 위에서 시작 */
+  align-items: flex-start;
 }
 
 
@@ -1038,15 +1039,10 @@ body.home .exhibition img {
   object-fit: contain;
 }
 
-/*
+
 .hall-left {
   display: flex;
   flex-direction: column;
-}
-*/
-
-.hall-left {
-    display: none;
 }
 
 .hall-left img {
@@ -1153,15 +1149,14 @@ body.home .exhibition img:hover {
 
 .entry-buttons {
   position: fixed;
-  left: max(12px, calc((100vw - 1300px)/2 - 80px));
-  top: 50%;
-  transform: translateY(-50%);
+  left: 40px;
+  top: 220px;
 
   display: flex;
   flex-direction: column;
   gap: 14px;
 
-  z-index: 50;
+  z-index: 20;
 }
 
 .entry-buttons a {
