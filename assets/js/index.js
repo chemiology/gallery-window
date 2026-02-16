@@ -59,7 +59,6 @@ function renderExhibitions(exhibitions) {
       location.href = `hall.html?hall=${exhibition.hall}`;
     };
 
-
     body.appendChild(posterWrap);
     block.appendChild(body);
     container.appendChild(block);
