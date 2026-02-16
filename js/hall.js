@@ -168,8 +168,10 @@ document.addEventListener("click", function(e) {
   // ⭐ 실제 사용자 클릭만 허용 (자동 이동 차단)
   if (!e.isTrusted) return;
 
-  const link = e.target.closest(".hall-link");
-  if (!link) return;
+const link = e.target.closest(".hall-link");
+
+/* ⭐ hall-grid 안에서만 동작하도록 제한 */
+if (!link || !link.closest("#exhibitionList")) return;
 
   e.preventDefault();
 
