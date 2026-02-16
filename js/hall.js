@@ -109,6 +109,9 @@ const goNext = (url) => {
   }
 };
 
+const targetUrl =
+  `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+
 if (audio && audio.readyState >= 2) {
   let v = audio.volume;
   const fadeOut = setInterval(() => {
@@ -117,23 +120,23 @@ if (audio && audio.readyState >= 2) {
 
     if (v <= 0) {
       clearInterval(fadeOut);
-      goNext(link.href);
+      goNext(targetUrl);
     }
   }, 60);
 } else {
-  goNext(link.href);   // ⭐ 여기 수정
+  goNext(targetUrl);
 }
 
   // 포스터
   document.getElementById("hallPoster").src =
     `assets/posters/${exhibition.id}.jpg`;
-/*
-document.getElementById("hallPoster").onclick = () => {
-  window.location.href =
-    `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
-*/
-};
 
+  document.getElementById("hallPoster").onclick = () => {
+    window.location.href =
+      `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+  };
+
+};
 
   // 작가노트
   const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
