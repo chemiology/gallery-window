@@ -138,3 +138,7 @@ document.addEventListener("click", function(e) {
     window.location.href = link.href;
   }, 500);
 });
+
+setTimeout(() => {
+  document.querySelector(".hall-entry")?.classList.add("show");
+}, 100);
