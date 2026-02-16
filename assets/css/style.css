@@ -1261,3 +1261,39 @@ body.home .exhibition img:hover {
   border-color: rgba(255,255,255,0.9);
 }
 
+.hall-content {
+    display: flex;
+    gap: 60px;
+}
+
+.hall-left-note {
+    width: 420px;
+}
+
+.hall-right-list {
+    flex: 1;
+}
+
+.hall-entry {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+    max-width: 1400px;
+    margin: 60px auto;
+}
+
+.entry-buttons {
+    position: fixed;
+    left: 40px;
+    top: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+#exhibitionList {
+    max-width: 1400px;
+    margin: 40px auto 80px auto;
+}
+
+
