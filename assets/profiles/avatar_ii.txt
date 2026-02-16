@@ -1,5 +1,5 @@
 <div class="gap-lg section-title">작가 프로필</div>
-<div class="gap-lg section-title">개인전</div>
+<b>개인전</b>
 <div class="exhibition-text info">
 <span>2024 『아바타II』 갤러리 공간미끌 (서울)</span>
 <span>2019 『아바타: 환상 꿈』 한국카메라박물관 (과천)</span>
@@ -9,7 +9,7 @@
 <span>2015 『별이 빛나는 밤』 가나아트스페이스 (서울)</span>
 </div>
 
-<div class="gap-lg section-title">주요 그룹전</div>
+<b>주요 그룹전</b>
 <div class="exhibition-text info">
 <span>2025 『2025 인천국제현대사진기획전』 인천문화예술회관 (인천)</span>
 <span>2025 『2025 여주국제사진전』 강변유원지길 (여주)</span>
@@ -31,14 +31,14 @@
 <span>2016 『동강국제사진제 Growing Up IV』 영월문화예술회관 (영월)</span>
 </div>
 
-<div class="gap-lg section-title">사진집</div>
+<b>사진집</b>
 <div class="exhibition-text info">
 <span>2019 Avatar, 도서출판 하얀나무 (ISBN 979-11-85154-46-6)</span>
 <span>2017 Marionette, 도서출판 하얀나무 (ISBN 979-11-85154-27-5)</span>
 <span>2015 The Starry Night, 도서출판 하얀나무 (ISBN 979-11-85154-09-1)</span>
 </div>
 
-<div class="gap-lg section-title">수상/선정</div>
+<b>수상/선정</b>
 <div class="exhibition-text info">
 <span>2025 Beyond The Screen Festival, Honorable mention (벨기에)</span>
 <span>2024 SF스토리 공모전 AI영상부문 대상 (동아사이언스)</span>
@@ -47,7 +47,7 @@
 <span>2017 제4회 대한민국국제포토페스티벌 우수작가상</span>
 </div>
 
-<div class="gap-lg section-title">연락처</div>
+<b>연락처</b>
 <div class="exhibition-text info">
 <span>E-mail : chemiology@naver.com</span>
 <span>Homepage : https://www.kimkyoungsoo.com</span>
