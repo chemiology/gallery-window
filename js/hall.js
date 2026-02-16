@@ -162,6 +162,9 @@ loadHall();
 
 document.addEventListener("click", function(e) {
 
+  // ⭐ hall 페이지에서만 실행
+  if (!document.body.classList.contains("hall")) return;
+
   const link = e.target.closest(".hall-link");
   if (!link) return;
 
