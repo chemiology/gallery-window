@@ -99,7 +99,7 @@ if (enterBtn) {
   // 작가 프로필 (선택)
   try {
     const profile = await fetch(`./assets/profiles/${exhibition.id}.txt`);
-    document.getElementById("artistProfile").innerText =
+    document.getElementById("artistProfile").innerHTML =
       await profile.text();
   } catch(e) {}
 }
