@@ -142,3 +142,13 @@ document.addEventListener("click", function(e) {
 setTimeout(() => {
   document.querySelector(".hall-entry")?.classList.add("show");
 }, 100);
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    window.scrollBy({
+      top: 40,
+      behavior: "smooth"
+    });
+  }, 900);
+});
+
