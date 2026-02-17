@@ -3,50 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>갤러리 창 | Gallery Window</title>
 
-<link rel="icon" href="favicon.png">
-<meta property="og:title" content="Gallery Window">
-<meta property="og:description" content="Online Exhibition Space">
-<meta property="og:image"
-      content="https://chemiology.github.io/gallery-window/assets/og-gallery.jpg">
-<meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 
-<meta name="description"
-      content="Gallery Window — Contemporary online photography exhibition space by Kyoungsoo Kim.">
+  <!-- Apple / iPhone -->
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#111111">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gallery Window">
+  <meta property="og:description" content="Online Exhibition Space">
+  <meta property="og:image"
+        content="https://chemiology.github.io/gallery-window/assets/og-gallery.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- SEO -->
+  <meta name="description"
+        content="Gallery Window — Contemporary online photography exhibition space by Kyoungsoo Kim.">
 
   <link rel="stylesheet" href="assets/css/style.css" />
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ArtGallery",
-  "name": "Gallery Window",
-  "url": "https://chemiology.github.io/gallery-window",
-  "description": "Online exhibition space presenting photography and visual works by Kyoungsoo Kim.",
-  "creator": {
-    "@type": "Person",
-    "name": "Kyoungsoo Kim"
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ArtGallery",
+    "name": "Gallery Window",
+    "url": "https://chemiology.github.io/gallery-window",
+    "description": "Online exhibition space presenting photography and visual works by Kyoungsoo Kim.",
+    "creator": {
+      "@type": "Person",
+      "name": "Kyoungsoo Kim"
+    }
   }
-}
-</script>
+  </script>
 
 </head>
-
-<body class="home">
-
-<div class="site-background main"></div>
-
-<header class="site-header">
-  <h1>
-    <span class="ko">갤러리 창</span>
-    <span class="en">Gallery Window</span>
-  </h1>
-  <p class="subtitle">A window for contemporary photography</p>
-
-  <!-- 대표 공지사항 (있을 때만 표시) -->
-  <div id="headline-notice"></div>
-</header>
 
 <!-- 하단 : 기존 시스템 유지 -->
 <main class="main">
