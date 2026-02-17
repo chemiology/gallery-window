@@ -144,11 +144,12 @@ setTimeout(() => {
 }, 100);
 
 window.addEventListener("load", () => {
-  setTimeout(() => {
-    window.scrollBy({
-      top: 40,
-      behavior: "smooth"
-    });
-  }, 900);
+  const entry = document.querySelector(".hall-entry");
+
+  if (entry) {
+    setTimeout(() => {
+      entry.classList.add("show");
+    }, 200);
+  }
 });
 
