@@ -1279,3 +1279,17 @@ body.home .exhibition img:hover {
   margin-top: 36px;
 }
 
+/* Hall cinematic entrance */
+.hall-entry {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1.6s ease,
+    transform 1.6s ease;
+}
+
+.hall-entry.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
