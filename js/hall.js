@@ -22,9 +22,9 @@ const card = document.createElement("div");
 card.className = "hall-card";
 
 card.innerHTML = `
-  <a href="exhibition.html?id=${ex}&hall=${hall.id}" class="hall-link">
+  <a href="/gallery-window/exhibition.html?id=${ex}&hall=${hall.id}" class="hall-link">
     <div class="poster-wrap">
-      <img src="assets/posters/${ex}.jpg" alt="${ex}">
+      <img src="/gallery-window/assets/posters/${ex}.jpg" alt="${ex}">
       <div class="poster-caption">${ex}</div>
     </div>
   </a>
