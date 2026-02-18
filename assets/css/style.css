@@ -1340,31 +1340,49 @@ body.home .exhibition img:hover {
   border-color: #fff;
 }
 
-/* ==============================
-   Archive Poster Responsive
+/* ===============================
+   Archive layout (final)
 ================================ */
 
+.archive-page {
+  color: #d8d8d8;
+  text-align: center;
+}
+
+/* 제목 */
+.archive-title {
+  color: #eaeaea;
+  margin-bottom: 60px;
+  font-weight: 500;
+}
+
+/* 포스터 영역 */
 .poster-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  justify-content: start;
+  grid-template-columns: repeat(4, 260px);
+  justify-content: center;   /* ⭐ 중앙 정렬 */
+  gap: 48px;
 }
 
-@media (max-width: 1200px) {
-  .poster-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+/* 포스터 크기 축소 */
+.poster-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  transition: transform 0.25s ease;
 }
 
-@media (max-width: 800px) {
-  .poster-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.poster-item img:hover {
+  transform: scale(1.04);
 }
 
-@media (max-width: 500px) {
-  .poster-grid {
-    grid-template-columns: 1fr;
-  }
+/* 하단 버튼 */
+.archive-nav a {
+  color: #dcdcdc;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+.archive-nav a:hover {
+  color: #ffffff;
 }
