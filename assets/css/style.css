@@ -1386,3 +1386,34 @@ body.home .exhibition img:hover {
 .archive-nav a:hover {
   color: #ffffff;
 }
+
+/* ===============================
+   Archive text visibility fix
+================================ */
+
+/* 전체 기본 글자 */
+.archive-page {
+  color: #444;   /* 어두운 회색 */
+}
+
+/* 제목 */
+.archive-title {
+  color: #222;
+}
+
+/* 링크 (버튼 포함) */
+.archive-page a {
+  color: #333;
+}
+
+/* 하단 네비게이션 */
+.archive-nav a {
+  color: #333;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+
+.archive-nav a:hover {
+  color: #000;
+  border-color: #000;
+}
+
