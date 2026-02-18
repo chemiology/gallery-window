@@ -1310,3 +1310,11 @@ body.home .exhibition img:hover {
   gap: 40px;
 }
 
+/* ===== FORCE FIX : archive posters ===== */
+
+.archive-page .poster-item img {
+  width: 320px !important;
+  max-width: 100%;
+  height: auto !important;
+}
+
