@@ -1305,9 +1305,9 @@ body.home .exhibition img:hover {
 
 .poster-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
+  justify-content: start;
 }
 
 /* ===== FORCE FIX : archive posters ===== */
@@ -1318,3 +1318,53 @@ body.home .exhibition img:hover {
   height: auto !important;
 }
 
+/* ===== Archive page readability fix ===== */
+
+.archive-page {
+  color: #e6e6e6;
+}
+
+.archive-title {
+  color: #ffffff;
+  text-align: center;
+}
+
+.archive-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+.archive-nav a:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* ==============================
+   Archive Poster Responsive
+================================ */
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  justify-content: start;
+}
+
+@media (max-width: 1200px) {
+  .poster-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .poster-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .poster-grid {
+    grid-template-columns: 1fr;
+  }
+}
