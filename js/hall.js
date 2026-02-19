@@ -15,31 +15,19 @@ async function loadHall() {
   list.innerHTML = "";
 
   if (hall && hall.exhibitions.length > 0) {
-/*
-    hall.exhibitions.forEach((ex, i) => {
-
-const card = document.createElement("div");
-card.className = "hall-card";
-
-card.innerHTML = `
-  <a href="/gallery-window/exhibition.html?id=${ex}&hall=${hall.id}" class="hall-link">
-    <div class="poster-wrap">
-      <img src="/gallery-window/assets/posters/${ex}.jpg" alt="${ex}">
-      <div class="poster-caption">${ex}</div>
-    </div>
-  </a>
-`;
-
-list.appendChild(card);
-  setTimeout(() => {
-    card.classList.add("show");
-  }, i * 180);
-
-    });
-*/
   }
 
 
+data.halls.forEach(h => {
+
+  // 전시가 없는 전시관은 표시하지 않음
+  if (!h.exhibitions || h.exhibitions.length === 0) {
+    return;
+  }
+
+  createHallCard(h);
+
+});
 
     // ✅ 전시 입구 내용 로드 (여기에 추가)
     loadHallEntry(hall.exhibitions[0]);
