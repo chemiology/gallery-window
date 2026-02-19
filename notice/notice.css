@@ -140,3 +140,13 @@
   color: #083a8c !important;
 }
 
+.notice-body a {
+  color: #1a4fd8 !important;
+  text-decoration: underline !important;
+  font-weight: 600;
+}
+
+.notice-body a:hover {
+  color: #0b2f8a !important;
+}
+
