@@ -1591,14 +1591,15 @@ body.archive-detail-page {
    Archive Detail (전시 상세)
 ================================ */
 
+/* 상세페이지 기본 프레임 */
 .archive-detail-page main {
   max-width: 920px;
   margin: 80px auto;
   padding: 0 24px;
-  text-align: center;   /* ⭐ 핵심 */
+  text-align: center;
 }
 
-/* 포스터 중앙 */
+/* 포스터 중앙 정렬 */
 .archive-detail-page .exhibition-poster {
   text-align: center;
 }
@@ -1606,16 +1607,17 @@ body.archive-detail-page {
 .archive-detail-page .exhibition-poster img {
   display: block;
   margin: 0 auto 40px;
-  max-width: 520px;   /* hall 포스터와 유사 크기 */
+  max-width: 520px;
   width: 100%;
   height: auto;
 }
 
+
 /* ===============================
    Gallery artwork depth
+   (작품만 입체감 유지)
 ================================ */
 
-/* 포스터 */
 .exhibition img,
 .hall-poster,
 .exhibition-poster img {
@@ -1627,7 +1629,6 @@ body.archive-detail-page {
               box-shadow 0.35s ease;
 }
 
-/* 마우스 올렸을 때 */
 .exhibition img:hover,
 .hall-poster:hover {
   transform: translateY(-6px);
@@ -1636,17 +1637,28 @@ body.archive-detail-page {
     0 6px 14px rgba(0,0,0,0.18);
 }
 
-/* 텍스트 영역을 벽에서 살짝 분리 */
+
+/* ===============================
+   Text area normalization
+   (⚠️ 모든 흰/회색 박스 제거)
+================================ */
+
 .artist-note,
-.notice-detail,
-.exhibition-text {
-  background: rgba(255,255,255,0.4);  /* 완전 흰색 → 반투명 */
-  backdrop-filter: blur(6px);
-  padding: 28px 32px;
-  border-radius: 6px;
+.exhibition-text,
+.notice-detail {
+  background: none;
+  padding: 0;
+  border-radius: 0;
 }
 
-body {
+
+/* ===============================
+   Detail page background
+================================ */
+
+body.archive-detail-page,
+body.exhibition-detail,
+body.notice-page {
   background:
     linear-gradient(
       to bottom,

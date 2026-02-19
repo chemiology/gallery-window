@@ -178,3 +178,17 @@ body.exhibition-detail .exhibition-guestbook form {
 
 }
 
+/* ===============================
+   Remove profile white boxes
+================================ */
+
+.exhibition-text *,
+.exhibition-text p,
+.exhibition-text div,
+.exhibition-text section,
+.exhibition-text pre {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
