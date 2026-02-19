@@ -1488,7 +1488,9 @@ button:hover,
    Gallery entrance atmosphere
 ================================ */
 
-body {
+/* 전시장 연출 전용 */
+body.hall,
+body.exhibition {
   opacity: 0;
   transition: opacity 0.6s ease;
 }
