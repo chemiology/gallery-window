@@ -1511,3 +1511,24 @@ body.page-ready {
   margin-bottom: 200px;   /* ⭐ 핵심 */
 }
 
+/* ===== Emergency layout restore ===== */
+
+main {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  min-height: 100vh;
+}
+
+.archive-page,
+.notice-detail {
+  opacity: 1 !important;
+}
+
+/* ===== Safety guard : fade overlay fail-safe ===== */
+body:not(.transitioning) .page-fade {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+
