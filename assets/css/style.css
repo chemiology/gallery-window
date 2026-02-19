@@ -1540,4 +1540,34 @@ body:not(.transitioning) .page-fade {
   transform: none !important;
 }
 
+/* =========================
+   Archive Detail Page
+========================= */
+
+.archive-page {
+  background: #eaf2f7;   /* 연한 하늘색 */
+  color: #222;
+}
+
+.archive-page main {
+  max-width: 720px;
+  margin: 80px auto;
+  padding: 0 24px;
+}
+
+/* 이미지 중앙 + 텍스트 폭 동일 */
+.archive-page img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 32px;
+}
+
+.archive-page .exhibition-text {
+  text-align: center;
+  line-height: 1.8;
+  color: #222;
+}
+
+
 
