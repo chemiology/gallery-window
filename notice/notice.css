@@ -97,3 +97,12 @@
 .notice-body a:hover {
   color: #0b3d91;
 }
+
+.notice-page {
+  background: #ffffff;
+}
+
+.notice-page main {
+  opacity: 1 !important;
+  transform: none !important;
+}
