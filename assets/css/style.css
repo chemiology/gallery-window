@@ -1531,4 +1531,13 @@ body:not(.transitioning) .page-fade {
   pointer-events: none !important;
 }
 
+/* ===== Detail pages visibility fix ===== */
+
+.archive-page main,
+.notice-detail,
+.detail-page {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 
