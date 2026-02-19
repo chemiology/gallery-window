@@ -116,3 +116,17 @@
   color: #083a8c;
 }
 
+/* ===============================
+   Notice link visibility fix
+================================ */
+
+.notice-body a {
+  color: #0b57d0 !important;
+  text-decoration: underline !important;
+  font-weight: 500;
+}
+
+.notice-body a:hover {
+  color: #083a8c !important;
+}
+
