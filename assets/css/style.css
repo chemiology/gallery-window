@@ -43,7 +43,7 @@ img {
 .site-header {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 56px 96px 40px;
+  padding: 48px 96px 24px;
 }
 
 .site-header h1 {
@@ -101,7 +101,7 @@ img {
   gap: 80px 120px;
 
   max-width: 1400px;
-  margin: 120px auto 0;
+  margin: 80px auto 40px;
   padding: 0 80px;
 
   justify-items: center;
@@ -1509,8 +1509,8 @@ body.page-ready {
 }
 
 .main-links {
-  margin-top: 40px;
-  margin-bottom: 200px;   /* ⭐ 핵심 */
+  margin-top: 20px;
+  margin-bottom: 120px;   /* ⭐ 핵심 */
 }
 
 /* ===== Emergency layout restore ===== */
@@ -1594,5 +1594,72 @@ body.archive-detail-page {
   opacity: 0.6;
 }
 
+/* ===============================
+   Archive Detail (전시 상세)
+================================ */
+
+.archive-detail-page main {
+  max-width: 920px;
+  margin: 80px auto;
+  padding: 0 24px;
+  text-align: center;   /* ⭐ 핵심 */
+}
+
+/* 포스터 중앙 */
+.archive-detail-page .exhibition-poster {
+  text-align: center;
+}
+
+.archive-detail-page .exhibition-poster img {
+  display: block;
+  margin: 0 auto 40px;
+  max-width: 520px;   /* hall 포스터와 유사 크기 */
+  width: 100%;
+  height: auto;
+}
+
+/* ===============================
+   Gallery artwork depth
+================================ */
+
+/* 포스터 */
+.exhibition img,
+.hall-poster,
+.exhibition-poster img {
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.18),
+    0 2px 6px rgba(0,0,0,0.12);
+
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+/* 마우스 올렸을 때 */
+.exhibition img:hover,
+.hall-poster:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 22px 48px rgba(0,0,0,0.28),
+    0 6px 14px rgba(0,0,0,0.18);
+}
+
+/* 텍스트 영역을 벽에서 살짝 분리 */
+.artist-note,
+.notice-detail,
+.exhibition-text {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(6px);
+  padding: 28px 32px;
+  border-radius: 6px;
+}
+
+body {
+  background:
+    linear-gradient(
+      to bottom,
+      #f6f8fb 0%,
+      #e9eff5 100%
+    );
+}
 
 
