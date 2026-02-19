@@ -1,5 +1,3 @@
-console.log("NEW HALL.JS LOADED");
-
 /* ======================================
    Hall Loader – Stable Final Version
 ====================================== */
@@ -86,7 +84,7 @@ async function loadHallEntry(exhibitionId, hallId) {
 
         setTimeout(() => {
           window.location.href = target;
-        }, 450);
+        }, 280);
       };
     }
 
@@ -143,3 +141,8 @@ window.addEventListener("load", () => {
 ====================================== */
 
 loadHall();
+
+window.addEventListener("load", () => {
+  document.body.classList.add("page-ready");
+});
+
