@@ -1507,8 +1507,11 @@ body.page-ready {
   padding: 0 96px;
 
   display: flex;
-  justify-content: center;
+  justify-content: center;   /* ⭐ 중앙 정렬 핵심 */
+  align-items: center;
   gap: 28px;
+
+  width: 100%;
 }
 
 /* ===============================
