@@ -79,6 +79,8 @@ async function loadHallEntry(exhibitionId, hallId) {
       enterBtn.onclick = (e) => {
         e.preventDefault();
 
+     document.body.classList.add("transitioning"); // ⭐ 추가
+
         const fade = document.getElementById("pageFade");
         fade?.classList.add("active");
 
@@ -144,5 +146,16 @@ loadHall();
 
 window.addEventListener("load", () => {
   document.body.classList.add("page-ready");
+});
+
+window.addEventListener("load", () => {
+  const fade = document.getElementById("pageFade");
+  if (fade) {
+    fade.classList.remove("active");
+  }
+});
+
+window.addEventListener("load", () => {
+  document.body.classList.remove("transitioning");
 });
 
