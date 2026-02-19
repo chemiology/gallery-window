@@ -54,7 +54,7 @@ if (exhibitionId) {
 async function loadExhibition(id) {
   try {
 
-    const res = await fetch("./assets/config/gallery.json")
+    const res = await fetch("/gallery-window/assets/config/gallery.json")
     const data = await res.json();
 
     console.log("현재 전시 ID:", exhibitionId);
