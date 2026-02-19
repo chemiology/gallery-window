@@ -91,11 +91,6 @@
 .notice-body a {
   color: #1a5fb4;          /* 링크 파란색 */
   text-decoration: underline;
-  font-weight: 500;
-}
-
-.notice-body a:hover {
-  color: #0b3d91;
 }
 
 .notice-page {
@@ -106,3 +101,18 @@
   opacity: 1 !important;
   transform: none !important;
 }
+
+/* ===============================
+   Notice links visibility
+=============================== */
+
+.notice-body a {
+  color: #0b5ed7;           /* 명확한 링크 색 */
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.notice-body a:hover {
+  color: #083a8c;
+}
+
