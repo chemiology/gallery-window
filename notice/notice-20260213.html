@@ -11,6 +11,10 @@
   <link rel="stylesheet" href="/gallery-window/notice/notice.css">
 </head>
 
+<body class="notice-page">   <!-- ⭐ 반드시 추가 -->
+
+<main>
+
 <article class="notice-detail">
 
   <header class="notice-header">
@@ -90,14 +94,13 @@
   </nav>
 
 </article>
+</main>
 
-<!-- Page transition overlay -->
 <div class="page-fade" id="pageFade"></div>
 
 <script>
 window.addEventListener("load", function () {
-  const fade = document.getElementById("pageFade");
-  if (fade) fade.classList.remove("active");
+  document.body.classList.add("page-ready");   // ⭐ 이것도 추가
 });
 </script>
 

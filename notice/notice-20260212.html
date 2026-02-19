@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <title>온라인 전시장 갤러리 창 오픈</title>
 
-  <!-- 공통 최소 스타일 (폰트, 기본 리셋용) -->
   <link rel="stylesheet" href="/gallery-window/assets/css/style.css">
-
-  <!-- 공지 상세 전용 스타일 (핵심) -->
   <link rel="stylesheet" href="/gallery-window/notice/notice.css">
 </head>
+
+<body class="notice-page">   <!-- ⭐ 반드시 추가 -->
+
+<main>
 
 <article class="notice-detail">
 
@@ -17,6 +18,7 @@
     <h1>온라인 전시장 갤러리 창 오픈</h1>
     <p class="notice-date">2026.02.12</p>
   </header>
+
 
   <figure class="notice-image">
 
@@ -72,14 +74,13 @@
   </nav>
 
 </article>
+</main>
 
-<!-- Page transition overlay -->
 <div class="page-fade" id="pageFade"></div>
 
 <script>
 window.addEventListener("load", function () {
-  const fade = document.getElementById("pageFade");
-  if (fade) fade.classList.remove("active");
+  document.body.classList.add("page-ready");   // ⭐ 이것도 추가
 });
 </script>
 
