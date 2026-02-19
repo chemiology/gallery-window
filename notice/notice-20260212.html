@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="/gallery-window/notice/notice.css">
 </head>
 
-<body>
-
 <article class="notice-detail">
 
   <header class="notice-header">
@@ -74,6 +72,16 @@
   </nav>
 
 </article>
+
+<!-- Page transition overlay -->
+<div class="page-fade" id="pageFade"></div>
+
+<script>
+window.addEventListener("load", function () {
+  const fade = document.getElementById("pageFade");
+  if (fade) fade.classList.remove("active");
+});
+</script>
 
 </body>
 </html>
