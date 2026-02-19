@@ -1504,14 +1504,14 @@ body.page-ready {
 .main-links {
   max-width: 1200px;
   margin: 80px auto 120px auto;
-  padding: 0 96px;
 
   display: flex;
-  justify-content: center;   /* ⭐ 중앙 정렬 핵심 */
+  justify-content: center;
   align-items: center;
   gap: 28px;
 
   width: 100%;
+  padding: 0;   /* ⭐ 핵심 */
 }
 
 /* ===============================
