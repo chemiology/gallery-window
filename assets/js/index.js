@@ -129,3 +129,7 @@ document.addEventListener("click", function(e) {
   window.location.href = `hall.html?hall=hall01`;
 });
 
+window.addEventListener("load", () => {
+  document.body.classList.add("page-ready");
+});
+
