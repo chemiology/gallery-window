@@ -3,7 +3,7 @@ async function loadHall() {
   const params = new URLSearchParams(location.search);
   const hallId = params.get("hall");
 
-  const res = await fetch("./data/hall.json");
+  const res = await fetch("/gallery-window/data/hall.json");
   const data = await res.json();
 
   const hall = data.halls.find(h => h.id === hallId);
@@ -38,7 +38,7 @@ async function loadHallEntry(exhibitionId) {
   const params = new URLSearchParams(location.search);
   const hallId = params.get("hall") || "hall01";
 
-  const res = await fetch("./assets/config/gallery.json");
+  const res = await fetch("/gallery-window/config/gallery.json");
   const data = await res.json();
 
   const exhibition = (data.exhibitions || data.currentExhibitions || [])
@@ -86,18 +86,18 @@ if (poster) {
     const hallId = params.get("hall");
 
     window.location.href =
-      `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+      `/gallery-window/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
   });
 }
 
   // 작가노트
-  const note = await fetch(`./assets/notes/${exhibition.id}.txt`);
+  const note = await fetch(`/gallery-window/assets/notes/${exhibition.id}.txt`);
   document.getElementById("artistNote").innerText =
     await note.text();
 
   // 작가 프로필 (선택)
   try {
-    const profile = await fetch(`./assets/profiles/${exhibition.id}.txt`);
+    const profile = await fetch(`/gallery-window/assets/profiles/${exhibition.id}.txt`);
     document.getElementById("artistProfile").innerHTML =
       await profile.text();
   } catch(e) {}
