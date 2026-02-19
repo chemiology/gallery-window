@@ -93,5 +93,15 @@
 
 </article>
 
+<!-- Page transition overlay -->
+<div class="page-fade" id="pageFade"></div>
+
+<script>
+window.addEventListener("load", function () {
+  const fade = document.getElementById("pageFade");
+  if (fade) fade.classList.remove("active");
+});
+</script>
+
 </body>
 </html>
