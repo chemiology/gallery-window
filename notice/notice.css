@@ -1,65 +1,56 @@
 /* =========================
-   Notice Detail – Final
-========================= */
+   Notice Detail – Isolated
+   ========================= */
 
 .notice-detail {
   max-width: 720px;
   margin: 60px auto;
-  padding: 0 24px;
+  padding: 0 20px;
+
   color: #222;
+  line-height: 1.8;
+  font-size: 14px;
 }
 
-/* 제목 */
+/* 제목 영역 */
 .notice-header h1 {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
-  letter-spacing: 0.03em;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .notice-date {
-  font-size: 14px;
-  color: #9aa0a6;
-  margin-bottom: 32px;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 28px;
 }
 
-/* 이미지 */
+/* 이미지 영역 (핵심) */
 .notice-image {
-  margin: 48px 0 56px;
+  margin: 30px 0;
   text-align: center;
 }
 
 .notice-image img {
-  width: 100%;
-  max-width: 100%;
+  max-width: 480px;   /* ★ 절대 기준 */
+  width: 100%;        /* 모바일 대응 */
   height: auto;
-  display: block;
-  border-radius: 6px;
+  display: inline-block;
 }
-
 
 /* 본문 */
-.notice-body {
-  font-size: 17px;
-  line-height: 1.9;
-  text-align: justify;
-  word-break: keep-all;
-  letter-spacing: 0.01em;
-  color: #222;     /* 진한 본문 색 */
-}
-
 .notice-body p {
-  margin-bottom: 1.6em;
+  margin-bottom: 18px;
 }
 
-/* 하단 네비 */
+/* 하단 네비게이션 */
 .notice-nav {
   margin-top: 60px;
   text-align: center;
 }
 
 .notice-nav a {
-  font-size: 14px;
+  font-size: 13px;
   color: #666;
   text-decoration: none;
 }
@@ -69,40 +60,47 @@
 }
 
 /* =========================
-   Mobile
-========================= */
-
+   Mobile adjustment
+   ========================= */
 @media (max-width: 600px) {
 
   .notice-detail {
     margin: 40px auto;
     padding: 0 16px;
+    font-size: 13px;
   }
 
   .notice-header h1 {
-    font-size: 20px;
+    font-size: 22px;
   }
+
+  .notice-image img {
+    max-width: 100%;   /* 모바일에서는 화면 꽉 차게 */
+  }
+
 }
 
-/* ===============================
-   Notice links
-================================ */
+/* =========================
+   Notice Detail – Size Upgrade
+   ========================= */
 
-.notice-body a {
-  color: #1a5fb4;          /* 링크 파란색 */
-  text-decoration: underline;
-  font-weight: 500;
+/* 전체 본문 폭을 이미지와 동일하게 */
+.notice-detail {
+  max-width: 720px;
 }
 
-.notice-body a:hover {
-  color: #0b3d91;
+/* 이미지 크기 확대 */
+.notice-image img {
+  max-width: 720px;   /* 기존보다 약 80% 확대 */
 }
 
-.notice-page {
-  background: #ffffff;
+/* 본문 텍스트 크기 업 */
+.notice-body {
+  font-size: 15.5px;
 }
 
-.notice-page main {
-  opacity: 1 !important;
-  transform: none !important;
+/* 하단 네비게이션 강조 */
+.notice-nav a {
+  font-size: 14.5px;
 }
+
