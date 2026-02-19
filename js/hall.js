@@ -18,41 +18,16 @@ async function loadHall() {
   }
 
 
-data.halls.forEach(h => {
+hallData.halls.forEach(hall => {
 
-  // 전시가 없는 전시관은 표시하지 않음
-  if (!h.exhibitions || h.exhibitions.length === 0) {
+  if (!hall.exhibitions || hall.exhibitions.length === 0) {
     return;
   }
 
-  createHallCard(h);
+  createHallCard(hall);
 
 });
 
-function createHallCard(hall) {
-
-  const list = document.getElementById("exhibitionList");
-
-  const card = document.createElement("div");
-  card.className = "hall-card";
-
-  const ex = hall.exhibitions[0];
-
-  card.innerHTML = `
-    <a href="/gallery-window/exhibition.html?id=${ex}&hall=${hall.id}" class="hall-link">
-      <div class="poster-wrap">
-        <img src="/gallery-window/assets/posters/${ex}.jpg" alt="${ex}">
-        <div class="poster-caption">${hall.title}</div>
-      </div>
-    </a>
-  `;
-
-  list.appendChild(card);
-
-  setTimeout(() => {
-    card.classList.add("show");
-  }, 120);
-}
 
     // ✅ 전시 입구 내용 로드 (여기에 추가)
     loadHallEntry(hall.exhibitions[0]);
