@@ -1542,33 +1542,56 @@ body:not(.transitioning) .page-fade {
   transform: none !important;
 }
 
-/* =========================
-   Archive Detail Page
-========================= */
+/* ======================================
+   Archive Exhibition Detail Page
+====================================== */
 
-.archive-page {
+body.archive-detail-page {
   background: #eaf2f7;   /* 연한 하늘색 */
   color: #222;
 }
 
-.archive-page main {
-  max-width: 720px;
-  margin: 80px auto;
+/* 전체 중앙 정렬 */
+.archive-detail-page main {
+  max-width: 920px;
+  margin: 80px auto 120px;
   padding: 0 24px;
-}
-
-/* 이미지 중앙 + 텍스트 폭 동일 */
-.archive-page img {
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 32px;
-}
-
-.archive-page .exhibition-text {
   text-align: center;
-  line-height: 1.8;
+}
+
+/* 포스터 (hall과 비슷한 크기) */
+.archive-detail-page .exhibition-poster img {
+  width: 420px;
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 48px;
+}
+
+/* 텍스트 영역 — 포스터보다 넓게 */
+.archive-detail-page .exhibition-text {
+  max-width: 720px;
+  margin: 0 auto 60px;
+  text-align: justify;
+  line-height: 1.9;
   color: #222;
+}
+
+/* 하단 버튼 중앙 */
+.archive-detail-page .archive-nav {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.archive-detail-page .archive-nav a {
+  color: #222;
+  text-decoration: none;
+  border-bottom: 1px solid #222;
+  padding-bottom: 3px;
+}
+
+.archive-detail-page .archive-nav a:hover {
+  opacity: 0.6;
 }
 
 
