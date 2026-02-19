@@ -183,7 +183,7 @@ body.home .artist-note {
 
 .bottom-area {
   max-width: 1200px;
-  margin: 200px auto 160px;
+  margin: 120px auto 120px;
   padding: 0 96px;
 
   display: grid;
@@ -1510,7 +1510,7 @@ body.page-ready {
 
 .main-links {
   max-width: 1200px;
-  margin: 36px auto 80px auto;   /* ⭐ 핵심 수정 */
+  margin: 28px auto 60px auto;   /* ⭐ 위쪽 줄이고, 아래쪽도 축소 */
   padding: 0 96px;
 
   display: flex;
@@ -1652,7 +1652,7 @@ body.archive-detail-page {
 .artist-note,
 .notice-detail,
 .exhibition-text {
-  background: rgba(255,255,255,0.82);  /* 완전 흰색 → 반투명 */
+  background: rgba(255,255,255,0.4);  /* 완전 흰색 → 반투명 */
   backdrop-filter: blur(6px);
   padding: 28px 32px;
   border-radius: 6px;
@@ -1665,6 +1665,24 @@ body {
       #f6f8fb 0%,
       #e9eff5 100%
     );
+}
+
+/* ===============================
+   Exhibition Detail Mobile
+================================ */
+
+@media (max-width: 768px) {
+
+  .exhibition-text {
+    font-size: 15px;       /* ⭐ 크게 줄임 */
+    line-height: 1.7;
+    padding: 0 16px;
+  }
+
+  .exhibition-text p {
+    margin-bottom: 18px;
+  }
+
 }
 
 
