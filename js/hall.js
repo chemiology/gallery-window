@@ -63,7 +63,7 @@ async function loadHallEntry(exhibitionId) {
   const params = new URLSearchParams(location.search);
   const hallId = params.get("hall") || "hall01";
 
-  const res = await fetch("/gallery-window/config/gallery.json");
+  const res = await fetch("/gallery-window/assets/config/gallery.json");
   const data = await res.json();
 
   const exhibition = (data.exhibitions || data.currentExhibitions || [])
