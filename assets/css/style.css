@@ -348,50 +348,6 @@ body.archive {
   color: #d4d6da;
 }
 
-.archive-list {
-  max-width: 900px;
-  margin: 120px auto;
-  padding: 0 20px;
-}
-
-.archive-item {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 120px;
-}
-
-.archive-poster img {
-  width: 220px;
-  opacity: 0.9;
-}
-
-.archive-info h2 {
-  font-size: 22px;
-  margin-bottom: 6px;
-}
-
-.archive-info .artist,
-.archive-info .period {
-  font-size: 13px;
-  opacity: 0.6;
-}
-
-.archive-note {
-  margin-top: 24px;
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-.archive-guestbook {
-  margin-top: 40px;
-}
-
-.archive-guestbook li {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 8px;
-}
-
 /* =========================
    Main Page Footer
    ========================= */
@@ -1265,13 +1221,6 @@ body.home .exhibition img:hover {
   margin: 0 auto;
 }
 
-.poster-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  justify-content: start;
-}
-
 /* ===== FORCE FIX : archive posters ===== */
 
 .archive-page .poster-item img {
@@ -1306,23 +1255,10 @@ body.home .exhibition img:hover {
    Archive layout (final)
 ================================ */
 
-.archive-page {
-  color: #d8d8d8;
-  text-align: center;
-}
-
-/* 제목 */
-.archive-title {
-  color: #eaeaea;
-  margin-bottom: 60px;
-  font-weight: 500;
-}
-
 /* 포스터 영역 */
 .poster-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  justify-content: center;
   gap: 48px;
   max-width: 1200px;
   margin: 0 auto;
@@ -1354,21 +1290,6 @@ body.home .exhibition img:hover {
 /* ===============================
    Archive text visibility fix
 ================================ */
-
-/* 전체 기본 글자 */
-.archive-page {
-  color: #444;   /* 어두운 회색 */
-}
-
-/* 제목 */
-.archive-title {
-  color: #222;
-}
-
-/* 링크 (버튼 포함) */
-.archive-page a {
-  color: #333;
-}
 
 /* 하단 네비게이션 */
 .archive-nav a {
@@ -1413,7 +1334,7 @@ body.page-ready {
 }
 
 .main-links {
-  margin: 72px auto 48px;   /* ⭐ 포스터와의 거리 설정 */
+  margin: 90px auto 48px;   /* ⭐ 포스터와의 거리 설정 */
   display: flex;
   justify-content: center;
   gap: 24px;
@@ -1428,24 +1349,10 @@ main {
 /*  min-height: auto;   */
 }
 
-.archive-page,
-.notice-detail {
-  opacity: 1 !important;
-}
-
 /* ===== Safety guard : fade overlay fail-safe ===== */
 body:not(.transitioning) .page-fade {
   opacity: 0 !important;
   pointer-events: none !important;
-}
-
-/* ===== Detail pages visibility fix ===== */
-
-.archive-page main,
-.notice-detail,
-.detail-page {
-  opacity: 1 !important;
-  transform: none !important;
 }
 
 /* ======================================
@@ -1594,72 +1501,6 @@ body {
   overflow-x: hidden;
 }
 
-@media (max-width: 768px) {
-
-  /* -----------------
-     공통 좌우 여백
-  ----------------- */
-  .site-header,
-  .exhibitions,
-  .main-links,
-  .bottom-area,
-  main {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  /* -----------------
-     Poster Grid (전시 목록)
-  ----------------- */
-
-  .poster-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* -----------------
-     Exhibition Text
-  ----------------- */
-  .exhibition-text {
-    font-size: 14px;
-    line-height: 1.65;
-  }
-
-}
-
-@media (max-width:768px){
-
-  main{
-    box-sizing:border-box;
-    width:100%;
-    max-width:100%;
-  }
-
-  .poster-grid{
-    justify-content:center;
-
-    width:100%;
-    margin:0 auto;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .poster-item{
-    width:100%;
-    max-width:320px;
-    margin:0 auto;
-    box-sizing:border-box;
-  }
-
-  .poster-item img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-}
-
 /* =========================
    HALL MOBILE ALIGN FIX
 ========================= */
@@ -1677,58 +1518,74 @@ body.hall {
   z-index: -1;
 }
 
-@media (max-width:768px){
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-  .hall-entry{
+/* =====================================
+   MOBILE LAYOUT FINAL (≤768px)
+   Gallery Window unified system
+===================================== */
+
+@media (max-width: 768px) {
+
+  /* -----------------
+     공통 여백 (전체 페이지)
+  ----------------- */
+  .site-header,
+  .exhibitions,
+  .main-links,
+  .bottom-area,
+  main {
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  /* ⭐ 대표화면 버튼 위치 조정 */
+  .main-links{
+    margin:64px auto 40px;
+  }
+
+  main{
     width:100%;
     max-width:100%;
     margin:0 auto;
-    box-sizing:border-box;
-    padding:0 16px;
   }
 
-}
-
-/* =========================
-   ARCHIVE MOBILE FIX
-========================= */
-@media (max-width:768px){
-
+  /* -----------------
+     ARCHIVE / POSTER GRID
+     (모바일 2열)
+  ----------------- */
   .poster-grid{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+
     width:100%;
+    max-width:420px;
+    margin:0 auto;
     padding:0 16px;
     box-sizing:border-box;
   }
 
   .poster-item{
     width:100%;
-    max-width:320px;
-    margin:0 auto;
-    box-sizing:border-box;
-    overflow:hidden;   /* ⭐ 핵심 */
+    min-width:0;   /* grid overflow 방지 핵심 */
   }
 
   .poster-item img{
     width:100%;
-    max-width:100%;
     height:auto;
     display:block;
   }
 
-}
-
-/* =========================
-   HALL MOBILE LAYOUT FIX
-========================= */
-
-@media (max-width:768px){
-
+  /* -----------------
+     HALL LAYOUT
+  ----------------- */
   .hall-entry{
     display:flex;
-    flex-direction:column;   /* ⭐ 세로 전환 */
+    flex-direction:column;
     width:100%;
     padding:0 16px;
     box-sizing:border-box;
@@ -1737,138 +1594,22 @@ body.hall {
   .hall-left,
   .artist-note-area{
     width:100%;
-    max-width:100%;
+    max-width:360px;
+    margin:0 auto;
   }
 
   .hall-poster{
     width:100%;
-    max-width:100%;
     height:auto;
     display:block;
   }
 
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* =========================
-   ARCHIVE FINAL FIX
-========================= */
-@media (max-width:768px){
-
-  main{
-    display:flex;
-    flex-direction:column;
-    align-items:center;   /* ⭐ 전체 중앙 기준 */
-    width:100%;
-  }
-
-  .poster-grid{
-    margin:0 auto;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .poster-item{
-    width:100%;
-    margin:0 auto;
-  }
-
-  .poster-item img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-}
-
-/* =========================
-   HALL NOTE WIDTH FIX
-========================= */
-
-@media (max-width:768px){
-
-  .artist-note-area{
-    width:100%;
-    max-width:360px;   /* ⭐ 포스터와 동일 기준 */
-    margin:0 auto;
-    box-sizing:border-box;
-  }
-
-  .artist-note{
-    width:100%;
-    max-width:100%;
-    overflow-wrap:break-word;  /* 긴 문장 강제 줄바꿈 */
-    word-break:keep-all;
-  }
-
-}
-
-/* =========================
-   ARCHIVE MOBILE GRID FIX
-========================= */
-
-@media (max-width:768px){
-
-  .poster-grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr); /* ⭐ 2열 */
-    gap:20px;
-
-    width:100%;
-    max-width:420px;
-    margin:0 auto;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .poster-item{
-    width:100%;
-  }
-
-  .poster-item img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-}
-
-/* =========================
-   ARCHIVE MOBILE HARD FIX
-========================= */
-@media (max-width:768px){
-
-  .hall-container,
-  main,
-  .exhibitions{
-    display:block !important;
-    width:100% !important;
-  }
-
-  .poster-grid{
-    display:grid !important;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap:20px;
-
-    width:100%;
-    max-width:420px;
-    margin:0 auto;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .poster-item{
-    width:100%;
-    min-width:0; /* ⭐ grid overflow 방지 핵심 */
-  }
-
-  .poster-item img{
-    width:100%;
-    height:auto;
-    display:block;
+  /* -----------------
+     Exhibition Text
+  ----------------- */
+  .exhibition-text{
+    font-size:14px;
+    line-height:1.65;
   }
 
 }
