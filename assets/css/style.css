@@ -1321,9 +1321,11 @@ body.home .exhibition img:hover {
 /* 포스터 영역 */
 .poster-grid {
   display: grid;
-  grid-template-columns: repeat(4, 260px);
-  justify-content: center;   /* ⭐ 중앙 정렬 */
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
   gap: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* 포스터 크기 축소 */
