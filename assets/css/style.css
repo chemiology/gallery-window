@@ -1588,3 +1588,18 @@ body.hall {
   font-weight:600;
   letter-spacing:0.02em;
 }
+
+/* =====================================
+   ARCHIVE MOBILE GRID FINAL LOCK
+===================================== */
+@media (max-width: 768px) {
+
+  .archive-page .poster-grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap:20px;
+    max-width:420px;
+    margin:0 auto;
+  }
+
+}
