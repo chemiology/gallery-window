@@ -1605,3 +1605,16 @@ body.archive-page main .poster-grid{
 body.archive-page main .poster-item{
   width:100%;
 }
+
+/* =====================================
+   ARCHIVE GRID ALIGN FIX
+===================================== */
+
+.archive-page .poster-grid{
+  justify-items: stretch;   /* ⭐ 가운데 정렬 제거 */
+  justify-content: start;   /* ⭐ 왼쪽부터 채움 */
+}
+
+.archive-page .poster-item{
+  margin:0;
+}
