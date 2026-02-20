@@ -162,12 +162,6 @@ img {
   width: 560px;        /* ⭐ 작가노트 고정폭 */
 }
 
-@media (max-width: 768px) {
-  .artist-note {
-    text-align: left;
-  }
-}
-
 body.home .artist-note p {
   margin-bottom: 0.8em;
 }
@@ -548,37 +542,6 @@ body.exhibition-detail {
   margin-top: 80px;
   margin-bottom: 120px;
   text-align: center;
-}
-
-/* =========================
-   Mobile Optimization (Detail Pages)
-   ========================= */
-
-@media (max-width: 768px) {
-
-  /* 상세페이지 이미지 */
-  .detail-page img,
-  .notice-detail img {
-    width: 92%;
-    max-width: none;
-    margin-bottom: 32px;
-  }
-
-  /* 상세페이지 텍스트 영역 */
-  .detail-page .detail-text,
-  .notice-detail {
-    width: 100%;
-    padding: 0 18px;
-    font-size: 15px;
-    line-height: 1.75;
-  }
-
-  /* 하단 네비게이션 여백 */
-  .detail-nav,
-  .archive-nav {
-    margin-top: 60px;
-    margin-bottom: 100px;
-  }
 }
 
 /* 하단 공지사항 / 방명록 공통 스타일 */
@@ -1417,57 +1380,6 @@ body.home .exhibition img:hover {
 }
 
 /* ===============================
-   Archive poster mobile fix
-================================ */
-
-@media (max-width: 768px) {
-
-  .poster-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* ⭐ 중앙 정렬 핵심 */
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .poster-item {
-    width: 92%;
-    max-width: 420px;
-    margin: 0 auto 36px auto;
-  }
-
-  .poster-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-}
-
-/* ===============================
-   Mobile App-like Viewport Fix
-================================ */
-
-@media (max-width: 768px) {
-
-  html, body {
-    height: 100%;
-    overflow-x: hidden;
-  }
-
-  body {
-    min-height: 100dvh;   /* ⭐ 핵심 */
-  }
-
-  .exhibition-view,
-  .hall-entry,
-  .archive-page {
-    min-height: 100dvh;
-  }
-
-}
-
-/* ===============================
    Gallery interaction tone
 ================================ */
 
@@ -1667,115 +1579,39 @@ body.notice-page {
 }
 
 /* ===============================
-   Exhibition Detail Mobile
-================================ */
+   MOBILE LAYOUT (≤768px)
+   Gallery Window unified version
+================================= */
 
-@media (max-width: 768px) {
-
-  .poster-grid {
-    display: flex !important;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 16px;
-  }
-
-  .poster-item {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto 36px;
-  }
-
-  .poster-item img {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-
-  .exhibition-text {
-    font-size: 14px;     /* 한 단계 더 축소 */
-    line-height: 1.65;
-  }
-
-}
-
-@media (max-width: 768px) {
-
-  .poster-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .poster-item {
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto 32px;
-  }
-
-}
-
-/* ======================================
-   Archive posters – Mobile fix
-====================================== */
-
-@media (max-width: 768px) {
-
-  .poster-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;   /* ⭐ 중앙 고정 */
-    gap: 28px;
-    padding: 0 16px;
-  }
-
-  .poster-item {
-    width: 100%;
-    max-width: 320px;      /* ⭐ 화면 안으로 강제 제한 */
-    margin: 0 auto;
-  }
-
-  .poster-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-}
-
-/* ======================================
-   Mobile overflow emergency fix
-====================================== */
-
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
 
+  /* -----------------
+     공통 좌우 여백
+  ----------------- */
   .site-header,
   .exhibitions,
   .main-links,
   .bottom-area,
   main {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-}
-
-/* ======================================
-   Archive posters FINAL mobile fix
-====================================== */
-
-@media (max-width: 768px) {
-
+  /* -----------------
+     Poster Grid (전시 목록)
+  ----------------- */
   .poster-grid {
-    display: flex !important;
+    display: flex;
     flex-direction: column;
-    align-items: center !important;
+    align-items: center;
     justify-content: center;
+    gap: 28px;
+
     width: 100%;
     margin: 0 auto;
     padding: 0;
@@ -1784,13 +1620,21 @@ html, body {
   .poster-item {
     width: 92%;
     max-width: 320px;
-    margin: 0 auto 32px;
+    margin: 0 auto;
   }
 
   .poster-item img {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* -----------------
+     Exhibition Text
+  ----------------- */
+  .exhibition-text {
+    font-size: 14px;
+    line-height: 1.65;
   }
 
 }
