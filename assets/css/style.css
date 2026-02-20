@@ -1539,7 +1539,6 @@ body.hall {
     grid-template-columns:repeat(2, 1fr);
     gap:16px;              /* 간격 약간 축소 */
 
-    max-width:360px;       /* ⭐ 핵심 */
     margin:0 auto;
     padding:0 12px;
   }
@@ -1589,32 +1588,4 @@ body.hall {
   color:#e12d86;
   font-weight:600;
   letter-spacing:0.02em;
-}
-
-/* =====================================
-   ARCHIVE MOBILE GRID FINAL
-===================================== */
-
-body.archive-page main .poster-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:16px;
-  justify-items:stretch;
-}
-
-body.archive-page main .poster-item{
-  width:100%;
-}
-
-/* =====================================
-   ARCHIVE GRID ALIGN FIX
-===================================== */
-
-.archive-page .poster-grid{
-  justify-items: stretch;   /* ⭐ 가운데 정렬 제거 */
-  justify-content: start;   /* ⭐ 왼쪽부터 채움 */
-}
-
-.archive-page .poster-item{
-  margin:0;
 }
