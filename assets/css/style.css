@@ -1595,3 +1595,31 @@ body.hall {
   font-weight:600;
   letter-spacing:0.02em;
 }
+
+/* =====================================
+   HALL MOBILE NOTE WIDTH FIX (FINAL)
+===================================== */
+
+@media (max-width:768px){
+
+  .hall-entry{
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .artist-note-area{
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    box-sizing:border-box;
+  }
+
+  .artist-note{
+    width:100%;
+    max-width:100%;
+    min-width:0;                 /* ⭐ grid/flex overflow 방지 핵심 */
+    overflow-wrap:break-word;    /* 긴 문장 강제 줄바꿈 */
+    word-break:keep-all;
+  }
+
+}
