@@ -1499,7 +1499,7 @@ body.page-ready {
 }
 
 .main-links {
-  margin: 8px auto 40px;   /* ⭐ 포스터 바로 아래 붙음 */
+  margin: 56px auto 48px;   /* ⭐ 포스터와의 거리 설정 */
   display: flex;
   justify-content: center;
   gap: 24px;
@@ -1734,6 +1734,57 @@ body.notice-page {
     width: 100%;
     max-width: 320px;      /* ⭐ 화면 안으로 강제 제한 */
     margin: 0 auto;
+  }
+
+  .poster-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+}
+
+/* ======================================
+   Mobile overflow emergency fix
+====================================== */
+
+html, body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+  .site-header,
+  .exhibitions,
+  .main-links,
+  .bottom-area,
+  main {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+}
+
+/* ======================================
+   Archive posters FINAL mobile fix
+====================================== */
+
+@media (max-width: 768px) {
+
+  .poster-grid {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .poster-item {
+    width: 92%;
+    max-width: 320px;
+    margin: 0 auto 32px;
   }
 
   .poster-item img {
