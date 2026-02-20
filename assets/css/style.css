@@ -1779,3 +1779,58 @@ body.hall {
 *, *::before, *::after {
   box-sizing: border-box;
 }
+
+/* =========================
+   ARCHIVE FINAL FIX
+========================= */
+@media (max-width:768px){
+
+  main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;   /* ⭐ 전체 중앙 기준 */
+    width:100%;
+  }
+
+  .poster-grid{
+    width:100%;
+    max-width:360px;
+    margin:0 auto;
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .poster-item{
+    width:100%;
+    margin:0 auto;
+  }
+
+  .poster-item img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+}
+
+/* =========================
+   HALL NOTE WIDTH FIX
+========================= */
+
+@media (max-width:768px){
+
+  .artist-note-area{
+    width:100%;
+    max-width:360px;   /* ⭐ 포스터와 동일 기준 */
+    margin:0 auto;
+    box-sizing:border-box;
+  }
+
+  .artist-note{
+    width:100%;
+    max-width:100%;
+    overflow-wrap:break-word;  /* 긴 문장 강제 줄바꿈 */
+    word-break:keep-all;
+  }
+
+}
