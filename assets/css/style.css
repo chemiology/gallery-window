@@ -1539,6 +1539,7 @@ body.hall {
     grid-template-columns:repeat(2, 1fr);
     gap:16px;              /* 간격 약간 축소 */
 
+    max-width:100%;   /* ⭐ 이것 추가 */
     margin:0 auto;
     padding:0 12px;
   }
