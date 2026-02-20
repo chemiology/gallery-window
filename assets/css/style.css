@@ -1744,3 +1744,15 @@ body.notice-page {
   }
 
 }
+
+/* =========================
+   Empty Hall Message
+========================= */
+
+.hall-empty{
+  text-align:center;
+  margin:120px auto;
+  font-size:16px;
+  line-height:1.7;
+  color:#ddd;
+}
