@@ -5,6 +5,7 @@
       "title": "1관",
       "exhibitions": ["avatar_ii"]
     },
+
     {
       "id": "hall02",
       "title": "2관",
@@ -20,5 +21,6 @@
       "title": "4관",
       "exhibitions": []
     }
+
   ]
 }
