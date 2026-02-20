@@ -1592,16 +1592,16 @@ body.hall {
 }
 
 /* =====================================
-   ARCHIVE MOBILE GRID FINAL LOCK
+   ARCHIVE MOBILE GRID FINAL
 ===================================== */
-@media (max-width: 768px) {
 
-  .archive-page .poster-grid{
-    display:grid;
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap:20px;
-    max-width:420px;
-    margin:0 auto;
-  }
+body.archive-page main .poster-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  justify-items:stretch;
+}
 
+body.archive-page main .poster-item{
+  width:100%;
 }
