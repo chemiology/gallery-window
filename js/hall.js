@@ -13,6 +13,8 @@ async function loadHall() {
     const res = await fetch("/gallery-window/data/hall.json");
     const data = await res.json();
 
+    validateHallAssignments(data.currentExhibitions || []);
+
     const hall = data.halls.find(h => h.id === hallId);
 
     // 타이틀
@@ -34,21 +36,32 @@ async function loadHall() {
    Hall Entry Loader
 ====================================== */
 
-async function loadHallEntry(exhibitionId, hallId) {
+async function loadHallEntry(exhibition, hallId) {
 
   try {
 
-    const res = await fetch("/gallery-window/assets/config/gallery.json");
-    const data = await res.json();
+if (!exhibition) {
 
-    const exhibition =
-      (data.exhibitions || data.currentExhibitions || [])
-        .find(ex => ex.id === exhibitionId);
+  console.warn("No exhibition connected to:", hallId);
 
-    if (!exhibition) {
-      console.error("Exhibition not found:", exhibitionId);
-      return;
-    }
+  document.getElementById("hallTitle").textContent =
+    hallId.replace("hall","") + "관";
+
+  const entry = document.querySelector(".hall-entry");
+
+  if (entry) {
+    entry.innerHTML = `
+      <div class="hall-empty">
+        <p>전시 준비 중입니다.</p>
+        <p style="opacity:.6; margin-top:8px;">
+          곧 새로운 전시로 찾아뵙겠습니다.
+        </p>
+      </div>
+    `;
+  }
+
+  return;
+}
 
     /* ---------- 포스터 ---------- */
 
@@ -159,3 +172,30 @@ window.addEventListener("load", () => {
   document.body.classList.remove("transitioning");
 });
 
+/* =====================================
+   Hall duplicate checker
+===================================== */
+
+function validateHallAssignments(exhibitions) {
+
+  const hallMap = {};
+
+  exhibitions.forEach(ex => {
+
+    if (!ex.hall) return;
+
+    if (!hallMap[ex.hall]) {
+      hallMap[ex.hall] = [];
+    }
+
+    hallMap[ex.hall].push(ex.id);
+  });
+
+  Object.entries(hallMap).forEach(([hall, ids]) => {
+    if (ids.length > 1) {
+      console.warn(
+        `⚠️ ${hall} is assigned to multiple exhibitions: ${ids.join(", ")}`
+      );
+    }
+  });
+}
