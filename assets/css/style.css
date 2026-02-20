@@ -1833,3 +1833,40 @@ body.hall {
   }
 
 }
+
+/* =========================
+   ARCHIVE MOBILE HARD FIX
+========================= */
+@media (max-width:768px){
+
+  .hall-container,
+  main,
+  .exhibitions{
+    display:block !important;
+    width:100% !important;
+  }
+
+  .poster-grid{
+    display:grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap:20px;
+
+    width:100%;
+    max-width:420px;
+    margin:0 auto;
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .poster-item{
+    width:100%;
+    min-width:0; /* ⭐ grid overflow 방지 핵심 */
+  }
+
+  .poster-item img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+}
