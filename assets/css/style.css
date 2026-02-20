@@ -1511,7 +1511,7 @@ main {
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
-  min-height: 100vh;
+/*  min-height: auto;   */
 }
 
 .archive-page,
