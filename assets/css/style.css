@@ -1578,6 +1578,10 @@ body.notice-page {
     );
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 /* ===============================
    MOBILE LAYOUT (≤768px)
    Gallery Window unified version
