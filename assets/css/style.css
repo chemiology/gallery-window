@@ -98,15 +98,14 @@ img {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  gap: 48px 100px;   /* ⭐ 세로 간격 축소 */
+  gap: 36px 72px;          /* ⭐ 공간 절반으로 축소 */
 
   max-width: 1400px;
-  margin: 48px auto 12px;  /* ⭐ 핵심: 아래 여백 거의 제거 */
+  margin: 48px auto 12px;  /* ⭐ 아래 여백 거의 제거 */
   padding: 0 80px;
 
   justify-items: center;
 }
-
 
 /* 1관 / 2관 */
 .hall-label {
@@ -1500,7 +1499,7 @@ body.page-ready {
 }
 
 .main-links {
-  margin: 12px auto 48px;   /* ⭐ 버튼 위 공간 최소화 */
+  margin: 8px auto 40px;   /* ⭐ 포스터 바로 아래 붙음 */
   display: flex;
   justify-content: center;
   gap: 24px;
