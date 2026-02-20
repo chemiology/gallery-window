@@ -1532,17 +1532,19 @@ body.hall {
      ARCHIVE / POSTER GRID
      (모바일 2열)
   ----------------- */
-  .poster-grid{
+@media (max-width:768px){
+
+  .archive-page .poster-grid{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
-    gap:20px;
+    gap:16px;              /* 간격 약간 축소 */
 
-    width:100%;
-    max-width:420px;
+    max-width:360px;       /* ⭐ 핵심 */
     margin:0 auto;
-    padding:0 16px;
-    box-sizing:border-box;
+    padding:0 12px;
   }
+
+}
 
   .poster-item{
     width:100%;
