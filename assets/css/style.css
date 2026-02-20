@@ -463,15 +463,16 @@ body.exhibition-detail {
 
 /* Archive (예정/지난 전시) 포스터 정렬 보정 */
 
-.poster-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* =========================
+   Poster Image (FINAL)
+========================= */
 
-.poster-item img {
-  display: block;
-  margin: 0 auto;
+.poster-item img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:6px;
+  transition:transform .25s ease;
 }
 
 .poster-item figcaption {
@@ -1211,24 +1212,6 @@ body.home .exhibition img:hover {
   transform: translateY(0);
 }
 
-/* ===== Archive poster fix ===== */
-
-.archive-page .poster-item img {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
-/* ===== FORCE FIX : archive posters ===== */
-
-.archive-page .poster-item img {
-  width: 320px !important;
-  max-width: 100%;
-  height: auto !important;
-}
-
 /* ===== Archive page readability fix ===== */
 
 .archive-page {
@@ -1262,14 +1245,6 @@ body.home .exhibition img:hover {
   gap: 48px;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-/* 포스터 크기 축소 */
-.poster-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 6px;
-  transition: transform 0.25s ease;
 }
 
 .poster-item img:hover {
@@ -1574,12 +1549,6 @@ body.hall {
     min-width:0;   /* grid overflow 방지 핵심 */
   }
 
-  .poster-item img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
   /* -----------------
      HALL LAYOUT
   ----------------- */
@@ -1612,4 +1581,10 @@ body.hall {
     line-height:1.65;
   }
 
+}
+
+.official-site{
+  color:#e12d86;
+  font-weight:600;
+  letter-spacing:0.02em;
 }
