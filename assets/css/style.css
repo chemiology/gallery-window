@@ -1715,3 +1715,67 @@ body.hall {
   }
 
 }
+
+/* =========================
+   ARCHIVE MOBILE FIX
+========================= */
+@media (max-width:768px){
+
+  .poster-grid{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .poster-item{
+    width:100%;
+    max-width:320px;
+    margin:0 auto;
+    box-sizing:border-box;
+    overflow:hidden;   /* ⭐ 핵심 */
+  }
+
+  .poster-item img{
+    width:100%;
+    max-width:100%;
+    height:auto;
+    display:block;
+  }
+
+}
+
+/* =========================
+   HALL MOBILE LAYOUT FIX
+========================= */
+
+@media (max-width:768px){
+
+  .hall-entry{
+    display:flex;
+    flex-direction:column;   /* ⭐ 세로 전환 */
+    width:100%;
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .hall-left,
+  .artist-note-area{
+    width:100%;
+    max-width:100%;
+  }
+
+  .hall-poster{
+    width:100%;
+    max-width:100%;
+    height:auto;
+    display:block;
+  }
+
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
