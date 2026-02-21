@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadGallery() {
   try {
-    const response = await fetch("/gallery-window/assets/config/gallery.json");
+    const response = await fetch("/assets/config/gallery.json");
     const data = await response.json();
 
     renderHeadlineNotice(data.headlineNotice);
