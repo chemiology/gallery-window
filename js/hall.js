@@ -10,7 +10,7 @@ async function loadHall() {
   try {
 
     // hall 정보 로드
-    const res = await fetch("/gallery-window/data/hall.json");
+    const res = await fetch("/data/hall.json");
     const data = await res.json();
 
     const hall = data.halls.find(h => h.id === hallId);
@@ -38,7 +38,7 @@ async function loadHallEntry(exhibitionId, hallId) {
 
   try {
 
-    const res = await fetch("/gallery-window/assets/config/gallery.json");
+    const res = await fetch("/assets/config/gallery.json");
     const data = await res.json();
 
     const exhibition =
@@ -77,11 +77,11 @@ async function loadHallEntry(exhibitionId, hallId) {
 
     if (poster) {
       poster.src =
-        `/gallery-window/assets/posters/${exhibition.id}.jpg`;
+        `/assets/posters/${exhibition.id}.jpg`;
 
       poster.onclick = () => {
         window.location.href =
-          `/gallery-window/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+          `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
       };
     }
 
@@ -93,7 +93,7 @@ async function loadHallEntry(exhibitionId, hallId) {
     if (enterBtn) {
 
       const target =
-        `/gallery-window/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+        `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
       enterBtn.href = target;
 
@@ -116,7 +116,7 @@ async function loadHallEntry(exhibitionId, hallId) {
 
     try {
       const note = await fetch(
-        `/gallery-window/assets/notes/${exhibition.id}.txt`
+        `/assets/notes/${exhibition.id}.txt`
       );
 
       document.getElementById("artistNote").innerText =
@@ -131,7 +131,7 @@ async function loadHallEntry(exhibitionId, hallId) {
 
     try {
       const profile = await fetch(
-        `/gallery-window/assets/profiles/${exhibition.id}.txt`
+        `/assets/profiles/${exhibition.id}.txt`
       );
 
       document.getElementById("artistProfile").innerHTML =

@@ -11,8 +11,8 @@ async function loadCurrentExhibition() {
   const container = document.getElementById("currentExhibition");
 
   container.innerHTML = `
-    <a href="/gallery-window/exhibition.html?id=${exId}" class="current-ex-link">
-      <img src="/gallery-window/assets/posters/${exId}.jpg"
+    <a href="/exhibition.html?id=${exId}" class="current-ex-link">
+      <img src="/assets/posters/${exId}.jpg"
            alt="${exId}"
            style="width:100%; max-width:900px; display:block; margin:auto;">
     </a>
@@ -34,8 +34,8 @@ async function loadSecondHallPreview() {
   const container = document.getElementById("secondHallPreview");
 
   container.innerHTML = `
-    <a href="/gallery-window/exhibition.html?id=${exId}">
-      <img src="/gallery-window/assets/posters/${exId}.jpg"
+    <a href="/exhibition.html?id=${exId}">
+      <img src="/assets/posters/${exId}.jpg"
            alt="${exId}"
            style="width:100%;">
       <div style="margin-top:10px; font-size:18px;">
