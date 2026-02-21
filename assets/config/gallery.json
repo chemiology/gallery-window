@@ -19,32 +19,32 @@
       "status": "current",
       "order": 1,
       "artist": "Kyoungsoo Kim",
-      "poster": "/gallery-window/assets/posters/avatar_ii.jpg",
-      "artistNote": "/gallery-window/assets/notes/avatar_ii.txt",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/avatar_ii.txt",
 
       "images": [
-        "/gallery-window/assets/images/avatar_ii/Avatar2_001.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_002.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_026.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_028.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_034.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_035.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_040.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_055.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_056.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_069.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_108.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_126.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_129.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_133.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_135.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_142.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_143.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_144.jpg",
-        "/gallery-window/assets/images/avatar_ii/Avatar2_184.jpg"
+        "/assets/images/avatar_ii/Avatar2_001.jpg",
+        "/assets/images/avatar_ii/Avatar2_002.jpg",
+        "/assets/images/avatar_ii/Avatar2_026.jpg",
+        "/assets/images/avatar_ii/Avatar2_028.jpg",
+        "/assets/images/avatar_ii/Avatar2_034.jpg",
+        "/assets/images/avatar_ii/Avatar2_035.jpg",
+        "/assets/images/avatar_ii/Avatar2_040.jpg",
+        "/assets/images/avatar_ii/Avatar2_055.jpg",
+        "/assets/images/avatar_ii/Avatar2_056.jpg",
+        "/assets/images/avatar_ii/Avatar2_069.jpg",
+        "/assets/images/avatar_ii/Avatar2_108.jpg",
+        "/assets/images/avatar_ii/Avatar2_126.jpg",
+        "/assets/images/avatar_ii/Avatar2_129.jpg",
+        "/assets/images/avatar_ii/Avatar2_133.jpg",
+        "/assets/images/avatar_ii/Avatar2_135.jpg",
+        "/assets/images/avatar_ii/Avatar2_142.jpg",
+        "/assets/images/avatar_ii/Avatar2_143.jpg",
+        "/assets/images/avatar_ii/Avatar2_144.jpg",
+        "/assets/images/avatar_ii/Avatar2_184.jpg"
       ],
       "themeColor": "#c6d4e1",
-      "music": "/gallery-window/assets/audio/avatar_ii.mp3",
+      "music": "/assets/audio/avatar_ii.mp3",
       "slideSeconds": 10,
       "startDate": "2026-01-01",
       "endDate": "2026-03-31"
@@ -57,16 +57,16 @@
       "status": "current",
       "order": 2,
       "artist": "Kyoungsoo Kim",
-      "poster": "/gallery-window/assets/posters/avatar_ii.jpg",
-      "artistNote": "/gallery-window/assets/notes/becoming_tree.txt",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
 
       "images": [
-        "/gallery-window/assets/images/becoming_tree/tree_001.jpg",
-        "/gallery-window/assets/images/becoming_tree/tree_002.jpg",
-        "/gallery-window/assets/images/becoming_tree/tree_003.jpg"
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
       ],
       "themeColor": "#e1c6cf",
-      "music": "/gallery-window/assets/audio/becoming_tree.mp3",
+      "music": "/assets/audio/becoming_tree.mp3",
       "slideSeconds": 10,
       "startDate": "2026-01-01",
       "endDate": "2026-03-31"
@@ -79,16 +79,16 @@
       "status": "coming",
       "order": 3,
       "artist": "Kyoungsoo Kim",
-      "poster": "/gallery-window/assets/posters/avatar_ii.jpg",
-      "artistNote": "/gallery-window/assets/notes/becoming_tree.txt",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
 
       "images": [
-        "/gallery-window/assets/images/becoming_tree/tree_001.jpg",
-        "/gallery-window/assets/images/becoming_tree/tree_002.jpg",
-        "/gallery-window/assets/images/becoming_tree/tree_003.jpg"
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
       ],
       "themeColor": "#e1c6cf",
-      "music": "/gallery-window/assets/audio/becoming_tree.mp3",
+      "music": "/assets/audio/becoming_tree.mp3",
       "slideSeconds": 10,
       "startDate": "2026-01-01",
       "endDate": "2026-03-31"
@@ -101,16 +101,16 @@
       "status": "hidden",
       "order": 4,
       "artist": "Kyoungsoo Kim",
-      "poster": "/gallery-window/assets/posters/avatar_ii.jpg",
-      "artistNote": "/gallery-window/assets/notes/becoming_tree.txt",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
 
       "images": [
-        "/gallery-window/assets/images/becoming_tree/tree_001.jpg",
-        "/gallery-window/assets/images/becoming_tree/tree_002.jpg",
-        "/gallery-window/assets/images/becoming_tree/tree_003.jpg"
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
       ],
       "themeColor": "#e1c6cf",
-      "music": "/gallery-window/assets/audio/becoming_tree.mp3",
+      "music": "/assets/audio/becoming_tree.mp3",
       "slideSeconds": 10,
       "startDate": "2026-01-01",
       "endDate": "2026-03-31"
