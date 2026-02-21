@@ -107,13 +107,26 @@ img {
   justify-items: center;
 }
 
-/* 1관 / 2관 */
+/* hall 번호 배지 */
+.exhibition {
+  position: relative;
+}
+
 .hall-label {
-  font-size: 18px;
-  font-weight: 300;
-  letter-spacing: 0.15em;
-  opacity: 0.6;
-  margin-bottom: 40px;
+  position: absolute;
+  top: 12px;
+  left: 12px;     /* ⭐ 좌측 상단 */
+  z-index: 5;
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+
+  padding: 6px 10px;
+  background: rgba(0,0,0,0.55);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(4px);
 }
 
 /* ---------- Poster / Note Layout ---------- */
@@ -1671,10 +1684,63 @@ body.hall {
 
 .exhibition.coming img{
   opacity: 0.65;          /* ⭐ 살짝만 흐림 */
-  filter: grayscale(15%); /* 색감 아주 약하게 감소 */
+  filter: grayscale(20%); /* 색감 아주 약하게 감소 */
   transition: opacity .3s ease;
 }
 
 if (exhibition.status === "coming") {
   block.classList.add("coming");
+}
+
+/* =========================
+   COMING BADGE (STRONG)
+========================= */
+
+.exhibition.coming::after {
+  content: "COMING";
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+
+  color: #ffffff;
+  background: rgba(255,255,255,0.15);
+  padding: 14px 22px;
+
+  border: 2px solid #ffffff;
+  backdrop-filter: blur(6px);
+
+  z-index: 6;
+}
+
+/* =========================
+   HOME MOBILE GRID FIX
+========================= */
+
+@media (max-width:768px){
+
+  .exhibitions{
+    display:grid;
+    grid-template-columns:1fr;   /* ⭐ 1열 */
+    gap:40px;
+    padding:0 16px;
+  }
+
+  .exhibition{
+    width:100%;
+    max-width:320px;
+    margin:0 auto;
+  }
+
+  .exhibition img{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
 }
