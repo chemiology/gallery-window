@@ -57,17 +57,6 @@ function renderExhibitions(exhibitions) {
 
     const posterWrap = document.createElement("div");
 
-    // COMING 상태 표시
-    if (exhibition.status === "coming") {
-
-      const badge = document.createElement("div");
-      badge.className = "coming-badge";
-      badge.textContent = "COMING";
-
-      posterWrap.style.position = "relative";
-      posterWrap.appendChild(badge);
-    }
-
     const img = document.createElement("img");
     img.src = exhibition.poster;
     img.alt = exhibition.title;
