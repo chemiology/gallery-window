@@ -50,6 +50,27 @@ async function loadHallEntry(exhibitionId, hallId) {
       return;
     }
 
+    if (exhibition.status === "coming") {
+
+    document.getElementById("hallTitle").textContent =
+      hallId.replace("hall","") + "관";
+
+      const entry = document.querySelector(".hall-entry");
+
+      if (entry) {
+        entry.innerHTML = `
+          <div class="hall-empty">
+            <p>이 전시는 곧 시작됩니다.</p>
+            <p style="opacity:.6;margin-top:8px;">
+              조금만 기다려 주세요.
+           </p>
+          </div>
+        `;
+      }
+
+      return;
+    }
+
     /* ---------- 포스터 ---------- */
 
     const poster = document.getElementById("hallPoster");
