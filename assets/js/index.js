@@ -13,11 +13,22 @@ async function loadGallery() {
     const data = await response.json();
 
     renderHeadlineNotice(data.headlineNotice);
-    renderExhibitions(data.currentExhibitions || []);
+
+    const exhibitions =
+      (data.currentExhibitions || [])
+        // status 필터
+        .filter(ex => ex.status !== "hidden")
+
+        // order 정렬
+        .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
+
+    renderExhibitions(exhibitions);
+
   } catch (error) {
     console.error("Gallery data load failed:", error);
   }
 }
+
 
 function renderExhibitions(exhibitions) {
   const container = document.querySelector(".exhibitions");
@@ -30,12 +41,14 @@ function renderExhibitions(exhibitions) {
     const block = document.createElement("div");
     block.className = "exhibition";
 
-    if (exhibitions.length === 2) {
-      const hall = document.createElement("div");
-      hall.className = "hall-label";
-      hall.textContent = index === 0 ? "1관" : "2관";
-      block.appendChild(hall);
+    if (exhibition.status === "coming") {
+      block.classList.add("coming");
     }
+
+    const hall = document.createElement("div");
+    hall.className = "hall-label";
+    hall.textContent = `${index + 1}관`;
+    block.appendChild(hall);
 
   // ↓↓↓ 이하 기존 코드 그대로
 
@@ -43,6 +56,18 @@ function renderExhibitions(exhibitions) {
     body.className = "exhibition-body";
 
     const posterWrap = document.createElement("div");
+
+    // COMING 상태 표시
+    if (exhibition.status === "coming") {
+
+      const badge = document.createElement("div");
+      badge.className = "coming-badge";
+      badge.textContent = "COMING";
+
+      posterWrap.style.position = "relative";
+      posterWrap.appendChild(badge);
+    }
+
     const img = document.createElement("img");
     img.src = exhibition.poster;
     img.alt = exhibition.title;
@@ -56,9 +81,14 @@ function renderExhibitions(exhibitions) {
     posterWrap.appendChild(meta);
 
     img.onclick = () => {
-      location.href = `hall.html?hall=${exhibition.hall}`;
-    };
 
+      if (exhibition.status === "coming") {
+        alert("이 전시는 곧 시작됩니다.");
+        return;
+      }
+
+  location.href = `hall.html?hall=${exhibition.hall}`;
+};
     body.appendChild(posterWrap);
     block.appendChild(body);
     container.appendChild(block);
