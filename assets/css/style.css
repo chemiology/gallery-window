@@ -1693,7 +1693,7 @@ if (exhibition.status === "coming") {
 }
 
 /* =========================
-   COMING BADGE (STRONG)
+   COMING BADGE (REFINED)
 ========================= */
 
 .exhibition.coming::after {
@@ -1704,17 +1704,17 @@ if (exhibition.status === "coming") {
   left: 50%;
   transform: translate(-50%, -50%);
 
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.25em;
+  font-size: 17px;          /* ⭐ 약 60% 축소 */
+  font-weight: 600;
+  letter-spacing: 0.18em;
 
-  color: #ffffff;
-  background: rgba(255,255,255,0.15);
-  padding: 14px 22px;
+  color: #e6d98a;           /* ⭐ 낮은 채도의 노란색 */
+  background: rgba(0,0,0,0.35);
 
-  border: 2px solid #ffffff;
-  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border: 1px solid rgba(230,217,138,0.7);
 
+  backdrop-filter: blur(4px);
   z-index: 6;
 }
 
