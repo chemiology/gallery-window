@@ -54,19 +54,21 @@ if (exhibitionId) {
 async function loadExhibition(id) {
   try {
 
-    const res = await fetch("/assets/config/gallery.json")
+    const res = await fetch("/assets/config/gallery.json");
     const data = await res.json();
 
-    console.log("현재 전시 ID:", exhibitionId);
+    console.log("현재 전시 ID:", id);
     console.log("gallery 데이터:", data);
 
-    const exhibition = data.currentExhibitions.find(e => e.id === id);
+    const exhibition =
+      data.currentExhibitions.find(e => e.id === id);
+
     if (!exhibition) return;
 
     const basePath =
       `/assets/exhibitions/${exhibition.id}/`;
 
-    // 테마 색 적용
+    /* ---------- 테마 색 ---------- */
     if (exhibition.themeColor) {
       document.body.style.setProperty(
         "--theme-color",
@@ -74,6 +76,7 @@ async function loadExhibition(id) {
       );
     }
 
+    /* ---------- 이미지 ---------- */
     const imgBase = basePath + "images/";
 
     images = (exhibition.images || [])
@@ -86,8 +89,8 @@ async function loadExhibition(id) {
       startAuto();
     }
 
+    /* ---------- 음악 ---------- */
     setupAudio(basePath + "music.mp3");
-    }
 
   } catch (err) {
     console.error("Exhibition load failed:", err);
