@@ -94,6 +94,8 @@ async function loadExhibition(id) {
       firstImg.onload = () => {
         showImage(0);
         startAuto();
+
+        preloadInitialImages();
       };
     }
 
@@ -152,6 +154,13 @@ function showImage(index) {
       preloadNext(currentIndex); // ⭐ 추가
     }, 150);
   };
+}
+
+function preloadInitialImages() {
+  for (let i = 1; i < Math.min(3, images.length); i++) {
+    const img = new Image();
+    img.src = images[i];
+  }
 }
 
 function nextImage() {
