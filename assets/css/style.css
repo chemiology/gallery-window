@@ -1261,7 +1261,7 @@ body.home .exhibition img:hover {
 }
 
 .poster-item img:hover {
-  transform: scale(1.04);
+  transform: scale(1.01);
 }
 
 /* 하단 버튼 */
