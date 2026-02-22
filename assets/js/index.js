@@ -76,7 +76,8 @@ function renderExhibitions(exhibitions) {
     const posterWrap = document.createElement("div");
 
     const img = document.createElement("img");
-    img.src = exhibition.poster;
+    img.src =
+      `/assets/exhibitions/${exhibition.id}/poster.jpg`;
     img.alt = exhibition.title;
     img.style.cursor = "pointer";
 
