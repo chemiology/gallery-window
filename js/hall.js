@@ -126,6 +126,19 @@ async function loadHallEntry(exhibitionId, hallId) {
     }
 
 
+    /* ---------- 포스터 ---------- */
+
+    const poster = document.getElementById("hallPoster");
+
+    if (poster) {
+      poster.src = basePath + "poster.jpg";
+
+      poster.onclick = () => {
+        window.location.href =
+          `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+      };
+    }
+
     /* ---------- 작품보기 버튼 ---------- */
 
     const enterBtn = document.getElementById("enterExhibition");
