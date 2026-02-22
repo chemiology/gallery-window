@@ -9,6 +9,7 @@ let slideSeconds = 10;
 let autoMode = true;
 
 let audio = null;
+let preloadImg = new Image();
 
 /* -----------------------------------------------------
    URL Parameters
@@ -84,9 +85,16 @@ async function loadExhibition(id) {
 
     slideSeconds = exhibition.slideSeconds || 10;
 
+    /* ⭐ 첫 이미지 preload */
     if (images.length > 0) {
-      showImage(0);
-      startAuto();
+
+      const firstImg = new Image();
+      firstImg.src = images[0];
+
+      firstImg.onload = () => {
+        showImage(0);
+        startAuto();
+      };
     }
 
     /* ---------- 음악 ---------- */
@@ -124,7 +132,7 @@ function showImage(index) {
   if (!img || images.length === 0) return;
 
   const isLoopReset =
-  (currentIndex === images.length - 1 && index === 0);
+    (currentIndex === images.length - 1 && index === 0);
 
   currentIndex = (index + images.length) % images.length;
 
@@ -137,13 +145,11 @@ function showImage(index) {
 
   img.classList.remove("visible");
   img.src = images[currentIndex];
-  img.onload = () => {
-    img.classList.add("visible");
-  };
 
   img.onload = () => {
     setTimeout(() => {
       img.classList.add("visible");
+      preloadNext(currentIndex); // ⭐ 추가
     }, 150);
   };
 }
@@ -375,3 +381,28 @@ window.addEventListener("load", () => {
   document.body.classList.add("page-ready");
 });
 
+let touchStartX = 0;
+let touchEndX = 0;
+
+const viewer = document.querySelector(".viewer");
+
+viewer.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+viewer.addEventListener("touchend", e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const diff = touchEndX - touchStartX;
+
+  if (Math.abs(diff) < 40) return;
+
+  if (diff < 0) {
+    nextImage();   // 왼쪽 스와이프
+  } else {
+    prevImage();   // 오른쪽 스와이프
+  }
+}
