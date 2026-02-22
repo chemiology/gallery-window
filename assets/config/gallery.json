@@ -54,7 +54,7 @@
       "id": "becoming_tree",
       "title": "Becoming Tree",
       "hall": "hall02",
-      "status": "hidden",
+      "status": "current",
       "order": 2,
       "artist": "Kyoungsoo Kim",
       "poster": "/assets/posters/avatar_ii.jpg",
@@ -68,7 +68,176 @@
       "themeColor": "#e1c6cf",
       "music": "/assets/audio/becoming_tree.mp3",
       "slideSeconds": 10,
-      "startDate": "2026-01-01",
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall03",
+      "status": "current",
+      "order": 3,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall04",
+      "status": "current",
+      "order": 4,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall05",
+      "status": "current",
+      "order": 5,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall06",
+      "status": "current",
+      "order": 6,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall07",
+      "status": "coming",
+      "order": 7,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall08",
+      "status": "coming",
+      "order": 8,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall09",
+      "status": "hidden",
+      "order": 9,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-03-31"
+    },
+    {
+      "id": "becoming_tree",
+      "title": "Becoming Tree",
+      "hall": "hall10",
+      "status": "hidden",
+      "order": 10,
+      "artist": "Kyoungsoo Kim",
+      "poster": "/assets/posters/avatar_ii.jpg",
+      "artistNote": "/assets/notes/becoming_tree.txt",
+
+      "images": [
+        "/assets/images/becoming_tree/tree_001.jpg",
+        "/assets/images/becoming_tree/tree_002.jpg",
+        "/assets/images/becoming_tree/tree_003.jpg"
+      ],
+      "themeColor": "#e1c6cf",
+      "music": "/assets/audio/becoming_tree.mp3",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
       "endDate": "2026-03-31"
     }
 
