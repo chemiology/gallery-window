@@ -11,6 +11,14 @@ let autoMode = true;
 let audio = null;
 let preloadImg = new Image();
 
+
+function getDeviceType() {
+  return window.matchMedia("(pointer: coarse)").matches
+    ? "mobile"
+    : "desktop";
+}
+
+
 /* -----------------------------------------------------
    URL Parameters
 ----------------------------------------------------- */
@@ -137,6 +145,25 @@ function showImage(index) {
     (currentIndex === images.length - 1 && index === 0);
 
   currentIndex = (index + images.length) % images.length;
+
+  /* 작품 조회 기록 */
+    gtag('event', 'view_artwork', {
+      exhibition_id: new URLSearchParams(location.search).get("id"),
+      artwork_index: currentIndex + 1,
+      artwork_file: images[currentIndex],
+      device_type: getDeviceType()
+    });
+
+  /* ⭐ 전시 완주 체크 */
+  if (currentIndex === images.length - 1) {
+
+    gtag('event', 'exhibition_completed', {
+      exhibition_id: new URLSearchParams(location.search).get("id"),
+      total_artworks: images.length,
+      device_type: getDeviceType()
+    });
+
+  }
 
   if (isLoopReset) {
     document.querySelector(".viewer").classList.add("loop-dark");

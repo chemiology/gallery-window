@@ -164,6 +164,10 @@ document.addEventListener("click", function(e) {
   const url = new URL(link.href);
   const id = url.searchParams.get("id");
 
+  gtag('event', 'enter_hall', {
+    hall: 'hall01'
+  });
+
   window.location.href = `hall.html?hall=hall01`;
 });
 
