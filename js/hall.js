@@ -2,33 +2,94 @@
    Hall Loader – Stable Final Version
 ====================================== */
 
+function getExhibitionStatus(ex) {
+
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const start = ex.startDate ? new Date(ex.startDate) : null;
+  const end = ex.endDate ? new Date(ex.endDate) : null;
+
+  if (start && today < start) return "coming";
+  if (end && today > end) return "past";
+
+  return "current";
+}
+
 async function loadHall() {
 
   const params = new URLSearchParams(location.search);
   const hallId = params.get("hall") || "hall01";
 
-  try {
+try {
 
-    // hall 정보 로드
-    const res = await fetch("/data/hall.json");
-    const data = await res.json();
+  // gallery 데이터 로드
+  const res = await fetch("/assets/config/gallery.json");
+  const data = await res.json();
 
-    const hall = data.halls.find(h => h.id === hallId);
+  const exhibitions =
+    data.currentExhibitions || data.exhibitions || [];
 
-    // 타이틀
-    document.getElementById("hallTitle").textContent =
-      hall ? hall.title : "Hall";
+  // hall 번호에 해당하는 전시 찾기
+  const exhibition = exhibitions.find(ex => {
+    return ex.hall === hallId &&
+           getExhibitionStatus(ex) !== "past";
+  });
 
-    // 전시가 있을 때만 입구 로드
-    if (hall && hall.exhibitions && hall.exhibitions.length > 0) {
-      loadHallEntry(hall.exhibitions[0], hallId);
-    }
+/* ---------- Hall 타이틀 ---------- */
 
-  } catch (err) {
-    console.error("Hall load failed:", err);
-  }
+const hallTitleElement = document.getElementById("hallTitle");
+
+if (hallTitleElement) {
+  hallTitleElement.textContent =
+    exhibition?.hallTitle ||
+    `${hallId.replace("hall","")}관`;
 }
 
+/* ---------- 전시 입구 또는 빈 Hall ---------- */
+
+if (exhibition) {
+
+  loadHallEntry(exhibition.id, hallId);
+
+} else {
+
+  const entry = document.querySelector(".hall-entry");
+
+  if (entry) {
+    entry.innerHTML = `
+      <div class="hall-empty">
+        <p>이 전시장은 현재 준비 중입니다.</p>
+        <p style="opacity:.6;margin-top:8px;">
+          곧 새로운 전시가 시작됩니다.
+        </p>
+      </div>
+    `;
+  }
+
+  console.log("Empty hall:", hallId);
+}
+
+  /* ---------- Hall 타이틀 ---------- */
+  // hall01 → 1관 형태 유지
+  const hallTitleElement = document.getElementById("hallTitle");
+
+  if (hallTitleElement) {
+    hallTitleElement.textContent =
+      exhibition?.hallTitle ||
+      `${hallId.replace("hall", "")}관`;
+  }
+
+  /* ---------- 전시 입구 로드 ---------- */
+  if (exhibition) {
+    loadHallEntry(exhibition.id, hallId);
+  } else {
+    console.warn("No exhibition assigned to:", hallId);
+  }
+
+} catch (err) {
+  console.error("Hall load failed:", err);
+}
 
 /* ======================================
    Hall Entry Loader
@@ -50,7 +111,10 @@ async function loadHallEntry(exhibitionId, hallId) {
       return;
     }
 
-    if (exhibition.status === "coming") {
+    const basePath =
+      `/assets/exhibitions/${exhibition.id}/`;
+
+    if (getExhibitionStatus(exhibition) === "coming") {
 
     document.getElementById("hallTitle").textContent =
       hallId.replace("hall","") + "관";
@@ -76,8 +140,7 @@ async function loadHallEntry(exhibitionId, hallId) {
     const poster = document.getElementById("hallPoster");
 
     if (poster) {
-      poster.src =
-        `/assets/posters/${exhibition.id}.jpg`;
+      poster.src = basePath + "poster.jpg";
 
       poster.onclick = () => {
         window.location.href =
@@ -115,9 +178,7 @@ async function loadHallEntry(exhibitionId, hallId) {
     /* ---------- 작가노트 ---------- */
 
     try {
-      const note = await fetch(
-        `/assets/notes/${exhibition.id}.txt`
-      );
+      const note = await fetch(basePath + "note.txt");
 
       document.getElementById("artistNote").innerText =
         await note.text();
@@ -130,9 +191,7 @@ async function loadHallEntry(exhibitionId, hallId) {
     /* ---------- 작가 프로필 ---------- */
 
     try {
-      const profile = await fetch(
-        `/assets/profiles/${exhibition.id}.txt`
-      );
+      const profile = await fetch(basePath + "profile.txt");
 
       document.getElementById("artistProfile").innerHTML =
         await profile.text();
