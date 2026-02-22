@@ -70,16 +70,6 @@ if (exhibition) {
   console.log("Empty hall:", hallId);
 }
 
-  /* ---------- Hall 타이틀 ---------- */
-  // hall01 → 1관 형태 유지
-  const hallTitleElement = document.getElementById("hallTitle");
-
-  if (hallTitleElement) {
-    hallTitleElement.textContent =
-      exhibition?.hallTitle ||
-      `${hallId.replace("hall", "")}관`;
-  }
-
   /* ---------- 전시 입구 로드 ---------- */
   if (exhibition) {
     loadHallEntry(exhibition.id, hallId);
