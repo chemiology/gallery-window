@@ -63,6 +63,9 @@ async function loadExhibition(id) {
     const exhibition = data.currentExhibitions.find(e => e.id === id);
     if (!exhibition) return;
 
+    const basePath =
+      `/assets/exhibitions/${exhibition.id}/`;
+
     // 테마 색 적용
     if (exhibition.themeColor) {
       document.body.style.setProperty(
@@ -71,7 +74,11 @@ async function loadExhibition(id) {
       );
     }
 
-    images = exhibition.images || [];
+    const imgBase = basePath + "images/";
+
+    images = (exhibition.images || [])
+      .map(name => imgBase + name);
+
     slideSeconds = exhibition.slideSeconds || 10;
 
     if (images.length > 0) {
@@ -79,8 +86,7 @@ async function loadExhibition(id) {
       startAuto();
     }
 
-    if (exhibition.music) {
-      setupAudio(exhibition.music);
+    setupAudio(basePath + "music.mp3");
     }
 
   } catch (err) {

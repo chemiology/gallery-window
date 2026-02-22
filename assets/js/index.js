@@ -36,12 +36,16 @@ function renderExhibitions(exhibitions) {
 
   container.innerHTML = "";
 
-  exhibitions.forEach((exhibition, index) => {
+  const visible = exhibitions.filter(ex =>
+    getExhibitionStatus(ex) !== "past"
+  );
+
+  visible.forEach((exhibition, index) => {
 
     const block = document.createElement("div");
     block.className = "exhibition";
 
-    if (exhibition.status === "coming") {
+    if (getExhibitionStatus(exhibition) === "coming") {
       block.classList.add("coming");
     }
 
