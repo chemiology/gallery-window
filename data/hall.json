@@ -11,14 +11,65 @@
       "title": "2관",
       "exhibitions": []
     },
+
     {
       "id": "hall03",
       "title": "3관",
       "exhibitions": []
     },
+
     {
       "id": "hall04",
       "title": "4관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall05",
+      "title": "5관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall06",
+      "title": "6관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall07",
+      "title": "7관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall08",
+      "title": "8관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall09",
+      "title": "9관",
+      "exhibitions": []
+    },
+
+
+    {
+      "id": "hall10",
+      "title": "10관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall11",
+      "title": "11관",
+      "exhibitions": []
+    },
+
+    {
+      "id": "hall12",
+      "title": "12관",
       "exhibitions": []
     }
 
