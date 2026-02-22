@@ -107,17 +107,16 @@ async function loadHallEntry(exhibitionId, hallId) {
         .find(ex => ex.id === exhibitionId);
 
     if (!exhibition) {
-      console.error("Exhibition not found:", exhibitionId);
+      console.warn("Exhibition not found:", exhibitionId);
       return;
     }
 
     const basePath =
       `/assets/exhibitions/${exhibition.id}/`;
 
-    if (getExhibitionStatus(exhibition) === "coming") {
+    /* ---------- COMING 상태 ---------- */
 
-    document.getElementById("hallTitle").textContent =
-      hallId.replace("hall","") + "관";
+    if (getExhibitionStatus(exhibition) === "coming") {
 
       const entry = document.querySelector(".hall-entry");
 
@@ -127,25 +126,12 @@ async function loadHallEntry(exhibitionId, hallId) {
             <p>이 전시는 곧 시작됩니다.</p>
             <p style="opacity:.6;margin-top:8px;">
               조금만 기다려 주세요.
-           </p>
+            </p>
           </div>
         `;
       }
 
       return;
-    }
-
-    /* ---------- 포스터 ---------- */
-
-    const poster = document.getElementById("hallPoster");
-
-    if (poster) {
-      poster.src = basePath + "poster.jpg";
-
-      poster.onclick = () => {
-        window.location.href =
-          `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
-      };
     }
 
 
