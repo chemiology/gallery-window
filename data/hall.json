@@ -9,69 +9,58 @@
     {
       "id": "hall02",
       "title": "2관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_01"]
     },
 
     {
       "id": "hall03",
       "title": "3관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_02"]
     },
 
     {
       "id": "hall04",
       "title": "4관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_03"]
     },
 
     {
       "id": "hall05",
       "title": "5관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_04"]
     },
 
     {
       "id": "hall06",
       "title": "6관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_05"]
     },
 
     {
       "id": "hall07",
       "title": "7관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_06"]
     },
 
     {
       "id": "hall08",
       "title": "8관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_07"]
     },
 
     {
       "id": "hall09",
       "title": "9관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_08"]
     },
 
 
     {
       "id": "hall10",
       "title": "10관",
-      "exhibitions": []
-    },
-
-    {
-      "id": "hall11",
-      "title": "11관",
-      "exhibitions": []
-    },
-
-    {
-      "id": "hall12",
-      "title": "12관",
-      "exhibitions": []
+      "exhibitions": ["becoming_tree_09"]
     }
+
 
   ]
 }
