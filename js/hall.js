@@ -153,6 +153,12 @@ async function loadHallEntry(exhibitionId, hallId) {
       enterBtn.onclick = (e) => {
         e.preventDefault();
 
+      // ✅ Google Analytics — 전시장 입장 기록
+      gtag('event', 'enter_exhibition', {
+        exhibition_id: exhibition.id,
+        hall: hallId
+      });
+
      document.body.classList.add("transitioning"); // ⭐ 추가
 
         const fade = document.getElementById("pageFade");
