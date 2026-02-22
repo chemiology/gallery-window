@@ -54,12 +54,11 @@ body {
   object-fit: contain;
 
   opacity: 0;
-  filter: brightness(0.75) blur(2px);
+  filter: brightness(0.85) blur(1px);
 
   transition:
     opacity 1.2s ease,
     filter 2.0s ease,
-    transform 6s ease-out;
 }
 
 .viewer img.visible {

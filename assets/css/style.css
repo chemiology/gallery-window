@@ -1744,3 +1744,22 @@ if (exhibition.status === "coming") {
   }
 
 }
+
+#exhibition-image {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#exhibition-image.visible {
+  opacity: 1;
+}
+
+/* 모바일 성능 최적화 */
+@media (hover: none) and (pointer: coarse) {
+
+  .viewer img {
+    transition: opacity 0.8s ease; /* filter 제거 */
+    filter: brightness(0.9);       /* blur 제거 */
+  }
+
+}
