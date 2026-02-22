@@ -77,8 +77,9 @@ if (exhibition) {
     console.warn("No exhibition assigned to:", hallId);
   }
 
-} catch (err) {
-  console.error("Hall load failed:", err);
+  } catch (err) {
+    console.error("Hall load failed:", err);
+  }
 }
 
 /* ======================================
