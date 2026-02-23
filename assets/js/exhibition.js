@@ -198,6 +198,18 @@ function prevImage() {
   showImage(currentIndex - 1);
 }
 
+/* ======================================
+   Image protection
+====================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const img = document.getElementById("exhibition-image");
+
+  if (img) {
+    img.addEventListener("dragstart", e => e.preventDefault());
+  }
+});
+
 /* -----------------------------------------------------
    Audio
 ----------------------------------------------------- */
@@ -442,3 +454,18 @@ function handleSwipe() {
     prevImage();   // 오른쪽 스와이프
   }
 }
+
+/* ======================================
+   Exhibition Right-click Protection
+====================================== */
+
+document.addEventListener("contextmenu", function(e) {
+
+  // viewer 영역 안이면 우클릭 차단
+  const viewer = e.target.closest(".viewer");
+
+  if (viewer) {
+    e.preventDefault();
+  }
+
+});
