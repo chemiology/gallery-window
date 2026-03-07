@@ -531,3 +531,15 @@ body.exhibition-detail .exhibition-text span {
   transition: opacity 1.2s ease;
 }
 
+/* --------------------------------
+   Artwork Caption
+-------------------------------- */
+
+#exhibition-caption {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #bbb;
+  letter-spacing: 0.3px;
+  min-height: 18px;
+}
