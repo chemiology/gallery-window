@@ -45,6 +45,18 @@
       "slideSeconds": 10,
       "startDate": "2026-02-15",
       "endDate": "2026-03-31"
+    },
+
+    {
+      "id": "video_avatar_ii",
+      "title": "Avatar II (Video)",
+      "hall": "hall50",
+      "hallTitle": "영상관",
+      "order": 50,
+      "status": "current"
+      "artist": "김경수",
+      "startDate": "2026-03-01",
+      "endDate": "2026-12-31"
     }
 
      ]
