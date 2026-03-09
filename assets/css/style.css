@@ -153,22 +153,6 @@ img {
   grid-template-columns: repeat(4, 1fr);
 }
 
-
-/* 포스터 크기 자동 조절 */
-
-.exhibitions.grid-2 .exhibition img {
-  height: 55vh;
-}
-
-.exhibitions.grid-3 .exhibition img {
-  height: 40vh;
-}
-
-.exhibitions.grid-4 .exhibition img {
-  height: 30vh;
-}
-
-
 /* hall 번호 크기 */
 
 .exhibitions.grid-3 .hall-label {
