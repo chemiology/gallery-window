@@ -935,10 +935,8 @@ body.home .exhibition {
 }
 
 body.home .exhibition img {
-  height: 55vh !important;
-  width: auto !important;
+  width: auto;
   max-height: 720px;
-  max-width: none !important;
 }
 
 .hall-left img {
