@@ -134,8 +134,14 @@ async function loadHallEntry(exhibitionId, hallId) {
       poster.src = basePath + "poster.jpg";
 
       poster.onclick = () => {
-        window.location.href =
-          `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+
+        const target =
+          hallId.startsWith("hall5")
+            ? `/video.html?id=${exhibition.id}`
+            : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+
+        window.location.href = target;
+
       };
     }
 
