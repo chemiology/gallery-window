@@ -137,7 +137,7 @@ async function loadHallEntry(exhibitionId, hallId) {
 
         const target =
           hallId.startsWith("hall5")
-            ? `/video.html?id=${exhibition.id}`
+            ? `/video.html?id=${exhibition.id}&hall=${hallId}`
             : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
         window.location.href = target;
@@ -153,7 +153,7 @@ async function loadHallEntry(exhibitionId, hallId) {
 
       const target =
         hallId.startsWith("hall5")
-          ? `/video.html?id=${exhibition.id}`
+          ? `/video.html?id=${exhibition.id}&hall=${hallId}`
           : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
       enterBtn.href = target;
