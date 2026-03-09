@@ -36,30 +36,6 @@ async function loadGallery() {
         // order 정렬
         .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
-/* =========================
-   Exhibition Grid Auto Layout
-========================= */
-
-const grid = document.querySelector(".exhibitions");
-
-if (grid) {
-
-  const count = exhibitions.length;
-
-  grid.classList.remove("grid-2", "grid-3", "grid-4");
-
-  if (count <= 2) {
-    grid.classList.add("grid-2");
-  } 
-  else if (count <= 6) {
-    grid.classList.add("grid-3");
-  } 
-  else {
-    grid.classList.add("grid-4");
-  }
-
-}
-
     renderExhibitions(exhibitions);
 
   } catch (error) {
@@ -77,6 +53,27 @@ function renderExhibitions(exhibitions) {
   const visible = exhibitions.filter(ex =>
     getExhibitionStatus(ex) !== "past"
   );
+
+  /* =========================
+     Grid Auto Layout
+  ========================= */
+
+  const count = visible.length;
+
+  container.classList.remove("grid-2","grid-3","grid-4");
+
+  if (count <= 2) {
+    container.classList.add("grid-2");
+  } 
+  else if (count <= 6) {
+    container.classList.add("grid-3");
+  } 
+  else {
+    container.classList.add("grid-4");
+  }
+
+  /* ========================= */
+
 
   visible.forEach((exhibition, index) => {
 
