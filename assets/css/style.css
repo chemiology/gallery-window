@@ -249,52 +249,30 @@ body.home .artist-note {
 }
 
 
-/* ---------- Guestbook ---------- */
+/* ---------- Guestbook (index) ---------- */
 
 .guestbook ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px;
+list-style: none;
+padding: 0;
+margin: 0 0 24px;
 }
 
 .guestbook li {
-  margin-bottom: 10px;
-  font-size: 14px;
-  color: #cfd3d8;
+margin-bottom: 10px;
+font-size: 14px;
+color: #cfd3d8;
 }
 
-/* 입력 폼 */
-#guestbook-form {
-  display: flex;
-  gap: 10px;
+.guestbook.poetic {
+margin-top: 140px;
+text-align: center;
 }
 
-#guestbook-input {
-  flex: 1;
-  padding: 8px 10px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 6px;
-  color: #e6e7e9;
-  font-size: 14px;
-}
-
-#guestbook-input::placeholder {
-  color: #8c9096;
-}
-
-#guestbook-form button {
-  padding: 8px 14px;
-  background: none;
-  border: 1px solid rgba(255,255,255,0.25);
-  border-radius: 6px;
-  color: #e6e7e9;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-#guestbook-form button:hover {
-  background: rgba(255,255,255,0.08);
+.guestbook.poetic li {
+font-size: 15px;
+color: #bfc3c8;
+opacity: 0.8;
+letter-spacing: 0.04em;
 }
 
 /* ---------- Responsive ---------- */
@@ -1786,42 +1764,79 @@ if (exhibition.status === "coming") {
   background: transparent;
 }
 
-.guestbook{
-margin-top:30px;
+/* ===== Hall Guestbook ===== */
+
+.guestbook-section{
+margin-top:40px;
 text-align:center;
+max-width:520px;
+margin-left:auto;
+margin-right:auto;
 }
 
-.guestbook input{
-width:220px;
-padding:6px 8px;
-font-size:13px;
-border:none;
-background:#222;
+.guestbook-title{
+font-size:18px;
+margin-bottom:14px;
+letter-spacing:1px;
 color:#ddd;
 }
 
-.guestbook button{
-padding:6px 12px;
-margin-left:6px;
-font-size:13px;
-background:#333;
+.guestbook-form{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:8px;
+}
+
+.guestbook-form input{
+width:260px;
+padding:8px 10px;
+font-size:14px;
+background:#1b1b1b;
+border:1px solid #333;
+color:#ddd;
+outline:none;
+}
+
+.guestbook-form input::placeholder{
+color:#777;
+}
+
+.guestbook-form input:focus{
+border-color:#666;
+}
+
+.guestbook-form button{
+padding:8px 14px;
+font-size:14px;
+background:#2a2a2a;
 color:#ddd;
 border:none;
 cursor:pointer;
+transition:all .25s ease;
 }
 
-.guestbook button:hover{
-background:#555;
+.guestbook-form button:hover{
+background:#444;
+color:#fff;
 }
+
+/* 최근 방명록 */
 
 .guestbook-list{
-margin-top:20px;
+margin-top:28px;
 font-size:13px;
 color:#bbb;
-line-height:1.6;
+line-height:1.8;
+text-align:center;
+max-width:520px;
+margin-left:auto;
+margin-right:auto;
 }
 
-.guestbook-item{
-border-top:1px solid #333;
-padding:6px 0;
+.guestbook-list h4{
+font-size:14px;
+margin-bottom:8px;
+color:#ddd;
+letter-spacing:0.5px;
 }
