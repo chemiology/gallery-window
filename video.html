@@ -74,10 +74,6 @@ text-decoration:none;
 color:#fff;
 }
 
-<div class="back-link">
-<a id="backToHall">← 전시관으로 돌아가기</a>
-</div>
-
 button{
 background:rgba(255,255,255,0.08);
 color:#ddd;
@@ -105,6 +101,9 @@ padding:10px 18px;
 font-size:13px;
 }
 
+}
+
+/* 여기부터는 전체 공통 CSS */
 .video-caption{
 margin-top:18px;
 opacity:0.8;
@@ -124,10 +123,14 @@ opacity:.7;
 color:#ccc;
 text-decoration:none;
 cursor:pointer;
+padding:6px 10px;
+border-radius:4px;
+transition:all .25s ease;
 }
 
 .nav-back a:hover{
 color:#fff;
+background:rgba(255,255,255,0.08);
 }
 
 .immersive .video-title,
@@ -185,13 +188,36 @@ pointer-events:none;
 position:relative;
 }
 
+#video-frame{
+opacity:0;
+transition:opacity .6s ease;
+}
+
+#video-frame.show{
+opacity:1;
+}
+
+.meta{
+transition:opacity .6s ease;
+}
+
+.meta.hide{
+opacity:0;
+}
+
 </style>
 
 </head>
 
 <body>
 
+<div class="meta">
+
 <div class="video-title" id="videoTitle"></div>
+
+<div class="video-caption" id="video-caption"></div>
+
+</div>
 
 <div class="video-container">
 
@@ -203,8 +229,6 @@ allow="autoplay; encrypted-media"
 allowfullscreen></iframe>
 
 </div>
-
-<div class="video-caption" id="video-caption"></div>
 
 <div class="fullscreen-tip">
 F : Fullscreen · ESC : Exit
@@ -285,12 +309,25 @@ function loadVideo(){
 
 const video = videos[currentIndex];
 
-const frame = document.getElementById("video-frame");
+const container = document.querySelector(".video-container");
+
+const container = document.querySelector(".video-container");
 const loading = document.querySelector(".video-loading");
 
 loading.style.display = "block";
 
-frame.src = "";
+// 기존 iframe 제거
+const oldFrame = document.getElementById("video-frame");
+if(oldFrame){
+oldFrame.remove();
+}
+
+// 새 iframe 생성
+const frame = document.createElement("iframe");
+frame.id = "video-frame";
+frame.loading = "lazy";
+frame.allow = "autoplay; encrypted-media";
+frame.allowFullscreen = true;
 
 frame.src =
 "https://www.youtube.com/embed/" +
@@ -299,7 +336,11 @@ video.youtube +
 
 frame.onload = () => {
 loading.style.display = "none";
+frame.classList.add("show");
 };
+
+// 컨테이너에 추가
+container.appendChild(frame);
 
 const captionElement =
 document.getElementById("video-caption");
@@ -474,6 +515,27 @@ pressTimer = setTimeout(toggleFullscreen, 600);
 videoArea.addEventListener("touchend", () => {
 clearTimeout(pressTimer);
 });
+
+const meta = document.querySelector(".meta");
+
+let metaTimer;
+
+function showMeta(){
+
+meta.classList.remove("hide");
+
+clearTimeout(metaTimer);
+
+metaTimer = setTimeout(()=>{
+meta.classList.add("hide");
+},3000);
+
+}
+
+document.addEventListener("mousemove", showMeta);
+document.addEventListener("touchstart", showMeta);
+
+showMeta();
 
 </script>
 
