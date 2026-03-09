@@ -21,20 +21,20 @@ async function loadHall() {
   const params = new URLSearchParams(location.search);
   const hallId = params.get("hall") || "hall01";
 
-try {
+  try {
 
-  // gallery 데이터 로드
-  const res = await fetch("/assets/config/gallery.json");
-  const data = await res.json();
+    // gallery 데이터 로드
+    const res = await fetch("/assets/config/gallery.json");
+    const data = await res.json();
 
-  const exhibitions =
-    data.currentExhibitions || data.exhibitions || [];
+    const exhibitions =
+      data.currentExhibitions || data.exhibitions || [];
 
-  // hall 번호에 해당하는 전시 찾기
-  const exhibition = exhibitions.find(ex => {
-    return ex.hall === hallId &&
-           getExhibitionStatus(ex) !== "past";
-  });
+    // hall 번호에 해당하는 전시 찾기
+    const exhibition = exhibitions.find(ex => {
+      return ex.hall === hallId &&
+             getExhibitionStatus(ex) !== "past";
+    });
 
 /* ---------- Hall 타이틀 ---------- */
 
@@ -102,8 +102,18 @@ async function loadHallEntry(exhibitionId, hallId) {
       return;
     }
 
+    /* 방명록 exhibition id 전달 */
+
+    const guestbookInput =
+    document.querySelector('input[name="exhibition_id"]');
+
+    if (guestbookInput) {
+      guestbookInput.value = exhibition.id;
+    }
+
     const basePath =
       `/assets/exhibitions/${exhibition.id}/`;
+
 
     /* ---------- COMING 상태 ---------- */
 
@@ -134,8 +144,14 @@ async function loadHallEntry(exhibitionId, hallId) {
       poster.src = basePath + "poster.jpg";
 
       poster.onclick = () => {
-        window.location.href =
-          `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+
+        const target =
+          hallId.startsWith("hall5")
+          ? `/video.html?id=${exhibition.id}`
+          : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+
+        window.location.href = target;
+
       };
     }
 
@@ -146,7 +162,10 @@ async function loadHallEntry(exhibitionId, hallId) {
     if (enterBtn) {
 
       const target =
-        `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+        hallId.startsWith("hall5")
+            ? `/video.html?id=${exhibition.id}`
+            : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+
 
       enterBtn.href = target;
 
