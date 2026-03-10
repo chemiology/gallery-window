@@ -7,3 +7,17 @@
   max-width:620px;
   line-height:1.6;
 }
+
+.intro{
+  margin-top:8px;
+  font-size:14px;
+  color:#bfc5cc;
+
+  line-height:1.2;   /* 문장 간격 조정 */
+  max-width:640px;
+}
+
+#headline-notice p{
+  margin:4px 0;
+  line-height:1.3;
+}
