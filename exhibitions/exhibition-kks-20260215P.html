@@ -2,87 +2,43 @@
 <html lang="ko">
 <head>
 
-  <!-- ===== 공통 영역 (모든 페이지 동일) ===== -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index,follow">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Gallery Window">
-  <meta name="twitter:description" content="Online photography exhibition space.">
-  <meta name="twitter:image" content="https://gallerywindow.com/assets/og-gallery.jpg">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>김경수 · 아바타 II | Gallery Window</title>
+<meta name="robots" content="index,follow">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-
-  <!-- Apple / iPhone -->
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#111111">
-
-<!-- Open Graph : Exhibition -->
-<meta property="og:type" content="article">
-
-<meta property="og:title"
-      content="Avatar II — Gallery Window">
-
-<meta property="og:description"
-      content="Kyoungsoo Kim 개인전 · Gallery Window Online Exhibition">
-
-<meta property="og:url"
-      content="https://gallerywindow.com/exhibitions/exhibition-kks-20260215.html">
-
-<meta property="og:image"
-      content="https://gallerywindow.com/assets/posters/kks-20260215.jpg">
-
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "ExhibitionEvent",
- "name": "AVATAR II",
- "startDate": "2026-02-15",
- "location": {
-   "@type": "VirtualLocation",
-   "url": "https://gallerywindow.com"
- }
-}
+<!-- ===== 전시 정보 (여기만 수정하면 됨) ===== -->
+<script>
+const EXHIBITION = {
+  id: "kks-20260215",
+  artist: "김경수",
+  artistEN: "Kyoungsoo Kim",
+  titleKR: "아바타 II",
+  titleEN: "Avatar II",
+  start: "2026-02-15",
+  end: "2026-03-31",
+  poster: "/exhibitions/images/kks-20260215.jpg"
+};
 </script>
 
-<!-- Author / Exhibition metadata -->
-<meta name="author" content="Kyoungsoo Kim">
-<meta name="creator" content="Kyoungsoo Kim">
-<meta name="keywords"
-      content="Kyoungsoo Kim, Avatar II, Photography Exhibition, Gallery Window, Online Exhibition">
+<title></title>
 
-  <!-- SEO -->
-  <meta name="description"
-        content="Gallery Window — Contemporary online photography exhibition space by Kyoungsoo Kim.">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:url" content="">
+<meta property="og:image" content="">
 
-  <link rel="stylesheet" href="/assets/css/style.css">
+<!-- SEO -->
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="keywords" content="">
 
-  <!-- ===== 페이지 전용 영역 (절대 서로 복사 금지) ===== -->
-  <link rel="stylesheet" href="/assets/css/exhibition.css">
-  <link rel="stylesheet" href="/assets/css/exhibition-detail.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/exhibition.css">
+<link rel="stylesheet" href="/assets/css/exhibition-detail.css">
 
-  <!-- ✅ ExhibitionEvent -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ExhibitionEvent",
-    "name": "AVATAR II",
-    "startDate": "2026-02-15",
-    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-    "location": {
-      "@type": "VirtualLocation",
-      "url": "https://gallerywindow.com"
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "Gallery Window"
-    }
-  }
-  </script>
 </head>
 
 <body class="archive-detail-page">
@@ -91,22 +47,13 @@
 
 <article class="exhibition-content">
 
-  <figure class="exhibition-poster">
-    <img src="/exhibitions/images/kks-20260215.jpg" alt="전시 포스터">
-  </figure>
+<figure class="exhibition-poster">
+<img id="poster-image" src="" alt="전시 포스터">
+</figure>
 
-  <section class="exhibition-text">
-    <!-- txt에서 붙여넣은 내용 -->
-    <p>김경수 온라인사진전_아바타 II</p>
-    <p>- 전시제목 : 아바타 II / Avatar II</p>
-    <p>- 전시기간 : 2026. 02. 15(일) ~ 03. 31(화)</p>
-    <p>- 전시장소 : 갤러리 창 (https://gallerywindow.com)</p>
-     
-  </section>
+<section class="exhibition-text" id="exhibition-info"></section>
 
 <div id="note-profile"></div>
-
-<script src="/assets/js/exhibition-detail.js"></script>
 
 <div class="back-to-list">
   <a href="/archive/past.html">← 지난 전시 목록으로</a>
@@ -116,15 +63,9 @@
 
 </main>
 
-<!-- Page transition overlay -->
-<div class="page-fade" id="pageFade"></div>
-
-<script>
-window.addEventListener("load", function () {
-  const fade = document.getElementById("pageFade");
-  if (fade) fade.classList.remove("active");
-});
-</script>
+<script src="/assets/js/exhibition-detail.js"></script>
 
 </body>
 </html>
+
+
