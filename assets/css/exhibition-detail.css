@@ -192,3 +192,24 @@ body.exhibition-detail .exhibition-guestbook form {
   border-radius: 0 !important;
 }
 
+#note-profile{
+  text-align:left;
+  max-width:720px;
+  margin:0 auto;
+}
+
+#note-profile p{
+  text-align:justify;
+  line-height:1.8;
+}
+
+#note-profile .section-title{
+  margin-top:40px;
+  margin-bottom:12px;
+  font-weight:500;
+}
+
+#note-profile .exhibition-text.info span{
+  display:block;
+  margin-bottom:4px;
+}
