@@ -23,26 +23,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadGallery() {
   try {
-    const response = await fetch("/assets/config/gallery.json");
-    const data = await response.json();
 
-    renderHeadlineNotice(data.headlineNotice);
+    const response = await fetch("/assets/config/gallery.json", { cache: "no-store" });
 
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+
+    const text = await response.text();
+
+    let data;
+
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      console.error("JSON parse error:", e);
+      showErrorMessage();
+      return;
+    }
+
+    // 데이터 검증
+    if (!data || typeof data !== "object") {
+      console.error("Invalid gallery data");
+      showErrorMessage();
+      return;
+    }
+
+    // 공지 표시
+    if (data.headlineNotice) {
+      loadHeadlineNotice(data.headlineNotice);
+    }
+
+    // 전시 목록 처리
     const exhibitions =
       (data.currentExhibitions || [])
-        // status 필터
-        .filter(ex => ex.status !== "hidden")
-
-        // order 정렬
+        .filter(ex => ex && ex.status !== "hidden")
         .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
     renderExhibitions(exhibitions);
 
   } catch (error) {
+
     console.error("Gallery data load failed:", error);
+    showErrorMessage();
+
   }
 }
 
+function showErrorMessage() {
+
+  const container = document.querySelector(".exhibitions");
+
+  if (!container) return;
+
+  container.innerHTML = `
+    <div style="text-align:center;padding:60px;color:#aaa;">
+      Exhibition data could not be loaded.
+    </div>
+  `;
+}
 
 function renderExhibitions(exhibitions) {
   const container = document.querySelector(".exhibitions");
@@ -101,6 +140,16 @@ function renderExhibitions(exhibitions) {
       `/assets/exhibitions/${exhibition.id}/poster.jpg`;
     img.alt = exhibition.title;
     img.style.cursor = "pointer";
+
+    const img = document.createElement("img");
+    img.src = posterPath;
+    img.alt = exhibition.title;
+
+    img.loading = "lazy";
+
+    img.onerror = () => {
+      img.src = "/assets/images/poster-placeholder.jpg";
+    };
 
     const meta = document.createElement("div");
     meta.className = "meta";
@@ -195,3 +244,61 @@ window.addEventListener("load", () => {
   document.body.classList.add("page-ready");
 });
 
+function showErrorMessage() {
+
+  const container = document.querySelector(".exhibitions");
+
+  if (!container) return;
+
+  container.innerHTML = `
+    <div style="text-align:center;padding:60px;color:#aaa;">
+      Exhibition data could not be loaded.
+    </div>
+  `;
+}
+
+async function loadHeadlineNotice(noticeConfig) {
+
+  if (!noticeConfig || !noticeConfig.file) return;
+
+  try {
+
+    const response = await fetch(noticeConfig.file);
+    const html = await response.text();
+
+    document.getElementById("headline-notice")
+
+    if (noticeContainer) {
+      noticeContainer.innerHTML = html;
+    }
+
+  } catch (error) {
+
+    console.error("Headline notice load failed:", error);
+
+  }
+
+}
+
+async function loadHeadlineNotice(noticeConfig) {
+
+  if (!noticeConfig || !noticeConfig.file) return;
+
+  try {
+
+    const response = await fetch(noticeConfig.file);
+    const html = await response.text();
+
+    const noticeContainer = document.getElementById("headline-notice");
+
+    if (noticeContainer) {
+      noticeContainer.innerHTML = html;
+    }
+
+  } catch (error) {
+
+    console.error("Headline notice load failed:", error);
+
+  }
+
+}
