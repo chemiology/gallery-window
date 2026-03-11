@@ -136,15 +136,11 @@ function renderExhibitions(exhibitions) {
     const posterWrap = document.createElement("div");
 
     const img = document.createElement("img");
-    img.src =
-      `/assets/exhibitions/${exhibition.id}/poster.jpg`;
+
+    img.src = `/assets/exhibitions/${exhibition.id}/poster.jpg`;
     img.alt = exhibition.title;
+
     img.style.cursor = "pointer";
-
-    const img = document.createElement("img");
-    img.src = posterPath;
-    img.alt = exhibition.title;
-
     img.loading = "lazy";
 
     img.onerror = () => {
