@@ -21,23 +21,26 @@ const EXHIBITION = {
 };
 </script>
 
-<title></title>
+<title id="page-title"></title>
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:url" content="">
-<meta property="og:image" content="">
+<meta property="og:title" id="og-title">
+<meta property="og:description" id="og-desc">
+<meta property="og:url" id="og-url">
+<meta property="og:image" id="og-image">
 
 <!-- SEO -->
-<meta name="description" content="">
-<meta name="author" content="">
-<meta name="keywords" content="">
+<meta name="description" id="meta-desc">
+<meta name="author" id="meta-author">
+<meta name="keywords" id="meta-keywords">
 
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="stylesheet" href="/assets/css/exhibition.css">
 <link rel="stylesheet" href="/assets/css/exhibition-detail.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json" id="structured-data"></script>
 
 </head>
 
@@ -65,7 +68,103 @@ const EXHIBITION = {
 
 <script src="/assets/js/exhibition-detail.js"></script>
 
+<script>
+
+/* ===============================
+   SEO 자동 생성
+=============================== */
+
+const ex = EXHIBITION;
+
+const url = `https://gallerywindow.com/exhibitions/exhibition-${ex.id}.html`;
+
+document.title =
+`${ex.artist} · ${ex.titleKR} | Gallery Window`;
+
+document.getElementById("meta-desc").content =
+`${ex.titleEN}, a photography exhibition by ${ex.artistEN} at Gallery Window.`;
+
+document.getElementById("meta-author").content =
+ex.artistEN;
+
+document.getElementById("meta-keywords").content =
+`${ex.artistEN}, ${ex.titleEN}, photography exhibition, conceptual photography`;
+
+document.getElementById("og-title").content =
+`${ex.titleEN} — Gallery Window`;
+
+document.getElementById("og-desc").content =
+`${ex.artistEN} photography exhibition at Gallery Window`;
+
+document.getElementById("og-url").content = url;
+
+document.getElementById("og-image").content =
+`https://gallerywindow.com${ex.poster}`;
+
+document.getElementById("poster-image").src =
+ex.poster;
+
+/* ===============================
+   Structured Data
+=============================== */
+
+const structured = {
+
+"@context":"https://schema.org",
+
+"@type":"ExhibitionEvent",
+
+"name": ex.titleEN,
+
+"startDate": ex.start,
+
+"endDate": ex.end,
+
+"location":{
+"@type":"VirtualLocation",
+"url":"https://gallerywindow.com"
+},
+
+"organizer":{
+"@type":"Organization",
+"name":"Gallery Window"
+},
+
+"creator":{
+"@type":"Person",
+"name":ex.artistEN
+},
+
+"image":`https://gallerywindow.com${ex.poster}`,
+
+"workFeatured":{
+
+"@type":"VisualArtwork",
+
+"name":ex.titleEN,
+
+"creator":{
+"@type":"Person",
+"name":ex.artistEN
+},
+
+"artform":"Photography",
+
+"genre":"Conceptual Photography",
+
+"image":`https://gallerywindow.com${ex.poster}`
+
+}
+
+};
+
+document.getElementById("structured-data").textContent =
+JSON.stringify(structured, null, 2);
+
+</script>
+
 </body>
 </html>
+
 
 
