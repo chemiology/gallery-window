@@ -23,20 +23,6 @@ body {
 
 /* ---------- Viewer ---------- */
 
-/* 이미지 주변 미묘한 테마 빛 */
-.viewer::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    transparent 60%,
-    var(--theme-color) 140%
-  );
-  opacity: 0.08;
-  pointer-events: none;
-}
-
 .viewer {
   position: fixed;
   inset: 0;
@@ -46,6 +32,9 @@ body {
   justify-content: center;
 
   background: #000;
+
+  overflow:hidden;
+  isolation:isolate;
 }
 
 .viewer img {
@@ -59,15 +48,11 @@ body {
   backface-visibility: hidden;
   will-change: opacity;
 
+  transform: translate3d(0,0,0);
+
   opacity: 0;
   transition: opacity 0.6s ease;
 }
-
-.viewer img.visible {
-  opacity: 1;
-  filter: brightness(1) blur(0);
-}
-
 
 /* ---------- Control Panel ---------- */
 
@@ -331,26 +316,7 @@ body {
 
 figure.exhibition-poster {
   margin: 0;
-}
-
-figure.exhibition-poster {
   width: 100%;
-}
-
-figure.exhibition-poster {
-  width: 100%;
-  margin: 0;
-}
-
-figure.exhibition-poster {
-  margin: 0;
-  margin-inline: 0;
-}
-
-figure.exhibition-poster {
-  margin: 0;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
 }
 
 /* 상세페이지에서는 스크롤 허용 */
@@ -489,15 +455,6 @@ body.exhibition-detail .exhibition-text span {
   100% { opacity: 0; }
 }
 
-.fade-img {
-  opacity: 0;
-  transition: opacity 1.6s ease-in-out;
-}
-
-.fade-img.visible {
-  opacity: 1;
-}
-
 /* 🔥 마지막 → 첫 이미지 전용 */
 .loop-transition {
   transition: opacity 2.2s ease-in-out;
@@ -537,9 +494,25 @@ body.exhibition-detail .exhibition-text span {
 
   letter-spacing: 0.4px;
 
-  z-index: 10;     /* ⭐ 중요 */
+  z-index: 10;
   pointer-events: none;
 
+  opacity:0.65;
+
+  transition:
+    opacity .35s ease,
+    transform .35s ease;
+}
+
+.viewer:hover #exhibition-caption{
+
+  opacity:0.95;
+  transform:translateY(-2px);
+
+}
+
+#exhibition-caption.fade{
+  opacity:0;
 }
 
 #slideshow-notice{
@@ -565,30 +538,8 @@ body.exhibition-detail .exhibition-text span {
   z-index:999;
 
   opacity:1;
-  transition:opacity .8s ease;
+  transition:opacity .6s ease;
   pointer-events:none;
-}
-
-/* ---------------------------------------
-   Caption interaction (refined)
---------------------------------------- */
-
-#exhibition-caption{
-
-  opacity:0.65;
-
-  transition:
-    opacity .35s ease,
-    transform .35s ease;
-
-}
-
-.viewer:hover #exhibition-caption{
-
-  opacity:0.95;
-
-  transform:translateY(-2px);
-
 }
 
 /* ---------------------------------------
@@ -637,33 +588,13 @@ body.exhibition-detail .exhibition-text span {
   opacity:0.75;
 }
 
-#slideshow-notice{
-  opacity:1;
-  transition:opacity .6s ease;
-}
-
 #slideshow-notice.hidden{
-  opacity:0;
-}
-
-/* caption transition */
-
-#exhibition-caption{
-  opacity:0.65;
-  transition:opacity .35s ease;
-}
-
-#exhibition-caption.fade{
   opacity:0;
 }
 
 /* ======================================
    Exhibition Image Protection
 ====================================== */
-
-.viewer .image-shield{
-  position:absolute;
-}
 
 #exhibition-image {
   user-select: none;
