@@ -225,7 +225,7 @@ function showImage(index) {
 
   /* caption update */
 
-if (caption) {
+  if (caption) {
 
   caption.classList.add("fade");
 
@@ -237,7 +237,7 @@ if (caption) {
 
   }, 180);
 
-}
+  }
 
   /* 작품 번호 표시 */
 
@@ -266,27 +266,6 @@ if (caption) {
       }, 900);
     }
   }
-
-  /* slide progress */
-
-  const progress = document.getElementById("slide-progress");
-
-  if(progress){
-
-    progress.style.transition = "none";
-    progress.style.width = "0%";
-
-    setTimeout(() => {
-
-      progress.style.transition =
-        "width " + slideSeconds + "s linear";
-
-      progress.style.width = "100%";
-
-    }, 50);
-
-  }
-
 
 }
 
@@ -516,34 +495,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const notice = document.getElementById("slideshow-notice");
   if (!notice) return;
 
-  let hideTimer;
+  let shownOnce = false;
+  let interactionShown = false;
 
-  function showNotice(){
-
-    notice.style.opacity = "1";
-
-    clearTimeout(hideTimer);
-
-    hideTimer = setTimeout(()=>{
-      notice.style.opacity = "0";
-    },3000);
-
+  function hideNotice(){
+    notice.style.opacity = "0";
   }
 
-  /* 처음 5초 표시 */
+  function showNotice(){
+    notice.style.opacity = "1";
 
-  hideTimer = setTimeout(()=>{
-    notice.style.opacity = "0";
+    setTimeout(hideNotice,3000);
+  }
+
+  /* 처음 표시 */
+
+  setTimeout(()=>{
+    hideNotice();
+    shownOnce = true;
   },5000);
 
-  /* 인터랙션 */
+  /* 첫 인터랙션에서만 표시 */
 
-  document.addEventListener("mousemove", showNotice);
-  document.addEventListener("click", showNotice);
-  document.addEventListener("touchstart", showNotice);
+  function interactionHandler(){
+
+    if(!shownOnce || interactionShown) return;
+
+    interactionShown = true;
+    showNotice();
+
+    document.removeEventListener("mousemove", interactionHandler);
+    document.removeEventListener("click", interactionHandler);
+    document.removeEventListener("touchstart", interactionHandler);
+  }
+
+  document.addEventListener("mousemove", interactionHandler);
+  document.addEventListener("click", interactionHandler);
+  document.addEventListener("touchstart", interactionHandler);
 
 });
-
 
 
 
