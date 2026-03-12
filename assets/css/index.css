@@ -236,15 +236,19 @@
   margin-top:18px;
   margin-bottom:28px;
 
-  max-width:760px;
-
-  font-size:18px;     /* ⭐ 기존보다 한 단계 증가 */
-  line-height:1.65;
+  font-size:16px;     /* ⭐ 17 → 16으로 축소 */
+  line-height:1.6;
 
   color:rgba(230,231,233,0.95);
 
-}
+  max-width:820px;    /* ⭐ 약간 넓힘 */
 
+  text-align:left;
+
+  margin-left:0;      /* ⭐ 중앙정렬 제거 */
+  margin-right:0;
+
+}
 
 /* 대표공지 문단 간격 */
 
@@ -256,9 +260,8 @@
 /* 대표공지 강조 문장 */
 
 .notice-highlight{
-  color:#ffd75a;
+  color:#f2c94c;
 }
-
 
 /* =====================================================
    Poster interaction (hover + focus)
