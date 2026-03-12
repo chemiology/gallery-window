@@ -579,3 +579,16 @@ body.exhibition-detail .exhibition-text span {
   opacity:1;
   transition:opacity .8s ease;
 }
+
+/* ---------------------------------------
+   Caption interaction
+--------------------------------------- */
+
+#exhibition-caption{
+  opacity:0.7;
+  transition:opacity .35s ease;
+}
+
+.viewer:hover #exhibition-caption{
+  opacity:1;
+}
