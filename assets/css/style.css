@@ -1,8 +1,6 @@
 /* =====================================================
-   Gallery Window – Main Page Style (Final)
+   Reset & Base (Global)
 ===================================================== */
-
-/* ---------- Reset & Base ---------- */
 
 * {
   box-sizing: border-box;
@@ -19,7 +17,7 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  background-attachment: fixed;   /* ← 추가 */
+  background-attachment: fixed;
 
   color: #e6e7e9;
   line-height: 1.6;
@@ -34,155 +32,6 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-/* =====================================================
-   Header
-===================================================== */
-
-.site-header {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 40px 96px 20px;
-}
-
-.site-header h1 {
-  margin: 0;
-  font-size: 30px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #d8dadd;
-}
-
-.site-header h1 .ko {
-  margin-right: 18px;
-  color: #e3e4e6;
-}
-
-.site-header h1 .en {
-  font-weight: 400;
-  opacity: 0.65;
-}
-
-.site-header .subtitle {
-  margin-top: 12px;
-  font-size: 14px;
-  color: #a2a7ad;
-}
-
-/* ==============================
-   Headline Notice (Top)
-============================== */
-
-#headline-notice {
-  margin-top: 18px;
-  margin-bottom: 28px;
-
-  font-size: 16px;            /* 작가노트보다 1단계 큼 */
-  line-height: 1.7;
-
-  color: rgba(230, 231, 233, 0.9); /* 작가노트보다 살짝 어두움 */
-
-  text-align: left;   /* ⭐ 원래대로 복구 */
-  max-width: none;      /* ⭐ 폭 제한 제거 */
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* =====================================================
-   Exhibition List
-===================================================== */
-
-.exhibitions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 36px 72px;          /* ⭐ 공간 절반으로 축소 */
-
-  max-width: 1400px;
-  margin: 48px auto 12px;  /* ⭐ 아래 여백 거의 제거 */
-  padding: 0 80px;
-
-  justify-items: center;
-}
-
-/* hall 번호 배지 */
-.exhibition {
-  position: relative;
-}
-
-.hall-label {
-  position: absolute;
-  top: 12px;
-  left: 12px;     /* ⭐ 좌측 상단 */
-  z-index: 5;
-
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-
-  padding: 6px 10px;
-  background: rgba(0,0,0,0.55);
-  color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.35);
-  backdrop-filter: blur(4px);
-}
-
-.exhibition{
-  position:relative;
-}
-
-.exhibitions.grid-4 .exhibition img{
-  max-height:420px;
-}
-
-/* =========================
-   Exhibition Grid Modes
-========================= */
-
-.exhibitions.grid-2 {
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.exhibitions.grid-3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.exhibitions.grid-4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-/* hall 번호 크기 */
-
-.exhibitions.grid-3 .hall-label {
-  font-size: 12px;
-}
-
-.exhibitions.grid-4 .hall-label {
-  font-size: 11px;
-}
-
-.exhibition img{
-  width:100%;
-  height:auto;
-  object-fit:cover;
-}
-
-/* =========================
-   Exhibition Grid spacing
-========================= */
-
-.exhibitions.grid-2 {
-  gap: 72px 72px;
-}
-
-.exhibitions.grid-3 {
-  gap: 48px 48px;
-}
-
-.exhibitions.grid-4 {
-  gap: 36px 36px;
 }
 
 /* ---------- Poster / Note Layout ---------- */
