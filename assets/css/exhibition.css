@@ -53,25 +53,19 @@ body {
   height: auto;
   object-fit: contain;
 
-  opacity: 0;
-  filter: brightness(0.85) blur(1px);
+  image-rendering: auto;
+  backface-visibility: hidden;
+  will-change: opacity;
 
-  transition:
-    opacity 1.2s ease,
-    filter 2.0s ease,
+  opacity: 0;
+
+  transition: opacity 0.6s ease;
 }
 
 .viewer img.visible {
   opacity: 1;
   filter: brightness(1) blur(0);
 }
-
-/* ---------- Fade ---------- */
-
-/* 
-.fade-in { opacity: 1; }
-.fade-out { opacity: 0; }
-*/
 
 
 /* ---------- Control Panel ---------- */
