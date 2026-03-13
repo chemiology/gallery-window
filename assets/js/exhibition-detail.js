@@ -19,7 +19,7 @@ async function loadNoteProfile(){
       .replace(/P$/,"");
 
     // txt 파일 경로
-    const path = `/exhibitions/txt/${id}.txt`;
+    const path = `/exhibitions_pages/txt/${id}.txt`;
 
     const res = await fetch(path);
 
@@ -166,7 +166,7 @@ async function loadNoteProfile(){
       .replace(".html","")
       .replace(/P$/,"");
 
-    const res = await fetch(`/exhibitions/txt/${id}.txt`);
+    const res = await fetch(`/exhibitions_pages/txt/${id}.txt`);
     const text = await res.text();
 
     const lines = text.split("\n");
