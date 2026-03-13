@@ -4,10 +4,9 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <meta name="robots" content="index,follow">
 
-<!-- ===== 전시 정보 (여기만 수정하면 됨) ===== -->
+<!-- ===== 전시 정보 (여기만 수정) ===== -->
 <script>
 const EXHIBITION = {
   id: "kks-20260215",
@@ -17,11 +16,12 @@ const EXHIBITION = {
   titleEN: "Avatar II",
   start: "2026-02-15",
   end: "2026-03-31",
-  poster: "/exhibitions/images/kks-20260215.jpg"
+  poster: "/exhibitions/images/kks-20260215.jpg",
+  state: "upcoming"   // upcoming 또는 past
 };
 </script>
 
-<title id="page-title"></title>
+<title></title>
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
@@ -51,7 +51,7 @@ const EXHIBITION = {
 <article class="exhibition-content">
 
 <figure class="exhibition-poster">
-<img id="poster-image" src="" alt="전시 포스터">
+<img id="poster-image" src="" alt="">
 </figure>
 
 <section class="exhibition-text" id="exhibition-info"></section>
@@ -59,7 +59,12 @@ const EXHIBITION = {
 <div id="note-profile"></div>
 
 <div class="back-to-list">
-<a href="/archive/upcoming.html">← 예정 전시 목록으로</a>
+<a id="back-link"></a>
+</div>
+
+<div class="exhibition-navigation">
+<a id="prev-exhibition"></a>
+<a id="next-exhibition"></a>
 </div>
 
 </article>
@@ -71,24 +76,52 @@ const EXHIBITION = {
 <script>
 
 /* ===============================
-   SEO 자동 생성
+   기본 데이터
 =============================== */
 
 const ex = EXHIBITION;
 
-const url = `https://gallerywindow.com/exhibitions/exhibition-${ex.id}.html`;
+const url = window.location.href;
+
+const posterURL =
+`https://gallerywindow.com${ex.poster}`;
+
+/* ===============================
+   상태 처리 (예정 / 지난 전시)
+=============================== */
+
+const state = ex.state || "upcoming";
+
+const listPage =
+state === "past"
+? "/archive/past.html"
+: "/archive/upcoming.html";
+
+const listText =
+state === "past"
+? "← 지난 전시 목록으로"
+: "← 예정 전시 목록으로";
+
+const breadcrumbPage =
+state === "past"
+? "https://gallerywindow.com/archive/past.html"
+: "https://gallerywindow.com/archive/upcoming.html";
+
+/* ===============================
+   SEO 자동 생성
+=============================== */
 
 document.title =
-`${ex.artist} · ${ex.titleKR} | Gallery Window`;
+`${ex.artistEN} — ${ex.titleEN} | Gallery Window`;
 
 document.getElementById("meta-desc").content =
-`${ex.titleEN}, a photography exhibition by ${ex.artistEN} at Gallery Window.`;
+`${ex.titleEN}, a conceptual photography exhibition by ${ex.artistEN} at Gallery Window.`;
 
 document.getElementById("meta-author").content =
 ex.artistEN;
 
 document.getElementById("meta-keywords").content =
-`${ex.artistEN}, ${ex.titleEN}, photography exhibition, conceptual photography`;
+`${ex.artistEN}, ${ex.titleEN}, photography exhibition, conceptual photography, online exhibition`;
 
 document.getElementById("og-title").content =
 `${ex.titleEN} — Gallery Window`;
@@ -98,17 +131,34 @@ document.getElementById("og-desc").content =
 
 document.getElementById("og-url").content = url;
 
-document.getElementById("og-image").content =
-`https://gallerywindow.com${ex.poster}`;
+document.getElementById("og-image").content = posterURL;
 
-document.getElementById("poster-image").src =
-ex.poster;
+/* ===============================
+   포스터 이미지 설정
+=============================== */
+
+const posterImg = document.getElementById("poster-image");
+
+posterImg.src = ex.poster;
+
+posterImg.alt =
+`${ex.titleEN} conceptual photography exhibition poster by ${ex.artistEN} at Gallery Window`;
+
+/* ===============================
+   돌아가기 링크 자동 생성
+=============================== */
+
+const backLink = document.getElementById("back-link");
+
+backLink.href = listPage;
+
+backLink.textContent = listText;
 
 /* ===============================
    Structured Data
 =============================== */
 
-const structured = {
+const exhibitionData = {
 
 "@context":"https://schema.org",
 
@@ -116,9 +166,15 @@ const structured = {
 
 "name": ex.titleEN,
 
+"alternateName": ex.titleKR,
+
 "startDate": ex.start,
 
 "endDate": ex.end,
+
+"url": url,
+
+"image": posterURL,
 
 "location":{
 "@type":"VirtualLocation",
@@ -127,21 +183,23 @@ const structured = {
 
 "organizer":{
 "@type":"Organization",
-"name":"Gallery Window"
+"name":"Gallery Window",
+"url":"https://gallerywindow.com"
 },
 
 "creator":{
 "@type":"Person",
-"name":ex.artistEN
+"name":ex.artistEN,
+"url":"https://www.kimkyoungsoo.com"
 },
-
-"image":`https://gallerywindow.com${ex.poster}`,
 
 "workFeatured":{
 
 "@type":"VisualArtwork",
 
 "name":ex.titleEN,
+
+"alternateName":ex.titleKR,
 
 "creator":{
 "@type":"Person",
@@ -152,14 +210,74 @@ const structured = {
 
 "genre":"Conceptual Photography",
 
-"image":`https://gallerywindow.com${ex.poster}`
+"image":posterURL,
+
+"associatedMedia":{
+
+"@type":"ImageObject",
+
+"name":`${ex.titleEN} Exhibition Poster`,
+
+"contentUrl":posterURL,
+
+"creator":{
+"@type":"Person",
+"name":ex.artistEN
+},
+
+"creditText":ex.artistEN,
+
+"copyrightHolder":{
+"@type":"Person",
+"name":ex.artistEN
+},
+
+"description":
+`${ex.titleEN} conceptual photography exhibition poster by ${ex.artistEN}`
+
+}
 
 }
 
 };
 
+const breadcrumbData = {
+
+"@context":"https://schema.org",
+
+"@type":"BreadcrumbList",
+
+"itemListElement":[
+
+{
+"@type":"ListItem",
+"position":1,
+"name":"Gallery Window",
+"item":"https://gallerywindow.com/"
+},
+
+{
+"@type":"ListItem",
+"position":2,
+"name":"Exhibitions",
+"item": breadcrumbPage
+},
+
+{
+"@type":"ListItem",
+"position":3,
+"name":ex.titleEN,
+"item":url
+}
+
+]
+
+};
+
+const structuredData = [exhibitionData, breadcrumbData];
+
 document.getElementById("structured-data").textContent =
-JSON.stringify(structured, null, 2);
+JSON.stringify(structuredData, null, 2);
 
 </script>
 
