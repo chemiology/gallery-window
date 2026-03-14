@@ -213,3 +213,25 @@ body.exhibition-detail .exhibition-guestbook form {
   display:block;
   margin-bottom:4px;
 }
+
+/* ===============================
+   전시상세 페이지 포스터 보조이미지 처리
+================================ */
+.exhibition-support-image img{
+  max-width:100%;
+  height:auto;
+}
+
+.exhibition-poster,
+.exhibition-support-image{
+  margin:28px auto;
+  text-align:center;
+}
+
+.exhibition-poster img,
+.exhibition-support-image img{
+  max-width:100%;
+  height:auto;
+  display:block;
+  margin:auto;
+}
