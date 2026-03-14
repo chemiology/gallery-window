@@ -203,8 +203,17 @@ async function loadNoteProfile(){
 
     lines.forEach(line => {
 
+      const raw = line;
       line = line.trim();
-      if(!line) return;
+
+      /* 빈 줄 → 간격 유지 */
+
+      if(!line){
+        html += `<div class="gap-md"></div>`;
+        return;
+      }
+
+      /* [TITLE] */
 
       if(line.startsWith("[") && line.endsWith("]")){
 
@@ -213,11 +222,9 @@ async function loadNoteProfile(){
           inList = false;
         }
 
-        const title = line.replace(/\[|\]/g,"");
+        html += `<div class="gap-lg section-title">${raw}</div>`;
 
-        html += `<div class="gap-lg section-title">${title}</div>`;
-
-        if(title !== "작가노트"){
+        if(raw !== "[작가노트]"){
           html += `<div class="exhibition-text info">`;
           inList = true;
         }
@@ -225,9 +232,9 @@ async function loadNoteProfile(){
       } else {
 
         if(inList){
-          html += `<span>${line}</span>`;
+          html += `<span>${raw}</span>`;
         } else {
-          html += `<p class="gap-lg">${line}</p>`;
+          html += `<p class="gap-lg">${raw}</p>`;
         }
 
       }
