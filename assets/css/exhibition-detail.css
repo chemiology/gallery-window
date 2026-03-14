@@ -48,18 +48,17 @@ body.exhibition-detail .exhibition-poster img{
    Support Image
 ========================================= */
 
-body.exhibition-detail .exhibition-support-image{
+body.exhibition-detail figure.exhibition-support-image{
+
+  width:56%;
   margin:28px auto;
-  text-align:center;
+
 }
 
-body.exhibition-detail .exhibition-support-image img{
+body.exhibition-detail figure.exhibition-support-image img{
 
-  width:56% !important;
+  width:100%;
   height:auto;
-
-  display:block;
-  margin:0 auto;
 
 }
 
@@ -131,7 +130,7 @@ body.exhibition-detail .exhibition-text b{
 
 body.exhibition-detail #note-profile .section-title{
 
-  display:block;
+  text-align:left;
 
   font-size:18px;
   font-weight:500;
@@ -140,9 +139,8 @@ body.exhibition-detail #note-profile .section-title{
   margin-top:32px;
   margin-bottom:12px;
 
-  text-align:left !important;
-
 }
+
 /* =========================================
    Profile / Artist Note
 ========================================= */
@@ -250,9 +248,14 @@ body.exhibition-detail .exhibition-text pre{
     max-width:82%;
   }
 
-  body.exhibition-detail .exhibition-support-image img{
+  body.exhibition-detail figure.exhibition-support-image{
 
-    width:74% !important;
+    width:74%;
+
   }
 
+}
+
+body.exhibition-detail #note-profile{
+  text-align:left;
 }
