@@ -1142,8 +1142,13 @@ body.archive {
 }
 
 .archive-nav{
-  margin-top:60px;
+  margin-top:20px;
+  margin-bottom:10px;   /* 추가 */
   text-align:center;
+}
+
+.archive-page .poster-grid{
+  margin-top:10px;
 }
 
 .archive-nav a{
