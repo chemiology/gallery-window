@@ -45,13 +45,21 @@
 
 <link rel="stylesheet" href="/assets/css/style.css">
 
+<link rel="stylesheet" href="/assets/css/archive.css">
+
 </head>
 
-  <body class="archive-page">
+<body class="archive-page past-page">
 
-<main class="archive-page">
+<main>
+
+  <nav class="archive-nav">
+    <a href="/index.html">← 대표화면으로 돌아가기</a>
+  </nav>
 
   <h1 class="archive-title">지난 전시</h1>
+
+  <h2 class="year-divider">2026</h2>
 
   <section class="poster-grid">
 
@@ -75,11 +83,54 @@
 
   </section>
 
-  <nav class="archive-nav">
-    <a href="/index.html">← 대표화면으로 돌아가기</a>
-  </nav>
-
 </main>
+
+<script>
+
+document.querySelectorAll(".year-divider").forEach(year => {
+
+  const grid = year.nextElementSibling;
+
+  if(!grid) return;
+
+  /* 전시 개수 계산 */
+
+  const posters = grid.querySelectorAll(".poster-item");
+  const count = posters.length;
+
+  year.textContent = year.textContent + " (" + count + ")";
+
+  /* 접기 기능 */
+
+  year.addEventListener("click", () => {
+
+    const isClosed = year.classList.toggle("closed");
+
+    if(isClosed){
+
+      grid.style.maxHeight = "0px";
+      grid.style.overflow = "hidden";
+
+    }else{
+
+      grid.style.maxHeight = grid.scrollHeight + "px";
+
+    }
+
+  });
+
+  /* 초기 상태 */
+
+  grid.style.transition = "max-height 0.35s ease";
+  grid.style.maxHeight = grid.scrollHeight + "px";
+
+});
+
+</script>
+
+</script>
+
+</script>
 
 </body>
 </html>
