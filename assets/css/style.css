@@ -1292,8 +1292,7 @@ body.upcoming-page .poster-grid{
   grid-template-columns: repeat(3, 1fr);
   max-width: 1100px;   /* 기존보다 약간 넓게 */
   margin: 30px auto;   /* 위 간격 줄임 */
-
-
+  margin-top:20px;
 }
 
 /* Past Exhibition */
@@ -1302,7 +1301,7 @@ body.past-page .poster-grid{
 
   grid-template-columns: repeat(5, 1fr);
   margin: 20px auto;  /* 간격 크게 감소 */
-
+  margin-top:10px;
 }
 
 .year-divider{
