@@ -9,7 +9,6 @@
 body.exhibition-detail{
   background:#eef4f8;
   color:#222;
-
   overflow-y:auto;
   overflow-x:hidden;
 }
@@ -50,13 +49,15 @@ body.exhibition-detail .exhibition-poster img{
 ========================================= */
 
 body.exhibition-detail .exhibition-support-image{
-  width:56%;
   margin:28px auto;
+  text-align:center;
 }
 
 body.exhibition-detail .exhibition-support-image img{
-  width:100%;
+  width:56%;
   height:auto;
+  display:block;
+  margin:0 auto;
 }
 
 
@@ -75,7 +76,7 @@ body.exhibition-detail .exhibition-text{
 
   color:#222;
 
-  /* TXT 줄바꿈 그대로 표시 */
+  /* TXT 줄바꿈 그대로 유지 */
   white-space:pre-wrap;
 
   /* 양쪽 정렬 */
@@ -90,6 +91,7 @@ body.exhibition-detail .exhibition-text{
   letter-spacing:0.01em;
 }
 
+
 /* 정보형 텍스트 */
 
 body.exhibition-detail .exhibition-text span{
@@ -99,10 +101,11 @@ body.exhibition-detail .exhibition-text span{
   margin-bottom:2px;
 }
 
+
 /* 소제목 (ARTIST NOTE 등) */
 
-.exhibition-text strong,
-.exhibition-text b{
+body.exhibition-detail .exhibition-text strong,
+body.exhibition-detail .exhibition-text b{
 
   display:block;
 
@@ -117,15 +120,6 @@ body.exhibition-detail .exhibition-text span{
 
 }
 
-.exhibition-text{
-  white-space:pre-wrap;
-}
-
-.exhibition-text br + br{
-  display:block;
-  content:"";
-  margin-top:14px;
-}
 
 
 /* =========================================
@@ -218,11 +212,11 @@ body.exhibition-detail .back-to-list a:hover{
    Remove unwanted boxes
 ========================================= */
 
-.exhibition-text *,
-.exhibition-text p,
-.exhibition-text div,
-.exhibition-text section,
-.exhibition-text pre{
+body.exhibition-detail .exhibition-text *,
+body.exhibition-detail .exhibition-text p,
+body.exhibition-detail .exhibition-text div,
+body.exhibition-detail .exhibition-text section,
+body.exhibition-detail .exhibition-text pre{
   background:transparent !important;
   box-shadow:none !important;
   border-radius:0 !important;
@@ -250,7 +244,7 @@ body.exhibition-detail .back-to-list a:hover{
     max-width:82%;
   }
 
-  body.exhibition-detail .exhibition-support-image{
+  body.exhibition-detail .exhibition-support-image img{
     width:74%;
   }
 
