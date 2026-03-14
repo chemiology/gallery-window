@@ -53,11 +53,14 @@ body.exhibition-detail .exhibition-support-image{
   text-align:center;
 }
 
-body.exhibition-detail figure.exhibition-support-image img{
-  width:56%;
+body.exhibition-detail .exhibition-support-image img{
+
+  width:56% !important;
   height:auto;
+
   display:block;
   margin:0 auto;
+
 }
 
 
@@ -126,7 +129,7 @@ body.exhibition-detail .exhibition-text b{
    Section Title
 ========================================= */
 
-body.exhibition-detail .section-title{
+body.exhibition-detail #note-profile .section-title{
 
   display:block;
 
@@ -137,10 +140,9 @@ body.exhibition-detail .section-title{
   margin-top:32px;
   margin-bottom:12px;
 
-  text-align:left;
+  text-align:left !important;
 
 }
-
 /* =========================================
    Profile / Artist Note
 ========================================= */
@@ -249,7 +251,8 @@ body.exhibition-detail .exhibition-text pre{
   }
 
   body.exhibition-detail .exhibition-support-image img{
-    width:74%;
+
+    width:74% !important;
   }
 
 }
