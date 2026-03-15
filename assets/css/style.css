@@ -451,6 +451,43 @@ body.home .guestbook li {
 }
 
 /* =========================
+   Hall (Exhibition Wall)
+========================= */
+
+.hall-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;   /* 좌우 안전 여백 */
+  background: #111;
+  position: relative;
+  z-index: 2;
+}
+
+.hall-card {
+  text-align: center;
+  transition: transform 0.4s ease;
+  overflow: hidden;  /* 이미지 넘침 방지 */
+}
+
+.hall-card img {
+  height: 70vh;
+  max-height: 720px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.hall-card:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================
    Global Exhibition Space
 ========================= */
 .site-background {
@@ -473,47 +510,16 @@ body.home .guestbook li {
   background-repeat: no-repeat;
 }
 
+.site-background.hall {
+  background-image: url("../images/bg_hall.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
 body {
   background: transparent;
 }
-
-/* ===== Poster overlay caption ===== */
-
-.poster-wrap {
-  position: relative;
-  display: inline-block;
-}
-
-.poster-caption {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #fff;
-  font-size: 20px;
-  letter-spacing: 0.05em;
-
-  background: rgba(0,0,0,0.45);
-  opacity: 0;
-
-  transition: opacity 0.4s ease;
-}
-
-.poster-wrap:hover .poster-caption {
-  opacity: 1;
-}
-
-
-
-
-
-
-
-
-
-
 
 main,
 .hall-grid,
@@ -552,14 +558,6 @@ display: block;
 
 /* ===== Hall poster reveal ===== */
 
-
-.site-background.hall {
-  background-image: url("../images/bg_hall.jpg");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-}
-
 .hall-card {
   opacity: 0;
   transform: translateY(30px);
@@ -573,6 +571,34 @@ display: block;
   transform: translateY(0);
 }
 
+/* ===== Poster overlay caption ===== */
+
+.poster-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.poster-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+
+  transition: opacity 0.4s ease;
+}
+
+.poster-wrap:hover .poster-caption {
+  opacity: 1;
+}
+
 /* =====================================
    Main poster sizing (Lobby only)
 ===================================== */
@@ -583,44 +609,6 @@ display: block;
   margin: 0 auto;
   display: block;
 }
-
-/* =========================
-   Hall (Exhibition Wall)
-========================= */
-
-.hall-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 0 20px;   /* 좌우 안전 여백 */
-  background: #111;
-  position: relative;
-  z-index: 2;
-}
-
-.hall-card {
-  text-align: center;
-  transition: transform 0.4s ease;
-  overflow: hidden;  /* 이미지 넘침 방지 */
-}
-
-.hall-card img {
-  height: 70vh;
-  max-height: 720px;
-  width: auto;
-  display: block;
-  margin: 0 auto;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-}
-
-.hall-card:hover {
-  transform: translateY(-8px);
-}
-
 
 /* =========================
    Hall Entry Layout
@@ -769,6 +757,7 @@ body.home .exhibition img {
   max-height: 78vh;
   object-fit: contain;
 }
+
 
 .hall-left {
   position: relative;
@@ -922,6 +911,31 @@ body.home .exhibition img:hover {
   transform: translateX(260%) rotate(25deg);
 }
 
+body.home .exhibition img {
+  position: relative;
+  overflow: hidden;
+}
+
+body.home .exhibition img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== page transition fade ===== */
+
+#pageFade {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 9999;
+}
+
+#pageFade.active {
+  opacity: 1;
+}
+
 /* ===== Hall entrance interaction ===== */
 
 /* 포스터 기본 */
@@ -1062,6 +1076,21 @@ body.page-ready {
   gap: 24px;
 }
 
+/* ===== Emergency layout restore ===== */
+
+main {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+/*  min-height: auto;   */
+}
+
+/* ===== Safety guard : fade overlay fail-safe ===== */
+body:not(.transitioning) .page-fade {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 /* ===============================
    Gallery artwork depth
    (작품만 입체감 유지)
@@ -1084,165 +1113,6 @@ body.page-ready {
   box-shadow:
     0 22px 48px rgba(0,0,0,0.28),
     0 6px 14px rgba(0,0,0,0.18);
-}
-
-
-/* =========================
-   HALL MOBILE ALIGN FIX
-========================= */
-
-body.hall {
-  overflow-x: hidden;
-}
-
-.site-background.hall {
-  position: fixed;   /* ⭐ absolute → fixed */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-/* =====================================
-   HALL MOBILE NOTE WIDTH FIX (FINAL)
-===================================== */
-
-@media (max-width:768px){
-
-  .hall-entry{
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .artist-note-area{
-    width:100%;
-    max-width:100%;
-    margin:0 auto;
-    box-sizing:border-box;
-  }
-
-  .artist-note{
-    width:100%;
-    max-width:100%;
-    min-width:0;                 /* ⭐ grid/flex overflow 방지 핵심 */
-    overflow-wrap:break-word;    /* 긴 문장 강제 줄바꿈 */
-    word-break:keep-all;
-  }
-
-}
-
-/* =========================
-   HOME MOBILE HALL GRID
-========================= */
-
-@media (max-width: 768px){
-
-  .exhibitions{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:18px;
-    justify-items:center;
-  }
-
-  .exhibition{
-    width:100%;
-    max-width:160px;
-  }
-
-  .exhibition img{
-    width:100%;
-    height:auto;
-  }
-
-}
-
-  /* -----------------
-     HALL LAYOUT
-  ----------------- */
-  .hall-entry{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .hall-left,
-  .artist-note-area{
-    width:100%;
-    max-width:360px;
-    margin:0 auto;
-  }
-
-  .hall-poster{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-body.home .exhibition img {
-  position: relative;
-  overflow: hidden;
-}
-
-body.home .exhibition img:hover {
-  transform: scale(1.03);
-}
-
-/* ===== page transition fade ===== */
-
-#pageFade {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  z-index: 9999;
-}
-
-#pageFade.active {
-  opacity: 1;
-}
-
-
-/* ===== Emergency layout restore ===== */
-
-main {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-/*  min-height: auto;   */
-}
-
-/* ===== Safety guard : fade overlay fail-safe ===== */
-body:not(.transitioning) .page-fade {
-  opacity: 0 !important;
-  pointer-events: none !important;
 }
 
 /* ==============================
@@ -1312,6 +1182,9 @@ body.archive {
   }
 }
 
+
+
+
 /* ===============================
    Text area normalization
    (⚠️ 모든 흰/회색 박스 제거)
@@ -1355,6 +1228,27 @@ body {
   overflow-x: hidden;
 }
 
+/* =========================
+   HALL MOBILE ALIGN FIX
+========================= */
+
+body.hall {
+  overflow-x: hidden;
+}
+
+.site-background.hall {
+  position: fixed;   /* ⭐ absolute → fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* =====================================
    MOBILE LAYOUT FINAL (≤768px)
    Gallery Window unified system
@@ -1386,6 +1280,32 @@ body {
     margin:0 auto;
   }
 
+
+
+  /* -----------------
+     HALL LAYOUT
+  ----------------- */
+  .hall-entry{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .hall-left,
+  .artist-note-area{
+    width:100%;
+    max-width:360px;
+    margin:0 auto;
+  }
+
+  .hall-poster{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
   /* -----------------
      Exhibition Text
   ----------------- */
@@ -1394,10 +1314,65 @@ body {
     line-height:1.65;
   }
 
+}
+
 .official-site{
   color:#e12d86;
   font-weight:600;
   letter-spacing:0.02em;
+}
+
+/* =====================================
+   HALL MOBILE NOTE WIDTH FIX (FINAL)
+===================================== */
+
+@media (max-width:768px){
+
+  .hall-entry{
+    padding:0 16px;
+    box-sizing:border-box;
+  }
+
+  .artist-note-area{
+    width:100%;
+    max-width:100%;
+    margin:0 auto;
+    box-sizing:border-box;
+  }
+
+  .artist-note{
+    width:100%;
+    max-width:100%;
+    min-width:0;                 /* ⭐ grid/flex overflow 방지 핵심 */
+    overflow-wrap:break-word;    /* 긴 문장 강제 줄바꿈 */
+    word-break:keep-all;
+  }
+
+}
+
+/* =========================
+   HOME MOBILE HALL GRID
+========================= */
+
+@media (max-width: 768px){
+
+  .exhibitions{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+    justify-items:center;
+  }
+
+  .exhibition{
+    width:100%;
+    max-width:160px;
+  }
+
+  .exhibition img{
+    width:100%;
+    height:auto;
+  }
+
 }
 
 /* =========================
