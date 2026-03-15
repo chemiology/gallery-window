@@ -717,21 +717,21 @@ body.archive {
 }
 
 /* ===============================
-   Archive layout (final)
+   Poster Grid (Base Layout)
 ================================ */
 
-/* 공통 포스터 그리드 */
-.poster-grid {
+.poster-grid{
   display:grid;
-  gap:40px;
 
-  width:100%;        /* ⭐ 추가 */
+  justify-content:center;
+
+  gap:36px;
+
   max-width:1400px;
-
   margin:60px auto;
-  padding:0 40px;
 
-  box-sizing:border-box;   /* ⭐ 추가 */
+  padding:0 40px;
+  box-sizing:border-box;
 }
 
 .poster-item img:hover {
@@ -1687,14 +1687,25 @@ html, body {
 
 @media (max-width:768px){
 
-  .exhibitions{
-    grid-template-columns: 1fr !important;
-    justify-items: center;
+  .poster-grid{
+
+    grid-template-columns:repeat(3,1fr);
+
+    justify-content:center;
+
+    gap:16px;
+    padding:0 14px;
+
   }
 
-  .exhibition{
-    max-width:320px;
-    width:100%;
-  }
+}
 
+/* style.css */
+
+.poster-item img{
+  transition:transform 0.25s ease;
+}
+
+.poster-item img:hover{
+  transform:scale(1.03);
 }
