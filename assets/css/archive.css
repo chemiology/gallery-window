@@ -115,13 +115,13 @@ body.past-page .poster-grid{
 @media (max-width:768px){
 
   .archive-page .poster-grid{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:14px;
-    padding:0;
+    padding:0 12px;
   }
 
   body.past-page .poster-grid{
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
   }
 
   .poster-item figcaption{
