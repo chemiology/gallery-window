@@ -1614,7 +1614,6 @@ body.hall {
 
     grid-template-columns:repeat(3,1fr);
 
-    padding:0 12px;
     gap:14px;
   }
 
@@ -1708,18 +1707,21 @@ html, body {
   padding:0;
 }
 
-/* ===== ARCHIVE MOBILE CENTER FIX ===== */
+/* ===== ARCHIVE MOBILE FIX (FINAL) ===== */
 
 @media (max-width:768px){
 
   .archive-page .poster-grid{
 
-    width:calc(100% - 40px);
-    margin:0 auto;
+    width:100%;
+    max-width:100%;
 
     grid-template-columns:repeat(2,1fr);
 
     gap:16px;
+
+    padding:0;
+    margin:0 auto;
 
   }
 
