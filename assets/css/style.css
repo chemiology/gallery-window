@@ -1295,15 +1295,15 @@ body.hall {
   ----------------- */
 @media (max-width:768px){
 
-  .hall-entry{
+  body.hall .hall-entry{
     display:flex;
     flex-direction:column;
     width:100%;
     padding:0 16px;
   }
 
-  .hall-left,
-  .artist-note-area{
+  body.hall .hall-left,
+  body.hall .artist-note-area{
     width:100%;
     max-width:360px;
     margin:0 auto;
@@ -1609,6 +1609,20 @@ body.hall {
   .exhibition img{
     width:100%;
     height:auto;
+  }
+
+}
+
+
+
+
+@media (max-width:768px){
+
+  main,
+  .wrapper,
+  .container{
+    width:100%;
+    max-width:100%;
   }
 
 }
