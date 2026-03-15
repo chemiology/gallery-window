@@ -134,3 +134,55 @@ body.past-page .poster-grid{
   }
 
 }
+
+/* ===== ARCHIVE GRID FORCE FIX ===== */
+
+body.archive-page .poster-grid{
+  display:grid !important;
+  grid-template-columns:repeat(3,1fr) !important;
+  gap:14px !important;
+
+  width:100% !important;
+  max-width:100% !important;
+
+  margin:0 auto !important;
+  padding:0 12px !important;
+
+  box-sizing:border-box;
+}
+
+/* 모바일에서는 2열 */
+@media (max-width:768px){
+
+  body.archive-page .poster-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+  }
+
+}
+
+/* ===== ARCHIVE GRID (독립 구조) ===== */
+
+.archive-grid{
+  display:grid;
+
+  grid-template-columns:repeat(3,1fr);
+
+  gap:18px;
+
+  width:100%;
+  max-width:1200px;
+
+  margin:20px auto;
+  padding:0 12px;
+
+  box-sizing:border-box;
+}
+
+/* 모바일 */
+@media (max-width:768px){
+
+  .archive-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
