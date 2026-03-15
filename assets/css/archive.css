@@ -185,3 +185,51 @@ body.past-page .poster-grid{
   line-height:1.45;
 
 }
+
+@media (max-width: 768px) {
+
+  .archive-title {
+    color: #222;
+  }
+
+  .archive-nav {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .archive-page .poster-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
+  .poster-item {
+    min-width: 0;
+  }
+
+  .poster-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .poster-item figcaption {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.4;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    color: #555;
+  }
+
+  .year-divider {
+    color: #222;
+    padding: 0 12px;
+  }
+}
