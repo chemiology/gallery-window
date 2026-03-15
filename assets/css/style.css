@@ -721,19 +721,21 @@ body.archive {
 ================================ */
 
 .poster-grid{
+
   display:grid;
 
-  width:100%;              /* ⭐ 추가 */
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-  justify-content:center;
+  gap:40px;
 
-  gap:48px;
-
+  width:100%;
   max-width:1400px;
-  margin:60px auto;
 
-  padding:0 40px;
+  margin:60px auto;
+  padding:0 24px;
+
   box-sizing:border-box;
+
 }
 
 .poster-item img:hover {
@@ -1615,8 +1617,10 @@ body.hall {
     width:100%;
     max-width:100%;
 
-    padding:0 16px;
-    gap:18px;
+    grid-template-columns:repeat(3,1fr);
+
+    padding:0 14px;
+    gap:16px;
   }
 
 }
@@ -1683,17 +1687,6 @@ html, body {
     height:auto;
     max-height:none;
     object-fit:contain;
-  }
-
-}
-
-@media (max-width:768px){
-
-  .poster-grid{
-    grid-template-columns:repeat(3,1fr);
-    justify-content:center;
-    gap:16px;
-    padding:0 16px;
   }
 
 }
