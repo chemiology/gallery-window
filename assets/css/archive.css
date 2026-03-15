@@ -317,3 +317,17 @@ body.past-page .poster-grid{
   }
 
 }
+
+/* ===== MOBILE GRID FIX (최종) ===== */
+
+@media (max-width:768px){
+
+  body.upcoming-page .poster-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  body.past-page .poster-grid{
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+}
