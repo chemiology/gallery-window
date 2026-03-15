@@ -723,9 +723,11 @@ body.archive {
 .poster-grid{
   display:grid;
 
+  width:100%;              /* ⭐ 추가 */
+
   justify-content:center;
 
-  gap:36px;
+  gap:48px;
 
   max-width:1400px;
   margin:60px auto;
@@ -1688,14 +1690,10 @@ html, body {
 @media (max-width:768px){
 
   .poster-grid{
-
     grid-template-columns:repeat(3,1fr);
-
     justify-content:center;
-
     gap:16px;
-    padding:0 14px;
-
+    padding:0 16px;
   }
 
 }
