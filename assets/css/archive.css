@@ -50,23 +50,14 @@
   border-color:#000;
 }
 
-/* Upcoming Exhibition */
-
+/* 예정 전시 */
 body.upcoming-page .poster-grid{
-
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 1100px;   /* 기존보다 약간 넓게 */
-  margin: 30px auto;   /* 위 간격 줄임 */
-  margin-top:20px;
+  grid-template-columns:repeat(3,1fr);
 }
 
-/* Past Exhibition */
-
+/* 지난 전시 */
 body.past-page .poster-grid{
-
-  grid-template-columns: repeat(5, 1fr);
-  margin: 20px auto;  /* 간격 크게 감소 */
-  margin-top:10px;
+  grid-template-columns:repeat(5,1fr);
 }
 
 .year-divider{
@@ -266,7 +257,48 @@ body.past-page .poster-grid{
 .poster-item img{
   width:100%;
   height:auto;
-  border-radius:12px;
+  border-radius:6px;
+}
+
+@media (max-width:768px){
+
+  .poster-item figcaption{
+    font-size:12px;
+    line-height:1.35;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .poster-grid{
+    padding:0 10px;
+    gap:12px;
+  }
+
+}
+
+.poster-item{
+  width:100%;
+}
+
+.poster-item img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:6px;
+}
+
+.poster-item{
+  width:100%;
+}
+
+.poster-item img{
+  width:100%;
+  height:auto;
+  display:block;
+
+  border-radius:6px;
 }
 
 @media (max-width:768px){

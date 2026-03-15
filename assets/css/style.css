@@ -1684,3 +1684,17 @@ html, body {
   }
 
 }
+
+@media (max-width:768px){
+
+  .exhibitions{
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+  }
+
+  .exhibition{
+    max-width:320px;
+    width:100%;
+  }
+
+}
