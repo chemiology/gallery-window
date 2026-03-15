@@ -268,3 +268,31 @@ body.past-page .poster-grid{
   }
 
 }
+
+/* =========================
+   MOBILE ARCHIVE FINAL FIX
+========================= */
+
+@media (max-width:768px){
+
+  body.upcoming-page .poster-grid,
+  body.past-page .poster-grid{
+    grid-template-columns:repeat(2,1fr) !important;
+    max-width:360px;
+    margin:40px auto;
+    padding:0;
+    gap:18px;
+  }
+
+  .poster-item img{
+    width:100%;
+    height:auto;
+  }
+
+  .poster-item figcaption{
+    text-align:center;
+    font-size:13px;
+    line-height:1.4;
+  }
+
+}
