@@ -1707,3 +1707,20 @@ html, body {
   margin:0 auto;
   padding:0;
 }
+
+/* ===== ARCHIVE MOBILE CENTER FIX ===== */
+
+@media (max-width:768px){
+
+  .archive-page .poster-grid{
+
+    width:calc(100% - 40px);
+    margin:0 auto;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+  }
+
+}
