@@ -391,5 +391,24 @@ body.home .exhibition img{
 
 }
 
+@media (max-width:768px){
 
+  .exhibition-body{
+    display:block !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .exhibition{
+    text-align:center;
+  }
+
+  .exhibition img{
+    width:100%;
+    height:auto;
+  }
+
+}
 
