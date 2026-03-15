@@ -726,11 +726,16 @@ body.archive {
 
 /* 공통 포스터 그리드 */
 .poster-grid {
-  display: grid;
-  gap: 40px;
-  max-width: 1400px;
-  margin: 60px auto;
-  padding: 0 40px;
+  display:grid;
+  gap:40px;
+
+  width:100%;        /* ⭐ 추가 */
+  max-width:1400px;
+
+  margin:60px auto;
+  padding:0 40px;
+
+  box-sizing:border-box;   /* ⭐ 추가 */
 }
 
 .poster-item img:hover {
@@ -1593,6 +1598,7 @@ body.hall {
   .exhibition img{
     width:100%;
     height:auto;
+    max-height:none;
   }
 
 }
@@ -1605,6 +1611,18 @@ body.hall {
   .container{
     width:100%;
     max-width:100%;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .poster-grid{
+    width:100%;
+    max-width:100%;
+
+    padding:0 16px;
+    gap:18px;
   }
 
 }
