@@ -117,7 +117,7 @@ body.past-page .poster-grid{
   .archive-page .poster-grid{
     grid-template-columns:repeat(3,1fr);
     gap:14px;
-    padding:0 14px;
+    padding:0;
   }
 
   body.past-page .poster-grid{
