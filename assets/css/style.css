@@ -815,9 +815,9 @@ body {
   }
 
   /* ⭐ 대표화면 버튼 위치 조정 */
-  .main-links{
-    margin:64px auto 40px;
-  }
+.main-links{
+  margin:40px auto 24px;
+}
 
   main{
     width:100%;
@@ -1564,6 +1564,11 @@ body.hall {
 }
 
 
+
+
+
+
+
 /* =========================
    HOME MOBILE GRID FIX
 ========================= */
@@ -1572,38 +1577,14 @@ body.hall {
 
   .exhibitions{
     display:grid;
-    grid-template-columns:1fr;   /* ⭐ 1열 */
-    gap:40px;
-    padding:0 16px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+    justify-items:center;
   }
 
   .exhibition{
     width:100%;
-    max-width:320px;
-    margin:0 auto;
-  }
-
-  .exhibition img{
-    width:100%;
-    height:auto;
-    display:block;
-  }
-
-}
-
-@media (max-width:768px){
-
-  .exhibitions{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:40px;
-    padding:0 16px;
-  }
-
-  .exhibition{
-    width:100%;
-    max-width:320px;
-    margin:0 auto;
+    max-width:160px;
   }
 
   .exhibition img{
@@ -1612,8 +1593,6 @@ body.hall {
   }
 
 }
-
-
 
 
 @media (max-width:768px){
