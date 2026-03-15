@@ -734,6 +734,14 @@ body.archive {
   box-sizing:border-box;
 }
 
+@media (max-width:768px){
+
+  .poster-grid{
+    max-width:none;
+  }
+
+}
+
 .poster-item img:hover {
   transform: scale(1.05);
   opacity: 0.9;
@@ -1686,4 +1694,9 @@ html, body {
 
 .poster-item img:hover{
   transform:scale(1.03);
+}
+
+.poster-grid{
+  margin-left:auto;
+  margin-right:auto;
 }
