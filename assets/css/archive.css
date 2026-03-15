@@ -1,3 +1,12 @@
+/* ===== Poster Grid Base Layout ===== */
+
+.archive-page .poster-grid{
+
+  display:grid;
+  gap:24px;
+
+}
+
 
 /* ===== Archive page readability fix ===== */
 
@@ -322,12 +331,15 @@ body.past-page .poster-grid{
 
 @media (max-width:768px){
 
-  body.upcoming-page .poster-grid{
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
+  .archive-page .poster-grid{
 
-  body.past-page .poster-grid{
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+
+    width:100%;
+    max-width:360px;
+    margin:40px auto;
+
   }
 
 }
