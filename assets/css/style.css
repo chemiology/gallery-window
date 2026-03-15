@@ -1700,3 +1700,10 @@ html, body {
   margin-left:auto;
   margin-right:auto;
 }
+
+.archive-page main{
+  width:100%;
+  max-width:none;
+  margin:0 auto;
+  padding:0;
+}
