@@ -178,3 +178,20 @@ body.archive-page{
       #e9eff5 100%
     ) !important;
 }
+
+body.archive-page{
+  background:#f2f6fb !important;
+}
+
+@media (max-width:768px){
+
+  body.archive-page main{
+    padding:0;
+  }
+
+  body.archive-page .archive-grid{
+    padding:0 12px;
+    margin:0 auto;
+  }
+
+}

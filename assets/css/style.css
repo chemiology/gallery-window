@@ -419,3 +419,7 @@ body.home .poster-item figcaption{
 body.archive-page main{
   padding:0;
 }
+
+body.home .poster-item figcaption{
+  text-align:center !important;
+}
