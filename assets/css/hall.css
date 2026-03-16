@@ -72,7 +72,6 @@
   width:500px;
   flex-shrink:0;
 
-  text-align:center;
   transform:translateY(-20px);
 
   filter:drop-shadow(0 30px 40px rgba(0,0,0,0.35));
@@ -414,8 +413,5 @@ body.hall .guestbook-list h4{
 body.hall .artist-note{
   color:#e6e7e9;
   text-align:justify !important;
-}
-
-body.hall .artist-note{
-  text-align:justify !important;
+  text-align-last:left;
 }

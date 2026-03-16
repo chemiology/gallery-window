@@ -128,39 +128,6 @@ body.archive-page.past-page .archive-grid{
   transform:rotate(-90deg);
 }
 
-
-/* =====================================================
-   MOBILE GRID
-===================================================== */
-
-@media (max-width:768px){
-
-  .archive-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-  }
-
-  .poster-item figcaption{
-    font-size:12px;
-    line-height:1.35;
-  }
-
-  .year-divider{
-    padding:0 12px;
-  }
-
-}
-
-@media (max-width:768px){
-
-.archive-grid{
-grid-template-columns:repeat(3,1fr);
-gap:16px;
-padding:0 12px;
-}
-
-}
-
 body.archive-page{
   background:
     linear-gradient(
@@ -183,6 +150,10 @@ body.archive-page{
   background:#f2f6fb !important;
 }
 
+/* =====================================================
+   MOBILE GRID (FINAL)
+===================================================== */
+
 @media (max-width:768px){
 
   body.archive-page main{
@@ -190,20 +161,25 @@ body.archive-page{
   }
 
   body.archive-page .archive-grid{
+
+    grid-template-columns:repeat(3,1fr);   /* 모바일 3열  */
+
+    gap:16px;
+
+    width:100%;
+    margin:0 auto;
+
     padding:0 12px;
-    margin:0 auto;
+
+    box-sizing:border-box;
   }
 
-}
-
-@media (max-width:768px){
-
-  body.archive-page main{
-    padding:0;
+  .poster-item figcaption{
+    font-size:12px;
+    line-height:1.35;
   }
 
-  body.archive-page .archive-grid{
-    margin:0 auto;
+  .year-divider{
     padding:0 12px;
   }
 
