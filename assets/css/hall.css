@@ -1,3 +1,56 @@
+/* ---------- Poster / Note Layout ---------- */
+/* 포스터 1.5 / 작가노트 3 / 여백 0.5 */
+
+.exhibition-body {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr 0.5fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* 포스터 */
+.exhibition-body img {
+  cursor: pointer;
+}
+
+/* 포스터 메타 */
+.meta {
+  margin-top: 16px;
+}
+
+.meta h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #e0e1e3;
+}
+
+.meta p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #9ea3a9;
+}
+
+/* 작가노트 */
+.artist-note {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #e6e9ed;
+
+  white-space: pre-line;
+  text-align: justify;
+  word-break: keep-all;
+
+  width: 560px;        /* ⭐ 작가노트 고정폭 */
+}
+
+body.home .artist-note p {
+  margin-bottom: 0.8em;
+}
+
+body.home .artist-note {
+  margin-top: 8px;
+}
 
 
 /* ===== Hall entry reveal ===== */
