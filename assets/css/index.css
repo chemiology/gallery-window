@@ -137,7 +137,6 @@
 
 .exhibition{
   position:relative;
-  max-width:420px;
   margin:0 auto;
 }
 
@@ -259,12 +258,6 @@ body.home .exhibition img{
 width:100%;
 height:auto;
 display:block;
-}
-
-body.home .exhibitions{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-gap:32px;
 }
 
 body.home .exhibition img{
