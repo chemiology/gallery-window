@@ -93,7 +93,7 @@
 
   grid-template-columns:repeat(2,1fr);
 
-  gap:36px 72px;
+  gap:80px 120px;
 
   max-width:1400px;
   margin:48px auto 12px;

@@ -1,3 +1,23 @@
+body.archive-detail-page .exhibition-text{
+  max-width:680px;
+  margin:0 auto;
+
+  font-size:16.5px;
+  line-height:1.9;
+
+  color:#222;
+
+  white-space:pre-wrap;
+
+  text-align:justify;
+
+  word-break:keep-all;
+
+  overflow-wrap:break-word;
+
+  letter-spacing:0.01em;
+}
+
 /* ======================================
    Archive Exhibition Detail Page
 ====================================== */
@@ -142,7 +162,8 @@ body.archive-detail-page figure.exhibition-support-image img{
    Exhibition Text
 ========================================= */
 
-body.exhibition-detail .exhibition-text{
+body.exhibition-detail .exhibition-text,
+body.archive-detail-page .exhibition-text{
 
   max-width:680px;
   margin:0 auto;
@@ -339,4 +360,8 @@ body.exhibition-detail{
       #f6f8fb 0%,
       #e9eff5 100%
     );
+}
+
+body.exhibition-detail .exhibition-text{
+  white-space:pre-wrap !important;
 }

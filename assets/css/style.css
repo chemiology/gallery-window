@@ -84,7 +84,7 @@ body.hall .exhibition-body{
    ARTIST NOTE
 ===================================================== */
 
-.artist-note {
+body.hall .artist-note {
   font-size: 17px;
   line-height: 1.9;
   color: #e6e9ed;
@@ -378,7 +378,7 @@ button:hover {
     margin: 0 auto;
   }
 
-  .exhibition-text {
+  body.hall .exhibition-text {
     font-size: 14px;
     line-height: 1.65;
   }
@@ -439,13 +439,13 @@ body.home .poster-item figcaption{
   justify-content: center;
 
   color: #fff;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.05em;
 
-  background: rgba(0,0,0,0.45);
-  opacity: 0;
+  background: rgba(0,0,0,0.18);
 
-  transition: opacity 0.4s ease;
+  opacity: 0;
+  transition: opacity 0.35s ease;
 }
 
 .poster-wrap:hover .poster-caption {
