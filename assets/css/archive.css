@@ -188,28 +188,34 @@ body.archive-page .poster-grid{
 
 }
 
-/* ===== ARCHIVE DESKTOP GRID ===== */
+/* ===============================
+   ARCHIVE DESKTOP GRID
+================================ */
 
-body.upcoming-page .poster-grid{
+/* 예정 전시 */
+body.archive-page.upcoming-page .poster-grid{
   grid-template-columns:repeat(3,1fr);
-  gap:60px;        /* 포스터 간격 크게 */
+  gap:60px;
 }
 
-body.past-page .poster-grid{
+/* 지난 전시 */
+body.archive-page.past-page .poster-grid{
   grid-template-columns:repeat(5,1fr);
-  gap:60px;        /* 포스터 간격 크게 */
+  gap:60px;
 }
 
-/* ===== ARCHIVE MOBILE GRID ===== */
+/* ===============================
+   ARCHIVE MOBILE GRID
+================================ */
 
 @media (max-width:768px){
 
-  body.upcoming-page .poster-grid{
+  body.archive-page.upcoming-page .poster-grid{
     grid-template-columns:repeat(3,1fr);
     gap:16px;
   }
 
-  body.past-page .poster-grid{
+  body.archive-page.past-page .poster-grid{
     grid-template-columns:repeat(3,1fr);
     gap:16px;
   }
