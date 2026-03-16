@@ -142,11 +142,10 @@ body.exhibition-detail .exhibition-poster img{
    Support Image
 ========================================= */
 
+body.exhibition-detail figure.exhibition-support-image,
 body.archive-detail-page figure.exhibition-support-image{
-
-  width:48%;
-  margin:28px auto;
-
+  width:46%;
+  margin:32px auto;
 }
 
 body.archive-detail-page figure.exhibition-support-image img{
@@ -185,7 +184,7 @@ body.archive-detail-page .exhibition-text{
   /* 영어 긴 단어 대응 */
   overflow-wrap:break-word;
 
-  letter-spacing:0.01em;
+  letter-spacing:0;
 }
 
 
@@ -372,4 +371,19 @@ body.archive-detail-page .exhibition-info{
   line-height:1.5;
   font-size:16px;
   margin-top:14px;
+}
+
+body.exhibition-detail .exhibition-text p{
+  text-indent:0;
+}
+
+.detail-nav{
+  margin-top:48px;
+  margin-bottom:48px;
+  text-align:center;
+}
+
+.detail-nav a{
+  font-size:16px;
+  color:#44505c;
 }

@@ -164,7 +164,7 @@ body.hall .artist-profile strong{
 }
 
 /* gloss effect */
-
+/* 
 #hallPoster::after{
   content:"";
 
@@ -187,6 +187,7 @@ body.hall .artist-profile strong{
 
   pointer-events:none;
 }
+*/
 
 #hallPoster:hover::after{
   transform:translateX(260%) rotate(25deg);
@@ -463,4 +464,14 @@ body.hall .exhibition img:hover{
     display:block;
   }
 
+}
+
+body.hall .exhibition-text p{
+  margin-top:6px;
+  margin-bottom:6px;
+}
+
+body.hall .exhibition-text span{
+  margin-bottom:2px;
+  line-height:1.5;
 }
