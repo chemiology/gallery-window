@@ -150,3 +150,13 @@ body.archive-page.past-page .archive-grid{
   }
 
 }
+
+@media (max-width:768px){
+
+.archive-grid{
+grid-template-columns:repeat(3,1fr);
+gap:16px;
+padding:0 12px;
+}
+
+}
