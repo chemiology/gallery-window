@@ -53,6 +53,237 @@ body.home .artist-note {
 }
 
 
+
+
+/* ==2번째 이동 코드== */
+
+.site-background.hall {
+  background-image: url("../images/bg_hall.jpg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+
+body.hall main,
+body.hall .hall-grid,
+body.hall .container,
+body.hall .wrapper {
+  background: transparent;
+}
+
+/* Hall poster override */
+
+.hall-card img {
+  max-width: none !important;
+  width: auto !important;
+  height: 70vh !important;
+  max-height: 720px;
+display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.site-background.hall::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(
+    circle at center,
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.75)
+  );
+}
+
+#hallPoster {
+  cursor: pointer;
+  transition: transform .35s ease;
+}
+
+#hallPoster:hover {
+  transform: scale(1.02);
+}
+
+.site-background {
+  z-index: -1;
+}
+
+#hallPoster {
+  pointer-events: auto;
+}
+
+.hall-entry .artist-note {
+  font-size: 0.9rem;     /* ⭐ 2단계 축소 느낌 */
+  line-height: 1.8;
+  margin-top: 0;
+}
+
+/* ===== Hall background slow zoom ===== */
+
+.site-background.hall {
+  animation: hallZoom 18s ease-out forwards;
+}
+
+@keyframes hallZoom {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.site-background.hall {
+  will-change: transform;
+}
+
+/* ===== Hall artist note reading focus ===== */
+
+.hall-entry .artist-note p {
+  opacity: 0.72;
+  transition: opacity .6s ease;
+}
+
+/* 첫 문단 강조 */
+.hall-entry .artist-note p:first-of-type {
+  opacity: 1;
+  font-size: 1.05em;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Poster light gloss effect ===== */
+
+#hallPoster {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 빛 레이어 */
+#hallPoster::after {
+  content: "";
+  position: absolute;
+  top: -120%;
+  left: -60%;
+  width: 60%;
+  height: 300%;
+
+  background: linear-gradient(
+    75deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0) 100%
+  );
+
+  transform: rotate(25deg);
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+
+/* hover 시 빛 이동 */
+#hallPoster:hover::after {
+  transform: translateX(260%) rotate(25deg);
+}
+
+.hall-left {
+  transform: translateY(-20px);
+}
+
+/* ===== Hall entrance interaction ===== */
+
+/* 포스터 기본 */
+#hallPoster {
+  cursor: pointer;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+/* 포스터 hover */
+#hallPoster:hover {
+  transform: scale(1.015);
+  filter: brightness(1.08);
+}
+
+/* 작품보기 버튼 기본 */
+body.hall .enter-exhibition {
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* ⭐ 포스터 hover 시 버튼도 반응 */
+#hallPoster:hover ~ .artist-note-area .enter-exhibition,
+#hallPoster:hover + .artist-profile + .artist-note-area .enter-exhibition {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.9);
+}
+
+/* Hall cinematic entrance */
+.hall-entry {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1.6s ease,
+    transform 1.6s ease;
+}
+
+.hall-entry.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   HALL MOBILE ALIGN FIX
+========================= */
+
+body.hall {
+  overflow-x: hidden;
+}
+
+.site-background.hall {
+  position: fixed;   /* ⭐ absolute → fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+  /* -----------------
+     HALL LAYOUT
+  ----------------- */
+@media (max-width:768px){
+
+  body.hall .hall-entry{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    padding:0 16px;
+  }
+
+  body.hall .hall-left,
+  body.hall .artist-note-area{
+    width:100%;
+    max-width:520px;
+    margin:0 auto;
+  }
+
+  body.hall .hall-poster{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+
+}
+
+
+
+
+
+
+
 /* ===== Hall entry reveal ===== */
 
 .hall-entry {
