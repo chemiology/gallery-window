@@ -1,14 +1,22 @@
 /* =====================================================
-   Reset & Base (Global)
+   RESET & GLOBAL
 ===================================================== */
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+html,
+body {
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
                Roboto, "Noto Sans KR", Helvetica, Arial, sans-serif;
 
@@ -34,8 +42,10 @@ img {
   height: auto;
 }
 
-/* ---------- Poster / Note Layout ---------- */
-/* 포스터 1.5 / 작가노트 3 / 여백 0.5 */
+
+/* =====================================================
+   EXHIBITION BODY LAYOUT
+===================================================== */
 
 .exhibition-body {
   display: grid;
@@ -44,12 +54,15 @@ img {
   align-items: start;
 }
 
-/* 포스터 */
 .exhibition-body img {
   cursor: pointer;
 }
 
-/* 포스터 메타 */
+
+/* =====================================================
+   META INFORMATION
+===================================================== */
+
 .meta {
   margin-top: 16px;
 }
@@ -67,7 +80,11 @@ img {
   color: #9ea3a9;
 }
 
-/* 작가노트 */
+
+/* =====================================================
+   ARTIST NOTE
+===================================================== */
+
 .artist-note {
   font-size: 17px;
   line-height: 1.9;
@@ -77,24 +94,25 @@ img {
   text-align: justify;
   word-break: keep-all;
 
-  width: 560px;        /* ⭐ 작가노트 고정폭 */
-}
-
-body.home .artist-note p {
-  margin-bottom: 0.8em;
+  width: 560px;
 }
 
 body.home .artist-note {
   margin-top: 8px;
 }
 
+body.home .artist-note p {
+  margin-bottom: 0.8em;
+}
+
+
 /* =====================================================
-   Bottom Area – Notice & Guestbook
+   BOTTOM AREA
 ===================================================== */
 
 .bottom-area {
   max-width: 1200px;
-  margin: 120px auto 120px;
+  margin: 120px auto;
   padding: 0 96px;
 
   display: grid;
@@ -102,7 +120,6 @@ body.home .artist-note {
   gap: 120px;
 }
 
-/* 공통 제목 */
 .bottom-area h3 {
   margin: 0 0 24px;
   font-size: 16px;
@@ -111,7 +128,10 @@ body.home .artist-note {
   letter-spacing: 0.05em;
 }
 
-/* ---------- Notice ---------- */
+
+/* =====================================================
+   NOTICE
+===================================================== */
 
 .notice ul {
   list-style: none;
@@ -131,97 +151,64 @@ body.home .artist-note {
   font-size: 13px;
 }
 
-/* 공지 제목 링크 */
 .notice-text {
-  color: #222;            /* 처음부터 잘 보이도록 */
-  text-decoration: none;
+  color: #222;
 }
 
 .notice-text:visited {
-  color: #777;            /* 읽은 공지 */
+  color: #777;
 }
 
 .notice-text:hover {
-  color: #000;            /* 살짝 강조 */
+  color: #000;
   text-decoration: underline;
 }
 
-
-/* 공지 목록 스크롤 처리 */
 .notice-list {
-  max-height: 160px;      /* 약 3~4개 */
+  max-height: 160px;
   overflow-y: auto;
 }
 
 
-/* ---------- Guestbook (index) ---------- */
+/* =====================================================
+   GUESTBOOK
+===================================================== */
 
 .guestbook ul {
-list-style: none;
-padding: 0;
-margin: 0 0 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
 }
 
 .guestbook li {
-margin-bottom: 10px;
-font-size: 14px;
-color: #cfd3d8;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #cfd3d8;
 }
 
 .guestbook.poetic {
-margin-top: 140px;
-text-align: center;
+  margin-top: 140px;
+  text-align: center;
 }
 
 .guestbook.poetic li {
-font-size: 15px;
-color: #bfc3c8;
-opacity: 0.8;
-letter-spacing: 0.04em;
+  font-size: 15px;
+  color: #bfc3c8;
+  opacity: 0.8;
+  letter-spacing: 0.04em;
 }
-
 
 
 /* =====================================================
-   Responsive
+   FOOTER
 ===================================================== */
 
-@media (max-width: 1200px) {
-  .site-header,
-  .exhibitions,
-  .bottom-area {
-    padding-left: 64px;
-    padding-right: 64px;
-  }
-}
-
-@media (max-width: 900px) {
-  .exhibition-body {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-
-  .bottom-area {
-    grid-template-columns: 1fr;
-    gap: 72px;
-  }
-
-  .site-header,
-  .exhibitions,
-  .bottom-area {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
-
-/* =========================
-   Main Page Footer
-   ========================= */
-
 .main-footer {
-  position: relative;     /* 다른 레이어와 분리 */
+  position: relative;
   z-index: 2;
-  pointer-events: auto;
+  margin-top: 40px;
+  padding: 16px 0;
+  font-size: 12px;
 }
 
 .footer-inner {
@@ -232,46 +219,27 @@ letter-spacing: 0.04em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  font-size: 12px;
 }
 
 .footer-left span {
   margin-right: 12px;
 }
 
-/* footer 텍스트 톤 통일 */
 .footer-title,
 .footer-credit {
   font-weight: 500;
-  color: #cfcfcf;        /* 이전보다 밝고, 품위 있는 밝기 */
+  color: #cfcfcf;
   letter-spacing: 0.04em;
 }
 
-/* 사용하지 않는 항목이면 제거 가능 */
 .footer-period {
   color: #aaa;
 }
 
-.main-footer {
-  margin-top: 40px;
-  padding: 16px 0;
-  font-size: 12px;
-}
 
-.footer-title,
-.footer-credit {
-  color: #cfcfcf;      /* 눈에 잘 보이되 튀지 않는 밝기 */
-  letter-spacing: 0.04em;
-}
-
-.main-footer span {
-  cursor: default;
-}
-
-/* =========================
-   Archive Buttons (Home)
-   ========================= */
+/* =====================================================
+   ARCHIVE BUTTONS
+===================================================== */
 
 .archive-buttons {
   display: flex;
@@ -282,465 +250,30 @@ letter-spacing: 0.04em;
 
 .archive-buttons a {
   font-size: 13px;
-  color: #e6e6e6;          /* 밝은 회색 */
-  text-decoration: none;
+  color: #e6e6e6;
   padding: 8px 14px;
   border: 1px solid #aaa;
 }
 
 .archive-buttons a:hover {
-  color: #ffffff;
-  border-color: #ffffff;
-}
-
-/* 전시 상세: span 줄바꿈 강제 */
-.exhibition-text.info span {
-  display: block !important;
-  line-height: 1.25;
-  margin-bottom: 1px;
-}
-
-/* =========================================
-   Page-specific overrides
-   ========================================= */
-
-/* 대표화면 (index) */
-body.home {
-  background-color: #000;
-  font-size: 14px;
-}
-
-/* 대표화면 포스터 크기 */
-body.home .poster {
-  max-width: 420px; /* 상황에 맞게 400~460px */
-}
-
-/* 대표화면 포스터–작가노트 간격 */
-body.home .exhibition-body {
-  gap: 40px; /* 기존 80px → 절반 */
-}
-
-/* 상세페이지 */
-body.exhibition-detail {
-  /* 상세페이지 기본은 exhibition-detail.css에서 처리 */
-}
-
-/* (여기에는 정말 필요한 것만, 대부분은 exhibition-detail.css로) */
-
-/* =========================
-   Detail Page Image & Footer Fix (SAFE OVERRIDE)
-   ========================= */
-
-.detail-page img,
-.notice-detail img {
-  width: 66%;
-  max-width: 720px;
-  display: block;
-  margin: 0 auto 40px;
-}
-
-.detail-nav,
-.archive-nav {
-  margin-top: 80px;
-  margin-bottom: 120px;
-  text-align: center;
-}
-
-/* 하단 공지사항 / 방명록 공통 스타일 */
-.notice-section,
-.guestbook-section {
-  color: #cfd6dd; /* 기본 내용 색 (통일) */
-}
-
-/* 섹션 타이틀 */
-.notice-section h2,
-.guestbook-section h2 {
-  color: #eef3f7;     /* 가장 밝게 */
-  font-weight: 500;
-}
-
-/* 공지사항 제목 */
-.notice-section .notice-title {
-  color: #dbe2e8;     /* 타이틀보다 살짝 어둡게 */
-}
-
-/* 공지사항 날짜 */
-.notice-section .notice-date {
-  color: #9aa4ad;     /* 정보성 텍스트는 한 톤 낮춤 */
-}
-
-/* 방명록 내용 */
-.guestbook-section .guestbook-item {
-  color: #c6ccd3;     /* 공지사항 내용과 동일 */
-}
-
-/* =========================================
-   Home bottom-area tone adjustment
-   ========================================= */
-
-/* 하단 영역 기본 텍스트 톤 */
-body.home .bottom-area {
-  color: #cfd6dd;
-}
-
-/* 섹션 타이틀 (공지사항 / 최근 방명록) */
-body.home .bottom-area h3 {
-  color: #eef3f7;
-  font-weight: 500;
-}
-
-/* 공지사항 날짜 */
-body.home .notice .date {
-  color: #9aa4ad;
-  font-size: 12px;
-}
-
-/* 공지사항 제목 */
-body.home .notice .notice-text {
-  color: #dbe2e8;
-  text-decoration: none;
-}
-
-/* 방명록 내용 */
-body.home .guestbook li {
-  color: #cfd6dd;
-}
-
-/* =========================
-   Common Text Utilities
-========================= */
-
-.text-big {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.text-accent {
-  color: var(--theme-color, #c6d4e1);
-}
-
-.text-italic {
-  font-style: italic;
-}
-
-.text-muted {
-  opacity: 0.7;
-}
-
-/* =========================
-   Exhibition Text Style
-========================= */
-
-.exhibition-text {
-  text-align: justify;
-  line-height: 1.9;
-  letter-spacing: 0.02em;
-  word-break: keep-all;
-}
-
-.exhibition-text p {
-  margin-bottom: 0.2em;
-}
-
-/* =========================
-   Global Exhibition Space
-========================= */
-.site-background {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-}
-
-.site-background.main-bg {
-  position: fixed;   /* ⭐ fixed → absolute */
-  inset: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  min-height: 100%;
-
-  background-image: url("../images/bg_main.jpg");
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-}
-
-body {
-  background: transparent;
-}
-
-
-/* ===== Poster overlay caption ===== */
-
-.poster-wrap {
-  position: relative;
-  display: inline-block;
-}
-
-.poster-caption {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   color: #fff;
-  font-size: 20px;
-  letter-spacing: 0.05em;
-
-  background: rgba(0,0,0,0.45);
-  opacity: 0;
-
-  transition: opacity 0.4s ease;
-}
-
-.poster-wrap:hover .poster-caption {
-  opacity: 1;
-}
-
-/* =====================================
-   Main poster sizing (Lobby only)
-===================================== */
-
-.main-poster img {
-  height: 38vh;
-  width: auto;
-  margin: 0 auto;
-  display: block;
-}
-
-/* ===== Enter exhibition button ===== */
-
-.enter-exhibition-wrap {
-  margin-top: 80px;
-  text-align: center;
-}
-
-.enter-exhibition {
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  padding: 14px 28px;
-  border: 1px solid rgba(255,255,255,0.4);
-  transition: all 0.35s ease;
-}
-
-.enter-exhibition:hover {
-  background: rgba(255,255,255,0.1);
   border-color: #fff;
 }
 
-.entry-buttons a {
-  padding: 12px 26px;
-  border: 1px solid rgba(255,255,255,0.6);
-  text-decoration: none;
-  color: #fff;
-  font-size: 15px;
-  letter-spacing: 0.05em;
-  transition: all .25s ease;
+
+/* =====================================================
+   POSTER SYSTEM
+===================================================== */
+
+.poster-item {
+  width: 100%;
 }
 
-.entry-buttons a:hover {
-  background: rgba(255,255,255,0.1);
-}
-
-.back-main {
-  color: #ccc;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-}
-
-/* ===== Lobby hall posters ===== */
-
-.exhibition img {
+.poster-item img {
+  width: 100%;
+  height: auto;
   display: block;
-  margin: 0 auto;
-
-  width: auto;
-  height: 46vh;
-  max-height: 560px;
-
-  object-fit: contain;
-  filter: contrast(1.05) brightness(1.02);
-}
-
-/* ===== Lobby poster fix ===== */
-
-body.home .exhibition img {
-  height: 46vh !important;
-  width: auto !important;
-  max-height: 640px;
-}
-
-/* ===== 대표화면 포스터 강제 크기 ===== */
-
-body.home .exhibition {
-  text-align: center;
-}
-
-body.home .exhibition img {
-  width: auto;
-  max-height: 720px;
-}
-
-/* 대표화면 포스터 인터랙션 */
-
-body.home .exhibition img {
-  transition: transform .35s ease;
-}
-
-body.home .exhibition img:hover {
-  transform: scale(1.03);
-}
-
-.entry-buttons {
-  position: absolute;
-  top: -60px;
-  left: 0;
-
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-
-  z-index: 3;
-}
-
-.entry-buttons a {
-  padding: 10px 18px;
-  font-size: 14px;
-  border: 1px solid rgba(255,255,255,0.6);
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(6px);
-}
-
-body.home .exhibition img {
-  position: relative;
-  overflow: hidden;
-}
-
-body.home .exhibition img:hover {
-  transform: scale(1.03);
-}
-
-/* ===== page transition fade ===== */
-
-#pageFade {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s ease;
-  z-index: 9999;
-}
-
-#pageFade.active {
-  opacity: 1;
-}
-
-#exhibitionList {
-    max-width: 1400px;
-    margin: 40px auto 80px auto;
-}
-
-.section-title + .exhibition-text {
-  margin-bottom: 24px;
-}
-
-.profile-subtitle {
-  font-weight: bold;
-  text-align: left;
-  display: block;
-  margin-top: 28px;
-}
-
-.profile-subtitle {
-  margin-top: 36px;
-}
-
-.main-links {
-  margin: 90px auto 48px;   /* ⭐ 포스터와의 거리 설정 */
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-}
-
-/* ===== Emergency layout restore ===== */
-
-main {
-  opacity: 1 !important;
-  visibility: visible !important;
-  display: block !important;
-/*  min-height: auto;   */
-}
-
-/* ===== Safety guard : fade overlay fail-safe ===== */
-body:not(.transitioning) .page-fade {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* ==============================
-   Archive
-============================== */
-
-body.archive {
-  background: #0f1114;
-  color: #d4d6da;
-}
-
-
-/* Archive (예정/지난 전시) 포스터 정렬 보정 */
-
-/* =========================
-   Poster Image (FINAL)
-========================= */
-
-.poster-item{
-  width:100%;
-}
-
-.poster-item img{
-  width:100%;
-  height:auto;
-  display:block;
-
-  border-radius:6px;
-}
-
-.poster-item figcaption {
-  margin-top: 10px;
-  text-align: center;
-  font-size: 13px;
-  letter-spacing:0.02em;
-  color: #555;
-}
-
-/* ===============================
-   Poster Grid (Base Layout)
-================================ */
-
-.poster-grid{       /* 대표화면 용 */
-  display:grid;
-
-  width:100%;
-  max-width:1400px;
-
-  margin:60px auto;
-  padding:0 16px;
-
-  gap:60px;          /* 포스터 간격 크게 */
-
-  box-sizing:border-box;
-}
-
-@media (max-width:768px){
-
-  .poster-grid{
-    max-width:none;
-  }
-
+  border-radius: 6px;
 }
 
 .poster-item img:hover {
@@ -748,275 +281,35 @@ body.archive {
   opacity: 0.9;
 }
 
-
-/* 반응형 (자동 열 변경) */
-@media (max-width: 1100px) {
-  .poster-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ===============================
-   Text area normalization
-   (⚠️ 모든 흰/회색 박스 제거)
-================================ */
-
-.artist-note,
-.exhibition-text,
-.notice-detail {
-  background: none;
-  padding: 0;
-  border-radius: 0;
+.poster-item figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: #555;
 }
 
 
-/* ===============================
-   Detail page background
-================================ */
+/* 대표화면 poster grid */
 
-body.archive-detail-page,
-body.exhibition-detail,
-body.notice-page {
-  background:
-    linear-gradient(
-      to bottom,
-      #f6f8fb 0%,
-      #e9eff5 100%
-    );
-}
+.poster-grid {
+  display: grid;
 
-/* ===============================
-   MOBILE LAYOUT (≤768px)
-   Gallery Window unified version
-================================= */
+  width: 100%;
+  max-width: 1400px;
 
-html,
-body {
-  overflow-x: hidden;
-}
+  margin: 60px auto;
+  padding: 0 16px;
 
-/* =====================================
-   MOBILE LAYOUT FINAL (≤768px)
-   Gallery Window unified system
-===================================== */
+  gap: 60px;
 
-@media (max-width: 768px) {
-
-  /* -----------------
-     공통 여백 (전체 페이지)
-  ----------------- */
-  .site-header,
-  .exhibitions,
-  .main-links,
-  .bottom-area,
-  main {
-    padding-left: 16px;
-    padding-right: 16px;
-    box-sizing: border-box;
-  }
-
-  /* ⭐ 대표화면 버튼 위치 조정 */
-.main-links{
-  margin:40px auto 24px;
-}
-
-  main{
-    width:100%;
-    max-width:100%;
-    margin:0 auto;
-  }
-
-  /* -----------------
-     Exhibition Text
-  ----------------- */
-  .exhibition-text{
-    font-size:14px;
-    line-height:1.65;
-  }
-
-}
-
-.official-site{
-  color:#e12d86;
-  font-weight:600;
-  letter-spacing:0.02em;
-}
-
-/* =========================
-   HOME MOBILE HALL GRID
-========================= */
-
-@media (max-width: 768px){
-
-  .exhibitions{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:18px;
-    justify-items:center;
-  }
-
-  .exhibition{
-    width:100%;
-    max-width:160px;
-  }
-
-  .exhibition img{
-    width:100%;
-    height:auto;
-  }
-
-}
-
-/* =========================
-   COMING badge
-========================= */
-
-.coming-badge{
-  position:absolute;
-  top:10px;
-  left:10px;
-  padding:6px 10px;
-  font-size:12px;
-  letter-spacing:0.12em;
-  background:rgba(0,0,0,0.7);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.6);
-}
-
-/* =========================
-   COMING exhibition poster
-========================= */
-
-.exhibition.coming img{
-  opacity: 0.65;          /* ⭐ 살짝만 흐림 */
-  filter: grayscale(20%); /* 색감 아주 약하게 감소 */
-  transition: opacity .3s ease;
-}
-
-/* =========================
-   COMING BADGE (REFINED)
-========================= */
-
-.exhibition.coming::after {
-  content: "COMING";
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  font-size: 17px;          /* ⭐ 약 60% 축소 */
-  font-weight: 600;
-  letter-spacing: 0.18em;
-
-  color: #e6d98a;           /* ⭐ 낮은 채도의 노란색 */
-  background: rgba(0,0,0,0.35);
-
-  padding: 10px 16px;
-  border: 1px solid rgba(230,217,138,0.7);
-
-  backdrop-filter: blur(4px);
-  z-index: 6;
+  box-sizing: border-box;
 }
 
 
-#exhibition-image {
-  opacity: 0;
-  transition: opacity 0.8s ease;
-}
-
-#exhibition-image.visible {
-  opacity: 1;
-}
-
-/* 모바일 성능 최적화 */
-@media (hover: none) and (pointer: coarse) {
-
-  .viewer img {
-    transition: opacity 0.8s ease; /* filter 제거 */
-    filter: brightness(0.9);       /* blur 제거 */
-  }
-
-}
-
-/* ===== Hall Guestbook ===== */
-
-.guestbook-section{
-margin-top:40px;
-text-align:center;
-max-width:520px;
-margin-left:auto;
-margin-right:auto;
-}
-
-.guestbook-title{
-font-size:18px;
-margin-bottom:14px;
-letter-spacing:1px;
-color:#ddd;
-}
-
-.guestbook-form{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:8px;
-}
-
-.guestbook-form input{
-width:260px;
-padding:8px 10px;
-font-size:14px;
-background:#1b1b1b;
-border:1px solid #333;
-color:#ddd;
-outline:none;
-}
-
-.guestbook-form input::placeholder{
-color:#777;
-}
-
-.guestbook-form input:focus{
-border-color:#666;
-}
-
-.guestbook-form button{
-padding:8px 14px;
-font-size:14px;
-background:#2a2a2a;
-color:#ddd;
-border:none;
-cursor:pointer;
-transition:all .25s ease;
-}
-
-.guestbook-form button:hover{
-background:#444;
-color:#fff;
-}
-
-/* 최근 방명록 */
-
-.guestbook-list{
-margin-top:28px;
-font-size:13px;
-color:#bbb;
-line-height:1.8;
-text-align:center;
-max-width:520px;
-margin-left:auto;
-margin-right:auto;
-}
-
-.guestbook-list h4{
-font-size:14px;
-margin-bottom:8px;
-color:#ddd;
-letter-spacing:0.5px;
-}
-
-/* ===== Page transition (gallery entrance) ===== */
+/* =====================================================
+   PAGE TRANSITION
+===================================================== */
 
 .page-fade {
   position: fixed;
@@ -1033,274 +326,71 @@ letter-spacing:0.5px;
 }
 
 
-/* ===============================
-   Gallery interaction tone
-================================ */
+/* =====================================================
+   INTERACTION
+===================================================== */
 
-a, button, .hall-poster, .poster-item img {
+a,
+button,
+.poster-item img {
   transition: all 0.35s ease;
 }
 
 a:hover,
-button:hover,
-.hall-poster:hover {
+button:hover {
   opacity: 0.82;
   transform: translateY(-2px);
 }
 
 
-/* ===============================
-   Gallery entrance atmosphere
-================================ */
-
-/* 전시장 연출 전용 */
-body.hall,
-body.exhibition {
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-body.page-ready {
-  opacity: 1;
-}
-
-
-/* ===============================
-   Gallery artwork depth
-   (작품만 입체감 유지)
-================================ */
-
-.exhibition img,
-.hall-poster,
-.exhibition-poster img {
-  box-shadow:
-    0 12px 28px rgba(0,0,0,0.18),
-    0 2px 6px rgba(0,0,0,0.12);
-
-  transition: transform 0.35s ease,
-              box-shadow 0.35s ease;
-}
-
-.exhibition img:hover,
-.hall-poster:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 22px 48px rgba(0,0,0,0.28),
-    0 6px 14px rgba(0,0,0,0.18);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* =====================================================
+   MOBILE LAYOUT
+===================================================== */
 
 @media (max-width: 900px) {
+
+  .exhibition-body {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
   .bottom-area {
     grid-template-columns: 1fr;
-    gap: 80px;
+    gap: 72px;
     padding: 0 32px;
   }
-}
-
-
-/* =========================
-   HOME MOBILE GRID FIX
-========================= */
-
-@media (max-width:768px){
-
-  .exhibitions{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:18px;
-    justify-items:center;
-  }
-
-  .exhibition{
-    width:100%;
-    max-width:160px;
-  }
-
-  .exhibition img{
-    width:100%;
-    height:auto;
-    max-height:none;
-  }
 
 }
 
 
-@media (max-width:768px){
-
-  main,
-  .wrapper,
-  .container{
-    width:100%;
-    max-width:100%;
-  }
-
-}
-
-@media (max-width:768px){
-
-  .poster-grid{
-    width:100%;
-    max-width:100%;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:14px;
-  }
-
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
-@media (max-width:768px){
+@media (max-width: 768px) {
 
   .site-header,
   .exhibitions,
-  .bottom-area{
-    padding-left:16px !important;
-    padding-right:16px !important;
+  .main-links,
+  .bottom-area {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  html,body{
-    overflow-x:hidden;
+  main {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
-}
-
-/* ===== MOBILE STABILITY PATCH ===== */
-@media (max-width:768px){
-
-  html, body{
-    overflow-x:hidden;
-  }
-
-  main{
-    width:100%;
-    max-width:100%;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .site-header{
-    padding:24px 16px 12px;
-  }
-
-  .exhibitions{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-    width:100%;
-    max-width:100%;
-    padding:0 16px;
-    box-sizing:border-box;
-  }
-
-  .exhibition{
-    width:100%;
-    max-width:160px;
-    margin:0 auto;
-  }
-
-  .exhibition-body{
-    display:block;
-  }
-
-  .exhibition img{
-    width:100%;
-    height:auto;
-    max-height:none;
-    object-fit:contain;
+  .exhibition-text {
+    font-size: 14px;
+    line-height: 1.65;
   }
 
 }
 
-/* style.css */
 
-.poster-item img{
-  transition:transform 0.25s ease;
-}
+/* =====================================================
+   ARCHIVE MOBILE FIX
+===================================================== */
 
-.poster-item img:hover{
-  transform:scale(1.03);
-}
-
-.poster-grid{
-  margin-left:auto;
-  margin-right:auto;
-}
-
-.archive-page main{
-  width:100%;
-  max-width:none;
-  margin:0 auto;
-  padding:0;
-}
-
-/* ===== ARCHIVE MOBILE FIX (FINAL) ===== */
-
-@media (max-width:768px){
-
-  .archive-page .poster-grid{
-
-    width:100%;
-    max-width:100%;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:16px;
-
-    padding:0;
-    margin:0 auto;
-
-  }
-
+body.archive-page main {
+  padding: 0;
 }

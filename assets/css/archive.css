@@ -1,6 +1,6 @@
-/* ===============================
+/* =====================================================
    ARCHIVE PAGE BASE
-================================ */
+===================================================== */
 
 .archive-page{
   color:#e6e6e6;
@@ -36,31 +36,45 @@
 }
 
 
-/* ===============================
-   POSTER GRID
-================================ */
+/* =====================================================
+   ARCHIVE GRID (MAIN SYSTEM)
+===================================================== */
 
-.archive-page .poster-grid{
+.archive-grid{
   display:grid;
-  gap:24px;
-  margin-top:10px;
+
+  width:100%;
+  max-width:1200px;
+
+  margin:20px auto;
+  padding:0 12px;
+
+  gap:60px;
+
+  box-sizing:border-box;
 }
 
 
-/* 예정 전시 (데스크탑) */
-body.upcoming-page .poster-grid{
+/* =====================================================
+   DESKTOP GRID
+===================================================== */
+
+/* 예정 전시 */
+
+body.archive-page.upcoming-page .archive-grid{
   grid-template-columns:repeat(3,1fr);
 }
 
-/* 지난 전시 (데스크탑) */
-body.past-page .poster-grid{
+/* 지난 전시 */
+
+body.archive-page.past-page .archive-grid{
   grid-template-columns:repeat(5,1fr);
 }
 
 
-/* ===============================
+/* =====================================================
    POSTER ITEM
-================================ */
+===================================================== */
 
 .poster-item{
   width:100%;
@@ -70,30 +84,36 @@ body.past-page .poster-grid{
 .poster-item img{
   max-width:220px;
   margin:0 auto;
+
   height:auto;
   display:block;
+
   border-radius:6px;
 }
 
 .poster-item figcaption{
   text-align:center;
   line-height:1.45;
+
   word-break:keep-all;
   overflow-wrap:normal;
 }
 
 
-/* ===============================
+/* =====================================================
    YEAR DIVIDER
-================================ */
+===================================================== */
 
 .year-divider{
   font-size:22px;
   font-weight:500;
   color:#222;
+
   margin:80px auto 30px;
+
   max-width:1400px;
   padding:0 40px;
+
   cursor:pointer;
   user-select:none;
 }
@@ -109,20 +129,15 @@ body.past-page .poster-grid{
 }
 
 
-/* ===============================
-   MOBILE
-================================ */
+/* =====================================================
+   MOBILE GRID
+===================================================== */
 
 @media (max-width:768px){
 
-  .archive-page .poster-grid{
+  .archive-grid{
     grid-template-columns:repeat(2,1fr);
-    gap:14px;
-    padding:0 12px;
-  }
-
-  body.past-page .poster-grid{
-    grid-template-columns:repeat(2,1fr);
+    gap:16px;
   }
 
   .poster-item figcaption{
@@ -132,90 +147,6 @@ body.past-page .poster-grid{
 
   .year-divider{
     padding:0 12px;
-  }
-
-}
-
-/* ===== ARCHIVE GRID FORCE FIX ===== */
-
-body.archive-page .poster-grid{
-  display:grid !important;
-  grid-template-columns:repeat(3,1fr) !important;
-  gap:14px !important;
-
-  width:100% !important;
-  max-width:100% !important;
-
-  margin:0 auto !important;
-  padding:0 12px !important;
-
-  box-sizing:border-box;
-}
-
-/* 모바일에서는 2열 */
-@media (max-width:768px){
-
-  body.archive-page .poster-grid{
-    grid-template-columns:repeat(2,1fr) !important;
-  }
-
-}
-
-/* ===== ARCHIVE GRID (독립 구조) ===== */
-
-.archive-grid{
-  display:grid;
-
-  gap:18px;
-
-  width:100%;
-  max-width:1200px;
-
-  margin:20px auto;
-  padding:0 12px;
-
-  box-sizing:border-box;
-}
-
-/* 모바일 */
-@media (max-width:768px){
-
-  .archive-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
-
-/* ===============================
-   ARCHIVE DESKTOP GRID
-================================ */
-
-/* 예정 전시 */
-body.archive-page.upcoming-page .archive-grid{
-  grid-template-columns:repeat(3,1fr);
-  gap:60px;
-}
-
-/* 지난 전시 */
-body.archive-page.past-page .archive-grid{
-  grid-template-columns:repeat(5,1fr);
-  gap:60px;
-}
-
-/* ===============================
-   ARCHIVE MOBILE GRID
-================================ */
-
-@media (max-width:768px){
-
-  body.archive-page.upcoming-page .archive-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-  }
-
-  body.archive-page.past-page .archive-grid{
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
   }
 
 }
