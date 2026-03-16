@@ -46,7 +46,7 @@ img {
    EXHIBITION BODY LAYOUT
 ===================================================== */
 
-.exhibition-body {
+body.hall .exhibition-body{
   display: grid;
   grid-template-columns: 1.5fr 3fr 0.5fr;
   gap: 80px;

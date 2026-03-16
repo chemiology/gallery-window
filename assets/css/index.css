@@ -278,3 +278,7 @@ display:block;
 body.home .exhibition{
   max-width:none !important;
 }
+
+body.home .exhibition-body{
+  display:block;
+}
