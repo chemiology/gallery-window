@@ -280,3 +280,68 @@ img{
   }
 
 }
+
+@media (max-width:768px){
+
+  /* 🔥 grid 강제 재정의 */
+  .archive-grid{
+    display:grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap:12px !important;
+    padding:0 12px !important;
+    margin:0 auto !important;
+  }
+
+  /* 🔥 핵심: item이 밀지 못하게 차단 */
+  .archive-grid .poster-item{
+    width:100% !important;
+    min-width:0 !important;   /* 🔥 매우 중요 */
+  }
+
+  /* 🔥 이미지가 넘치지 않게 */
+  .archive-grid img{
+    width:100% !important;
+    height:auto !important;
+    display:block;
+  }
+
+}
+
+@media (max-width:768px){
+
+  body.archive-page:not(.upcoming-page) .archive-grid{
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  /* 🔥 grid는 그대로 두고 */
+  .archive-grid{
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* 🔥 진짜 핵심: 아이템 크기 강제 해제 */
+  .archive-grid .poster-item{
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+  }
+
+  /* 🔥 이미지도 제한 */
+  .archive-grid img{
+    width:100% !important;
+    max-width:100% !important;
+    height:auto;
+  }
+
+}
+
+@media (max-width:768px){
+
+  body.archive-page:not(.upcoming-page) .archive-grid{
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+}
