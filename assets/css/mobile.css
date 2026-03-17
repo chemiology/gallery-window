@@ -1,33 +1,141 @@
+/* ======================================
+   MOBILE FINAL (STABLE)
+====================================== */
+
 @media (max-width:768px){
 
-  /* 1️⃣ ARCHIVE */
-  .archive-grid{
-    display:grid;
-    gap:12px;
-  }
+/* =========================
+   공통 여백
+========================= */
 
-  body.upcoming-page .archive-grid{
-    grid-template-columns:repeat(3,1fr);
-  }
+main,
+.site-header,
+.exhibitions,
+.main-links,
+.bottom-area{
+  padding-left:16px;
+  padding-right:16px;
+  box-sizing:border-box;
+}
 
-  body.archive-page:not(.upcoming-page) .archive-grid{
-    grid-template-columns:repeat(4,1fr);
-  }
+/* =========================
+   HOME (대표화면)
+========================= */
 
-  .poster-item{
-    min-width:0;
-  }
+.exhibitions{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:40px;
+}
 
-  /* 2️⃣ DETAIL 포스터 */
-  body.exhibition-detail figure.exhibition-poster img{
-    width:90%;
-    margin:0 auto;
-    display:block;
-  }
+.exhibition{
+  width:100%;
+  max-width:320px;
+  margin:0 auto;
+}
 
-  /* 3️⃣ DETAIL 텍스트 */
-  body.exhibition-detail #note-profile{
-    padding:0 10px;
-  }
+.exhibition img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* =========================
+   ARCHIVE
+========================= */
+
+.archive-grid{
+  display:grid;
+  gap:14px;
+  width:100%;
+  padding:0 12px;
+  box-sizing:border-box;
+}
+
+/* 예정 전시 */
+body.upcoming-page .archive-grid{
+  grid-template-columns:repeat(3,1fr);
+}
+
+/* 지난 전시 */
+body.archive-page:not(.upcoming-page) .archive-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+
+/* 아이템 밀림 방지 */
+.poster-item{
+  width:100%;
+  min-width:0;
+}
+
+.poster-item img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* =========================
+   HALL
+========================= */
+
+.hall-entry{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  padding:0 16px;
+}
+
+.hall-left,
+.artist-note-area{
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+}
+
+.hall-poster{
+  width:100%;
+  max-width:320px;
+  margin:0 auto;
+  display:block;
+}
+
+/* =========================
+   EXHIBITION DETAIL
+========================= */
+
+/* 포스터 */
+body.exhibition-detail figure.exhibition-poster img{
+  width:90%;
+  height:auto;
+  display:block;
+  margin:0 auto;
+}
+
+/* 텍스트 */
+body.exhibition-detail #note-profile{
+  width:100%;
+  max-width:100%;
+  padding:0 10px;
+  box-sizing:border-box;
+}
+
+body.exhibition-detail .exhibition-text{
+  width:100%;
+  max-width:100%;
+  margin:0;
+}
+
+/* =========================
+   안정화
+========================= */
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+*{
+  box-sizing:border-box;
+}
 
 }
