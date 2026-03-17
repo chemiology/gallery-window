@@ -30,8 +30,6 @@ body.archive-detail-page{
 ========================================= */
 
 .exhibition-poster{
-  max-width: 480px;   /* ← 크기 제한 (조절 가능) */
-  margin: 0 auto;     /* ← 중앙 정렬 */
   text-align:center;
   display:block; 
   display:flex;
@@ -39,7 +37,8 @@ body.archive-detail-page{
 }
 
 .exhibition-poster img{
-  width:100%;
+  width: 55%;        /* ← 크기 (여기서 조절) */
+  max-width: 550px;  /* ← 너무 커지는 것 방지 */
   height:auto;
   display:block;
   margin:0 auto;
