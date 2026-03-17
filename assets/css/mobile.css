@@ -228,3 +228,35 @@ img{
   }
 
 }
+
+@media (max-width:768px){
+
+  /* 🔥 진짜 대상: poster-grid */
+  body.archive-page .poster-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:12px !important;
+    width:100% !important;
+    margin:0 auto !important;
+    padding:0 12px !important;
+  }
+
+  /* 지난 전시 */
+  body.archive-page:not(.upcoming-page) .poster-grid{
+    grid-template-columns:repeat(4,1fr) !important;
+  }
+
+  /* 🔥 밀림 방지 핵심 */
+  body.archive-page .poster-item{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  /* 이미지 넘침 방지 */
+  body.archive-page .poster-item img{
+    width:100% !important;
+    height:auto !important;
+    display:block;
+  }
+
+}
