@@ -214,3 +214,67 @@ img{
   }
 
 }
+
+@media (max-width:768px){
+
+  /* 🔥 핵심: 부모 컨테이너 초기화 */
+  main,
+  .archive-page,
+  .archive-container,
+  .content,
+  section{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    box-sizing:border-box;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .archive-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:12px !important;
+    width:100% !important;
+    margin:0 auto !important;
+  }
+
+  body.archive-page:not(.upcoming-page) .archive-grid{
+    grid-template-columns:repeat(4,1fr) !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  body.exhibition-detail main,
+  body.exhibition-detail section{
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+
+  body.exhibition-detail figure.exhibition-poster{
+    width:100% !important;
+    text-align:center;
+  }
+
+  body.exhibition-detail figure.exhibition-poster img{
+    margin:0 auto !important;
+    display:block !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  body.exhibition-detail #note-profile{
+    width:100% !important;
+    max-width:none !important;
+    padding:0 10px !important;
+  }
+
+}
