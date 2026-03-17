@@ -253,3 +253,30 @@ img{
   }
 
 }
+
+@media (max-width:768px){
+
+  body.archive-page .archive-grid{
+    display:grid !important;
+    grid-template-columns: repeat(3, 1fr) !important; /* 예정전시 기준 */
+    justify-content:center;   /* 🔥 핵심 */
+    margin:0 auto !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  body.archive-page:not(.upcoming-page) .archive-grid{
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+}
+
+@media (max-width:768px){
+
+  .archive-grid{
+    justify-items:center;   /* 🔥 아이템 중앙 */
+  }
+
+}
