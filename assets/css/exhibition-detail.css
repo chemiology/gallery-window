@@ -182,8 +182,9 @@ body.archive-detail-page .exhibition-text{
 
 body.exhibition-detail .exhibition-text span{
   display:block;
+  margin:2px 0;
   font-size:16px;
-  line-height:1.5;
+  line-height:1.35;
   margin-bottom:3px;
 }
 
@@ -403,10 +404,6 @@ body.archive-detail-page .exhibition-text b{
    Exhibition Detail Fix
 ========================= */
 
-body.exhibition-detail{
-  background:#eef4f8 !important;
-}
-
 /* 텍스트 영역 */
 body.exhibition-detail .exhibition-text{
   max-width:680px;
@@ -452,4 +449,38 @@ body.exhibition-detail .back-to-list{
 body.exhibition-detail .back-to-list a{
   font-size:18px;
   color:#444;
+}
+
+#exhibition-info p{
+  margin:2px 0 !important;
+  line-height:1.35;
+}
+
+body.exhibition-detail .exhibition-text p{
+  text-indent:0;
+  margin-left:0;
+}
+
+.section-title{
+  margin-left:0;
+}
+
+.exhibition-text span{
+  display:block;
+  margin:2px 0;
+  line-height:1.35;
+}
+
+.section-title{
+  margin-top:28px;
+  margin-bottom:10px;
+}
+
+.exhibition-text p.gap-lg{
+  margin-top:10px;
+}
+
+body.exhibition-detail{
+  background:#eef4f8 !important;
+  color:#222 !important;
 }

@@ -240,7 +240,7 @@ body.home .meta{
     padding:0 16px;
 
     width:100%;
-    max-width:100%;
+    max-width:none !important;
   }
 
   .exhibition{
