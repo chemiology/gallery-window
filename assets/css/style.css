@@ -925,8 +925,8 @@ body.hall .artist-profile{
   color:#cfcfcf !important;
 }
 
-body.hall{
-  color:#eaeaea;
+body.hall .artist-profile{
+  color:#eaeaea !important;
 }
 
 
