@@ -151,4 +151,66 @@ img{
   box-sizing:border-box;
 }
 
+@media (max-width:768px){
+
+  /* =========================
+     ARCHIVE (쏠림 해결 핵심)
+  ========================= */
+
+  .archive-grid{
+    display:grid !important;
+    gap:12px !important;
+    width:100% !important;
+    margin:0 auto !important;
+    padding:0 12px !important;
+  }
+
+  /* 예정 전시 */
+  body.upcoming-page .archive-grid{
+    grid-template-columns:repeat(3,1fr) !important;
+  }
+
+  /* 지난 전시 */
+  body.archive-page:not(.upcoming-page) .archive-grid{
+    grid-template-columns:repeat(4,1fr) !important;
+  }
+
+  /* 카드가 밀지 못하게 */
+  .archive-grid .poster-item{
+    width:100% !important;
+    min-width:0 !important;
+  }
+
+  .archive-grid img{
+    width:100% !important;
+    height:auto !important;
+  }
+
+  /* =========================
+     DETAIL (포스터 중앙)
+  ========================= */
+
+  body.exhibition-detail figure.exhibition-poster img{
+    display:block !important;
+    margin:0 auto !important;
+    width:90% !important;
+    max-width:none !important;
+  }
+
+  /* =========================
+     DETAIL (텍스트)
+  ========================= */
+
+  body.exhibition-detail #note-profile{
+    max-width:none !important;
+    width:100% !important;
+    padding:0 10px !important;
+  }
+
+  body.exhibition-detail .exhibition-text{
+    max-width:none !important;
+    width:100% !important;
+    margin:0 !important;
+  }
+
 }
