@@ -403,7 +403,6 @@ padding:0;
 }
 
 
-
 .poster-item figcaption{
   text-align:center;
 }
@@ -432,24 +431,49 @@ body.home .poster-item figcaption{
 }
 
 .poster-caption {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  color: #fff;
-  font-size: 18px;
-  letter-spacing: 0.05em;
+  position:absolute;
+  inset:0;
 
-  background: rgba(0,0,0,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  opacity: 0;
-  transition: opacity 0.35s ease;
+  color:rgba(255,255,255,0.72);
+
+  font-size:18px;
+  letter-spacing:0.05em;
+
+  background:rgba(0,0,0,0.06);
+
+  opacity:0;
+
+  transition:
+    opacity .45s ease,
+    background .45s ease;
+
 }
 
 .poster-wrap:hover .poster-caption {
-  opacity: 1;
+
+  opacity:1;
+
+  background:rgba(0,0,0,0.14);
+
+}
+
+.poster-caption span{
+
+  display:block;
+
+  font-size:13px;
+
+  margin-top:6px;
+
+  opacity:0.7;
+
+  letter-spacing:0.04em;
+
 }
 
 /* =====================================================
