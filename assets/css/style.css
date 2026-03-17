@@ -932,3 +932,11 @@ body.hall .artist-profile{
 html body.hall .artist-profile{
   color:#eaeaea !important;
 }
+
+body.hall .exhibition-text{
+  color:#eaeaea !important;
+}
+
+body.hall .artist-note{
+  color:#eaeaea !important;
+}
