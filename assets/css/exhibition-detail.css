@@ -37,8 +37,8 @@ body.archive-detail-page{
 }
 
 .exhibition-poster img{
-  width: 100%;
-  max-width: 380px;  /* ← 약 30% 축소 */
+  width: 42%;
+  max-width: 550px;  /* ← 약 30% 축소 */
   height:auto;
   display:block;
   margin:0 auto;
