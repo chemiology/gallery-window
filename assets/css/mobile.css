@@ -195,3 +195,36 @@ img{
   }
 
 }
+
+@media (max-width:768px){
+
+  /* 🔥 부모 컨테이너 강제 초기화 (핵심) */
+  body.archive-page main,
+  body.archive-page section{
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 auto !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+  }
+
+  /* 🔥 grid 정상화 */
+  body.archive-page .archive-grid{
+    display:grid !important;
+    grid-template-columns:repeat(3,1fr) !important;
+    gap:12px !important;
+    width:100% !important;
+    margin:0 auto !important;
+  }
+
+  /* 지난 전시 */
+  body.archive-page:not(.upcoming-page) .archive-grid{
+    grid-template-columns:repeat(4,1fr) !important;
+  }
+
+  /* 🔥 카드 밀림 차단 */
+  body.archive-page .poster-item{
+    min-width:0 !important;
+  }
+
+}
