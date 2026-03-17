@@ -486,14 +486,6 @@ body.exhibition-detail{
   color:#222;
 }
 
-/* ---------- Prevent Viewer Interference ---------- */
-
-body.exhibition-detail .viewer,
-body.exhibition-detail #exhibition-image,
-body.exhibition-detail #artwork-counter{
-  display:none !important;
-}
-
 /* ---------- Text Rendering Stability ---------- */
 
 body.exhibition-detail .exhibition-text{
