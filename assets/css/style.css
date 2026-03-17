@@ -768,10 +768,6 @@ a{
    HALL TYPOGRAPHY
 ========================= */
 
-.hall{
-  color:#eaeaea;
-}
-
 .hall .artist-profile{
   font-size:13.5px;
   line-height:1.5;
@@ -841,4 +837,12 @@ a{
 
 .hall .artist-profile{
   color:#cfcfcf !important;
+}
+
+body.hall .artist-profile{
+  color:#cfcfcf !important;
+}
+
+body.hall{
+  color:#eaeaea;
 }
