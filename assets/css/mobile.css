@@ -1,0 +1,168 @@
+/* ======================================
+   Gallery Window – MOBILE FINAL
+   (≤768px)
+====================================== */
+
+html, body{
+  overflow-x:hidden;
+}
+
+/* =========================
+   공통 레이아웃
+========================= */
+
+main,
+.site-header,
+.exhibitions,
+.main-links,
+.bottom-area{
+  padding-left:16px;
+  padding-right:16px;
+  box-sizing:border-box;
+}
+
+/* =========================
+   HOME (대표화면)
+========================= */
+
+.exhibitions{
+  display:grid;
+  grid-template-columns:1fr;   /* 1열 */
+  gap:40px;
+}
+
+.exhibition{
+  width:100%;
+  max-width:320px;
+  margin:0 auto;
+  position:relative;
+}
+
+.exhibition img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+/* 🔥 1관 배지 클릭 방해 제거 */
+.exhibition-badge{
+  pointer-events:none;
+}
+
+/* =========================
+   ARCHIVE (지난 전시)
+========================= */
+
+.poster-grid{
+  display:grid !important;
+  grid-template-columns:repeat(2, 1fr)
+  gap:16px;
+
+  width:100%;
+  padding:0 12px;
+  box-sizing:border-box;
+}
+
+.poster-item img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+
+@media (max-width:768px){
+
+  /* 지난 전시 → 4열 */
+  .archive-page .poster-grid{
+    grid-template-columns:repeat(4, 1fr);
+  }
+
+  /* 예정 전시 → 3열 */
+  .upcoming-page .poster-grid{
+    grid-template-columns:repeat(3, 1fr);
+  }
+
+}
+
+/* =========================
+   HALL
+========================= */
+
+.hall-entry{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  padding:0 16px;
+}
+
+.hall-left,
+.artist-note-area{
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+}
+
+/* 포스터 크게 */
+.hall-poster{
+  width:100%;
+  max-width:320px;
+  margin:0 auto;
+  display:block;
+}
+
+/* 텍스트 */
+.hall-left{
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =========================
+   EXHIBITION DETAIL
+========================= */
+
+/* 🔥 포스터 크게 */
+body.exhibition-detail figure.exhibition-poster img{
+  width:90% !important;
+  max-width:none !important;
+  height:auto !important;
+  display:block;
+  margin:0 auto;
+}
+
+/* 전시 정보 텍스트 */
+#note-profile{
+  max-width:100%;
+  padding:0 16px;
+  box-sizing:border-box;
+}
+
+#exhibition-info{
+  font-size:14px;
+  line-height:1.5;
+}
+
+/* 본문 텍스트 */
+.exhibition-text{
+  font-size:14px;
+  line-height:1.6;
+}
+
+/* =========================
+   버튼 영역
+========================= */
+
+.main-links{
+  margin:40px auto;
+}
+
+/* =========================
+   기타 안정화
+========================= */
+
+img{
+  max-width:100%;
+  height:auto;
+}
+
+*{
+  box-sizing:border-box;
+}
