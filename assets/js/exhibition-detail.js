@@ -7,24 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ex = EXHIBITION;
 
-
-/* =========================
-   BASE PATH / URL
-========================= */
-
-  const BASE_PATH = location.pathname.includes('/exhibition_pages/')
-    ? '../'
-    : '';
-
-  const BASE_URL = location.origin;
-
-
   /* =========================
      BASIC URL
   ========================= */
 
   const url = window.location.href;
-  const posterURL = `${BASE_URL}${ex.poster}`;
+  const posterURL = `https://gallerywindow.com${ex.poster}`;
 
   /* =========================
      TITLE
@@ -114,8 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const listPage =
     state === "past"
-      ? BASE_PATH + "archive/past.html"
-      : BASE_PATH + "archive/upcoming.html";
+      ? "/archive/past.html"
+      : "/archive/upcoming.html";
 
   const listText =
     state === "past"
@@ -200,9 +188,7 @@ async function loadNoteProfile(){
     const file = window.location.pathname.split("/").pop();
     const id = file.replace(".html","");
 
-    const res = await fetch(
-      `txt/${id}.txt`
-    );
+    const res = await fetch(`/exhibition_pages/txt/${id}.txt`);
 
     if(!res.ok){
       console.warn("TXT not found:", id);
