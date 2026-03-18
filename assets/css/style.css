@@ -940,3 +940,272 @@ body.hall .exhibition-text{
 body.hall .artist-note{
   color:#eaeaea !important;
 }
+
+/* =========================
+   NOTICE DETAIL BUTTON
+========================= */
+
+.notice-back{
+  display:block;
+  width:fit-content;
+
+  margin:60px auto 0;   /* 중앙 */
+  text-align:center;
+
+  font-size:14px;
+  color:#444;
+
+  border-bottom:1px solid #aaa;
+  padding-bottom:4px;
+}
+
+.notice-back:hover{
+  color:#000;
+  border-color:#000;
+}
+
+.notice-content a{
+  color:#444;
+}
+
+.notice-content a:hover{
+  color:#000;
+  text-decoration:underline;
+}
+
+/* =========================
+   EXHIBITION BACK BUTTON (PC)
+========================= */
+
+body.exhibition-detail .back-to-list{
+  display:block;
+  margin:40px 0;
+  text-align:left;
+}
+
+body.exhibition-detail .back-to-list a{
+  font-size:14px;
+  color:#444;
+}
+
+body.exhibition-detail .back-to-list a:hover{
+  color:#000;
+}
+
+/* ===== MOBILE OLD (DISABLED) =====
+@media (max-width:768px){
+
+  body.exhibition-detail #note-profile{
+    width:100% !important;
+    max-width:none !important;
+
+    padding-left:6px !important;
+    padding-right:6px !important;
+  }
+
+  body.exhibition-detail .exhibition-text{
+    padding-left:4px !important;
+    padding-right:4px !important;
+  }
+
+}
+*/
+
+.notice-detail{
+  max-width:720px;
+  margin:0 auto;
+  padding:40px 16px;
+}
+
+.notice-detail h1{
+  text-align:left;
+}
+
+.notice-back{
+  display:block;
+  width:fit-content;
+
+  margin:60px auto 0;
+
+  font-size:14px;
+  color:#444;
+}
+
+.notice-back:hover{
+  color:#000;
+}
+
+@media (min-width:769px){
+
+  body.exhibition-detail .back-to-list{
+    position:fixed;
+    left:40px;
+    top:50%;
+    transform:translateY(-50%);
+
+    background:#fff;
+    padding:10px 14px;
+
+    border:1px solid #ccc;
+    border-radius:6px;
+
+    z-index:1000;
+  }
+
+}
+
+.notice-detail{
+  max-width:720px;
+  margin:0 auto;
+  padding:40px 16px;
+}
+
+.notice-detail p,
+.notice-detail h1,
+.notice-detail h2{
+  text-align:left;
+}
+
+/* =========================
+   NOTICE NAV (FINAL)
+========================= */
+
+.notice-nav{
+  text-align:center;
+  margin:60px 0 40px;
+}
+
+.notice-nav a{
+  font-size:14px;
+  color:#444;
+  text-decoration:none;
+}
+
+.notice-nav a:hover{
+  color:#000;
+  text-decoration:underline;
+}
+
+/* =========================
+   NOTICE DETAIL FINAL FIX
+========================= */
+
+.notice-detail{
+  max-width:720px;
+  margin:0 auto;
+  padding:40px 16px;
+  box-sizing:border-box;
+}
+
+/* 제목 */
+.notice-detail h1{
+  margin:0 0 24px;
+  text-align:left;
+}
+
+/* 본문 */
+.notice-detail p{
+  text-align:left;
+}
+
+/* 하단 버튼 */
+.notice-nav{
+  text-align:center;
+  margin:60px 0 40px;
+}
+
+.notice-nav a{
+  font-size:14px;
+  color:#444;
+  text-decoration:none;
+}
+
+.notice-nav a:hover{
+  color:#000;
+  text-decoration:underline;
+}
+
+/* =========================
+   HALL TEXT TONE FIX
+========================= */
+
+body.hall .artist-profile{
+  color:#d8dbe0 !important;   /* 기존보다 밝게 */
+}
+
+body.hall .artist-note{
+  color:#e2e5e9 !important;   /* 본문은 더 밝게 */
+}
+
+/* 가독성 안정 */
+body.hall .artist-note p{
+  opacity:0.92;
+}
+
+/* =========================
+   GUESTBOOK TITLE UNIFY
+========================= */
+
+body.hall .guestbook h3{
+  font-size:16px;
+  font-weight:500;
+  color:#d8dbe0;
+  margin-bottom:16px;
+}
+
+/* 리스트 텍스트 */
+body.hall .guestbook li{
+  font-size:14px;
+  color:#cfd3d8;
+}
+
+/* =========================
+   HALL TEXT FINAL TUNING
+========================= */
+
+/* 작가 프로필 */
+body.hall .artist-profile{
+  color:#d4d8dd !important;
+  opacity:0.9;
+}
+
+/* 작가 노트 */
+body.hall .artist-note{
+  color:#e0e4e8 !important;
+  opacity:0.92;
+}
+
+/* 문단 안정화 */
+body.hall .artist-note p{
+  line-height:1.65;
+}
+
+/* 강조 텍스트 */
+body.hall .artist-note strong{
+  color:#f0f2f4;
+}
+
+/* ===== [ADD] HALL TEXT FIX ===== */
+body.hall .artist-profile{
+  color:#d4d8dd !important;
+}
+
+body.hall .artist-note{
+  color:#e0e4e8 !important;
+}
+
+/* ===== [ADD] NOTICE FIX ===== */
+.notice-detail{
+  max-width:720px;
+  margin:0 auto;
+  padding:40px 16px;
+}
+
+.notice-nav{
+  text-align:center;
+  margin:60px 0 40px;
+}
+
+.notice-nav a{
+  color:#444;
+}
