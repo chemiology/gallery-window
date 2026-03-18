@@ -1,3 +1,7 @@
+/* =========================
+   EXHIBITION STATUS
+========================= */
+
 function getExhibitionStatus(ex) {
 
   const today = new Date();
@@ -12,49 +16,39 @@ function getExhibitionStatus(ex) {
   return "current";
 }
 
+/* =========================
+   INIT
+========================= */
+
 document.addEventListener("DOMContentLoaded", () => {
-  // 대표화면(home)에서만 실행
+
   if (!document.body.classList.contains("home")) return;
 
   loadGallery();
   renderHomepageGuestbook();
+  loadHeadlineNotice(); // ✔ 공지 독립
+
 });
 
+/* =========================
+   LOAD GALLERY
+========================= */
 
 async function loadGallery() {
+
   try {
 
     const response = await fetch("/assets/config/gallery.json", { cache: "no-store" });
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+    if (!response.ok) throw new Error("Network error");
 
-    const text = await response.text();
+    const data = await response.json();
 
-    let data;
-
-    try {
-      data = JSON.parse(text);
-    } catch (e) {
-      console.error("JSON parse error:", e);
-      showErrorMessage();
-      return;
-    }
-
-    // 데이터 검증
     if (!data || typeof data !== "object") {
-      console.error("Invalid gallery data");
       showErrorMessage();
       return;
     }
 
-    // 공지 표시
-    if (data.headlineNotice) {
-      loadHeadlineNotice(data.headlineNotice);
-    }
-
-    // 전시 목록 처리
     const exhibitions =
       (data.currentExhibitions || [])
         .filter(ex => ex && ex.status !== "hidden")
@@ -64,16 +58,20 @@ async function loadGallery() {
 
   } catch (error) {
 
-    console.error("Gallery data load failed:", error);
+    console.error("Gallery load failed:", error);
     showErrorMessage();
 
   }
+
 }
+
+/* =========================
+   ERROR UI
+========================= */
 
 function showErrorMessage() {
 
   const container = document.querySelector(".exhibitions");
-
   if (!container) return;
 
   container.innerHTML = `
@@ -83,7 +81,12 @@ function showErrorMessage() {
   `;
 }
 
+/* =========================
+   RENDER EXHIBITIONS
+========================= */
+
 function renderExhibitions(exhibitions) {
+
   const container = document.querySelector(".exhibitions");
   if (!container) return;
 
@@ -93,26 +96,13 @@ function renderExhibitions(exhibitions) {
     getExhibitionStatus(ex) !== "past"
   );
 
-  /* =========================
-     Grid Auto Layout
-  ========================= */
-
   const count = visible.length;
 
   container.classList.remove("grid-2","grid-3","grid-4");
 
-  if (count <= 2) {
-    container.classList.add("grid-2");
-  } 
-  else if (count <= 6) {
-    container.classList.add("grid-3");
-  } 
-  else {
-    container.classList.add("grid-4");
-  }
-
-  /* ========================= */
-
+  if (count <= 2) container.classList.add("grid-2");
+  else if (count <= 6) container.classList.add("grid-3");
+  else container.classList.add("grid-4");
 
   visible.forEach((exhibition, index) => {
 
@@ -126,9 +116,6 @@ function renderExhibitions(exhibitions) {
     const hall = document.createElement("div");
     hall.className = "hall-label";
     hall.textContent = `${index + 1}관`;
-    block.appendChild(hall);
-
-  // ↓↓↓ 이하 기존 코드 그대로
 
     const body = document.createElement("div");
     body.className = "exhibition-body";
@@ -139,12 +126,20 @@ function renderExhibitions(exhibitions) {
 
     img.src = `/assets/exhibitions/${exhibition.id}/poster.jpg`;
     img.alt = exhibition.title;
-
-    img.style.cursor = "pointer";
     img.loading = "lazy";
 
     img.onerror = () => {
       img.src = "/assets/images/poster-placeholder.jpg";
+    };
+
+    img.onclick = () => {
+
+      if (exhibition.status === "coming") {
+        alert("이 전시는 곧 시작됩니다.");
+        return;
+      }
+
+      location.href = `hall.html?hall=${exhibition.hall}`;
     };
 
     const meta = document.createElement("div");
@@ -154,20 +149,16 @@ function renderExhibitions(exhibitions) {
     posterWrap.appendChild(img);
     posterWrap.appendChild(meta);
 
-    img.onclick = () => {
-
-      if (exhibition.status === "coming") {
-        alert("이 전시는 곧 시작됩니다.");
-        return;
-      }
-
-  location.href = `hall.html?hall=${exhibition.hall}`;
-};
     body.appendChild(posterWrap);
+    block.appendChild(hall);
     block.appendChild(body);
     container.appendChild(block);
   });
 }
+
+/* =========================
+   GUESTBOOK
+========================= */
 
 async function renderHomepageGuestbook() {
 
@@ -180,16 +171,11 @@ async function renderHomepageGuestbook() {
 
   try {
 
-    const res = await fetch(
-      window.GUESTBOOK_URL + "?mode=list"
-    );
-
+    const res = await fetch(window.GUESTBOOK_URL + "?mode=list");
     const data = await res.json();
 
     if (!data || data.length === 0) {
-      const li = document.createElement("li");
-      li.textContent = "아직 방명록이 없습니다.";
-      ul.appendChild(li);
+      ul.innerHTML = "<li>아직 방명록이 없습니다.</li>";
       return;
     }
 
@@ -199,25 +185,43 @@ async function renderHomepageGuestbook() {
       ul.appendChild(li);
     });
 
-  } catch (err) {
-    const li = document.createElement("li");
-    li.textContent = "방명록을 불러올 수 없습니다.";
-    ul.appendChild(li);
+  } catch {
+
+    ul.innerHTML = "<li>방명록을 불러올 수 없습니다.</li>";
+
   }
+
 }
 
+/* =========================
+   HEADLINE NOTICE (FINAL)
+========================= */
 
-function renderHeadlineNotice(notice) {
+async function loadHeadlineNotice() {
+
   const container = document.getElementById("headline-notice");
   if (!container) return;
 
-  if (!notice || !notice.text || notice.text.trim() === "") {
-    container.style.display = "none";
-    return;
+  try {
+
+    const response = await fetch("/assets/notice/headlineNotice.html");
+
+    if (!response.ok) return;
+
+    const html = await response.text();
+    container.innerHTML = html;
+
+  } catch (error) {
+
+    console.error("Headline notice load failed:", error);
+
   }
 
-  container.innerHTML = notice.text;
 }
+
+/* =========================
+   GLOBAL EVENTS
+========================= */
 
 document.addEventListener("click", function(e) {
 
@@ -226,75 +230,12 @@ document.addEventListener("click", function(e) {
 
   e.preventDefault();
 
-  const url = new URL(link.href);
-  const id = url.searchParams.get("id");
-
-  gtag('event', 'enter_hall', {
-    hall: 'hall01'
-  });
+  gtag('event', 'enter_hall', { hall: 'hall01' });
 
   window.location.href = `hall.html?hall=hall01`;
 
 });
+
 window.addEventListener("load", () => {
   document.body.classList.add("page-ready");
 });
-
-function showErrorMessage() {
-
-  const container = document.querySelector(".exhibitions");
-
-  if (!container) return;
-
-  container.innerHTML = `
-    <div style="text-align:center;padding:60px;color:#aaa;">
-      Exhibition data could not be loaded.
-    </div>
-  `;
-}
-
-async function loadHeadlineNotice(noticeConfig) {
-
-  if (!noticeConfig || !noticeConfig.file) return;
-
-  try {
-
-    const response = await fetch(noticeConfig.file);
-    const html = await response.text();
-
-    document.getElementById("headline-notice")
-
-    if (noticeContainer) {
-      noticeContainer.innerHTML = html;
-    }
-
-  } catch (error) {
-
-    console.error("Headline notice load failed:", error);
-
-  }
-
-}
-
-async function loadHeadlineNotice(noticeConfig) {
-
-  if (!noticeConfig || !noticeConfig.file) return;
-
-  try {
-
-    const response = await fetch(noticeConfig.file);
-    const html = await response.text();
-
-    const noticeContainer = document.getElementById("headline-notice");
-
-    if (noticeContainer) {
-      noticeContainer.innerHTML = html;
-    }
-
-  } catch (error) {
-
-    console.error("Headline notice load failed:", error);
-
-  }
-
-}
