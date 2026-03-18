@@ -7,12 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ex = EXHIBITION;
 
+
+/* =========================
+   BASE PATH / URL
+========================= */
+
+  const BASE_PATH = location.pathname.includes('/exhibition_pages/')
+    ? '../'
+    : '';
+
+  const BASE_URL = location.origin;
+
+
   /* =========================
      BASIC URL
   ========================= */
 
   const url = window.location.href;
-  const posterURL = `https://gallerywindow.com${ex.poster}`;
+  const posterURL = `${BASE_URL}${ex.poster}`;
 
   /* =========================
      TITLE
@@ -87,10 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if(info){
     info.innerHTML = `
-      <p>${ex.artist} 온라인전시_${ex.titleKR}</p>
+      <p>${ex.artist} _${ex.titleKR}</p>
       <p>- 전시제목 : ${ex.titleKR} / ${ex.titleEN}</p>
       <p>- 전시기간 : ${ex.start} ~ ${ex.end}</p>
-      <p>- 전시장소 : 갤러리 창 (https://gallerywindow.com)</p>
+      <p>- 전시장소 : 갤러리 창 (gallerywindow.com)</p>
     `;
   }
 
@@ -102,8 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const listPage =
     state === "past"
-      ? "/archive/past.html"
-      : "/archive/upcoming.html";
+      ? BASE_PATH + "archive/past.html"
+      : BASE_PATH + "archive/upcoming.html";
 
   const listText =
     state === "past"
@@ -188,7 +200,9 @@ async function loadNoteProfile(){
     const file = window.location.pathname.split("/").pop();
     const id = file.replace(".html","");
 
-    const res = await fetch(`/exhibition_pages/txt/${id}.txt`);
+    const res = await fetch(
+      BASE_PATH + `exhibition_pages/txt/${id}.txt`
+    );
 
     if(!res.ok){
       console.warn("TXT not found:", id);
