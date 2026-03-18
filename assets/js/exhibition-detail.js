@@ -201,7 +201,7 @@ async function loadNoteProfile(){
     const id = file.replace(".html","");
 
     const res = await fetch(
-      BASE_PATH + `exhibition_pages/txt/${id}.txt`
+      `txt/${id}.txt`
     );
 
     if(!res.ok){
