@@ -1221,61 +1221,63 @@ body.hall .artist-note{
   color:#f0f3f6 !important;   /* 본문은 더 밝게 */
 }
 
-/* ===== FINAL HALL GUESTBOOK UNIFY ===== */
+/* ===== FINAL FORCE HALL GUESTBOOK UNIFY ===== */
 
-body.hall .guestbook li,
-body.hall .guestbook.poetic li{
+body.hall .bottom-area .guestbook li,
+body.hall .bottom-area .guestbook.poetic li{
 
-  font-size:14px;          /* 크기 통일 */
-  line-height:1.6;
+  font-size:14px !important;
+  line-height:1.6 !important;
 
-  color:#d6dae0;           /* 밝기 통일 */
-  opacity:0.9;
+  color:#d8dde3 !important;
+  opacity:0.95 !important;
 
   letter-spacing:0.02em;
 }
 
-/* ===== HALL THEME COLOR (soft accent) ===== */
+/* ===== HALL DYNAMIC THEME ===== */
 
 body.hall{
 
-  --theme-color:#c6d4e1;  /* JSON 값과 동일 */
+  /* fallback */
+  --theme-color:#c6d4e1;
+}
+
+/* 포스터 hover */
+body.hall .poster-item img:hover{
+  box-shadow:
+    0 16px 36px rgba(0,0,0,0.25),
+    0 0 22px var(--theme-color);
+}
+
+/* 하단 영역 */
+body.hall .bottom-area{
+  border-top:1px solid var(--theme-color);
 }
 
 /* 버튼 */
 body.hall a,
 body.hall button{
-  border-color:rgba(198,212,225,0.35);
+  border-color:var(--theme-color);
 }
 
-/* 포스터 그림자 */
-body.hall .poster-item img:hover{
-  box-shadow:
-    0 16px 36px rgba(0,0,0,0.25),
-    0 4px 12px rgba(198,212,225,0.18);
-}
+/* ===== FINAL NOTICE LINK COLOR FIX ===== */
 
-/* 방명록 영역 */
-body.hall .guestbook{
-  border-top:1px solid rgba(198,212,225,0.25);
-  padding-top:12px;
-}
+body .notice-detail a,
+body .notice-content a,
+body .notice-nav a,
+body .notice-back{
 
-/* ===== NOTICE LINK VISIBILITY FIX ===== */
-
-.notice-content a,
-.notice-nav a,
-.notice-back{
-
-  color:#5a6f85;   /* 살짝 블루톤 그레이 */
+  color:#5c6f82 !important;   /* 블루+그레이 */
   font-weight:500;
 }
 
 /* hover */
-.notice-content a:hover,
-.notice-nav a:hover,
-.notice-back:hover{
+body .notice-detail a:hover,
+body .notice-content a:hover,
+body .notice-nav a:hover,
+body .notice-back:hover{
 
-  color:#2f4f6f;   /* 더 진한 블루 */
+  color:#2f4f6f !important;
   text-decoration:underline;
 }
