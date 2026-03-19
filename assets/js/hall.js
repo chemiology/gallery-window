@@ -1,3 +1,12 @@
+/* =========================
+   BASE PATH
+========================= */
+
+const BASE_PATH = location.pathname.includes('/archive/')
+  || location.pathname.includes('/exhibition_pages/')
+  ? '../'
+  : '';
+
 /* ======================================
    Hall Loader – Stable Clean Version
 ====================================== */
@@ -34,54 +43,47 @@ async function loadHall() {
     const exhibitions =
       data.currentExhibitions || data.exhibitions || [];
 
-    const exhibition = exhibitions.find(ex =>
-      ex.hall === hallId &&
-      getExhibitionStatus(ex) !== "past"
-    );
+let exhibition = exhibitions.find(ex =>
+  ex.hall === hallId &&
+  getExhibitionStatus(ex) !== "past"
+);
 
+/* 🔥 먼저 fallback */
+if (!exhibition) {
+  console.warn("조건 매칭 실패 → fallback 사용");
+  exhibition = exhibitions[0];
+}
 
-    /* ---------- Hall Title ---------- */
+/* 🔥 그 다음 Hall Title */
+const hallTitle = document.getElementById("hallTitle");
 
-    const hallTitle = document.getElementById("hallTitle");
+if (hallTitle) {
+  hallTitle.textContent =
+    exhibition?.hallTitle ||
+    `${hallId.replace("hall","")}관`;
+}
 
-    if (hallTitle) {
-      hallTitle.textContent =
-        exhibition?.hallTitle ||
-        `${hallId.replace("hall","")}관`;
-    }
+/* 🔥 그 다음 themeColor */
+if (exhibition?.themeColor) {
+  document.body.style.setProperty(
+    "--theme-color",
+    exhibition.themeColor
+  );
+  console.log("🎨 themeColor 적용됨:", exhibition.themeColor);
+}
 
+/* 🔥 themeMode 적용 */
+if (exhibition?.themeMode) {
+  document.body.classList.add("theme-" + exhibition.themeMode);
+}
 
-    /* ---------- Empty Hall ---------- */
-
-    if (!exhibition) {
-
-      const entry = document.querySelector(".hall-entry");
-
-      if (entry) {
-        entry.innerHTML = `
-          <div class="hall-empty">
-            <p>이 전시장은 현재 준비 중입니다.</p>
-            <p style="opacity:.6;margin-top:8px;">
-              곧 새로운 전시가 시작됩니다.
-            </p>
-          </div>
-        `;
-      }
-
-      console.log("Empty hall:", hallId);
-      return;
-    }
-
+    /* 🔥 핵심 */
     loadHallEntry(exhibition, hallId);
 
   } catch (err) {
-
     console.error("Hall load failed:", err);
-
   }
-
 }
-
 
 /* ======================================
    Load Hall Entry
@@ -136,8 +138,8 @@ async function loadHallEntry(exhibition, hallId) {
 
       const target =
         hallId.startsWith("hall5")
-          ? `/video.html?id=${exhibition.id}`
-          : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+          ? BASE_PATH + `video.html?id=${exhibition.id}`
+          : BASE_PATH + `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
       window.location.href = target;
 
@@ -153,9 +155,9 @@ async function loadHallEntry(exhibition, hallId) {
   if (enterBtn) {
 
     const target =
-      hallId.startsWith("hall5")
-        ? `/video.html?id=${exhibition.id}`
-        : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+       hallId.startsWith("hall5")
+         ? `/video.html?id=${exhibition.id}`
+         : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
     enterBtn.href = target;
 
