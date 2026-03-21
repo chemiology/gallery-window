@@ -72,7 +72,7 @@ frame.allowFullscreen = true;
 frame.src =
   "https://www.youtube.com/embed/" +
   video.youtube +
-  "?autoplay=1&mute=1";
+  "?autoplay=1&mute=1&origin=https://chemiology.github.io";
 
 container.appendChild(frame);
 
