@@ -66,13 +66,15 @@ const frame = document.createElement("iframe");
 
 frame.id = "video-frame";
 frame.loading = "lazy";
-frame.allow = "autoplay; encrypted-media";
-frame.allowFullscreen = true;
 
+/* 🔥 핵심 수정 */
+frame.allow = "autoplay; fullscreen";
+
+/* 🔥 핵심 수정 */
 frame.src =
-  "https://www.youtube.com/embed/" +
-  video.youtube +
-  "?autoplay=1&mute=1&origin=https://chemiology.github.io";
+"https://www.youtube.com/embed/" +
+video.id +
+"?autoplay=1&mute=1";
 
 container.appendChild(frame);
 
@@ -81,7 +83,8 @@ container.appendChild(frame);
 setTimeout(()=>{
 loading.style.display = "none";
 frame.classList.add("show");
-},1200);
+},800);
+
 
 /* 캡션 */
 
