@@ -70,9 +70,9 @@ frame.allow = "autoplay; encrypted-media";
 frame.allowFullscreen = true;
 
 frame.src =
-"https://www.youtube.com/embed/" +
-video.youtube +
-"?autoplay=1&mute=1&enablejsapi=1&rel=0&playsinline=1&t=" + Date.now();
+  "https://www.youtube.com/embed/" +
+  video.youtube +
+  "?autoplay=1&mute=1";
 
 container.appendChild(frame);
 
