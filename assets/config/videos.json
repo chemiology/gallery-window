@@ -4,7 +4,13 @@
       "caption": "Avatar II Video, 2024",
       "type": "youtube",
       "id": "IYRbB-b2I7Y"
+    },
+    {
+      "caption": "Avatar Reload Video, 2024",
+      "type": "youtube",
+      "id": "CeXmqnsT2mU"
     }
+
   ],
 
   "being-beyond-time": [
@@ -12,14 +18,6 @@
       "caption": "Being Beyond Time",
       "type": "youtube",
       "id": "ts9rn1Yml2Q"
-    }
-  ],
-
-  "video_avatar_reload": [
-    {
-      "caption": "Avatar Reload Video, 2024",
-      "type": "youtube",
-      "id": "CeXmqnsT2mU"
     }
   ]
 }
