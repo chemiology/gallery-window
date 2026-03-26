@@ -1,28 +1,3 @@
-/* =====================================================
-   Gallery Window – INDEX JS (FINAL STABLE)
-   ✔ BASE_PATH 완전 자동 대응
-   ✔ dev / 운영 모두 안정
-===================================================== */
-
-/* =========================
-   BASE PATH (🔥 핵심)
-========================= */
-
-const BASE_PATH = (() => {
-  const path = location.pathname;
-
-  if (path.includes('/gallery-window-dev/')) {
-    return '/gallery-window-dev';
-  }
-
-  const segments = path.split('/').filter(Boolean);
-  if (location.hostname.includes('github.io') && segments.length > 0) {
-    return '/' + segments[0];
-  }
-
-  return '';
-})();
-
 /* =========================
    EXHIBITION STATUS
 ========================= */
@@ -39,44 +14,6 @@ function getExhibitionStatus(ex) {
   if (end && today > end) return "past";
 
   return "current";
-}
-
-/* =========================
-   EXHIBITION STATUS
-========================= */
-
-function getExhibitionStatus(ex) {
-  const today = new Date();
-  today.setHours(0,0,0,0);
-
-  const start = ex.startDate ? new Date(ex.startDate) : null;
-  const end = ex.endDate ? new Date(ex.endDate) : null;
-
-  if (start && today < start) return "coming";
-  if (end && today > end) return "past";
-
-  return "current";
-}
-
-/* =========================
-   COUNTDOWN (🔥 추가)
-========================= */
-
-function getCountdownText(startDate){
-
-  if(!startDate) return "";
-
-  const today = new Date();
-  const start = new Date(startDate);
-
-  const diff = Math.ceil((start - today) / (1000*60*60*24));
-
-  if(diff <= 0) return "";
-
-  if(diff === 1) return "D-1";
-  if(diff <= 7) return `D-${diff}`;
-
-  return `${diff}일 후`;
 }
 
 /* =========================
@@ -89,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadGallery();
   renderHomepageGuestbook();
-  loadHeadlineNotice();
+  loadHeadlineNotice(); // ✔ 공지 독립
 
 });
 
@@ -101,7 +38,7 @@ async function loadGallery() {
 
   try {
 
-    const response = await fetch(BASE_PATH + "/assets/config/gallery.json", { cache: "no-store" });
+    const response = await fetch("/assets/config/gallery.json", { cache: "no-store" });
 
     if (!response.ok) throw new Error("Network error");
 
@@ -172,16 +109,9 @@ function renderExhibitions(exhibitions) {
     const block = document.createElement("div");
     block.className = "exhibition";
 
-    /* 🔥 여기 추가 */
-    block.dataset.start = exhibition.startDate;
-
-    const status = getExhibitionStatus(exhibition);
-
-    if (status === "coming") {
+    if (getExhibitionStatus(exhibition) === "coming") {
       block.classList.add("coming");
     }
-
-    /* ===== 전시관 이름 ===== */
 
     const hall = document.createElement("div");
     hall.className = "hall-label";
@@ -195,26 +125,16 @@ function renderExhibitions(exhibitions) {
 
     const img = document.createElement("img");
 
-    img.src = BASE_PATH + `/assets/exhibitions/${exhibition.id}/poster.jpg`;
+    img.src = `/assets/exhibitions/${exhibition.id}/poster.jpg`;
     img.alt = exhibition.title;
     img.loading = "lazy";
 
     img.onerror = () => {
-      img.src = BASE_PATH + "/assets/images/poster-placeholder.jpg";
+      img.src = "/assets/images/poster-placeholder.jpg";
     };
 
     img.onclick = () => {
-
-      const isVideoHall = exhibition.hall.startsWith("hall5");
-      const hasImages = exhibition.images && exhibition.images.length;
-
-      // 🔥 영상관은 예외 (무조건 통과)
-      if (!isVideoHall && !hasImages) {
-        alert("이 전시는 아직 준비 중입니다.");
-        return;
-      }
-
-      location.href = BASE_PATH + `/hall.html?hall=${exhibition.hall}`;
+      location.href = `hall.html?hall=${exhibition.hall}`;
     };
 
     const meta = document.createElement("div");
@@ -224,20 +144,11 @@ function renderExhibitions(exhibitions) {
     posterWrap.appendChild(img);
     posterWrap.appendChild(meta);
 
-    /* ===== COMING 표시 ===== */
-
-    if (status === "coming") {
+    if (getExhibitionStatus(exhibition) === "coming") {
 
       const badge = document.createElement("div");
       badge.className = "coming-badge";
-      const countdown = getCountdownText(exhibition.startDate);
-
-      badge.innerHTML = `
-        <div>COMING</div>
-        <div style="font-size:14px;margin-top:4px;opacity:.8;">
-          ${countdown}
-        </div>
-      `;
+      badge.textContent = "COMING";
 
       posterWrap.appendChild(badge);
     }
@@ -248,39 +159,12 @@ function renderExhibitions(exhibitions) {
     container.appendChild(block);
   });
 
-  setTimeout(() => {
-    document.querySelectorAll(".coming-badge")
-      .forEach(el => el.style.opacity = 1);
-  }, 120);
+    setTimeout(() => {
+      document.querySelectorAll(".coming-badge")
+        .forEach(el => el.style.opacity = 1);
+    }, 120);
 
 }
-
-setInterval(() => {
-
-  const now = new Date();
-
-  document.querySelectorAll(".exhibition").forEach(block => {
-
-    const startDate = block.dataset.start;
-    if (!startDate) return;
-
-    const start = new Date(startDate);
-
-    if (now >= start && block.classList.contains("coming")) {
-
-      block.classList.remove("coming");
-
-      /* 🔥 여기 추가 */
-      block.classList.add("new-open");
-
-      const badge = block.querySelector(".coming-badge");
-      if (badge) badge.remove();
-    }
-
-  });
-
-}, 60000);
-
 
 /* =========================
    GUESTBOOK
@@ -320,7 +204,7 @@ async function renderHomepageGuestbook() {
 }
 
 /* =========================
-   HEADLINE NOTICE
+   HEADLINE NOTICE (FINAL)
 ========================= */
 
 async function loadHeadlineNotice() {
@@ -330,12 +214,9 @@ async function loadHeadlineNotice() {
 
   try {
 
-    const response = await fetch(BASE_PATH + "/assets/notice/headlineNotice.html");
+    const response = await fetch("/assets/notice/headlineNotice.html");
 
-    if (!response.ok) {
-      console.warn("Notice file not found");
-      return;
-    }
+    if (!response.ok) return;
 
     const html = await response.text();
     container.innerHTML = html;
@@ -348,27 +229,6 @@ async function loadHeadlineNotice() {
 
 }
 
-/* =========================
-   PAGE READY
-========================= */
-
 window.addEventListener("load", () => {
   document.body.classList.add("page-ready");
 });
-
-
-/* =========================
-   대표화면 포스터 효과
-========================= */
-
-const posters = document.querySelectorAll(".exhibition");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
-  });
-}, { threshold: 0.2 });
-
-posters.forEach(p => observer.observe(p));

@@ -114,11 +114,11 @@ body {
 /* ---------- Caption ---------- */
 
 .caption {
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  bottom: 64px; /* 방명록과 겹치지 않도록 */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 15px;
+  font-size: 13px;
   opacity: 0.6;
   letter-spacing: 0.02em;
   text-align: center;

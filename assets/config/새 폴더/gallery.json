@@ -15,9 +15,9 @@
     {
       "id": "avatar_ii",
       "title": "Avatar II",
-      "hall": "hall02",
-      "hallTitle": "2관",
-      "order": 60,
+      "hall": "hall01",
+      "hallTitle": "1관",
+      "order": 1,
       "artist": "김경수",
       "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg"],
       "captions": [
@@ -49,59 +49,6 @@
     },
 
     {
-      "id": "eyes-of-memory",
-      "title": "Eyes of Memory",
-      "hall": "hall01",
-      "hallTitle": "1관 초대전",
-      "order": 1,
-      "status": "hidden",
-      "artist": "한영숙",
-      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg"],
-      "captions": [
-        "가상변주 #1",
-        "가상변주 #2",
-        "가상변주 #3",
-        "가상변주 #4",
-        "가상변주 #5",
-        "가상변주 #6",
-        "가상변주 #7",
-        "가상변주 #8",
-        "가상변주 #9",
-        "가상변주 #10",
-        "가상변주 #11",
-        "가상변주 #12",
-        "가상변주 #13",
-        "가상변주 #14",
-        "가상변주 #15",
-        "가상변주 #16",
-        "가상변주 #17",
-        "가상변주 #18",
-        "가상변주 #19",
-        "가상변주 #20",
-        "작품 컨셉"
-      ],
-      "themeColor": "#f9efa3",
-      "themeMode": "warm",
-      "slideSeconds": 10,
-      "startDate": "2026-03-01",
-      "endDate": "2026-06-30"
-    },
-
-    {
-      "id": "being-beyond-time",
-      "title": "Being Beyond Time",
-      "hall": "hall50",
-      "hallTitle": "영상관",
-      "order": 50,
-      "status": "hidden",
-      "artist": "한영숙",
-      "themeColor": "#f9efa3",
-      "themeMode": "warm",
-      "startDate": "2026-03-01",
-      "endDate": "2026-06-30"
-    },
-
-    {
       "id": "video_avatar_ii",
       "title": "Avatar II (Video)",
       "hall": "hall52",
@@ -109,8 +56,6 @@
       "order": 52,
       "status": "hidden",
       "artist": "김경수",
-      "themeColor": "#c6d4e1",
-      "themeMode": "cool",
       "startDate": "2026-03-01",
       "endDate": "2026-12-31"
     }
