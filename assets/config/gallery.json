@@ -15,9 +15,10 @@
     {
       "id": "avatar_ii",
       "title": "Avatar II",
-      "hall": "hall02",
-      "hallTitle": "2관",
-      "order": 60,
+      "hall": "hall03",
+      "hallTitle": "3관",
+      "order": 4,
+      "status": "current",
       "artist": "김경수",
       "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg"],
       "captions": [
@@ -45,7 +46,7 @@
       "themeMode": "cool",
       "slideSeconds": 10,
       "startDate": "2026-02-15",
-      "endDate": "2026-03-31"
+      "endDate": "2026-05-31"
     },
 
     {
@@ -54,9 +55,9 @@
       "hall": "hall01",
       "hallTitle": "1관 초대전",
       "order": 1,
-      "status": "hidden",
+      "status": "current",
       "artist": "한영숙",
-      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg"],
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg","020.jpg","021.jpg"],
       "captions": [
         "가상변주 #1",
         "가상변주 #2",
@@ -92,8 +93,8 @@
       "title": "Being Beyond Time",
       "hall": "hall50",
       "hallTitle": "영상관",
-      "order": 50,
-      "status": "hidden",
+      "order": 2,
+      "status": "current",
       "artist": "한영숙",
       "themeColor": "#f9efa3",
       "themeMode": "warm",
@@ -104,16 +105,67 @@
     {
       "id": "video_avatar_ii",
       "title": "Avatar II (Video)",
-      "hall": "hall52",
+      "hall": "hall51",
       "hallTitle": "영상관",
-      "order": 52,
-      "status": "hidden",
+      "order": 5,
+      "status": "current",
       "artist": "김경수",
       "themeColor": "#c6d4e1",
       "themeMode": "cool",
       "startDate": "2026-03-01",
       "endDate": "2026-12-31"
+    },
+
+    {
+      "id": "another-dream",
+      "title": "Another Dream",
+      "hall": "hall02",
+      "hallTitle": "2관 초대전",
+      "order": 3,
+      "status": "current",
+      "artist": "이춘희",
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg","020.jpg","021.jpg","022.jpg","023.jpg"],
+      "captions": [
+        "Dream 1",
+        "Dream 2",
+        "Dream 3",
+        "Dream 4",
+        "Going Out 1",
+        "Going Out 2",
+        "Going Out 3",
+        "Going Together 1",
+        "Going Together 2",
+        "Going Together 3",
+        "Hope 1",
+        "Hope 2",
+        "Hope 3",
+        "Hope 4",
+        "Hope 5",
+        "Hope 6",
+        "Memory 2",
+        "Memory 3",
+        "Memory 4",
+        "World Peace 1",
+        "World Peace 2",
+        "World Peace 3",
+        "World Peace 4"
+      ],
+      "themeColor": "#eeb953",
+      "themeMode": "warm",
+      "slideSeconds": 10,
+      "startDate": "2026-03-01",
+      "endDate": "2026-06-30"
     }
+
+
+
+
+
+
+
+
+
+
 
      ]
 

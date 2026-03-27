@@ -309,3 +309,182 @@ body.home .exhibition-body{
   grid-template-columns:repeat(4,minmax(0,300px));
   gap:48px;
 }
+
+/* =========================
+   COMING – FINAL VERSION
+========================= */
+
+/* 포스터 컨테이너 기준 */
+.exhibition{
+  position:relative;
+}
+
+/* 배지 */
+.coming-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+
+  padding:6px 12px;
+
+  font-size:11px;
+  letter-spacing:0.12em;
+
+  color:#fff;
+
+  background:rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+
+  border:1px solid rgba(255,255,255,0.2);
+  border-radius:20px;
+
+  opacity:0;
+  transform:translateY(-6px);
+
+  transition:
+    opacity .6s ease,
+    transform .6s ease;
+}
+
+/* 등장 */
+.exhibition.coming .coming-badge{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* 포스터 흐림 */
+.exhibition.coming img{
+  opacity:0.72;
+  filter: grayscale(12%);
+  transition: all .4s ease;
+}
+
+/* hover 시 살아남 */
+.exhibition.coming:hover img{
+  opacity:0.95;
+  filter:none;
+}
+
+/* 은은한 빛 */
+.exhibition.coming::after{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+
+  opacity:0;
+  transition:opacity .5s ease;
+}
+
+.exhibition.coming:hover::after{
+  opacity:1;
+}
+
+/* themeColor 연결 */
+.exhibition.coming .coming-badge{
+  border-color: var(--theme-color, rgba(255,255,255,0.2));
+}
+
+.coming-badge {
+  font-size: 28px;
+  letter-spacing: 2px;
+  opacity: 0.9;
+}
+
+.exhibition.coming {
+  cursor: pointer;
+}
+
+.exhibition.new-open {
+  animation: fadeOpen 1.2s ease;
+}
+
+@keyframes fadeOpen {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.home .exhibitions{
+  gap: 24px;
+}
+
+.home .exhibition-poster img{
+  width: 92%;
+}
+
+.home .exhibition-poster img{
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* ===== 버튼 기본 ===== */
+.bottom-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
+  padding:10px 16px;
+
+  border:1px solid rgba(255,255,255,0.4);
+  background:rgba(0,0,0,0.25);
+
+  color:#fff;
+  text-decoration:none;
+
+  backdrop-filter:blur(6px);
+
+  transition:all .3s ease;
+}
+
+/* 아이콘 */
+.bottom-btn .icon{
+  font-size:10px;
+  opacity:0.7;
+}
+
+/* hover 효과 */
+.bottom-btn:hover{
+  background:rgba(0,0,0,0.6);
+  transform:translateY(-2px);
+}
+
+/* 클릭 느낌 */
+.bottom-btn:active{
+  transform:translateY(0);
+}
+
+
+/* ===== 언어 표시 (기본 = PC) ===== */
+
+.bottom-btn .ko{
+  display:inline;
+}
+
+.bottom-btn .en{
+  display:inline;
+}
+
+/* ===== 모바일 ===== */
+@media (max-width:768px){
+
+  .bottom-btn .ko{
+    display:none;
+  }
+
+  .bottom-btn .en{
+    display:inline;
+  }
+
+  .bottom-btn .en{
+    display:inline;
+  }
+
+  .bottom-btn .icon{
+    font-size:9px;
+  }
+}

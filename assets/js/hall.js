@@ -1,15 +1,31 @@
+/* =====================================================
+   Gallery Window – HALL JS (FINAL STABLE)
+   ✔ BASE_PATH 완전 대응
+   ✔ dev / 운영 모두 안정
+===================================================== */
+
 /* =========================
-   BASE PATH
+   BASE PATH (🔥 핵심)
 ========================= */
 
-const BASE_PATH = location.pathname.includes('/archive/')
-  || location.pathname.includes('/exhibition_pages/')
-  ? '../'
-  : '';
+const BASE_PATH = (() => {
+  const path = location.pathname;
 
-/* ======================================
-   Hall Loader – Stable Clean Version
-====================================== */
+  if (path.includes('/gallery-window-dev/')) {
+    return '/gallery-window-dev';
+  }
+
+  const segments = path.split('/').filter(Boolean);
+  if (location.hostname.includes('github.io') && segments.length > 0) {
+    return '/' + segments[0];
+  }
+
+  return '';
+})();
+
+/* =========================
+   EXHIBITION STATUS
+========================= */
 
 function getExhibitionStatus(ex) {
 
@@ -25,9 +41,8 @@ function getExhibitionStatus(ex) {
   return "current";
 }
 
-
 /* ======================================
-   Load Hall
+   LOAD HALL
 ====================================== */
 
 async function loadHall() {
@@ -37,63 +52,88 @@ async function loadHall() {
 
   try {
 
-    const res = await fetch("/assets/config/gallery.json");
+    const res = await fetch(BASE_PATH + "/assets/config/gallery.json");
     const data = await res.json();
 
     const exhibitions =
       data.currentExhibitions || data.exhibitions || [];
 
-let exhibition = exhibitions.find(ex =>
-  ex.hall === hallId &&
-  getExhibitionStatus(ex) !== "past"
-);
+    let exhibition = exhibitions.find(ex =>
+      ex.hall === hallId &&
+      getExhibitionStatus(ex) !== "past"
+    );
 
-/* 🔥 먼저 fallback */
-if (!exhibition) {
-  console.warn("조건 매칭 실패 → fallback 사용");
-  exhibition = exhibitions[0];
-}
+    if (!exhibition && exhibitions.length > 0) {
+      console.warn("조건 매칭 실패 → fallback 사용");
+      exhibition = exhibitions[0];
+    }
 
-/* 🔥 그 다음 Hall Title */
-const hallTitle = document.getElementById("hallTitle");
+    /* ---------- Hall Title ---------- */
 
-if (hallTitle) {
-  hallTitle.textContent =
-    exhibition?.hallTitle ||
-    `${hallId.replace("hall","")}관`;
-}
+    const hallTitle = document.getElementById("hallTitle");
 
-/* 🔥 그 다음 themeColor */
-if (exhibition?.themeColor) {
-  document.body.style.setProperty(
-    "--theme-color",
-    exhibition.themeColor
-  );
-  console.log("🎨 themeColor 적용됨:", exhibition.themeColor);
-}
+    if (hallTitle) {
+      hallTitle.textContent =
+        exhibition?.hallTitle ||
+        `${hallId.replace("hall","")}관`;
+    }
 
-/* 🔥 themeMode 적용 */
-if (exhibition?.themeMode) {
-  document.body.classList.add("theme-" + exhibition.themeMode);
-}
+    /* ---------- Empty Hall ---------- */
 
-    /* 🔥 핵심 */
+    if (!exhibition) {
+
+      const entry = document.querySelector(".hall-entry");
+
+      if (entry) {
+        entry.innerHTML = `
+          <div class="hall-empty">
+            <p>이 전시장은 현재 준비 중입니다.</p>
+            <p style="opacity:.6;margin-top:8px;">
+              곧 새로운 전시가 시작됩니다.
+            </p>
+          </div>
+        `;
+      }
+
+      console.warn("Empty hall:", hallId);
+      return;
+    }
+
+    /* ---------- themeColor ---------- */
+
+    if (exhibition.themeColor) {
+      document.body.style.setProperty(
+        "--theme-color",
+        exhibition.themeColor
+      );
+    }
+
+    /* ---------- themeMode ---------- */
+
+    if (exhibition.themeMode) {
+      document.body.classList.add(
+        "theme-" + exhibition.themeMode
+      );
+    }
+
     loadHallEntry(exhibition, hallId);
 
   } catch (err) {
+
     console.error("Hall load failed:", err);
+
   }
+
 }
 
 /* ======================================
-   Load Hall Entry
+   LOAD HALL ENTRY
 ====================================== */
 
 async function loadHallEntry(exhibition, hallId) {
 
   const basePath =
-    `/assets/exhibitions/${exhibition.id}/`;
-
+    BASE_PATH + `/assets/exhibitions/${exhibition.id}/`;
 
   /* ---------- COMING 상태 ---------- */
 
@@ -115,8 +155,7 @@ async function loadHallEntry(exhibition, hallId) {
     return;
   }
 
-
-  /* ---------- 방명록 ID 전달 ---------- */
+  /* ---------- 방명록 ID ---------- */
 
   const guestbookInput =
     document.querySelector('input[name="exhibition_id"]');
@@ -124,7 +163,6 @@ async function loadHallEntry(exhibition, hallId) {
   if (guestbookInput) {
     guestbookInput.value = exhibition.id;
   }
-
 
   /* ---------- 포스터 ---------- */
 
@@ -134,19 +172,30 @@ async function loadHallEntry(exhibition, hallId) {
 
     poster.src = basePath + "poster.jpg";
 
+    poster.onerror = () => {
+      poster.src = BASE_PATH + "/assets/images/poster-placeholder.jpg";
+    };
+
     poster.onclick = () => {
 
       const target =
         hallId.startsWith("hall5")
-          ? BASE_PATH + `video.html?id=${exhibition.id}`
-          : BASE_PATH + `exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+          ? `video.html?id=${exhibition.id}&hall=${hallId}`   // ⭐ 핵심 수정
+          : BASE_PATH + `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
-      window.location.href = target;
+     const fade = document.getElementById("pageFade");
+
+     if (fade) {
+       fade.style.opacity = 1;
+     }
+
+     setTimeout(() => {
+       window.location.href = target;
+     }, 500);
 
     };
 
   }
-
 
   /* ---------- 작품보기 버튼 ---------- */
 
@@ -155,9 +204,9 @@ async function loadHallEntry(exhibition, hallId) {
   if (enterBtn) {
 
     const target =
-       hallId.startsWith("hall5")
-         ? `/video.html?id=${exhibition.id}`
-         : `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+      hallId.startsWith("hall5")
+        ? `video.html?id=${exhibition.id}&hall=${hallId}`
+        : BASE_PATH + `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
     enterBtn.href = target;
 
@@ -165,10 +214,12 @@ async function loadHallEntry(exhibition, hallId) {
 
       e.preventDefault();
 
-      gtag('event', 'enter_exhibition', {
-        exhibition_id: exhibition.id,
-        hall: hallId
-      });
+      if (typeof gtag !== "undefined") {
+        gtag('event', 'enter_exhibition', {
+          exhibition_id: exhibition.id,
+          hall: hallId
+        });
+      }
 
       document.body.classList.add("transitioning");
 
@@ -183,25 +234,20 @@ async function loadHallEntry(exhibition, hallId) {
 
   }
 
-
   /* ---------- 작가노트 ---------- */
 
   try {
 
     const note = await fetch(basePath + "note.txt");
+    const noteText = await note.text();
 
-    const noteElement = document.getElementById("artistNote");
-
-    if (noteElement) {
-      noteElement.innerText = await note.text();
-    }
+    document.getElementById("artistNote").innerText = noteText;
 
   } catch {
 
     console.warn("Artist note missing");
 
   }
-
 
   /* ---------- 작가 프로필 ---------- */
 
@@ -218,11 +264,11 @@ async function loadHallEntry(exhibition, hallId) {
     lines.forEach(line => {
 
       line = line.trim();
-      if(!line) return;
+      if (!line) return;
 
-      if(line.startsWith("[") && line.endsWith("]")){
+      if (line.startsWith("[") && line.endsWith("]")) {
 
-        if(inList){
+        if (inList) {
           html += "</div>";
           inList = false;
         }
@@ -239,13 +285,9 @@ async function loadHallEntry(exhibition, hallId) {
 
     });
 
-    if(inList) html += "</div>";
+    if (inList) html += "</div>";
 
-    const profileElement = document.getElementById("artistProfile");
-
-    if (profileElement) {
-      profileElement.innerHTML = html;
-    }
+    document.getElementById("artistProfile").innerHTML = html;
 
   } catch {
 
@@ -255,9 +297,8 @@ async function loadHallEntry(exhibition, hallId) {
 
 }
 
-
 /* ======================================
-   Page Load Events
+   INIT
 ====================================== */
 
 window.addEventListener("load", () => {

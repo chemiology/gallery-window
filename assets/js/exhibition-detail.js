@@ -1,22 +1,40 @@
 /* ======================================
-   EXHIBITION DETAIL SCRIPT (FINAL)
-   Gallery Window
+   EXHIBITION DETAIL SCRIPT (FINAL STABLE)
+   ✔ BASE_PATH 완전 대응
 ====================================== */
+
+/* =========================
+   BASE PATH (🔥 핵심)
+========================= */
+
+const BASE_PATH = (() => {
+  const path = location.pathname;
+
+  if (path.includes('/gallery-window-dev/')) {
+    return '/gallery-window-dev';
+  }
+
+  const segments = path.split('/').filter(Boolean);
+  if (location.hostname.includes('github.io') && segments.length > 0) {
+    return '/' + segments[0];
+  }
+
+  return '';
+})();
+
+/* ====================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  if (typeof EXHIBITION === "undefined") {
+    console.error("EXHIBITION not defined");
+    return;
+  }
+
   const ex = EXHIBITION;
 
-  /* =========================
-     BASIC URL
-  ========================= */
-
   const url = window.location.href;
-  const posterURL = `https://gallerywindow.com${ex.poster}`;
-
-  /* =========================
-     TITLE
-  ========================= */
+  const posterURL = ex.poster;
 
   document.title =
     `${ex.titleEN} — ${ex.artistEN} | Gallery Window`;
@@ -25,47 +43,50 @@ document.addEventListener("DOMContentLoaded", () => {
      META / SEO
   ========================= */
 
-  document.getElementById("meta-desc").content =
-    `${ex.titleEN}, a conceptual photography exhibition by ${ex.artistEN} at Gallery Window.`;
+  const setContent = (id, value) => {
+    document.getElementById(id)?.setAttribute("content", value);
+  };
 
-  document.getElementById("meta-author").content =
-    ex.artistEN;
+  const setMeta = (selector, value) => {
+    document.querySelector(selector)?.setAttribute("content", value);
+  };
 
-  document.getElementById("meta-keywords").content =
-    `${ex.artistEN}, ${ex.titleEN}, photography exhibition, conceptual photography, online exhibition`;
+  setContent("meta-desc",
+    `${ex.titleEN}, a conceptual photography exhibition by ${ex.artistEN} at Gallery Window.`);
+
+  setContent("meta-author", ex.artistEN);
+
+  setContent("meta-keywords",
+    `${ex.artistEN}, ${ex.titleEN}, photography exhibition, conceptual photography, online exhibition`);
 
   /* =========================
      OPEN GRAPH
   ========================= */
 
-  document.getElementById("og-title").content =
-    `${ex.titleEN} — Gallery Window`;
-
-  document.getElementById("og-desc").content =
-    `${ex.artistEN} photography exhibition at Gallery Window`;
-
-  document.getElementById("og-url").content = url;
-  document.getElementById("og-image").content = posterURL;
+  setContent("og-title", `${ex.titleEN} — Gallery Window`);
+  setContent("og-desc",
+    `${ex.artistEN} photography exhibition at Gallery Window`);
+  setContent("og-url", url);
+  setContent("og-image", posterURL);
 
   /* =========================
-     TWITTER CARD
+     TWITTER
   ========================= */
 
-  document.querySelector('meta[name="twitter:title"]').content =
-    `${ex.titleEN} — ${ex.artistEN}`;
+  setMeta('meta[name="twitter:title"]',
+    `${ex.titleEN} — ${ex.artistEN}`);
 
-  document.querySelector('meta[name="twitter:description"]').content =
-    `${ex.titleEN} conceptual photography exhibition by ${ex.artistEN} at Gallery Window`;
+  setMeta('meta[name="twitter:description"]',
+    `${ex.titleEN} conceptual photography exhibition by ${ex.artistEN} at Gallery Window`);
 
-  document.querySelector('meta[name="twitter:image"]').content =
-    posterURL;
+  setMeta('meta[name="twitter:image"]', posterURL);
 
   /* =========================
      IMAGE SEO
   ========================= */
 
-  document.getElementById("meta-image").href = posterURL;
-  document.getElementById("schema-image").content = posterURL;
+  document.getElementById("meta-image")?.setAttribute("href", posterURL);
+  document.getElementById("schema-image")?.setAttribute("content", posterURL);
 
   /* =========================
      POSTER IMAGE
@@ -73,8 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const posterImg = document.getElementById("poster-image");
 
-  if(posterImg){
-    posterImg.src = ex.poster;
+  if (posterImg) {
+    posterImg.src = posterURL;
     posterImg.alt =
       `${ex.titleEN} conceptual photography exhibition poster by ${ex.artistEN} at Gallery Window`;
   }
@@ -85,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const info = document.getElementById("exhibition-info");
 
-  if(info){
+  if (info) {
     info.innerHTML = `
       <p>${ex.artist} _${ex.titleKR}</p>
       <p>- 전시제목 : ${ex.titleKR} / ${ex.titleEN}</p>
@@ -95,15 +116,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     BACK TO LIST
+     BACK LINK (🔥 수정 완료)
   ========================= */
 
   const state = ex.state || "upcoming";
 
   const listPage =
     state === "past"
-      ? "/archive/past.html"
-      : "/archive/upcoming.html";
+      ? BASE_PATH + "/archive/past.html"
+      : BASE_PATH + "/archive/upcoming.html";
 
   const listText =
     state === "past"
@@ -112,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const backLink = document.getElementById("back-link");
 
-  if(backLink){
+  if (backLink) {
     backLink.href = listPage;
     backLink.textContent = listText;
   }
@@ -122,51 +143,38 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================= */
 
   const structured = {
-
-    "@context":"https://schema.org",
-
-    "@type":"ExhibitionEvent",
-
+    "@context": "https://schema.org",
+    "@type": "ExhibitionEvent",
     "name": ex.titleEN,
-
     "alternateName": ex.titleKR,
-
     "startDate": ex.start,
-
     "endDate": ex.end,
-
     "url": url,
-
     "image": posterURL,
-
-    "location":{
-      "@type":"VirtualLocation",
-      "url":"https://gallerywindow.com"
+    "location": {
+      "@type": "VirtualLocation",
+      "url": "https://gallerywindow.com"
     },
-
-    "organizer":{
-      "@type":"Organization",
-      "name":"Gallery Window",
-      "url":"https://gallerywindow.com"
+    "organizer": {
+      "@type": "Organization",
+      "name": "Gallery Window",
+      "url": "https://gallerywindow.com"
     },
-
-    "creator":{
-      "@type":"Person",
-      "name":ex.artistEN,
-      "url":"https://www.kimkyoungsoo.com"
+    "creator": {
+      "@type": "Person",
+      "name": ex.artistEN
     }
-
   };
 
   const script = document.getElementById("structured-data");
 
-  if(script){
+  if (script) {
     script.textContent =
       JSON.stringify(structured, null, 2);
   }
 
   /* =========================
-     NOTE / PROFILE TXT LOAD
+     TXT LOAD
   ========================= */
 
   loadNoteProfile();
@@ -175,22 +183,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* ======================================
-   TXT LOAD (Artist Note / Profile)
+   TXT LOAD (FINAL)
 ====================================== */
 
-async function loadNoteProfile(){
+async function loadNoteProfile() {
 
   const container = document.getElementById("note-profile");
-  if(!container) return;
+  if (!container) return;
 
-  try{
+  try {
 
     const file = window.location.pathname.split("/").pop();
-    const id = file.replace(".html","");
+    const id = file.replace(".html", "");
 
-    const res = await fetch(`/exhibition_pages/txt/${id}.txt`);
+    const res = await fetch(
+      BASE_PATH + `/assets/text/${id}.txt`
+    );
 
-    if(!res.ok){
+    if (!res.ok) {
       console.warn("TXT not found:", id);
       return;
     }
@@ -206,32 +216,28 @@ async function loadNoteProfile(){
       const raw = line;
       line = line.trim();
 
-      /* 빈 줄 → 간격 유지 */
-
-      if(!line){
+      if (!line) {
         html += `<div class="gap-md"></div>`;
         return;
       }
 
-      /* [TITLE] */
+      if (line.startsWith("[") && line.endsWith("]")) {
 
-      if(line.startsWith("[") && line.endsWith("]")){
-
-        if(inList){
+        if (inList) {
           html += "</div>";
           inList = false;
         }
 
         html += `<div class="gap-lg section-title">${raw}</div>`;
 
-        if(raw !== "[작가노트]"){
+        if (raw !== "[작가노트]") {
           html += `<div class="exhibition-text info">`;
           inList = true;
         }
 
       } else {
 
-        if(inList){
+        if (inList) {
           html += `<span>${raw}</span>`;
         } else {
           html += `<p class="gap-lg">${raw}</p>`;
@@ -241,14 +247,50 @@ async function loadNoteProfile(){
 
     });
 
-    if(inList) html += "</div>";
+    if (inList) html += "</div>";
 
     container.innerHTML = html;
 
-  }catch(err){
+  } catch (err) {
 
     console.warn("note/profile load failed", err);
 
   }
 
 }
+
+
+(function(){
+
+if(typeof EXHIBITION === "undefined") return;
+
+const ex = EXHIBITION;
+
+const title =
+`${ex.titleKR} | ${ex.artist} | Gallery Window`;
+
+const desc =
+`${ex.artist} 작가의 전시 '${ex.titleKR}'`;
+
+document.title = title;
+
+/* description */
+const metaDesc = document.querySelector('meta[name="description"]');
+if(metaDesc) metaDesc.setAttribute("content", desc);
+
+/* og:title */
+const ogTitle = document.querySelector('meta[property="og:title"]');
+if(ogTitle) ogTitle.setAttribute("content", title);
+
+/* og:description */
+const ogDesc = document.querySelector('meta[property="og:description"]');
+if(ogDesc) ogDesc.setAttribute("content", desc);
+
+/* og:image */
+const ogImage = document.querySelector('meta[property="og:image"]');
+if(ogImage) ogImage.setAttribute(
+"content",
+location.origin + ex.poster
+);
+
+})();

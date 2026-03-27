@@ -1,25 +1,26 @@
-{
-  "video_avatar_ii": [
-    {
-      "caption": "Avatar II Video, 2024",
-      "type": "youtube",
-      "id": "IYRbB-b2I7Y"
-    }
-  ],
 
+{
   "being-beyond-time": [
     {
-      "caption": "Being Beyond Time",
-      "type": "youtube",
-      "id": "ts9rn1Yml2Q"
+      "id": "1177560224",
+      "platform": "vimeo",
+      "hash": "dc50fadafe",
+      "title": "Being Beyond Time"
     }
   ],
 
-  "video_avatar_reload": [
+  "video_avatar_ii": [
     {
-      "caption": "Avatar Reload Video, 2024",
-      "type": "youtube",
-      "id": "CeXmqnsT2mU"
+      "id": "1177633919",
+      "platform": "vimeo",
+      "hash": "8170d046ee",
+      "title": "Avatar II Video, 2024"
+    },
+    {
+      "id": "1177634318",
+      "platform": "vimeo",
+      "hash": "dc50fadafe",
+      "title": "Avatar Reload Video, 2024"
     }
   ]
 }
