@@ -70,7 +70,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loadExhibition(exhibitionId);
   setupControls();
+
+  /* 🔒 이미지 보호 */
+  const img = document.getElementById("exhibition-image");
+
+  if (!img) return;
+
+  protectImage(img);
 });
+
+function protectImage(img) {
+
+  // 드래그 방지
+  img.addEventListener("dragstart", e => e.preventDefault());
+
+  // 우클릭 방지
+    img.addEventListener("contextmenu", e => {
+      e.preventDefault();
+      return false;
+    });
+
+  // 더블클릭 방지
+  img.addEventListener("dblclick", e => e.preventDefault());
+
+  // 우클릭 마우스 다운 방지
+  img.addEventListener("mousedown", e => {
+    if (e.button === 2) e.preventDefault();
+  });
+
+  // 모바일 멀티터치 방지
+  img.addEventListener("touchstart", e => {
+    if (e.touches.length > 1) e.preventDefault();
+  });
+
+}
+
 
 /* -----------------------------------------------------
    Load Exhibition Data
@@ -147,10 +181,14 @@ async function loadExhibition(id) {
 
     /* ---------- 음악 ---------- */
 
-    setupAudio(basePath + "music.mp3");
+    setupAudio(
+      basePath + "music.mp3",
+      exhibition.volume
+    );
 
   } catch (err) {
 
+    console.log("exhibition.volume:", exhibition.volume);
     console.error("Exhibition load failed:", err);
 
   }
@@ -249,6 +287,8 @@ function showImage(index) {
 
   img.src = images[currentIndex];
 
+  protectImage(img); // 🔥 추가
+
   if (caption) {
 
     caption.innerText = captions[currentIndex] || "";
@@ -307,23 +347,38 @@ document.addEventListener("DOMContentLoaded", () => {
    Audio
 ----------------------------------------------------- */
 
-function setupAudio(src) {
+function setupAudio(src, volume) {
+
+  if (audio) {
+    audio.pause();
+    audio.src = "";
+    audio = null;
+  }
 
   audio = new Audio(src);
   audio.loop = true;
-  audio.volume = 0.5;
+
+  const safeVolume =
+    typeof volume === "number" && isFinite(volume)
+      ? Math.max(0, Math.min(1, volume))
+      : 0.5;
+
+  audio.volume = safeVolume;
   audio.preload = "auto";
   audio.muted = true;
 
-  audio.play().catch(() => {});
+  audio.play()
+    .then(() => console.log("🎧 초기 play 성공"))
+    .catch(err => console.error("❌ 초기 play 실패:", err));
 
-  const enableAudio = () => {
-    if (!audio) return;
+  document.addEventListener("click", () => {
     audio.muted = false;
-    audio.play().catch(() => {});
-  };
 
-  window.addEventListener("pointerdown", enableAudio, { once: true });
+    audio.play().catch(err => {
+      console.error("❌ 클릭 후 play 실패:", err);
+    });
+
+  }, { once: true });
 }
 
 /* -----------------------------------------------------
@@ -376,6 +431,16 @@ function setupControls() {
     if (e.key === "ArrowLeft") prevImage();
   });
 }
+
+document.addEventListener("keydown", e => {
+
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "s") {
+    e.preventDefault();
+    console.log("🔒 저장 차단");
+  }
+
+});
+
 
 /* -----------------------------------------------------
    Back Button
