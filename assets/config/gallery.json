@@ -42,9 +42,11 @@
         "Avatar II #144, 2023",
         "Avatar II #184, 2023"
       ],
+      "music": "M01",
       "themeColor": "#c6d4e1",
       "themeMode": "cool",
       "slideSeconds": 10,
+      "volume": 0.5,
       "startDate": "2026-02-15",
       "endDate": "2026-05-31"
     },
@@ -81,9 +83,11 @@
         "가상변주 #20",
         "작품 컨셉"
       ],
+      "music": "M04",
       "themeColor": "#f9efa3",
       "themeMode": "warm",
       "slideSeconds": 10,
+      "volume": 0.5,
       "startDate": "2026-03-01",
       "endDate": "2026-06-30"
     },
@@ -92,7 +96,7 @@
       "id": "being-beyond-time",
       "title": "Being Beyond Time",
       "hall": "hall50",
-      "hallTitle": "영상관",
+      "hallTitle": "영상1관",
       "order": 2,
       "status": "current",
       "artist": "한영숙",
@@ -100,20 +104,6 @@
       "themeMode": "warm",
       "startDate": "2026-03-01",
       "endDate": "2026-06-30"
-    },
-
-    {
-      "id": "video_avatar_ii",
-      "title": "Avatar II (Video)",
-      "hall": "hall51",
-      "hallTitle": "영상관",
-      "order": 5,
-      "status": "hidden",
-      "artist": "김경수",
-      "themeColor": "#c6d4e1",
-      "themeMode": "cool",
-      "startDate": "2026-03-01",
-      "endDate": "2026-12-31"
     },
 
     {
@@ -150,11 +140,61 @@
         "World Peace 3",
         "World Peace 4"
       ],
+      "music": "M11",
       "themeColor": "#eeb953",
       "themeMode": "warm",
       "slideSeconds": 10,
+      "volume": 0.5,
       "startDate": "2026-03-01",
       "endDate": "2026-06-30"
+    },
+
+   {
+      "id": "video_avatar",
+      "title": "Avatar (Video)",
+      "hall": "hall51",
+      "hallTitle": "영상2관",
+      "order": 7,
+      "status": "hidden",
+      "artist": "김경수",
+      "themeColor": "#c6d4e1",
+      "themeMode": "cool",
+      "startDate": "2026-05-01",
+      "endDate": "2026-07-31"
+    },
+
+
+    {
+      "id": "fragments_of_memory",
+      "title": "Fragments of Memory",
+      "hall": "hall05",
+      "hallTitle": "5관",
+      "order": 6,
+      "status": "hidden",
+      "artist": "백경희",
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg"],
+      "captions": [
+        "기억의 편린 #01",
+        "기억의 편린 #02",
+        "기억의 편린 #03",
+        "기억의 편린 #04",
+        "기억의 편린 #05",
+        "기억의 편린 #06",
+        "기억의 편린 #07",
+        "기억의 편린 #08",
+        "기억의 편린 #09",
+        "기억의 편린 #10",
+        "기억의 편린 #11",
+        "기억의 편린 #12",
+        "기억의 편린 #13"
+      ],
+      "music": "M04",
+      "themeColor": "#c08e77",
+      "themeMode": "warm",
+      "slideSeconds": 10,
+      "volume": 0.5,
+      "startDate": "2026-06-01",
+      "endDate": "2026-08-31"
     }
 
 
