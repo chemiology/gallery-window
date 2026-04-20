@@ -1,0 +1,296 @@
+/* =====================================
+   MIXED EXHIBITION (FINAL STABLE)
+===================================== */
+
+/* =========================
+   BASE LAYERS
+========================= */
+
+.image-wrapper,
+.video-wrapper{
+  position:absolute;
+  inset:0;
+  transition: opacity 0.9s ease-in-out;
+}
+
+/* 레이어 순서 */
+
+.video-wrapper{
+  position:absolute;
+  inset:0;
+  z-index:2;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    radial-gradient(circle,
+      rgba(255,255,255,0.05),
+      rgba(0,0,0,0.95) 70%
+    );
+}
+
+.capture-guard{
+  pointer-events:none;
+}
+
+/* =========================
+   IMAGE CENTER (FINAL)
+========================= */
+
+.image-inner{
+  position:absolute;
+  inset:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#mixed-image{
+  position:static;   /* 🔥 핵심 */
+
+  max-width:90%;
+  max-height:85vh;
+
+  width:auto;
+  height:auto;
+
+  object-fit:contain;
+}
+
+
+/* =========================
+   VIDEO FRAME
+========================= */
+
+#mixed-video{
+  width:100%;
+  aspect-ratio:16/9;
+  height:auto;
+
+  border:none;
+  pointer-events:auto;  /* 🔥 클릭 가능 */
+
+  box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+
+/* =========================
+   VISIBILITY CONTROL (핵심)
+========================= */
+
+.layer-hidden{
+  opacity:0;
+  pointer-events:none;
+}
+
+.layer-visible{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* 🔥 핵심: 레이어 충돌 해결 */
+.video-wrapper.layer-hidden{
+  opacity:0;
+  pointer-events:none;
+  z-index:0;   /* 🔥 없으면 무조건 안 보임 */
+}
+
+.image-wrapper.layer-visible{
+  z-index:2;   /* 🔥 이것도 반드시 */
+}
+
+.video-wrapper.layer-visible{
+  z-index:5;   /* 🔥 추가 (핵심) */
+}
+
+/* =========================
+   EFFECT
+========================= */
+
+.video-wrapper.fade-out{
+  opacity:0.3;
+}
+
+/* =========================
+   PROTECTION
+========================= */
+
+body{
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+.sound-overlay{
+  position:absolute;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:12px 20px;
+  border-radius:20px;
+  background:rgba(255,255,255,0.85);
+  color:#000;
+  font-size:14px;
+  cursor:pointer;
+  z-index:20;
+}
+
+#image-layer img{
+  opacity:1 !important;
+}
+
+.back-home-exhibition{
+  cursor:pointer;   /* 🔥 핵심 */
+}
+
+.image-wrapper{
+  position:absolute;
+  inset:0;
+  text-align:center;
+}
+
+/* 🔥 exhibition.css 영향 차단 */
+.image-wrapper img{
+  max-width:90% !important;
+  max-height:85vh !important;
+
+  width:auto !important;
+  height:auto !important;
+
+  object-fit:contain;
+
+  margin:auto;          /* 🔥 핵심 */
+}
+
+
+/* =========================
+   VIDEO MASK (mixed)
+========================= */
+
+.video-wrapper{
+  position:absolute;
+  inset:0;
+}
+
+.video-mask.main {
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:auto;
+}
+
+
+/* =========================
+   VIDEO FRAME (통합 구조)
+========================= */
+
+.video-frame{
+  position:relative;
+
+  width:100%;
+  max-width:1200px;   /* 🔥 핵심 */
+
+  margin:0 auto;      /* 🔥 중앙 정렬 */
+
+  background:#000;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  opacity:0.6;
+  transition: opacity 0.6s ease;
+}
+
+.video-frame.active{
+  opacity:1;
+}
+
+/* 영상 */
+.video-frame iframe{
+  width:100%;
+  aspect-ratio:16/9;   /* 🔥 핵심 */
+  height:auto;
+  border:none;
+}
+
+/* 보호 레이어 */
+.video-mask.main{
+  position:absolute;
+  inset:0;
+  z-index:5;
+  pointer-events:auto;
+}
+
+/* =========================
+   CINEMATIC FADE
+========================= */
+
+#cinema-fade{
+  position:fixed;
+  inset:0;
+  background:#000;
+
+  opacity:0;
+  pointer-events:none;
+
+  z-index:50;
+
+  transition: opacity 0.8s ease;
+}
+
+#mixed-image{
+  transition: transform 6s ease;
+}
+
+#slideshow-notice{
+  position:fixed;
+  top:40px;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  z-index:100;
+}
+
+#exhibition-caption{
+  position:fixed;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  text-align:center;
+  z-index:100;
+}
+
+#artwork-counter{
+  position:fixed;
+  top:30px;
+  right:40px;
+  white-space:nowrap;
+  z-index:100;
+}
+
+/* =========================
+   CINEMA VIDEO EFFECT
+========================= */
+
+.video-frame iframe{
+  opacity: 0;
+  filter: blur(12px);
+
+  transition:
+    opacity 1.2s ease,
+    filter 1.4s ease;
+}
+
+/* 활성 상태 */
+.video-frame.active iframe{
+  opacity:1 !important;   /* 🔥 강제 */
+  filter: blur(0px);
+  transform: scale(1.0);
+}
+
+.image-wrapper.layer-visible .image-inner{
+  transform: scale(1.02);   /* 🔥 자연스럽게 */
+}

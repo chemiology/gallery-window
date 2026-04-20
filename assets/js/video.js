@@ -196,6 +196,13 @@ document.addEventListener("keydown", (e) => {
 ========================= */
 document.getElementById("backToHall")?.addEventListener("click", () => {
 
+  const from = params.get("from");
+
+  if (from === "hall2") {
+    location.href = "/assets/event/hall2.html";
+    return;
+  }
+
   const hall = params.get("hall");
 
   if (!hall) {
@@ -300,6 +307,12 @@ window.addEventListener("load", () => {
 ========================= */
 document.addEventListener("contextmenu", e => e.preventDefault());
 document.addEventListener("dblclick", e => e.preventDefault());
+
+  /* =========================
+   🔒 video-mask 우클릭 차단 (추가)
+  ========================= */
+document.querySelector(".video-mask.main")
+  ?.addEventListener("contextmenu", e => e.preventDefault());
 
 document.addEventListener("fullscreenchange", () => {
   if (document.fullscreenElement) {
