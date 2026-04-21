@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>앱처럼 설치하기</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #ffffff;
+  color: #111;
+  text-align: center;
+}
+
+.container {
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 25px;
+}
+
+.notice {
+  font-size: 14px;
+  color: #d00;
+  margin-bottom: 25px;
+}
+
+.btn {
+  display: block;
+  width: 90%;
+  max-width: 340px;
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.primary {
+  background: #000;
+  color: #fff;
+}
+
+.secondary {
+  background: #f5f5f5;
+  color: #000;
+  border: 1px solid #ddd;
+}
+
+/* 팝업 */
+.popup {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+  display: none;
+  z-index: 9999;
+  border-radius: 16px 16px 0 0;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 13px;
+  color: #888;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📱 휴대폰에 설치해서 보세요</h1>
+
+<p>
+앱처럼 편하게 이용할 수 있습니다<br>
+설치는 <strong>10초면 완료</strong>됩니다
+</p>
+
+<div id="notice" class="notice"></div>
+
+<!-- 갤러리 창 -->
+<a href="https://gallerywindow.com" class="btn primary" onclick="handleInstall(event, 'gallery')">
+갤러리 창 설치하기
+</a>
+
+<!-- 포토베이스 -->
+<a href="https://photobase.kr" class="btn primary" onclick="handleInstall(event, 'photo')">
+Photo Base 설치하기
+</a>
+
+<!-- 바로가기 -->
+<a href="https://gallerywindow.com" class="btn secondary">
+설치 없이 바로 보기
+</a>
+
+<div class="footer">
+홈 화면에 추가하면 앱처럼 실행됩니다
+</div>
+
+</div>
+
+<!-- 팝업 -->
+<div id="popup" class="popup"></div>
+
+<script>
+const ua = navigator.userAgent.toLowerCase();
+
+// 환경 감지
+const isIOS = /iphone|ipad|ipod/.test(ua);
+const isAndroid = /android/.test(ua);
+const isKakao = /kakaotalk/.test(ua);
+const isFB = /fbav|fban/.test(ua);
+const isInstagram = /instagram/.test(ua);
+const isInApp = isKakao || isFB || isInstagram;
+
+// 안내 문구 설정
+const noticeEl = document.getElementById('notice');
+
+if (isInApp) {
+  noticeEl.innerHTML = `
+  ⚠️ 현재 카카오톡 / 페이스북 앱 내부입니다<br>
+  👉 오른쪽 위 메뉴 → <strong>“브라우저로 열기”</strong> 후 이용해주세요
+  `;
+} else if (isIOS) {
+  noticeEl.innerHTML = `
+  📱 아이폰은 아래 방법으로 설치합니다<br>
+  👉 하단 공유버튼 → <strong>홈 화면에 추가</strong>
+  `;
+} else {
+  noticeEl.innerHTML = `
+  📱 버튼을 누르면 설치가 진행됩니다
+  `;
+}
+
+// 버튼 클릭 처리
+function handleInstall(e, type) {
+
+  if (isInApp) {
+    e.preventDefault();
+    showPopup("카카오톡 / 페이스북에서는 설치가 되지 않습니다<br><br>👉 오른쪽 위 메뉴 → '브라우저로 열기'");
+    return;
+  }
+
+  if (isIOS) {
+    e.preventDefault();
+    showPopup("아이폰 설치 방법<br><br>1. 하단 공유 버튼 클릭<br>2. '홈 화면에 추가' 선택");
+    return;
+  }
+
+  // 안드로이드 → 그냥 이동 (설치 버튼은 해당 사이트에서)
+}
+
+// 팝업 표시
+function showPopup(msg) {
+  const popup = document.getElementById('popup');
+  popup.innerHTML = msg + "<br><button onclick='closePopup()'>닫기</button>";
+  popup.style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById('popup').style.display = "none";
+}
+</script>
+
+</body>
+</html>
