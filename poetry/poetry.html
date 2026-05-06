@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시 낭송 전시</title>
+<link rel="stylesheet" href="poetry.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <img id="image" class="main-image">
+
+  <div class="caption">
+    <div id="title" class="title"></div>
+    <div id="text" class="text"></div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prevSlide()">◀</button>
+    <button onclick="playAudio()" class="audio-btn">🔊</button>
+    <button onclick="toggleAuto()">AUTO</button>
+    <button onclick="nextSlide()">▶</button>
+  </div>
+
+    <button onclick="goBack()" class="back-btn">← Hall</button>
+
+</div>
+
+<audio id="audio"></audio>
+
+<div id="audioGuide" class="audio-guide">
+  이 전시는 소리를 함께 들을 때 완성됩니다<br>
+  🔊 버튼을 누르면 시 낭송이 시작됩니다<br>
+  AUTO 버튼을 누르면 자동으로 감상할 수 있습니다
+</div>
+
+<script src="poetry.js"></script>
+
+</body>
+</html>
