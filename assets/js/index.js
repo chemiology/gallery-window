@@ -97,7 +97,11 @@ async function loadGallery() {
 
     const exhibitions =
       (data.currentExhibitions || [])
-        .filter(ex => ex && ex.status !== "hidden")
+        .filter(ex =>
+          ex &&
+          ex.status !== "hidden" &&
+          ex.hidden !== true
+        )
         .sort((a, b) => (a.order ?? 999) - (b.order ?? 999));
 
     renderExhibitions(exhibitions);
@@ -182,7 +186,11 @@ function renderExhibitions(exhibitions) {
 
     const img = document.createElement("img");
 
-    img.src = BASE_PATH + `/assets/exhibitions/${exhibition.id}/poster.jpg`;
+    img.src =
+      exhibition.type === "event"
+        ? BASE_PATH + `/assets/event/${exhibition.id}/thumbs/${exhibition.id}.jpg`
+        : BASE_PATH + `/assets/exhibitions/${exhibition.id}/poster.jpg`;
+
     img.alt = exhibition.title;
     img.loading = "lazy";
 
@@ -192,11 +200,18 @@ function renderExhibitions(exhibitions) {
 
     img.onclick = () => {
 
+      if (exhibition.type === "event") {
+        location.href =
+          BASE_PATH + `/assets/event/hall2.html?id=${exhibition.id}`;
+        return;
+      }
+
       const isVideo = exhibition.type === "video";
       const isMixed = exhibition.type === "mixed";
+      const isPoetry = exhibition.type === "poetry";
       const hasImages = exhibition.images && exhibition.images.length;
 
-      if (!isVideo && !hasImages && !isMixed) {
+      if (!isVideo && !hasImages && !isMixed && !isPoetry) {
         alert("이 전시는 아직 준비 중입니다.");
         return;
       }

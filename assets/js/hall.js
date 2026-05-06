@@ -1,5 +1,7 @@
+console.log("hall.js version check");
+
 /* =====================================================
-   Gallery Window – HALL JS (FINAL STABLE)
+   Gallery Window – HALL JS (FINAL STABLE) 
    ✔ BASE_PATH 완전 대응
    ✔ dev / 운영 모두 안정
 ===================================================== */
@@ -63,9 +65,9 @@ async function loadHall() {
       getExhibitionStatus(ex) !== "past"
     );
 
-    if (!exhibition && exhibitions.length > 0) {
-      console.warn("조건 매칭 실패 → fallback 사용");
-      exhibition = exhibitions[0];
+    if (!exhibition) {
+      console.error("hall 매칭 실패:", hallId);
+      return;
     }
 
     /* ---------- Hall Title ---------- */
@@ -133,7 +135,9 @@ async function loadHall() {
 async function loadHallEntry(exhibition, hallId) {
 
   const basePath =
-    BASE_PATH + `/assets/exhibitions/${exhibition.id}/`;
+    exhibition.type === "event"
+      ? BASE_PATH + `/assets/event/`
+      : BASE_PATH + `/assets/exhibitions/${exhibition.id}/`;
 
   /* ---------- COMING 상태 ---------- */
 
@@ -170,7 +174,10 @@ async function loadHallEntry(exhibition, hallId) {
 
   if (poster) {
 
-    poster.src = basePath + "poster.jpg";
+    poster.src =
+      exhibition.type === "event"
+        ? BASE_PATH + `/assets/event/${exhibition.id}/thumbs/${exhibition.id}.jpg`
+        : basePath + "poster.jpg";
 
     poster.onerror = () => {
       poster.src = BASE_PATH + "/assets/images/poster-placeholder.jpg";
@@ -178,14 +185,20 @@ async function loadHallEntry(exhibition, hallId) {
 
     poster.onclick = () => {
 
-    const target =
-      exhibition.type === "event"
-        ? BASE_PATH + `/assets/event/hall2.html?id=${exhibition.id}`
-        : exhibition.type === "mixed"
-          ? BASE_PATH + `/mixed.html?id=${exhibition.id}&hall=${hallId}`
-          : exhibition.type === "video"
-            ? `video.html?id=${exhibition.id}&hall=${hallId}`
-            : BASE_PATH + `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+      if (exhibition.type === "event") {
+        window.location.href =
+          BASE_PATH + `/assets/event/hall2.html?id=${exhibition.id}`;
+        return;
+      }
+
+      const target =
+        exhibition.type === "poetry"
+          ? BASE_PATH + `/poetry/poetry.html?id=${exhibition.id}`
+          : exhibition.type === "mixed"
+            ? BASE_PATH + `/mixed.html?id=${exhibition.id}&hall=${hallId}`
+            : exhibition.type === "video"
+              ? `video.html?id=${exhibition.id}&hall=${hallId}`
+              : BASE_PATH + `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
      const fade = document.getElementById("pageFade");
 
@@ -208,13 +221,15 @@ async function loadHallEntry(exhibition, hallId) {
   if (enterBtn) {
 
     const target =
-      exhibition.type === "event"
-        ? BASE_PATH + `/assets/event/hall2.html?id=${exhibition.id}`
-        : exhibition.type === "mixed"
-          ? BASE_PATH + `/mixed.html?id=${exhibition.id}&hall=${hallId}`
-          : exhibition.type === "video"
-            ? `video.html?id=${exhibition.id}&hall=${hallId}`
-            : BASE_PATH + `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
+      exhibition.type === "poetry"
+        ? BASE_PATH + `/poetry/poetry.html?id=${exhibition.id}&music=${exhibition.music}&theme=${exhibition.themeMode}&volume=${exhibition.volume}`
+          : exhibition.type === "event"
+            ? BASE_PATH + `/assets/event/hall2.html?id=${exhibition.id}`
+            : exhibition.type === "mixed"
+              ? BASE_PATH + `/mixed.html?id=${exhibition.id}&hall=${hallId}`
+              : exhibition.type === "video"
+                ? `video.html?id=${exhibition.id}&hall=${hallId}`
+                : BASE_PATH + `/exhibition.html?id=${exhibition.id}&hall=${hallId}`;
 
     enterBtn.href = target;
 
