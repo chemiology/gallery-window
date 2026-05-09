@@ -217,7 +217,7 @@
       "hallTitle": "영상2관",
       "order": 6,
       "type": "video",
-      "status": "hidden",
+      "status": "current",
       "artist": "김경수",
       "themeColor": "#c6d4e1",
       "themeMode": "cool",
