@@ -315,7 +315,7 @@
       "hallTitle": "32관",
       "order": 32,
       "type": "poetry",
-      "hidden": true
+      "hidden": true,
       "artist": "김경수",
       "themeColor": "#c6d4e1",
       "themeMode": "warm",
@@ -332,7 +332,7 @@
       "hallTitle": "33관",
       "order": 33,
       "type": "poetry",
-      "hidden": true
+      "hidden": true,
       "artist": "김경수",
       "themeColor": "#c6d4e1",
       "themeMode": "warm",
@@ -349,7 +349,7 @@
       "hallTitle": "34관",
       "order": 34,
       "type": "poetry",
-      "hidden": true
+      "hidden": true,
       "artist": "김경수",
       "themeColor": "#c6d4e1",
       "themeMode": "warm",
