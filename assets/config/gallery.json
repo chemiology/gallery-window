@@ -295,8 +295,8 @@
     {
       "id": "P0001",
       "title": "시간의 결, 감정의 빛 I",
-      "hall": "hall31",
-      "hallTitle": "31관",
+      "hall": "hall9",
+      "hallTitle": "9관",
       "order": 9,
       "type": "poetry",
       "artist": "김경수",
@@ -311,8 +311,8 @@
     {
       "id": "P0002",
       "title": "시간의 결, 감정의 빛 II",
-      "hall": "hall32",
-      "hallTitle": "32관",
+      "hall": "hall10",
+      "hallTitle": "10관",
       "order": 10,
       "type": "poetry",
       "hidden": true,
@@ -328,8 +328,8 @@
     {
       "id": "P0003",
       "title": "시간의 결, 감정의 빛 III",
-      "hall": "hall33",
-      "hallTitle": "33관",
+      "hall": "hall11",
+      "hallTitle": "11관",
       "order": 11,
       "type": "poetry",
       "hidden": true,
@@ -345,8 +345,8 @@
     {
       "id": "P0004",
       "title": "시간의 결, 감정의 빛 IV",
-      "hall": "hall34",
-      "hallTitle": "34관",
+      "hall": "hall12",
+      "hallTitle": "12관",
       "order": 12,
       "type": "poetry",
       "hidden": true,
