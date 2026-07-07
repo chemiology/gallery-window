@@ -304,7 +304,7 @@
       "themeMode": "warm",
       "music": "M31",
       "volume": 0.25,
-      "startDate": "2026-06-01",
+      "startDate": "2026-06-10",
       "endDate": "2026-09-30"
     },
 
@@ -320,7 +320,7 @@
       "themeMode": "warm",
       "music": "M33",
       "volume": 0.25,
-      "startDate": "2026-06-01",
+      "startDate": "2026-06-20",
       "endDate": "2026-09-30"
     },
 
@@ -336,7 +336,7 @@
       "themeMode": "warm",
       "music": "M36",
       "volume": 0.25,
-      "startDate": "2026-06-01",
+      "startDate": "2026-06-30",
       "endDate": "2026-09-30"
     },
 
@@ -353,7 +353,7 @@
       "themeMode": "warm",
       "music": "M38",
       "volume": 0.25,
-      "startDate": "2026-06-01",
+      "startDate": "2026-07-10",
       "endDate": "2026-09-30"
     }
 
