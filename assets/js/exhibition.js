@@ -34,8 +34,6 @@ let timer = null;
 let slideSeconds = 10;
 let autoMode = true;
 
-let audio = null;
-
 function getDeviceType() {
   return window.matchMedia("(pointer: coarse)").matches
     ? "mobile"
@@ -174,7 +172,6 @@ async function loadExhibition(id) {
 
       firstImg.onload = () => {
         showImage(0);
-        startAuto();
         preloadInitialImages();
       };
     }
@@ -185,14 +182,20 @@ async function loadExhibition(id) {
     ? BASE_PATH + "/assets/audio/" + exhibition.music + ".mp3"
     : basePath + "music.mp3"; // 기존 fallback 유지
 
-  setupAudio(
-    musicFile,
-    exhibition.volume
+  const narrationFile =
+      basePath + "curation.mp3";
+
+  AudioManager.setupAudio(
+      musicFile,
+      narrationFile,
+      exhibition.volume,
+      exhibition.curationVolume ?? 1.0,
+      startAuto,
+      exhibition.fadeDuration ?? 500
   );
 
   } catch (err) {
 
-    console.log("exhibition.volume:", exhibition.volume);
     console.error("Exhibition load failed:", err);
 
   }
@@ -219,10 +222,20 @@ window.addEventListener("load", () => {
 
 function startAuto() {
 
+  console.log("★★★★★ startAuto 호출");
+
   stopAuto();
   autoMode = true;
 
   timer = setTimeout(() => {
+
+    if (AudioManager.hasNarration()
+        && AudioManager.isNarrationPlaying()) {
+
+        AudioManager.stopNarration();
+        AudioManager.playMusic();
+        startAuto();
+}
 
     nextImage();
 
@@ -330,6 +343,14 @@ function preloadInitialImages() {
 }
 
 function nextImage() {
+  if(currentIndex >= images.length-1){
+      stopAuto();
+      document
+        .getElementById("endScreen")
+        ?.classList.add("active");
+
+      return;
+  }
   showImage(currentIndex + 1);
 }
 
@@ -346,44 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .getElementById("exhibition-image")
     ?.addEventListener("dragstart", e => e.preventDefault());
 });
-
-/* -----------------------------------------------------
-   Audio
------------------------------------------------------ */
-
-function setupAudio(src, volume) {
-
-  if (audio) {
-    audio.pause();
-    audio.src = "";
-    audio = null;
-  }
-
-  audio = new Audio(src);
-  audio.loop = true;
-
-  const safeVolume =
-    typeof volume === "number" && isFinite(volume)
-      ? Math.max(0, Math.min(1, volume))
-      : 0.5;
-
-  audio.volume = safeVolume;
-  audio.preload = "auto";
-  audio.muted = true;
-
-  audio.play()
-    .then(() => console.log("🎧 초기 play 성공"))
-    .catch(err => console.error("❌ 초기 play 실패:", err));
-
-  document.addEventListener("click", () => {
-    audio.muted = false;
-
-    audio.play().catch(err => {
-      console.error("❌ 클릭 후 play 실패:", err);
-    });
-
-  }, { once: true });
-}
 
 /* -----------------------------------------------------
    Controls
@@ -411,22 +394,27 @@ function setupControls() {
   });
 
   document.getElementById("volume")?.addEventListener("input", e => {
-    if (audio) audio.volume = Number(e.target.value);
+
+      AudioManager.setMusicVolume(
+            Number(e.target.value)
+      );
   });
 
-  document.getElementById("mute")?.addEventListener("click", e => {
+  document.getElementById("mute")
+  ?.addEventListener("click", e => {
 
-    if (!audio) return;
+      const btn = e.target;
 
-    if (audio.paused) {
-      audio.play();
-      audio.muted = false;
-      e.target.textContent = "Mute";
-      return;
-    }
+      if(btn.textContent === "Mute"){
 
-    audio.muted = !audio.muted;
-    e.target.textContent = audio.muted ? "Unmute" : "Mute";
+          AudioManager.mute();
+          btn.textContent = "Unmute";
+
+      }else{
+
+          AudioManager.unmute();
+          btn.textContent = "Mute";
+      }
   });
 
   window.addEventListener("keydown", e => {
@@ -436,6 +424,13 @@ function setupControls() {
   });
 
 /* 작품 이동 버튼 */
+
+  if (AudioManager.hasNarration()
+      && AudioManager.isNarrationPlaying()) {
+
+      AudioManager.stopNarration();
+      AudioManager.playMusic();
+  }
 
   document.getElementById("nextArtwork")
   ?.addEventListener("click", () => {
@@ -485,6 +480,28 @@ if (backBtn) {
     }, 500);
   });
 }
+
+document
+.getElementById("restartExhibition")
+?.addEventListener("click",()=>{
+
+    document
+      .getElementById("endScreen")
+      ?.classList.remove("active");
+
+    showImage(0);
+
+    startAuto();
+});
+
+document
+.getElementById("goHallButton")
+?.addEventListener("click",()=>{
+
+    window.location.href =
+      backBtn.href;
+
+});
 
 /* -----------------------------------------------------
    PAGE READY
