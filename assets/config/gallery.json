@@ -127,12 +127,12 @@
       "hall": "hall91",
       "hallTitle": "91관",
       "order": 91,
-      "status": "hidden",
+      "status": "current",
       "artist": "김경수",
       "themeColor": "#c6d4e1",
       "themeMode": "cool",
-      "startDate": "2026-04-01",
-      "endDate": "2026-12-31"
+      "startDate": "2026-06-10",
+      "endDate": "2026-09-30"
     },
 
     {
