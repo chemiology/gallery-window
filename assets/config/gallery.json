@@ -265,6 +265,54 @@
       "endDate": "2026-10-31"
     },
 
+    {
+      "id": "E0010",
+      "title": "The Starry Night",
+      "hall": "hall80",
+      "hallTitle": "80관",
+      "order": 80,
+      "type": "photo",
+      "status": "current",
+      "artist": "김경수",
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg","020.jpg","021.jpg","022.jpg","023.jpg","024.jpg","025.jpg","026.jpg","027.jpg"],
+      "captions": [
+        "The Starry Night #19_76.2x76.2cm_2015",
+        "The Starry Night #02_70.9x99.5cm_2013",
+        "The Starry Night #03-38.1x50.8cm_2014",
+        "The Starry Night #04_61.0x45.7cm_2014",
+        "The Starry Night #05_50.8x69.9cm_2015",
+        "The Starry Night #01_37.1x49.6cm_2013",
+        "The Starry Night #07_59.7x44.7cm_2013",
+        "The Starry Night #16_74.9x50.8cm_2015",
+        "The Starry Night #17_50.8x76.2cm_2015",
+        "The Starry Night #18_50.8x68.6cm_2015",
+        "The Starry Night #20_74.9x50.8cm_2015",
+        "Story in the Stars #01_68.6x101.6cm_2015",
+        "Story in the Stars #02_101.6x69.9cm_2015",
+        "Story in the Stars #03_50.8x71.1cm_2015",
+        "Story in the Stars #04_50.8x71.1cm_2015",
+        "Story in the Stars #05_35.6x50.8cm_2015",
+        "Story in the Stars #06_35.6x50.8cm_2015",
+        "Story in the Stars #07_35.6x50.8cm_2015",
+        "Story in the Stars #08_35.6x50.8cm_2015",
+        "Story in the Stars #09_35.6x50.8cm_2015",
+        "Story in the Stars #10_35.6x50.8cm_2015",
+        "Into a Fantasy #01_69.9x101.6cm_2015",
+        "Into a Fantasy #02_43.2x61.0cm_2015",
+        "Into a Fantasy #03_50.8x73.7cm_2015",
+        "Into a Fantasy #04_44.5x61.0cm_2015",
+        "Into a Fantasy #05_50.8x73.7cm_2015",
+        "Into a Fantasy #06_35.6x50.8cm_2015"
+      ],
+      "themeColor": "#fab6af",
+      "themeMode": "warm",
+      "slideSeconds": 10,
+      "music": "M02",
+      "volume": 0.5,
+      "startDate": "2026-08-31",
+      "endDate": "2026-11-30"
+    },
+
 
     {
       "id": "E0023",
@@ -322,7 +370,7 @@
       "slideSeconds": 10,
       "music": "M30",
       "volume": 0.4,
-      "startDate": "2026-09-01",
+      "startDate": "2026-08-31",
       "endDate": "2026-11-30"
     },
 
@@ -367,11 +415,49 @@
       "slideSeconds": 10,
       "music": "M07",
       "volume": 0.45,
-      "startDate": "2026-09-20",
+      "startDate": "2026-09-19",
       "endDate": "2026-12-19"
+    },
+
+    {
+      "id": "E0030",
+      "title": "Landscapes left by Time",
+      "hall": "hall30",
+      "hallTitle": "30관",
+      "order": 30,
+      "type": "photo",
+      "status": "current",
+      "artist": "김영균",
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg"],
+      "captions": [
+        "삶의 향기 I",
+        "삶의 향기 II",
+        "비공감(Unsympathetic)-I",
+        "비공감(Unsympathetic)-II",
+        "공감(Sympathetic)-I",
+        "공감(Sympathetic)-II",
+        "삶의 행로 I",
+        "삶의 행로 II",
+        "모정(慕情) I",
+        "모정(慕情) II",
+        "그리움 모정 I",
+        "그리움 모정 II",
+        "그리움 모정 III",
+        "백 년을 잇는 가업(家業)의 꿈 I",
+        "백 년을 잇는 가업(家業)의 꿈 II",
+        "시간의 스케치 I",
+        "시간의 스케치 II"
+      ],
+      "themeColor": "#b9b7b5",
+      "themeMode": "cool",
+      "slideSeconds": 10,
+      "music": "M36",
+      "volume": 0.4,
+      "curationVolume":1.0,
+      "fadeDuration":800,
+      "startDate": "2026-10-19",
+      "endDate": "2027-01-19"
     }
-
-
 
 
 
