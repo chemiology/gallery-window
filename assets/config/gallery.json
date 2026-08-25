@@ -268,9 +268,9 @@
     {
       "id": "E0010",
       "title": "The Starry Night",
-      "hall": "hall80",
-      "hallTitle": "80관",
-      "order": 80,
+      "hall": "hall6",
+      "hallTitle": "6관",
+      "order": 6,
       "type": "photo",
       "status": "hidden",
       "artist": "김경수",
@@ -309,8 +309,8 @@
       "slideSeconds": 10,
       "music": "M02",
       "volume": 0.5,
-      "startDate": "2026-08-31",
-      "endDate": "2026-11-30"
+      "startDate": "2026-09-09",
+      "endDate": "2026-12-09"
     },
 
 
