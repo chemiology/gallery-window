@@ -274,7 +274,7 @@
       "hallTitle": "2관",
       "order": 2,
       "type": "photo",
-      "status": "hidden",
+      "status": "current",
       "artist": "이춘희",
       "images": ["002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg","020.jpg","021.jpg","022.jpg","023.jpg","024.jpg","025.jpg"],
       "captions": [
@@ -308,7 +308,7 @@
       "slideSeconds": 10,
       "music": "M07",
       "volume": 0.45,
-      "startDate": "2026-09-19",
+      "startDate": "2026-09-20",
       "endDate": "2026-12-19"
     },
 
@@ -348,10 +348,102 @@
       "volume": 0.4,
       "curationVolume":1.0,
       "fadeDuration":800,
-      "startDate": "2026-10-19",
+      "startDate": "2026-10-20",
       "endDate": "2027-01-19"
-    }
+    },
 
+
+    {
+      "id": "E0031",
+      "title": "The Blue, Dreams in the Blue Nights",
+      "hall": "hall7",
+      "hallTitle": "7관",
+      "order": 7,
+      "type": "photo",
+      "status": "current",
+      "artist": "박현기",
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg","020.jpg"],
+      "captions": [
+        "드 블루 푸른밤의 꿈_종이학 꿈1",
+        "드 블루 푸른밤의 꿈_종이학 꿈2",
+        "드 블루 푸른밤의 꿈_종이학 꿈4",
+        "드 블루 푸른밤의 꿈_종이비행기 비상1",
+        "드 블루 푸른밤의 꿈_종이비행기 비상3",
+        "드 블루 푸른밤의 꿈_종이배 항해1",
+        "드 블루 푸른밤의 꿈_종이배 항해2",
+        "드 블루 푸른밤의 꿈_종이배 항해4",
+        "The Blue2019_시간흔적1_bicycle",
+        "The Blue2019_시간흔적2_flower",
+        "The Blue2019_시간흔적4_stone",
+        "The Blue2020_Imagination_Into the Dream2",
+        "The Blue2020_Imagination_Into the Dream3",
+        "The Blue2021_Fractions#1",
+        "The Blue2021_Fractions#2",
+        "The Blue2023_In the Dream",
+        "The Blue2024_In the lake",
+        "The Blue2024_Toybox",
+        "The Blue2025_그리움의 결 in Hokkaido",
+        "The Blue2025_그리움의 결 in Jeju"
+      ],
+      "themeColor": "#bcbff1",
+      "themeMode": "warm",
+      "slideSeconds": 10,
+      "music": "M18",
+      "volume": 0.4,
+      "curationVolume":1.0,
+      "fadeDuration":800,
+      "startDate": "2026-10-01",
+      "endDate": "2026-12-31"
+    },
+
+
+    {
+      "id": "E0032",
+      "title": "Memory of Flowers",
+      "hall": "hall4",
+      "hallTitle": "4관",
+      "order": 4,
+      "type": "photo",
+      "status": "current",
+      "artist": "박찬애",
+      "images": ["001.jpg","002.jpg","003.jpg","004.jpg","005.jpg","006.jpg","007.jpg","008.jpg","009.jpg","010.jpg","011.jpg","012.jpg","013.jpg","014.jpg","015.jpg","016.jpg","017.jpg","018.jpg","019.jpg","020.jpg","021.jpg","022.jpg","023.jpg","024.jpg","025.jpg"],
+      "captions": [
+        "꽃의 기억 #01",
+        "꽃의 기억 #02",
+        "꽃의 기억 #03",
+        "꽃의 기억 #04",
+        "꽃의 기억 #05",
+        "꽃의 기억 #06",
+        "꽃의 기억 #07",
+        "꽃의 기억 #08",
+        "꽃의 기억 #09",
+        "꽃의 기억 #10",
+        "꽃의 기억 #11",
+        "꽃의 기억 #12",
+        "꽃의 기억 #13",
+        "꽃의 기억 #14",
+        "꽃의 기억 #15",
+        "꽃의 기억 #16",
+        "꽃의 기억 #17",
+        "꽃의 기억 #18",
+        "꽃의 기억 #19",
+        "꽃의 기억 #20",
+        "꽃의 기억 #21",
+        "꽃의 기억 #22",
+        "꽃의 기억 #23",
+        "꽃의 기억 #24",
+        "꽃의 기억 #25"
+      ],
+      "themeColor": "#c6b6c9",
+      "themeMode": "warm",
+      "slideSeconds": 10,
+      "music": "M40",
+      "volume": 0.4,
+      "curationVolume":1.0,
+      "fadeDuration":800,
+      "startDate": "2026-11-01",
+      "endDate": "2027-01-31"
+    }
 
 
 
